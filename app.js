@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 // Importar conneccion a base de datos
 var db = require('./models/db/connection');
-
+/*Hello world*/
 
 // Puntos de acceso remotos a la aplicacion
 // desde aqui se indexa todo en contenido de la plataforma
