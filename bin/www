@@ -8,6 +8,14 @@ var app = require('../app');
 var debug = require('debug')('todo:server');
 var http = require('http');
 
+
+
+/* Mantener despierta la aplicacion */
+setInterval(function() {
+    http.get("https://pink-shop.herokuapp.com/");
+}, 900000);
+
+
 /* code modificado */
 
 /**
