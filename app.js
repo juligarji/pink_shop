@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var db = require('./models/db/connection');
 /*Hello world*/
 
-// Puntos de acceso remotos a la aplicacion
+// Puntos de acceso remotos a la aplicacio
 // desde aqui se indexa todo en contenido de la plataforma
 
 // Agregamos nuestros puntos de conexion
@@ -41,6 +41,7 @@ db.once('open', function() {
 
 // llamada a los Routes
 app.use('/', home);
+app.use('/test', test);
 
 app.use(express.static(__dirname + '/public'));
 

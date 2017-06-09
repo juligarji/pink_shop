@@ -10,7 +10,7 @@ var http = require('http');
 
 /* Mantener despierta la aplicacion */
 setInterval(function() {
-    http.get("https://pink-shop.herokuapp.com/");
+    //http.get("https://pink-shop.herokuapp.com/"); // Heroku
 }, 300000);
 
 
