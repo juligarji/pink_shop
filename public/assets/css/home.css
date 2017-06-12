@@ -1,4 +1,4 @@
-article, aside, details, figcaption, figure,
+-particle, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -26,9 +26,19 @@ nav a.brand-logo img{/* Logo de la barra*/
   -o-animation-delay: 0.2s;
 }
 
+/* Estilos del modal */
+
 #modalLog{
   width:50%;
 }
+.toastStyle{
+  background-color: red;
+  text-align: center;
+  padding-left: 50%;
+  margin:auto;
+  position:absolute;
+}
+
 
 @media only screen and (max-width: 992px) {
 

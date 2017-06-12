@@ -13,13 +13,14 @@ var fragancesSchema = new Schema({
     disscount:{type:Number,default:0},
     ammount:{type:Number,required:true},
     price:{type:Number,required:true},// Precio por unidad
-
+    description:{type:String,defaul:"Increible Producto"},
     // Descuento al por mayor de venta
     minForDisccount:{type:Number,default:6},//cantidad minima para descuento
     Wholesale:{type:Number,required:true},// precio al por mayor
      // Parte tecnica del sistema
     photos:[String],
-    created_at:{type:Date,default:Date.now}
+    created_at:{type:Date,default:Date.now},
+    modified_at:{type:Date,required:true}
 });
 
 var fragances = mongoose.model('fragances',fragancesSchema);

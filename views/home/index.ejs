@@ -14,8 +14,10 @@
     <!-- CSS - Materialize -->
     <link rel="stylesheet" href="vendor/materialize/css/materialize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="vendor/pace/pace.css">
     <link rel = "stylesheet" href = "assets/css/home.css">
     <!-- Custom -->
+
 </head>
 
 <body>
@@ -27,7 +29,7 @@
           <div class="nav-wrapper">
 
             <div class = "row">
-              <a href="#" class="brand-logo center"><img class = "animated tada" src = "resources/img/logo_base.png"></a>
+              <a href="#" class="brand-logo center"><img class = "animated tada" src = "assets/img/logo_base.png"></a>
               <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <!-- Iconos de cuenta y carrito de compras -->
               <ul id="nav-mobile" class="right">
@@ -40,7 +42,7 @@
               <div class = "container center">
                 <ul>
                   <li class="active"><a href="#test1"><i class="material-icons">home</i></a></li>
-                  <li><a href="perfumeria.html">Perfumeria</a></li>
+                  <li><a href="/perfumeria">Perfumeria</a></li>
                   <li><a href="#test2">Maquillaje</a></li>
                   <li><a href="#test3">Cuidado Piel</a></li>
                   <li><a href="#test4">Ropa</a></li>
@@ -334,6 +336,7 @@
     <!-- Seccion perfumes -->
 
   </div>
+
   </main>
 
   <footer class = "col l12 m12 s12">
@@ -377,10 +380,16 @@
           Powered by Wolfay Projects
           </div>
         </div>
+
+
         <!-- Modal de registro -->
 
           <div id="modalLog" class="modal">
+
+
+
               <div class="modal-content">
+
                 <div class = "right">
                     <a class="btn-floating btn-small waves-effect waves-light black" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
                 </div>
@@ -399,23 +408,25 @@
                 <p class = "center">O ingresa con tu cuenta</p>
 
                 <div class = "row">
-                  <form class = "col m12 l12">
+                  <form id = "login" class = "col m12 l12" method = 'post' >
 
                     <div class = "row">
                       <div class="input-field col l8 m8 s11 offset-l2 offset-s1">
-                       <input id="email" type="email" class="validate">
+                       <input name = "email" id="email" type="email" class="validate">
                        <label for="email">Email</label>
                      </div>
                     </div>
 
                     <div class = "row">
                       <div class="input-field col l8 s11 offset-l2 offset-s1">
-                       <input id="password" type="password" class="validate">
+                       <input name = "password" id="password" type="password" class="validate">
                        <label for="password">Contraseña</label>
                      </div>
                     </div>
                     <div class = "row center">
-                        <a class = "btn submit">Ingresar</a>
+                        <input type = "submit" class = "btn" value = "Ingresar">
+                      <!--  <a class = "btn submit" onclick = "submitUser()">Ingresar</a> -->
+                        <!--<input type = "submit" class = "btn submit" value = "Ingresar"> -->
                     </div>
                   </form>
                 </div>
@@ -440,6 +451,7 @@
     <script src="vendor/materialize/js/materialize.js"></script>
     <script src="vendor/aos-master/dist/aos.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="vendor/pace/pace.js"></script>
     <script src="assets/js/home.js"></script>
 </body>
 </html>

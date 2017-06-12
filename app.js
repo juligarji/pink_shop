@@ -17,7 +17,13 @@ var home = require('./controllers/home/home.js');
 
 var test = require('./controllers/test/test.js');
 
+var sign = require('./controllers/sign/sign.js');
+
+var admin = require('./controllers/admin/admin.js');
+
 var app = express();
+
+app.disable('x-powered-by');// desactivar la tecnologia por seguridad
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +32,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+//app.use(express.methodOverride());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -42,8 +49,11 @@ db.once('open', function() {
 // llamada a los Routes
 app.use('/', home);
 app.use('/test', test);
+app.use('/sign', sign);
+app.use('/admin', admin);
 
 app.use(express.static(__dirname + '/public'));
+
 
 // Manejo de errores - Pendiente de implementar
 // catch 404 and forward to error handler

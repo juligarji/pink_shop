@@ -2,7 +2,9 @@
 var errorHandler ={
 
   handle : function(err){
-      console.log(err);// Provisional manejo
+      console.log('XXXXXXXXXXXXXXXXXX');// Provisional manejo
+      throw err;
+
   }
 }
 

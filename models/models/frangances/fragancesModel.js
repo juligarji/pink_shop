@@ -56,14 +56,14 @@ var fragancesModel = {
 
   },
   getAll : function(callback){
-    fragances.find({},function(err,function(err,fragan){
+    fragances.find({},function(err,fragan){
 
       if(err){
         errorHandler.handle(err);
         return;
       }
       callback(fragan);
-    }));
+    });
   }
 
     /* Self methods */

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menjar</title>
+
+  <!--  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
+    <!-- Import Google Icon -->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="vendor/aos-master/dist/aos.css" rel="stylesheet">
+    <!-- CSS - Materialize -->
+    <link rel="stylesheet" href="vendor/materialize/css/materialize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="vendor/pace/pace.css">
+    <link rel = "stylesheet" href = "assets/css/adminIndex.css">
+    <!-- Custom -->
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+      <!-- Menu -->
+        <nav class="nav-extended animated fadeIn col s12">
+          <div class="nav-wrapper">
+            <div class = "row">
+              <a href="#" class="brand-logo center"><img class = "animated tada" src = "assets/img/logo_base.png"></a>
+              <a href="#" data-activates="SideMenu" class="button-collapse"><i class="material-icons">menu</i></a>
+
+                <!-- Botones de la barra de navegacion -->
+              <ul id="nav-mobile" class="right">
+
+                <li><a class='dropdown-button' href='#' data-activates='settingsMenu'><i class="material-icons">settings</i></a></li>
+
+                  <!-- Menu de configuracion de modo administrador -->
+                  <ul id='settingsMenu' class='dropdown-content'>
+                    <li><a href="#!">Previsualizar</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick = "closeSession()"><i class="material-icons">clear</i>Cerrar sesion</a></li>
+                  </ul>
+              </ul>
+            </div>
+          </div>
+      </nav>
+
+
+      <!-- menu lateral para moviles -->
+      <ul class="side-nav" id="SideMenu">
+          <li>  <h5> Categorias</h5>
+                <div class = "divider"></div>
+          </li>
+
+          <li>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Estadisticas</div>
+                <div class="collapsible-body"><p>En construccion</p></div>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Productos</div>
+                <div class="collapsible-body">
+                    <ul>
+                      <li><a  href = "#">Perfumeria</a></li>
+                      <li><a  href = "#">Maquillaje</a></li>
+                      <li><a  href = "#">Cuidado Piel</a></li>
+                      <li><a  href = "#">Ropa</a></li>
+                      <li><a  href = "#">Accesorios</a></li>
+
+                    </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Clientes</div>
+                <div class="collapsible-body">
+                    <ul>
+                      <li><a  href = "#">Lista datos</a></li>
+                      <li><a  href = "#">Maximos Compradores</a></li>
+                      <li><a  href = "#">Orden Ventas</a></li>
+
+                    </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Ventas</div>
+                <div class="collapsible-body"><p>En construccion</p></div>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Preferencias</div>
+                <div class="collapsible-body">
+                    <ul>
+                      <li><a  href = "#">Pagina</a></li>
+                    </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+              <div class = "section">
+                <div class = "center">
+                  <a class="btn-floating btn-large waves-effect waves-light red" onclick = "$('.button-collapse').sideNav('hide');">
+                    <div class = "center">
+                      <i class="material-icons">close</i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          </li>
+      </ul>
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  <main style = "clear:both">
+      <div class = "row">
+        <!-- Menu acordeon de navegacion -->
+    <div class = "container col l2 z-depth-3 hide-on-med-and-down">
+
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">pie_chart</i>Estadisticas</div>
+              <div class="collapsible-body"><p>En construccion</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">local_mall</i>Productos</div>
+              <div class="collapsible-body">
+                <ul class="collection">
+                  <li class="collection-item"><a  href = "#">Perfumeria</a></li>
+                  <li class="collection-item"><a  href = "#">Maquillaje</a></li>
+                  <li class="collection-item"><a  href = "#">Cuidado Piel</a></li>
+                  <li class="collection-item"><a  href = "#">Ropa</a></li>
+                  <li class="collection-item"><a  href = "#">Accesorios</a></li>
+                  <li class = "collection-item"><a href = "#"><blockquote>Categorias</blockquote></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">person</i>Clientes</div>
+              <div class="collapsible-body">
+                <ul class="collection">
+                  <li class="collection-item"><a  href = "#">Lista Datos</a></li>
+                  <li class="collection-item"><a  href = "#">Maximos compradores</a></li>
+                  <li class="collection-item"><a  href = "#">Orden Ventas</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">attach_money</i>Ventas</div>
+              <div class="collapsible-body"><p>En construccion</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">build</i>Preferencias</div>
+              <div class="collapsible-body">
+                <ul class="collection">
+                  <li class="collection-item"><a  href = "#">Pagina</a></li>
+                </ul>
+              </div>
+            </li>
+        </ul>
+      </div>
+
+        <div class = " col l10 s12" style = "z-index:-100">
+          <div class = "row">
+            <!-- Creacion de nuevos perfumes -->
+
+                  <h5 class = "center"> Agregar Nuevo Perfume </h5>
+                    <div class = "section">
+                    <div class = "col l12 m12 s12 z-depth-2">
+
+                        <div class = "row">
+                          <form id = "fraganceForm" class = "col l12 s12" method="post">
+
+                                <div class="input-field col l3 m4 s12">
+                                  <input name = "name" placeholder="Nombre(Unico)" id="first_name" type="text" class="validate">
+                                </div>
+                                <div class="input-field col l3 m4 s12">
+                                  <select name = "size">
+                                    <option value="" disabled selected>Tamaño</option>
+                                    <option value="test1">test1</option>
+                                    <option value="test2">test2</option>
+                                    <option value="test3">test3</option>
+                                  </select>
+                                </div>
+                                <div class="input-field col l3 m4 s12">
+                                  <select name = "gender">
+                                    <option value="" disabled selected>Genero</option>
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Mujer">Mujer</option>
+                                  </select>
+                                </div>
+
+                                <div class="input-field col l3 m4 s12">
+                                  <select name = "fragance">
+                                    <option value="" disabled selected>Fragancia</option>
+                                    <option value="Test1">Test1</option>
+                                    <option value="Test2">Test2</option>
+                                  </select>
+                                </div>
+
+
+                              <div class="input-field col l3 m4 s12">
+                                <select name = "group">
+                                  <option value="" disabled selected>Temporada</option>
+                                  <option value="Test1">Test1</option>
+                                  <option value="Test2">Test2</option>
+                                </select>
+                              </div>
+
+                              <div class="input-field col l3 m4 s12">
+                                <select name = "brand">
+                                  <option value="" disabled selected>Marca</option>
+                                  <option value="Test1">Test1</option>
+                                  <option value="Test2">Test2</option>
+                                </select>
+                              </div>
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "disscount" placeholder="Descuento" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "price" placeholder="Precio" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "minForDisccount" placeholder="Min para May" id="first_name" type="number" class="validate">
+                              </div>
+
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "wholesale" placeholder="Precio (May)" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l10 m12 s12">
+                                  <input name = "description" placeholder="Descripcion" id="first_name" type="text" class="validate">
+                              </div>
+
+                              <div class = " col l2 m2 s5 z-depth-1 pink lighten-1" >
+                                  <input name = "ammount" placeholder="Cantidad" id="ammount" type="number" class="validate">
+                              </div>
+
+                              <div class = "col l10 m10 s7">
+                                <div class = "section">
+
+                                  <a  onclick = "loadPhotoModal(-1)" class="btn waves-effect amber lighten-1 waves-light col l3 m3 s12" name="action">
+                                      <i class="material-icons center">view_carousel</i>
+                                  </a>
+
+                                <!--  <button onclick="createFragance()" class="btn waves-effect green lighten-1 waves-light col l9 m9 s12" name="action">
+                                      Guardar
+                                      <i class="material-icons right">send</i>
+                                  </button> -->
+                                    <a onclick = "createFragance()" class = "btn waves-effect green lighten-1 waves-light col l9 m9 s12">
+                                      Guardar
+                                      <i class="material-icons right">send</i>
+                                    </a>
+                                </div>
+
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "col l12 m12 s12">
+                  <div class = "divider"></div>
+                    <table class = "responsive-table bordered striped col l12 m12 s12">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Grupo</th>
+                          <th>Marca</th>
+                          <th>Descuento</th>
+                          <th>Cantidad</th>
+                          <th>Precio</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Menjar</td>
+                          <td>Primavera</td>
+                          <td>Victoria Secret</td>
+                          <td>0%</td>
+                          <td>15</td>
+                          <td>12000</td>
+                          <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal(-1)">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a class="btn-floating btn-small waves-effect waves-light amber" onclick = "loadPhotoModal(-1)">
+                                    <i class="material-icons">view_carousel</i>
+                                  </a>
+
+                              <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>Menjar</td>
+                          <td>Primavera</td>
+                          <td>Victoria Secret</td>
+                          <td>0%</td>
+                          <td>15</td>
+                          <td>12000</td>
+                          <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal(-1)">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a class="btn-floating btn-small waves-effect waves-light amber" onclick = "loadPhotoModal(-1)">
+                                    <i class="material-icons">view_carousel</i>
+                                  </a>
+
+                              <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>Menjar</td>
+                          <td>Primavera</td>
+                          <td>Victoria Secret</td>
+                          <td>0%</td>
+                          <td>15</td>
+                          <td>12000</td>
+                          <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal(-1)">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a class="btn-floating btn-small waves-effect waves-light amber" onclick = "loadPhotoModal(-1)">
+                                    <i class="material-icons">view_carousel</i>
+                              </a>
+
+                              <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                    </table>
+                </div>
+
+      </div>
+  </div>
+  </div>
+
+  <!-- Modal para la edicion de las fotos de los productos -->
+  <div id = "photoModal" class = "modal">
+      <div class = "modal-content">
+        <div class = "row">
+            <a onclick = "$('#photoModal').modal('close');" class="btn-floating btn-small waves-effect waves-light black right"><i class="material-icons">clear</i></a>
+        </div>
+        <div class = "row">
+
+          <div class="slider col s12">
+  <ul class="slides">
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/1">
+      <div class="caption center-align">
+        <h3>1</h3>
+
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/2">
+      <div class="caption center-align">
+        <h3>2</h3>
+
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/3">
+      <div class="caption center-align">
+        <h3>3</h3>
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/4">
+      <div class="caption center-align">
+        <h3>4</h3>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+        </div>
+        <div class = "row">
+          <div class = "divider"></div>
+          <div class = "section"></div>
+
+          <div class = "col l10 s10">
+            <form action="#">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class = "col l2 s2">
+            <a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal(-1)">
+                  <i class="material-icons">file_upload</i>
+            </a>
+          </div>
+
+          <div class = "divider"></div>
+          <div class = "section"></div>
+        </div>
+
+        <div class = "col l12 m12 s12">
+          <table class = "centered striped">
+              <thead>
+                  <th class = "col l1 m1 s1">Numero</th>
+                  <th>Archivo</th>
+                  <th>Acciones</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class = "col l1 m1 s1">1</td>
+                  <td>
+                      <p>archivo1.jpg</p>
+                  </td>
+                  <td>
+                    <a class="btn-floating btn-small waves-effect waves-light red" onclick = "loadEditModal(-1)">
+                          <i class="material-icons">close</i>
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class = "col l1 m1 s1">1</td>
+                  <td>
+                      <p>archivo1.jpg</p>
+                  </td>
+                  <td>
+                    <a class="btn-floating btn-small waves-effect waves-light red" onclick = "loadEditModal(-1)">
+                          <i class="material-icons">close</i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+
+        </div>
+
+      </div>
+  </div>
+
+  <!-- Modal para la edicion de los productos -->
+  <div id="editModal" class="modal">
+      <div class="modal-content">
+
+        <div class = "col l12 m12 s12">
+          <div class = "row">
+              <a onclick = "$('#editModal').modal('close');" class="btn-floating btn-small waves-effect waves-light black right"><i class="material-icons">clear</i></a>
+          </div>
+            <div class = "row">
+              <form id = "fraganceForm" class = "col l12 s12">
+
+                    <div class="input-field col l3 m4 s12">
+                      <input name = "name" placeholder="Nombre(Unico)" id="first_name" type="text" class="validate">
+                    </div>
+                    <div class="input-field col l3 m4 s12">
+                      <select name = "size">
+                        <option value="" disabled selected>Tamaño</option>
+                        <option value="test1">test1</option>
+                        <option value="test2">test2</option>
+                        <option value="test3">test3</option>
+                      </select>
+                    </div>
+                    <div class="input-field col l3 m4 s12">
+                      <select name = "gender">
+                        <option value="" disabled selected>Genero</option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                      </select>
+                    </div>
+
+                    <div class="input-field col l3 m4 s12">
+                      <select name = "fragance">
+                        <option value="" disabled selected>Fragancia</option>
+                        <option value="Test1">Test1</option>
+                        <option value="Test2">Test2</option>
+                      </select>
+                    </div>
+
+
+                  <div class="input-field col l3 m4 s12">
+                    <select name = "group">
+                      <option value="" disabled selected>Temporada</option>
+                      <option value="Test1">Test1</option>
+                      <option value="Test2">Test2</option>
+                    </select>
+                  </div>
+
+                  <div class="input-field col l3 m4 s12">
+                    <select name = "brand">
+                      <option value="" disabled selected>Marca</option>
+                      <option value="Test1">Test1</option>
+                      <option value="Test2">Test2</option>
+                    </select>
+                  </div>
+
+                  <div class="input-field col l2 m3 s6">
+                    <input name = "disscount" placeholder="Descuento" id="first_name" type="number" class="validate">
+                  </div>
+
+                  <div class="input-field col l2 m3 s6">
+                    <input name = "price" placeholder="Precio" id="first_name" type="number" class="validate">
+                  </div>
+
+                  <div class="input-field col l2 m3 s6">
+                    <input name = "minForDisccount" placeholder="Min para May" id="first_name" type="number" class="validate">
+                  </div>
+
+
+                  <div class="input-field col l2 m3 s6">
+                    <input name = "wholesale" placeholder="Precio (May)" id="first_name" type="number" class="validate">
+                  </div>
+
+                  <div class="input-field col l10 m12 s12">
+                      <input name = "description" placeholder="Descripcion" id="first_name" type="text" class="validate">
+                  </div>
+
+                  <div class = " col l2 m2 s5 z-depth-1 pink lighten-1" >
+                      <input name = "ammount" placeholder="Cantidad" id="ammount" type="number" class="validate">
+                  </div>
+
+                  <div class = "col l10 m10 s7">
+                    <div class = "section">
+                      <button class="btn waves-effect green lighten-1 waves-light col l12 m12 s12" type="submit" name="action">
+                          Guardar
+                          <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+
+                  </div>
+              </form>
+            </div>
+        </div>
+
+
+          <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+      </div>
+    </div>
+  </main>
+
+  <footer class = "col l12 m12 s12">
+
+        <div class = "row">
+          <div class = "container col m4 s6">
+            <h5 class="white-text">Categorias</h5>
+            <u
+              <li><a class="grey-text text-lighten-3" href="#!">Perfumeria</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Maquillaje</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Cuidado Piel</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Ropa</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Accesorios</a></li>
+            </ul>
+          </div>
+          <div class = "container col m4 s6">
+            <h5 class="white-text">Paginas</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Ingresar</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Contacto</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Ayuda</a></li>
+            </ul>
+          </div>
+          <div class = "container col m4 s12">
+            <h5 class="white-text">Contacto</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Youtube</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">ventas@nombretienda.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-copyright">
+          <div class="container col s12 center-align">
+          © 2017 Pink Seduction
+          </div>
+          <div class="container col s12 center-align">
+          Powered by Wolfay Projects
+          </div>
+        </div>
+        <!-- Modal de registro -->
+    </footer>
+
+<!-- jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <!-- JS - Materialize -->
+    <script src="vendor/materialize/js/materialize.js"></script>
+    <script src="vendor/aos-master/dist/aos.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="vendor/pace/pace.js"></script>
+    <script src="assets/js/adminIndex.js"></script>
+</body>
+</html>
