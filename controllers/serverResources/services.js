@@ -24,8 +24,8 @@ function decodeToken(token){// decodificar token
             status:'401',
             message:'Token a expirado'
           });
-
         }
+        
         resolve(payload.sub);
       }catch(err){
           reject({
