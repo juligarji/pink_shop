@@ -47,6 +47,8 @@ var fragancesModel = {
   getAll : function(callback){
 
   },
+  getPartial : function(recent,ammount,index,callback){},
+  getByParameters : function(recent,ammount,index,parameters,callback){},
 
     /* Self methods */
     getEnct : function(email,callback){
@@ -60,7 +62,7 @@ var fragancesModel = {
         });
 
     }
-    
+
 }
 // Asegurarse de que el modelo cuenta con los metodos necesarios de CRUD
 Interface.ensureImplements(fragancesModel,interfaceInstance);

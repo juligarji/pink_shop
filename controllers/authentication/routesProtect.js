@@ -4,7 +4,7 @@
 // Proteger rutas privadas a usuarios no autenticados
 var services = require('../serverResources/services.js');//importar funcionalidades de encode y decode token
 //var cookieParser = require('cookie-parser');
-
+var users = require('../../models/models/users.js');
 
 function isAuth(req,res,next){// verifi si esta autenticado
 
@@ -24,7 +24,6 @@ function isAuth(req,res,next){// verifi si esta autenticado
       .then(response =>{
 
         req.user = response
-
         res.locals.authorized = true;
         next()
       })
@@ -37,5 +36,57 @@ function isAuth(req,res,next){// verifi si esta autenticado
       })
 }
 
+function onlyAdmin(req,res,next){
+
+  if(!res.locals.authorized){// Esta autorizado para ingresar con permisos
+      res.send({message:'No autorizado'});
+      return;
+  }
+
+  users.getByName(req.user,function(data){
+    var permits = data.permits;
+    switch(permits){
+
+        case 4:
+          next();
+            break;
+
+        default:
+          res.send({message:'No autorizado'});
+            return;
+    }
+  });
+}
+
+function onlyRegistered(req,res,next){
+  if(!res.locals.authorized){// Esta autorizado para ingresar con permisos
+      res.send({message:'No autorizado'});
+      return;
+  }
+
+  users.getByName(req.user,function(data){
+    var permits = data.permits;
+
+    switch(permits){
+
+        case 4:
+          next();
+            break;
+
+        case 2:
+          next();
+            break;
+
+        default:
+          res.send({message:'No autorizado'});
+            return;
+    }
+  });
+}
+
+
 module.exports = {
-  isAuth};
+  isAuth,
+  onlyRegistered,
+  onlyAdmin
+};

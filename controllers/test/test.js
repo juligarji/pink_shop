@@ -18,9 +18,6 @@ var herenciaPerfumesTest = function(req,res,next){// Pagina principal
     res.send('<h1>' + perfumes.create() + '</h1>');
 }
 
-var creacionPerfumes = function(){
-
-}
 
 var rutaPrivada = function(req,res){
 
@@ -50,8 +47,14 @@ router.get('/users',function(req,res){
 })
 
 router.get('/fragancias',function(req,res){
-    fragancesSchema.find({},function(err,data){
+    fragancesSchema.find({},'-_id',function(err,data){
           res.send(data);
+    });
+})
+
+router.get('/delete-fragancias',function(req,res){
+    fragancesSchema.remove(function(err){
+        res.status(200).end();
     });
 })
 
@@ -68,7 +71,10 @@ router.get('/delete-users',function(req,res){
     });
 })
 
-
-
+/* Pruebas de las fragancias */
+var fragances = require('../admin/fragances.js');
+//var images = require('./images.js');
+router.post('/createfragance',fragances.createFragance);
+router.post('/getfragances',fragances.getFragances);
 
 module.exports = router;

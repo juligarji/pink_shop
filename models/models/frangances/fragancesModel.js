@@ -64,6 +64,59 @@ var fragancesModel = {
       }
       callback(fragan);
     });
+  },
+  getPartial : function(recent,ammount,index,callback){
+
+        var skipVal = index*ammount;
+        var limitVal = ammount;
+        var order;
+
+        if(recent){
+            order = 'desc'
+        }else{
+            order = 'asc';
+        }
+
+        fragances.find({},'',
+        {// parametros de la busqueda
+          skip:skipVal,
+          limit:limitVal,
+          sort:{
+              created_at : order
+          }
+        },function(err,fragan){
+          if(err){
+            errorHandler.handle(err);
+            return;
+          }
+          callback(fragan);
+        });
+  },
+  getByParameters : function(recent,ammount,index,parameters,callback){
+    var skipVal = index*ammount;
+    var limitVal = ammount;
+    var order;
+
+    if(recent){
+        order = 'desc'
+    }else{
+        order = 'asc';
+    }
+
+    fragances.find({},'',
+    {// parametros de la busqueda
+      skip:skipVal,
+      limit:limitVal,
+      sort:{
+          created_at : order
+      }
+    },function(err,fragan){
+      if(err){
+        errorHandler.handle(err);
+        return;
+      }
+      callback(fragan);
+    });
   }
 
     /* Self methods */
