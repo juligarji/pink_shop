@@ -35,6 +35,15 @@ var createFragance = function(req,res,next){//POST
   // Implementar una verificacion desde el servidor
 }
 
+var deleteFragance = function(req,res,next){
+    var data = req.body;
+
+    fragancesModel.remove(data.name,function(){
+        console.log('borrado exitoso');
+    });
+    next();
+}
+
 var getFragances = function(req,res,next){
     var data = req.body;
 
@@ -54,5 +63,6 @@ var getFragances = function(req,res,next){
 
 module.exports = {
     createFragance,
-    getFragances
+    getFragances,
+    deleteFragance
 }

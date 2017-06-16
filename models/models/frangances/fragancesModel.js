@@ -23,9 +23,9 @@ var fragancesModel = {
               callback(newFragance);
       });
   },
-  remove : function(objectId,callback){
+  remove : function(objectName,callback){
 
-    fragances.findOneAndRemove({_id:prodId},function(err){
+    fragances.findOneAndRemove({name:objectName},function(err){
                 if(err){
                   errorHandler.handle(err);
                   return;

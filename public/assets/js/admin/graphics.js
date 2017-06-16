@@ -39,6 +39,7 @@ var Graphics = {
 
   fillPhotoModal : function(arrayPaths){//actualizar contenedor
     if(!Array.isArray(arrayPaths)){return;}
+    if(arrayPaths==[]){return;}
 
     var container = $('#photoModal ul.slides');
     var table = $('#photoModal table tbody');
@@ -57,8 +58,9 @@ var Graphics = {
   },
 
   addRowToTable : function(data){
-    console.log(data.name)
     var table = $('#fragancesTable tbody');
+    var rowIndex = table.children().length;
+
     var element = `
     <tr>
       <td>${data.name}</td>
@@ -67,13 +69,13 @@ var Graphics = {
       <td>${data.disccount}</td>
       <td>${data.ammount}</td>
       <td>${data.price}</td>
-      <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal('${data.name}')">
+      <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal('${data.name}',${rowIndex})">
             <i class="material-icons">edit</i>
           </a>
           <a class="btn-floating btn-small waves-effect waves-light amber" onclick = "loadPhotoModal('${data.name}')">
                 <i class="material-icons">view_carousel</i>
               </a>
-          <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
+          <a class="btn-floating btn-small waves-effect waves-light red" onclick = "deleteRegistry('${data.name}',${rowIndex})"><i class="material-icons">close</i></a>
       </td>
     </tr>
     `;
@@ -81,6 +83,8 @@ var Graphics = {
   },
   fillTable : function(arrayData){
       if(!Array.isArray(arrayData)){return;}
+      if(arrayData==[]){return;}
+
       var table = $('#fragancesTable tbody');
       table.empty();
 
@@ -90,9 +94,13 @@ var Graphics = {
   },
   loadToTable : function(arrayData){
       if(!Array.isArray(arrayData)){return;}
+      if(arrayData==[]){return;}
 
       for(var i=0;i<arrayData.length;i++){
         Graphics.addRowToTable(arrayData[i]);
       }
   },
+  deleteRow : function(index){
+      $('#fragancesTable tbody').children().eq(index).remove();
+  }
 }

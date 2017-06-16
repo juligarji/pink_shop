@@ -1,3 +1,13 @@
+
+
+/* DECLARACION DE DIRECCIONES DENTRO DE LA BASE DE DATOS*/
+var CREATE_FRAGANCE = '/admin/createfragance';
+var DELETE_FRAGANCE = '/admin/deletefragance';
+var GET_FRAGANCES = '/admin/getfraganceS';//recibe varios parametros diferentes
+var NEW_PICTURE = '/admin/newpicture';
+var DELETE_PICTURE = '/admin/deletepicture';
+
+
 $(window).ready(function(){
 
 /* LOAD COMPONENTS */
@@ -31,26 +41,12 @@ $(window).ready(function(){
       eventLag: false, // Checks the document readyState
     };
 
-
-});
-
 /*  MODAL DE EDICION */
 
-function loadEditModal(index){
-
-  $('#editModal').modal('open');
-
-}
 
 
 /* MODAL DE FOTOGRAFIA */
-function loadPhotoModal(index){
 
-    var arrayPaths = Memory.getLocalPics();
-    Graphics.fillPhotoModal(arrayPaths);
-    $('#photoModal').modal('open');
-
-}
 
 function createFragance(){
 
@@ -71,7 +67,7 @@ function createFragance(){
   });
 
   var call =   $.ajax({
-        url : '/admin/createfragance',
+        url : CREATE_FRAGANCE,
         type : 'POST',
         contentType: 'application/json',
         data: newData
@@ -88,6 +84,169 @@ function createFragance(){
 };
 
 /*Acciones de los modal */
+
+
+function removePic(path){
+
+  Memory.removeLocalPic(path);
+  Graphics.fillPhotoModal(Memory.getLocalPics());
+
+  var newData = JSON.stringify({
+      path : path
+  });
+
+  var call =   $.ajax({
+        url : DELETE_PICTURE,
+        type : 'POST',
+        contentType: 'application/json',
+        data: newData
+    });
+
+  call.done(function(data){
+      console.log('borrado exitosamente');
+  });
+
+  call.fail(function(jqXHR, textStatus, error){
+      console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
+  });
+}
+
+/* Parte de la tabla de datos */
+
+/* INICIO DE LAS LLAMDAS */
+
+function scrollAction(){
+  if($( document ).width()>992){
+
+      var scrollHeight = $(document).height() - $('footer').innerHeight();
+    	var scrollPosition = $(window).height() + $(window).scrollTop();
+
+    	if ((scrollHeight - scrollPosition) / scrollHeight <= 0) {
+    	    // when scroll to bottom of the page
+          console.log('final');
+          DB.getMoreElements(6,GET_FRAGANCES,function(arrayData){
+                Graphics.loadToTable(arrayData);
+          });
+    	}
+
+  }else{
+
+    var $width = $(this).outerWidth();
+    var $scrollWidth = $(this)[0].scrollWidth;
+    var $scrollLeft = $(this).scrollLeft();
+
+    if (Math.floor($scrollWidth - $width) == $scrollLeft){
+      DB.getMoreElements(3,GET_FRAGANCES,function(arrayData){
+            Graphics.loadToTable(arrayData);
+      });
+    }
+  }
+}
+var FLAG = true;
+function scrollBig(index){
+
+  var scrollHeight = $(document).height() - $('footer').innerHeight();
+  var scrollPosition = $(window).height() + $(window).scrollTop();
+
+  if ((scrollHeight - scrollPosition) / scrollHeight <= 0) {
+      // when scroll to bottom of the page
+      if(FLAG){
+        FLAG=false;
+        DB.getMoreElements(index,GET_FRAGANCES,function(arrayData){
+              Graphics.loadToTable(arrayData);
+              FLAG = true;
+        });
+      }
+  }
+}
+
+function scrollSmall(index){
+
+  var $width = $('#fragancesTable tbody').outerWidth();
+  var $scrollWidth = $('#fragancesTable tbody')[0].scrollWidth;
+  var $scrollLeft = $('#fragancesTable tbody').scrollLeft();
+
+  if (Math.floor($scrollWidth - $width) == $scrollLeft){
+    DB.getMoreElements(index,GET_FRAGANCES,function(arrayData){
+          Graphics.loadToTable(arrayData);
+    });
+  }
+}
+
+function initData(){
+
+  if($(document).width()>992){
+    //Pantalla grande
+    console.log('Gran pantalla');
+    DB.getMoreElements(6,GET_FRAGANCES,function(arrayData){
+          Graphics.fillTable(arrayData);
+    });
+    $(window).on('scroll',function(){
+      scrollBig(6);
+    });
+
+  }else{
+        if($(document).width()>600){
+          // Pantalla mediana de tablet
+          console.log('Tablet pantalla');
+
+          DB.getMoreElements(6,GET_FRAGANCES,function(arrayData){
+                Graphics.fillTable(arrayData);
+          });
+          $('#fragancesTable tbody').on('scroll',function(){
+            scrollSmall(6);
+          });
+
+        }else{
+              // Pantalla pequeña celular
+              console.log('Celular pantalla');
+
+              DB.getMoreElements(3,GET_FRAGANCES,function(arrayData){
+                    Graphics.fillTable(arrayData);
+              });
+              $('#fragancesTable tbody').on('scroll',function(){
+                scrollSmall(3);
+              });
+
+            }
+        }
+}
+
+
+// REsizado de la ventana
+var CURRENT_WIDTH = $(document).width();
+
+
+$(window).resize(function(){
+
+  if($(document).width() != CURRENT_WIDTH){
+    DB.INDEX =0;
+    initData();
+    CURRENT_WIDTH = $(document).width();
+  }
+});
+
+  /* MAIN */
+
+  initData();
+
+});// document ready function
+
+/* tablas */
+function deleteRegistry(name,index){
+    DB.deleteSingle(name,DELETE_FRAGANCE,function(){
+      Graphics.deleteRow(index);
+    });
+}
+
+
+/* Modals efects */
+function loadPhotoModal(index){
+    var arrayPaths = Memory.getLocalPics();
+    Graphics.fillPhotoModal(arrayPaths);
+    $('#photoModal').modal('open');
+}
+
 function uploadLocalPics(type){
 
     var myFormData = new FormData();
@@ -100,7 +259,7 @@ function uploadLocalPics(type){
 
    var call = $.ajax({
          type:'POST',
-         url:'/admin/newpicture',
+         url:NEW_PICTURE,
          processData: false, // important
          contentType: false, // important
          dataType : 'json',
@@ -117,53 +276,10 @@ function uploadLocalPics(type){
     call.fail(function(jqXHR, textStatus, error){
         console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
     });
-
 }
 
-function removePic(path){
+function loadEditModal(index){
 
-  Memory.removeLocalPic(path);
-  Graphics.fillPhotoModal(Memory.getLocalPics());
-
-  var newData = JSON.stringify({
-      path : path
-  });
-
-  var call =   $.ajax({
-        url : '/admin/deletepicture',
-        type : 'POST',
-        contentType: 'application/json',
-        data: newData
-    });
-
-  call.done(function(data){
-      console.log('borrado exitosamente');
-  });
-
-  call.fail(function(jqXHR, textStatus, error){
-      console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
-  });
+  $('#editModal').modal('open');
 
 }
-
-/* Parte de la tabla de datos */
-
-
-$('#fragancesTable tbody').scroll( function() {
-
-        if($( document ).width()<992){//esta pequeño
-
-          var $width = $('#fragancesTable tbody').outerWidth()
-          var $scrollWidth = $('#fragancesTable tbody')[0].scrollWidth;
-          var $scrollLeft = $('#fragancesTable tbody').scrollLeft();
-
-          if (Math.floor($scrollWidth - $width) == $scrollLeft){
-              getMoreFragances();
-          }
-        }else{
-
-          if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-               alert('maximo')
-           }
-        }
-    });

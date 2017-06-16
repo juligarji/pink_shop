@@ -41,5 +41,5 @@ function closeSession(){
 
     call.fail(function(data){
         console.log('Error al cerrar sesion');
-    })
+    });
 }
