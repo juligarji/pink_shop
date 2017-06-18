@@ -10,12 +10,12 @@ var fragancesSchema = new Schema({
     fragance:{type:Schema.ObjectId, ref:'fragancesCategories',required:false},
     group:{type:Schema.ObjectId, ref:'fragancesCollections',required:false},
     brand:{type:Schema.ObjectId, ref:'brands',required:false},
-    disscount:{type:Number,default:0},
+    discount:{type:Number,default:0},
     ammount:{type:Number,required:true},
     price:{type:Number,required:true},// Precio por unidad
     description:{type:String,default:"Increible Producto"},
     // Descuento al por mayor de venta
-    minForDisccount:{type:Number,default:6},//cantidad minima para descuento
+    minForDiscount:{type:Number,default:6},//cantidad minima para descuento
     wholesale:{type:Number,required:true},// precio al por mayor
      // Parte tecnica del sistema
     photos:[String],

@@ -4,8 +4,8 @@ function openSession(e){
     e.preventDefault();
 
     var sentData = JSON.stringify({
-          email:$("#login input[name='email']").val(),
-          password:$("#login input[name='password']").val()
+          email:$("input[name='email']").val(),
+          password:$("input[name='password']").val()
     });
 
     var call = $.ajax({

@@ -10,8 +10,6 @@ var fragances = require('./fragances.js');
 var images = require('./images.js');
 
 
-
-
 /*Rutas de Acceso */
     // protegiendo las rutas para el acceso no autorizado
 
@@ -19,7 +17,10 @@ var images = require('./images.js');
 router.post('/createfragance',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.createFragance);
 router.post('/deletefragance',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.deleteFragance);
 router.post('/getfragances',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.getFragances);
-router.post('/deletefragance',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.getFragances);
+
+router.post('/getsinglefragance',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.getSingleFragance);
+router.post('/editsinglefragance',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.editSingleFragance);
+router.post('/editphotosfragance',routesProtect.isAuth,routesProtect.onlyAdmin,fragances.editPhotosFragance);
 //router.post('/getfragances',fragances.getFragances);
       // imagenes
 router.post('/newpicture',routesProtect.isAuth,routesProtect.onlyAdmin,images.upload,images.createPicture);

@@ -33,7 +33,15 @@ var fragancesModel = {
                 callback();
     });
   },
-  update : function(oldObject,newObject,callback){
+  updateByName : function(name,newObject,callback){
+
+    fragances.findOneAndUpdate({name:name},{ $set:newObject}, { new: true }, function (err,fragan) {
+      if(err){
+        errorHandler.handle(err);
+        return;
+      }
+        callback(fragan);
+    });
 
   },
   delete : function(callback){
@@ -46,7 +54,7 @@ var fragancesModel = {
       });
   },
   getByName : function(objectName,callback){
-    fragances.findOne({name:objectName},function(err,fragan){
+    fragances.findOne({name:objectName},'-_id',function(err,fragan){
         if(err){
           errorHandler.handle(err);
           return;
@@ -117,9 +125,21 @@ var fragancesModel = {
       }
       callback(fragan);
     });
-  }
+  },
 
     /* Self methods */
+
+    updatePicturesByName : function(name,pictures,callback){
+
+      fragances.findOneAndUpdate({name:name},{ $set:{photos:pictures}}, { new: true }, function (err,fragan) {
+        if(err){
+          errorHandler.handle(err);
+          return;
+        }
+          callback(fragan);
+      });
+
+    },
 }
 // Asegurarse de que el modelo cuenta con los metodos necesarios de CRUD
 Interface.ensureImplements(fragancesModel,interfaceInstance);

@@ -1,16 +1,18 @@
 
-
 /* DECLARACION DE DIRECCIONES DENTRO DE LA BASE DE DATOS*/
 var CREATE_FRAGANCE = '/admin/createfragance';
 var DELETE_FRAGANCE = '/admin/deletefragance';
-var GET_FRAGANCES = '/admin/getfraganceS';//recibe varios parametros diferentes
+var GET_FRAGANCES = '/admin/getfragances';//recibe varios parametros diferentes
 var NEW_PICTURE = '/admin/newpicture';
 var DELETE_PICTURE = '/admin/deletepicture';
-
+var GET_SINGLE_FRAGANCE = '/admin/getsinglefragance';
+var EDIT_SINGLE_FRAGANCE = '/admin/editsinglefragance';
+var EDIT_PHOTOS_FRAGANCE = '/admin/editphotosfragance';
+var FLAG = true;
 
 $(window).ready(function(){
 
-/* LOAD COMPONENTS */
+/* CARGAR COMPONENTES */
 
     $('select').material_select();
     $('.collapsible').collapsible();
@@ -41,245 +43,184 @@ $(window).ready(function(){
       eventLag: false, // Checks the document readyState
     };
 
-/*  MODAL DE EDICION */
+/*  CONFIGURAR MANEJADOR DE ERRORES*/
 
+/* FUNCIONES PROPIAS DE LA VISTA */
 
+  ScrollIssues.initDataScroll('#fragancesTable tbody',GET_FRAGANCES,Graphics.loadToTable);
 
-/* MODAL DE FOTOGRAFIA */
+});// document ready function
 
+/* XXXXXXXXXX FUNCIONES PROPIAS XXXXXXXXXXX */
 
+    //MANEJADOR DE ERRORES
+function errorHandler(err){
+  // provisional
+  console.log(err);
+}
+
+    //TABLAS
+function deleteRegistry(name,index){
+
+    DB.deleteSingle(name,DELETE_FRAGANCE,function(){
+      Graphics.deleteRow(index);
+    });
+}
+/* manejo de los datos del perfume */
 function createFragance(){
 
-  var newData = JSON.stringify({
+  var newData = {
       name : $("#fraganceForm input[name='name']").val(),
       size: $("#fraganceForm select[name='size']").val(),
       gender : $("#fraganceForm select[name='gender']").val(),
       fragance : $("#fraganceForm select[name='fragance']").val(),
       group : $("#fraganceForm select[name='group']").val(),
       brand : $("#fraganceForm select[name='brand']").val(),
-      disscount : $("#fraganceForm input[name='disscount']").val(),
+      discount : $("#fraganceForm input[name='discount']").val(),
       price : $("#fraganceForm input[name='price']").val(),
-      minForDisccount : $("#fraganceForm input[name='minForDisccount']").val(),
+      minForDiscount : $("#fraganceForm input[name='minForDiscount']").val(),
       wholesale : $("#fraganceForm input[name='wholesale']").val(),
       description : $("#fraganceForm input[name='description']").val(),
       ammount : $("#fraganceForm input[name='ammount']").val(),
       photos : Memory.getLocalPics()
-  });
+  }
 
-  var call =   $.ajax({
-        url : CREATE_FRAGANCE,
-        type : 'POST',
-        contentType: 'application/json',
-        data: newData
-    });
+  DB.currentCall(newData,CREATE_FRAGANCE,function(data){
+      //console.log('Producto creado');
+      ScrollIssues.listenChanges('#fragancesTable tbody',GET_FRAGANCES,Graphics.loadToTable);
+  },errorHandler);
 
-    call.done(function(data){
-        console.log('Crear fragancia exitoso');
-        console.log(data.message);
-    });
-
-    call.fail(function(error,xhr){
-        console.log(error);
-    });
 };
 
-/*Acciones de los modal */
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx Imagenes locales */
+function removeLocalPic(path){
 
-
-function removePic(path){
-
-  Memory.removeLocalPic(path);
-  Graphics.fillPhotoModal(Memory.getLocalPics());
-
-  var newData = JSON.stringify({
+  var newData = {
       path : path
-  });
-
-  var call =   $.ajax({
-        url : DELETE_PICTURE,
-        type : 'POST',
-        contentType: 'application/json',
-        data: newData
-    });
-
-  call.done(function(data){
-      console.log('borrado exitosamente');
-  });
-
-  call.fail(function(jqXHR, textStatus, error){
-      console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
-  });
-}
-
-/* Parte de la tabla de datos */
-
-/* INICIO DE LAS LLAMDAS */
-
-function scrollAction(){
-  if($( document ).width()>992){
-
-      var scrollHeight = $(document).height() - $('footer').innerHeight();
-    	var scrollPosition = $(window).height() + $(window).scrollTop();
-
-    	if ((scrollHeight - scrollPosition) / scrollHeight <= 0) {
-    	    // when scroll to bottom of the page
-          console.log('final');
-          DB.getMoreElements(6,GET_FRAGANCES,function(arrayData){
-                Graphics.loadToTable(arrayData);
-          });
-    	}
-
-  }else{
-
-    var $width = $(this).outerWidth();
-    var $scrollWidth = $(this)[0].scrollWidth;
-    var $scrollLeft = $(this).scrollLeft();
-
-    if (Math.floor($scrollWidth - $width) == $scrollLeft){
-      DB.getMoreElements(3,GET_FRAGANCES,function(arrayData){
-            Graphics.loadToTable(arrayData);
-      });
-    }
   }
-}
-var FLAG = true;
-function scrollBig(index){
 
-  var scrollHeight = $(document).height() - $('footer').innerHeight();
-  var scrollPosition = $(window).height() + $(window).scrollTop();
-
-  if ((scrollHeight - scrollPosition) / scrollHeight <= 0) {
-      // when scroll to bottom of the page
-      if(FLAG){
-        FLAG=false;
-        DB.getMoreElements(index,GET_FRAGANCES,function(arrayData){
-              Graphics.loadToTable(arrayData);
-              FLAG = true;
-        });
-      }
-  }
-}
-
-function scrollSmall(index){
-
-  var $width = $('#fragancesTable tbody').outerWidth();
-  var $scrollWidth = $('#fragancesTable tbody')[0].scrollWidth;
-  var $scrollLeft = $('#fragancesTable tbody').scrollLeft();
-
-  if (Math.floor($scrollWidth - $width) == $scrollLeft){
-    DB.getMoreElements(index,GET_FRAGANCES,function(arrayData){
-          Graphics.loadToTable(arrayData);
-    });
-  }
-}
-
-function initData(){
-
-  if($(document).width()>992){
-    //Pantalla grande
-    console.log('Gran pantalla');
-    DB.getMoreElements(6,GET_FRAGANCES,function(arrayData){
-          Graphics.fillTable(arrayData);
-    });
-    $(window).on('scroll',function(){
-      scrollBig(6);
-    });
-
-  }else{
-        if($(document).width()>600){
-          // Pantalla mediana de tablet
-          console.log('Tablet pantalla');
-
-          DB.getMoreElements(6,GET_FRAGANCES,function(arrayData){
-                Graphics.fillTable(arrayData);
-          });
-          $('#fragancesTable tbody').on('scroll',function(){
-            scrollSmall(6);
-          });
-
-        }else{
-              // Pantalla pequeña celular
-              console.log('Celular pantalla');
-
-              DB.getMoreElements(3,GET_FRAGANCES,function(arrayData){
-                    Graphics.fillTable(arrayData);
-              });
-              $('#fragancesTable tbody').on('scroll',function(){
-                scrollSmall(3);
-              });
-
-            }
-        }
-}
-
-
-// REsizado de la ventana
-var CURRENT_WIDTH = $(document).width();
-
-
-$(window).resize(function(){
-
-  if($(document).width() != CURRENT_WIDTH){
-    DB.INDEX =0;
-    initData();
-    CURRENT_WIDTH = $(document).width();
-  }
-});
-
-  /* MAIN */
-
-  initData();
-
-});// document ready function
-
-/* tablas */
-function deleteRegistry(name,index){
-    DB.deleteSingle(name,DELETE_FRAGANCE,function(){
-      Graphics.deleteRow(index);
-    });
-}
-
-
-/* Modals efects */
-function loadPhotoModal(index){
-    var arrayPaths = Memory.getLocalPics();
-    Graphics.fillPhotoModal(arrayPaths);
-    $('#photoModal').modal('open');
+  DB.currentCall(newData,DELETE_PICTURE,function(data){
+    Memory.removeLocalPic(path);
+    Graphics.fillPhotoModal(Memory.getLocalPics(),uploadLocalPics,removeLocalPic);
+  },errorHandler);
 }
 
 function uploadLocalPics(type){
+  if(FLAG){
+    FLAG = false;
 
-    var myFormData = new FormData();
-    var pictureInput = document.getElementById('localPhotoFile').files[0];
-      document.getElementById('localPhotoFile').form.reset();
+    DB.pictureCall('localPhotoFile',type,NEW_PICTURE,function(data){
+      Memory.addLocalPic(data);
+      Graphics.fillPhotoModal(Memory.getLocalPics(),uploadLocalPics,removeLocalPic);
 
-      myFormData.append('pictureFile',pictureInput);
+      FLAG = true;
+    },errorHandler);
+  }
+}
 
-      myFormData.append('type',type);
+function loadLocalModalPhotos(name){
 
-   var call = $.ajax({
-         type:'POST',
-         url:NEW_PICTURE,
-         processData: false, // important
-         contentType: false, // important
-         dataType : 'json',
-         data: myFormData
-   });
+    Graphics.fillPhotoModal(Memory.getLocalPics(),uploadLocalPics,removeLocalPic);
+    $('#photoModal').modal('open');
+}
 
-    call.done(function(data){
-        // lA SUBIDA AL SERVIDOR FUE EXITOSA
-        Memory.addLocalPic(data.message);
-        Graphics.fillPhotoModal(Memory.getLocalPics());
-        /* Almacenamiento solo para pruebas*/
-    });
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Fotos del servidor */
+function removeEditPic(path){
 
-    call.fail(function(jqXHR, textStatus, error){
-        console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
+    var newData = {
+        path : path
+    }
+
+    DB.currentCall(newData,DELETE_PICTURE,function(data){
+      //Memory.removeLocalPic(path);
+      Memory.removeEditPic(path);
+
+      newData = {
+        name:Memory.getEditName(),
+        photos:Memory.getEditPics()
+      }
+
+      DB.currentCall(newData,EDIT_PHOTOS_FRAGANCE,function(data){
+
+          Graphics.fillPhotoModal(Memory.getEditPics(),uploadEditPics,removeEditPic);
+      });
+
+    },errorHandler);
+}
+
+function uploadEditPics(type){
+  if(FLAG){
+    FLAG = false;
+
+    DB.pictureCall('localPhotoFile',type,NEW_PICTURE,function(data){
+      Memory.addEditPic(data);
+
+      var newData = {
+        name:Memory.getEditName(),
+        photos:Memory.getEditPics()
+      }
+
+      DB.currentCall(newData,EDIT_PHOTOS_FRAGANCE,function(data){
+
+          Graphics.fillPhotoModal(Memory.getEditPics(),uploadEditPics,removeEditPic);
+          FLAG = true;
+      });
+
+    },errorHandler);
+  }
+}
+
+function loadEditModalPhotos(name){
+  var newData = {
+    name:name
+  }
+
+  DB.currentCall(newData,GET_SINGLE_FRAGANCE,function(data){
+
+      Memory.setEditPics(data.photos);
+      Memory.setEditName(data.name);
+
+
+      Graphics.fillPhotoModal(Memory.getEditPics(),uploadEditPics,removeEditPic);
+      //cambiar el manejador de archivos de las fotos
+      $('#photoModal').modal('open');
+
+  },errorHandler);
+}
+
+
+// NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo
+function submitEditModal(name,index){
+  var newData = {
+      name : $("#editModal input[name='name']").val(),
+      size: $("#editModal select[name='size']").val(),
+      gender : $("#editModal select[name='gender']").val(),
+      fragance : $("#editModal select[name='fragance']").val(),
+      group : $("#editModal select[name='group']").val(),
+      brand : $("#editModal select[name='brand']").val(),
+      discount : $("#editModal input[name='discount']").val(),
+      price : $("#editModal input[name='price']").val(),
+      minForDiscount : $("#editModal input[name='minForDiscount']").val(),
+      wholesale : $("#editModal input[name='wholesale']").val(),
+      description : $("#editModal input[name='description']").val(),
+      ammount : $("#editModal input[name='ammount']").val(),
+      oldName : name
+  }
+
+    DB.currentCall(newData,EDIT_SINGLE_FRAGANCE,function(data){
+        Graphics.editRow(data,index);
     });
 }
 
-function loadEditModal(index){
-
-  $('#editModal').modal('open');
-
+function loadEditModal(name,index){
+    var newData = {
+      name:name
+    }
+    console.log('como lo llama :' + name);
+    DB.currentCall(newData,GET_SINGLE_FRAGANCE,function(data){
+        console.log('lo que llego');
+        console.log(data,null,'\t');
+        Graphics.fillEditModal(index,data,submitEditModal);
+        $('#editModal').modal('open');
+    },errorHandler);
 }

@@ -239,7 +239,7 @@
                               </div>
 
                               <div class="input-field col l2 m3 s6">
-                                <input name = "disscount" placeholder="Descuento" id="first_name" type="number" class="validate">
+                                <input name = "discount" placeholder="Descuento" id="first_name" type="number" class="validate">
                               </div>
 
                               <div class="input-field col l2 m3 s6">
@@ -247,7 +247,7 @@
                               </div>
 
                               <div class="input-field col l2 m3 s6">
-                                <input name = "minForDisccount" placeholder="Min para May" id="first_name" type="number" class="validate">
+                                <input name = "minForDiscount" placeholder="Min para May" id="first_name" type="number" class="validate">
                               </div>
 
 
@@ -266,7 +266,7 @@
                               <div class = "col l10 m10 s7">
                                 <div class = "section">
 
-                                  <a  onclick = "loadPhotoModal(-1)" class="btn waves-effect amber lighten-1 waves-light col l3 m3 s12" name="action">
+                                  <a  onclick = "loadLocalModalPhotos()" class="btn waves-effect amber lighten-1 waves-light col l3 m3 s12" name="action">
                                       <i class="material-icons center">view_carousel</i>
                                   </a>
 
@@ -365,7 +365,7 @@
           </div>
 
           <div class = "col l2 s2">
-            <a class="btn-floating btn-small waves-effect waves-light blue" onclick = "uploadLocalPics('fragances')">
+            <a id = "photoModalAction" class="btn-floating btn-small waves-effect waves-light blue">
                   <i class="material-icons">file_upload</i>
             </a>
           </div>
@@ -382,19 +382,7 @@
                   <th>Acciones</th>
               </thead>
               <tbody>
-
-                <tr>
-                  <td class = "col l1 m1 s1">1</td>
-                  <td>
-                      <p>archivo1.jpg</p>
-                  </td>
-                  <td>
-                    <a class="btn-floating btn-small waves-effect waves-light red" onclick = "loadEditModal(-1)">
-                          <i class="material-icons">close</i>
-                    </a>
-                  </td>
-                </tr>
-
+                  <!-- tabla de agregar, las listas de las fotografias -->
               </tbody>
           </table>
 
@@ -459,7 +447,7 @@
                   </div>
 
                   <div class="input-field col l2 m3 s6">
-                    <input name = "disscount" placeholder="Descuento" id="first_name" type="number" class="validate">
+                    <input name = "discount" placeholder="Descuento" id="first_name" type="number" class="validate">
                   </div>
 
                   <div class="input-field col l2 m3 s6">
@@ -467,7 +455,7 @@
                   </div>
 
                   <div class="input-field col l2 m3 s6">
-                    <input name = "minForDisccount" placeholder="Min para May" id="first_name" type="number" class="validate">
+                    <input name = "minForDiscount" placeholder="Min para May" id="first_name" type="number" class="validate">
                   </div>
 
 
@@ -485,10 +473,13 @@
 
                   <div class = "col l10 m10 s7">
                     <div class = "section">
-                      <button class="btn waves-effect green lighten-1 waves-light col l12 m12 s12" type="submit" name="action">
+                      <!--<button class="btn waves-effect green lighten-1 waves-light col l12 m12 s12" type="submit" name="action">
                           Guardar
                           <i class="material-icons right">send</i>
-                      </button>
+                      </button> -->
+                      <a class = "btn waves-effect green lighten-1 waves-light col l12 m12 s12" id = 'editModalAction'>
+                          <i class="material-icons right">send</i>
+                      </a>
                     </div>
 
                   </div>
@@ -560,6 +551,7 @@
     <script src="assets/js/utilities/db.js"></script>
     <script src="assets/js/admin/memory.js"></script>
     <script src="assets/js/admin/graphics.js"></script>
+    <script src="assets/js/utilities/scroll.js"></script>
     <script src="assets/js/admin/adminIndex.js"></script>
 </body>
 </html>

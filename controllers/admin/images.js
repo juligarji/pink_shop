@@ -20,9 +20,9 @@ var upload = multer({ storage : storage}).any();
 var createPicture = function(req,res,next){
 
   //var imagePath = PUBLIC_ADDRESS + req.files[0].filename;
-
-  res.status(200).send({message:req.files[0].filename});
-  next();
+  //console.log('Nueva imagen :' + req.files[0].filename);
+  res.status(200).send({data:req.files[0].filename,message:'Subida exitosa'});
+  //next();
 }
 
 var deletePicture = function(req,res,next){
@@ -38,6 +38,7 @@ var deletePicture = function(req,res,next){
               errorHandler.handle(err);
           }
             console.log('file removed sucessfully');
+            res.status(200).send({message:'Imagen removida exitosamente'});
         });
     });
 }

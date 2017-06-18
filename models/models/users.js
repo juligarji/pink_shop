@@ -28,7 +28,7 @@ var fragancesModel = {
 
 
   },
-  update : function(oldObject,newObject,callback){
+  updateByName : function(oldObject,newObject,callback){
 
   },
   delete : function(callback){
