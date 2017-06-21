@@ -22,8 +22,10 @@ var createPicture = function(req,res,next){
   //var imagePath = PUBLIC_ADDRESS + req.files[0].filename;
   //console.log('Nueva imagen :' + req.files[0].filename);
   res.status(200).send({data:req.files[0].filename,message:'Subida exitosa'});
+  console.log('Imagen subida exitosamente');
   //next();
 }
+
 
 var deletePicture = function(req,res,next){
     var data = req.body.path;

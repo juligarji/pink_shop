@@ -54,6 +54,7 @@ var fragancesModel = {
       });
   },
   getByName : function(objectName,callback){
+
     fragances.findOne({name:objectName},'-_id',function(err,fragan){
         if(err){
           errorHandler.handle(err);

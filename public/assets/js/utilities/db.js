@@ -3,56 +3,61 @@ var DB = {
    INDEX : 0,
 
   currentCall : function (data,url,sucessCall,failCall){
+    console.log('llamada :' + DB.INDEX);
+    Protection.avoidDobleClick(function(){// prevenir que se envie inmediatamente una accion
 
-    var newData = JSON.stringify(data);
-    var call =   $.ajax({
-          url : url,
-          type : 'POST',
-          contentType: 'application/json',
-          data: newData
-    });
+      var newData = JSON.stringify(data);
+      var call =   $.ajax({
+            url : url,
+            type : 'POST',
+            contentType: 'application/json',
+            async: false,
+            data: newData
+      });
 
-    call.done(function(data){
-        sucessCall(data.data);
-        DB.INDEX ++;
-    });
+      call.done(function(data){
+          sucessCall(data.data);
+      });
 
-    call.fail(function(jqXHR, textStatus, error){
-        failCall(jqXHR.responseJson);
-        console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
+      call.fail(function(jqXHR, textStatus, error){
+          failCall(jqXHR.responseJson);
+          console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
+      });
     });
   },
 
   pictureCall : function(fileContainer,type,address,sucessCall,failCall){
 
-    var myFormData = new FormData();
-    var pictureInput = document.getElementById(fileContainer).files[0];
-      document.getElementById(fileContainer).form.reset();
+    Protection.avoidDobleClick(function(){
 
-      myFormData.append('pictureFile',pictureInput);
+      var myFormData = new FormData();
+      var pictureInput = document.getElementById(fileContainer).files[0];
+        document.getElementById(fileContainer).form.reset();
 
-      myFormData.append('type',type);
+        myFormData.append('pictureFile',pictureInput);
 
-   var call = $.ajax({
-         type:'POST',
-         url:address,
-         processData: false, // important
-         contentType: false, // important
-         dataType : 'json',
-         data: myFormData
-   });
+        myFormData.append('type',type);
 
-    call.done(function(data){
-        // lA SUBIDA AL SERVIDOR FUE EXITOSA
-        sucessCall(data.data);
-        /* Almacenamiento solo para pruebas*/
+     var call = $.ajax({
+           type:'POST',
+           url:address,
+           processData: false, // important
+           contentType: false, // important
+           dataType : 'json',
+           data: myFormData
+     });
+
+      call.done(function(data){
+          // lA SUBIDA AL SERVIDOR FUE EXITOSA
+          sucessCall(data.data);
+          /* Almacenamiento solo para pruebas*/
+      });
+
+      call.fail(function(jqXHR, textStatus, error){
+          console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
+          failCall(jqXHR.responseJson);
+      });
     });
-
-    call.fail(function(jqXHR, textStatus, error){
-        console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
-        failCall(jqXHR.responseJson);
-    });
-
   },
 
   /* Manejo de llamadas a base de datos remota */
@@ -65,7 +70,13 @@ var DB = {
       recent : true
     }
 
-    DB.currentCall(newData,url,callback,function(err){
+    DB.currentCall(newData,url,
+      function(data){
+      callback(data);
+      DB.INDEX ++;
+
+    },function(err){
+
 
     });
 

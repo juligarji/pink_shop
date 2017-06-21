@@ -1,6 +1,9 @@
 
 var fragancesModel = require('../../models/models/frangances/fragancesModel.js');
+var fs = require('fs');
 
+var PRODUCTS_ADDRESS = './public/assets/img/products/';
+var errorHandler = require('../error/errorHandler.js');
 
 // middleware para las rutas del administrador
 
@@ -36,19 +39,43 @@ var createFragance = function(req,res,next){//POST
   // Implementar una verificacion desde el servidor
 }
 
+
+var deleteCurrentPicture = function(photoName,arrayNames){
+if(photoName == undefined){return;}
+
+    fs.stat(PRODUCTS_ADDRESS + photoName,function(err,stats){
+        if(err){
+            errorHandler.handle(err);
+        }
+
+        fs.unlink(PRODUCTS_ADDRESS + photoName,function(err){
+          if(err){
+              errorHandler.handle(err);
+          }
+
+          deleteCurrentPicture(arrayNames[arrayNames.indexOf(photoName) + 1],arrayNames);
+
+        });
+    });
+
+
+}
 var deleteFragance = function(req,res,next){
     var data = req.body;
 
-    fragancesModel.remove(data.name,function(){
-        console.log('borrado exitoso');
-        res.status(200).send({message:'Borrado exitoso'});
+    fragancesModel.getByName(data.name,function(frag){
+
+        deleteCurrentPicture(frag.photos[0],frag.photos);
+        fragancesModel.remove(frag.name,function(){
+
+            res.status(200).send({message:'Borrado exitoso'});
+        });
     });
 }
 
+
 var getFragances = function(req,res,next){
     var data = req.body;
-
-
 
       var ammount = parseInt(data.ammount);
       var index = parseInt(data.index);

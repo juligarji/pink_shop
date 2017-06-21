@@ -47,7 +47,7 @@ $(window).ready(function(){
 
 /* FUNCIONES PROPIAS DE LA VISTA */
 
-  ScrollIssues.initDataScroll('#fragancesTable tbody',GET_FRAGANCES,Graphics.loadToTable);
+  ScrollIssues.initResizeEvent('#fragancesTable tbody',GET_FRAGANCES,Graphics.loadToTable);
 
 });// document ready function
 
@@ -60,10 +60,14 @@ function errorHandler(err){
 }
 
     //TABLAS
-function deleteRegistry(name,index){
+function deleteRegistry(name){
 
-    DB.deleteSingle(name,DELETE_FRAGANCE,function(){
-      Graphics.deleteRow(index);
+    var newData = {
+      name:name
+    }
+
+    DB.currentCall(newData,DELETE_FRAGANCE,function(){
+        Graphics.deleteRow(name);
     });
 }
 /* manejo de los datos del perfume */
@@ -87,7 +91,9 @@ function createFragance(){
 
   DB.currentCall(newData,CREATE_FRAGANCE,function(data){
       //console.log('Producto creado');
-      ScrollIssues.listenChanges('#fragancesTable tbody',GET_FRAGANCES,Graphics.loadToTable);
+
+      //ScrollIssues.initScrollState('#fragancesTable tbody',GET_FRAGANCES,Graphics.createNewRow);
+      Graphics.createNewRow(newData);
   },errorHandler);
 
 };
@@ -131,6 +137,7 @@ function removeEditPic(path){
         path : path
     }
 
+
     DB.currentCall(newData,DELETE_PICTURE,function(data){
       //Memory.removeLocalPic(path);
       Memory.removeEditPic(path);
@@ -149,9 +156,7 @@ function removeEditPic(path){
 }
 
 function uploadEditPics(type){
-  if(FLAG){
-    FLAG = false;
-
+    console.log('aqui');
     DB.pictureCall('localPhotoFile',type,NEW_PICTURE,function(data){
       Memory.addEditPic(data);
 
@@ -167,7 +172,7 @@ function uploadEditPics(type){
       });
 
     },errorHandler);
-  }
+
 }
 
 function loadEditModalPhotos(name){
@@ -190,7 +195,7 @@ function loadEditModalPhotos(name){
 
 
 // NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo
-function submitEditModal(name,index){
+function submitEditModal(name){
   var newData = {
       name : $("#editModal input[name='name']").val(),
       size: $("#editModal select[name='size']").val(),
@@ -207,20 +212,22 @@ function submitEditModal(name,index){
       oldName : name
   }
 
+    $('#editModal').modal('close');
     DB.currentCall(newData,EDIT_SINGLE_FRAGANCE,function(data){
-        Graphics.editRow(data,index);
+        Graphics.editRow(name,data);
     });
+
 }
 
-function loadEditModal(name,index){
+
+function loadEditModal(name){
     var newData = {
       name:name
     }
     console.log('como lo llama :' + name);
     DB.currentCall(newData,GET_SINGLE_FRAGANCE,function(data){
-        console.log('lo que llego');
-        console.log(data,null,'\t');
-        Graphics.fillEditModal(index,data,submitEditModal);
+
+        Graphics.fillEditModal(name,data,submitEditModal);
         $('#editModal').modal('open');
     },errorHandler);
 }

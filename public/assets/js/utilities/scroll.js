@@ -14,6 +14,7 @@ var ScrollIssues = {
         if(ScrollIssues.FLAG){
           ScrollIssues.FLAG=false;
           DB.getMoreElements(ammount,address,function(arrayData){
+            
                 graphicsCall(arrayData,false);
                 ScrollIssues.FLAG = true;
           });
@@ -34,17 +35,35 @@ var ScrollIssues = {
     }
   },
 
- listenChanges : function(tableContainer,address,graphicsCall){
+  initResizeEvent : function(tableContainer,address,graphicsCall){
+
+    ScrollIssues.initScrollState(tableContainer,address,graphicsCall);
+
+    $(window).resize(function(){
+      if($(document).width() != ScrollIssues.CURRENT_WIDTH){
+        DB.INDEX =0;
+        ScrollIssues.initScrollState(tableContainer,address,graphicsCall);
+        ScrollIssues.CURRENT_WIDTH = $(document).width();
+      }
+    });
+  },
+
+  scrollCall : function(ammount,address,newData,graphicsCall){
+    DB.getMoreElements(ammount,address,function(arrayData){
+          //Graphics.fillTable(arrayData);
+          graphicsCall(arrayData,newData);
+    });
+  },
+
+  initScrollState : function(tableContainer,address,graphicsCall){
     $(window).unbind('scroll');
     $(tableContainer).unbind('scroll');
 
+
     if($(document).width()>992){
       //Pantalla grande
-      console.log('Gran pantalla');
-      DB.getMoreElements(6,address,function(arrayData){
-            //Graphics.fillTable(arrayData);
-            graphicsCall(arrayData,true);
-      });
+
+      ScrollIssues.scrollCall(6,address,true,graphicsCall);
 
       $(window).on('scroll',function(){
         ScrollIssues.scrollBig(6,address,graphicsCall);
@@ -55,10 +74,8 @@ var ScrollIssues = {
             // Pantalla mediana de tablet
             console.log('Tablet pantalla');
 
-            DB.getMoreElements(6,address,function(arrayData){
-                  //Graphics.fillTable(arrayData);
-                  graphicsCall(arrayData,true);
-            });
+            ScrollIssues.scrollCall(6,address,true,graphicsCall);
+
             $(tableContainer).on('scroll',function(){
               ScrollIssues.scrollSmall(tableContainer,6,address,graphicsCall);
             });
@@ -67,29 +84,13 @@ var ScrollIssues = {
                 // Pantalla pequeña celular
                 console.log('Celular pantalla');
 
-                DB.getMoreElements(3,address,function(arrayData){
-                      //Graphics.fillTable(arrayData);
-                      graphicsCall(arrayData,true);
-                });
+                ScrollIssues.scrollCall(3,address,true,graphicsCall);
+
                 $(tableContainer).on('scroll',function(){
                   ScrollIssues.scrollSmall(tableContainer,3,address,graphicsCall);
                 });
-
               }
           }
-  },
-
-  initDataScroll : function(tableContainer,address,graphicsCall){
-
-    ScrollIssues.listenChanges(tableContainer,address,graphicsCall);
-
-    $(window).resize(function(){
-      if($(document).width() != ScrollIssues.CURRENT_WIDTH){
-        DB.INDEX =0;
-        ScrollIssues.listenChanges(tableContainer,address,graphicsCall);
-        ScrollIssues.CURRENT_WIDTH = $(document).width();
-      }
-    });
   }
 
 }

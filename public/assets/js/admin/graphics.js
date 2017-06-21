@@ -21,7 +21,7 @@ var Graphics = {
 
     var listElement = `
     <tr>
-      <td class = "col l1 m1 s1">${length + 1}</td>
+      <td class = "col l1 m1 s1">${rowIndex + 1}</td>
       <td>
           <p>${path}</p>
       </td>
@@ -38,7 +38,7 @@ var Graphics = {
 
     table.children().eq(0).find('a.deleteButton').on('click',function(){
           deleteFunction(path);
-    })
+    });
 
     $('.slider').slider();
   },
@@ -59,38 +59,42 @@ var Graphics = {
     $('#photoModalAction').on('click',function(){
         uploadFunction('Determinado luego');
     });
+
     var max = arrayPaths.length;
     for(var i=0;i<max;i++){
       if(arrayPaths[i]!=''){
-
           Graphics.addPhotoToModal(arrayPaths[i],deleteFunction);
       }
     }
   },
 
-  addRowToTable : function(data){
+  addRowToTable : function(data,orderReg){
     var table = $('#fragancesTable tbody');
     var rowIndex = table.children().length;
-    console.log('ADD ROW');
+
     var element = `
-    <tr>
+    <tr value = "${data.name}">
       <td>${data.name}</td>
       <td>${data.group}</td>
       <td>${data.brand}</td>
       <td>${data.discount}</td>
       <td>${data.ammount}</td>
       <td>${data.price}</td>
-      <td><a class="btn-floating btn-small waves-effect waves-light blue editAction" onclick = "loadEditModal('${data.name}',${rowIndex})">
+      <td><a type = "submit" class="btn-floating btn-small waves-effect waves-light blue editAction" onclick = "loadEditModal('${data.name}')">
             <i class="material-icons">edit</i>
           </a>
-          <a class="btn-floating btn-small waves-effect waves-light amber carouselAction" onclick = "loadEditModalPhotos('${data.name}',${rowIndex})">
+          <a type = "submit" class="btn-floating btn-small waves-effect waves-light amber carouselAction" onclick = "loadEditModalPhotos('${data.name}')">
                 <i class="material-icons">view_carousel</i>
               </a>
-          <a class="btn-floating btn-small waves-effect waves-light red deleteAction" onclick = "deleteRegistry('${data.name}',${rowIndex})"><i class="material-icons">close</i></a>
+          <a type = "submit" class="btn-floating btn-small waves-effect waves-light red deleteAction" onclick = "deleteRegistry('${data.name}')"><i class="material-icons">close</i></a>
       </td>
     </tr>
     `;
-    table.append(element);
+    if(orderReg){
+        table.append(element);
+        return;
+    }
+        table.prepend(element);
   },
 
   loadToTable : function(arrayData,newReg){
@@ -100,11 +104,24 @@ var Graphics = {
       if(newReg){$('#fragancesTable tbody').empty();}
 
       for(var i=0;i<arrayData.length;i++){
-        Graphics.addRowToTable(arrayData[i]);
+        Graphics.addRowToTable(arrayData[i],true);
       }
   },
-  editRow : function(data,index){
-    var row = $('#fragancesTable tbody').children().eq(index);
+
+  createNewRow : function(data){
+    //if(Array.isArray(data)){return;}
+    if(data==undefined){return;}
+
+    console.log('ejecuto &&&');
+      Graphics.addRowToTable(data,false);
+  },
+
+  editRow : function(oldName,data){
+
+    //var row = $('#fragancesTable tbody').children().eq(index);
+    var row = Graphics.locateRow(oldName);
+    row.attr('value',data.name);
+    //console.log(Object.keys(row.children()));
     row.children().eq(0).text(data.name);
     row.children().eq(1).text(data.group);
     row.children().eq(2).text(data.brand);
@@ -112,33 +129,42 @@ var Graphics = {
     row.children().eq(4).text(data.ammount);
     row.children().eq(5).text(data.price);
     // sobre escribir las acciones con el nuevo nombre si es el caso
-    row.find('a.editAction').attr('onclick',`loadEditModal('${data.name}',${index})`);
-    row.find('a.carouselAction').attr('onclick',`loadEditModalPhotos('${data.name}',${index})`);
-    row.find('a.deleteAction').attr('onclick',`deleteRegistry('${data.name}',${index})`);
-
+    row.find('a.editAction').attr('onclick',`loadEditModal('${data.name}')`);
+    row.find('a.carouselAction').attr('onclick',`loadEditModalPhotos('${data.name}')`);
+    row.find('a.deleteAction').attr('onclick',`deleteRegistry('${data.name}')`);
   },
 
-  deleteRow : function(index){
-      $('#fragancesTable tbody').children().eq(index).remove();
+  deleteRow : function(name){
+      Graphics.locateRow(name).remove();
   },
-
+  locateRow : function(name){
+      var output = $('#fragancesTable tbody').children(`tr[value='${name}']`);
+      return output;
+  },
   fillEditModal : function(index,data,callback){
 
-    $(`#editModal input[name='name']`).attr('value',data.name);
+
+    //$('#editModal').children('input').val('');
+
+
+    //$(`#editModal input[name='name']`).attr('value',data.name);
+    $(`#editModal input[name='name']`).val(data.name);
     $(`#editModal select[name='size']`).find(`option[value='${data.size}']`).attr(`selected`,true);
     $(`#editModal select[name='gender']`).find(`option[value='${data.gender}']`).attr(`selected`,true);
     $(`#editModal select[name='fragance']`).find(`option[value='${data.fragance}']`).attr(`selected`,true);
     $(`#editModal select[name='group']`).find(`option[value='${data.group}']`).attr(`selected`,true);
     $(`#editModal select[name='brand']`).find(`option[value='${data.brand}']`).attr(`selected`,true);
-    $(`#editModal input[name='discount']`).attr('value',data.discount);
-    $(`#editModal input[name='price']`).attr('value',data.price);
-    $(`#editModal input[name='minForDiscount']`).attr('value',data.minForDiscount);
-    $(`#editModal input[name='wholesale']`).attr('value',data.wholesale);
-    $(`#editModal input[name='description']`).attr('value',data.description);
-    $(`#editModal input[name='ammount']`).attr('value',data.ammount);
+    $(`#editModal input[name='discount']`).val(data.discount);
+    $(`#editModal input[name='price']`).val(data.price);
+    $(`#editModal input[name='minForDiscount']`).val(data.minForDiscount);
+    $(`#editModal input[name='wholesale']`).val(data.wholesale);
+    $(`#editModal input[name='description']`).val(data.description);
+    $(`#editModal input[name='ammount']`).val(data.ammount);
+
 
     $(`#editModalAction`).one('click',function(){
-        callback(data.name,index);
+
+        callback(data.name);
     });
   }
 }
