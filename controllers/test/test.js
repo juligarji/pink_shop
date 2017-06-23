@@ -74,6 +74,7 @@ router.get('/delete-users',function(req,res){
 
 
 
+
 /* Pruebas de las fragancias */
 var fragances = require('../admin/fragances.js');
 //var images = require('./images.js');
@@ -81,5 +82,24 @@ router.post('/createfragance',fragances.createFragance);
 router.post('/getfragances',fragances.getFragances);
 router.post('/getsinglefragance',fragances.getSingleFragance);
 router.post('/editsinglefragance',fragances.editSingleFragance);
+
+/* Prueba de la categorias */
+var categories = require('../admin/categories.js');
+var categoriesModel = require('../../models/models/categoriesModel.js');
+//var images = require('./images.js');
+router.get('/categorias',function(req,res,next){
+  categoriesModel.getAllByOrder(true,function(data){
+      res.send({data});
+  });
+});
+
+router.post('/createcategory',categories.createCategory);
+router.post('/deletecategory',categories.deleteCategory);
+router.post('/deleteAllcategories',function(req,res){
+  categoriesModel.delete(function(){
+    res.send({message:'borrada toda la base de datos'});
+  })
+});
+
 
 module.exports = router;

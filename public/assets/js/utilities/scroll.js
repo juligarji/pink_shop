@@ -14,7 +14,7 @@ var ScrollIssues = {
         if(ScrollIssues.FLAG){
           ScrollIssues.FLAG=false;
           DB.getMoreElements(ammount,address,function(arrayData){
-            
+
                 graphicsCall(arrayData,false);
                 ScrollIssues.FLAG = true;
           });
@@ -88,6 +88,43 @@ var ScrollIssues = {
 
                 $(tableContainer).on('scroll',function(){
                   ScrollIssues.scrollSmall(tableContainer,3,address,graphicsCall);
+                });
+              }
+          }
+  },
+  initScrollClient : function(tableContainer,address,graphicsCall){
+    $(window).unbind('scroll');
+    $(tableContainer).unbind('scroll');
+
+
+    if($(document).width()>992){
+      //Pantalla grande
+
+      ScrollIssues.scrollCall(6,address,true,graphicsCall);
+
+      $(window).on('scroll',function(){
+        ScrollIssues.scrollBig(6,address,graphicsCall);
+      });
+
+    }else{
+          if($(document).width()>600){
+            // Pantalla mediana de tablet
+            console.log('Tablet pantalla');
+
+            ScrollIssues.scrollCall(6,address,true,graphicsCall);
+
+            $(tableContainer).on('scroll',function(){
+              ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
+            });
+
+          }else{
+                // Pantalla pequeña celular
+                console.log('Celular pantalla');
+
+                ScrollIssues.scrollCall(6,address,true,graphicsCall);
+
+                $(tableContainer).on('scroll',function(){
+                  ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
                 });
               }
           }

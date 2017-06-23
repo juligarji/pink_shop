@@ -10,11 +10,11 @@
   <!--  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
     <!-- Import Google Icon -->
      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link href="vendor/aos-master/dist/aos.css" rel="stylesheet">
+     <link href="../vendor/aos-master/dist/aos.css" rel="stylesheet">
     <!-- CSS - Materialize -->
-    <link rel="stylesheet" href="vendor/materialize/css/materialize.css">
+    <link rel="stylesheet" href="../vendor/materialize/css/materialize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel = "stylesheet" href = "assets/css/home.css">
+    <link rel = "stylesheet" href = "../assets/css/home.css">
     <!-- Custom -->
 </head>
 
@@ -32,7 +32,7 @@
                 <!-- Iconos de cuenta y carrito de compras -->
               <ul id="nav-mobile" class="right">
                 <li><a href="login.html"><i class="material-icons">account_circle</i></a></li>
-                <li><a href="badges.html"><i class="material-icons">shopping_cart</i></a></li>
+                <li><a href="badges.html"><i class="material-icons cart">shopping_cart</i><span id = "cartSize">2</span></a></li>
               </ul>
             </div>
 
@@ -70,7 +70,7 @@
               <div class = "divider"></div>
         </li>
         <li><a href="sass.html"><i class="material-icons">account_circle</i>Ingresar</a></li>
-        <li><a href="sass.html"><i class="material-icons">shopping_cart</i>Carro de compras</a></li>
+        <li><a href="sass.html"><i class="material-icons cart">shopping_cart</i>Carro de compras</a></li>
         <li><a href="sass.html"><i class="material-icons">help</i>Ayuda</a></li>
         <li>
             <div class = "section">
@@ -183,55 +183,40 @@
           </ul>
         </div>
           <!-- Aqui va el contenedor de los productos -->
-          <div id = "productContainer" class = "col l10 m10 s12" >
-          <!--
-            <div class = "col l4 m4 s6 product">
+          <div id = "productContainer" class = "col l7 m7 s12" >
 
-                <img class = "responsive-img col s12" src="http://via.placeholder.com/150x600">
-                <div class = "divider"></div>
-                <div class = " center col l12 m12 s12 grey">
-                    <span>Nuevo producto</span>
-                    <p>45000</p>
-                </div>
-            </div>
-          -->
-
-            <!-- EJEMPLO DE LAS CARTAS
-
-             <div class = "col m4 s12 animated fadeInUp">
-              <div class="card hoverable col m12 s12">
-                <div class="card-image">
-                  <img class = "responsive-img" src="http://via.placeholder.com/150x600">
-                  <span class="card-title">Perfume Victoria Secret</span>
-                </div>
-
-                <div class="card-content">
-                      <div class "row">
-                        <div class = "container col s7">
-                          <span>Unidad</span>
+                    <div class="slider">
+                    <ul class="slides">
+                      <% data.photos.forEach(function(elementPic){ %>
+                      <li>
+                        <img src = "../<%=addressPic%><%=elementPic%>">
+                        <div class="caption center-align">
+                          <h3>This is our big Tagline!</h3>
+                          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
-                        <div class = "container col s5">
-                            <span> $15.000</span>
-                        </div>
-                      </div>
-                      <div class = "divider"></div>
+                      </li>
+                      <% }); %>
+                    </ul>
+                   </div>
+          </div>
+          <!-- Menu de navegacion para hacer las compras -->
+          <div class = " center col l3 z-depth-4">
 
-                      <div class = "row">
-                        <div class = "container col s6">
-                          <span>Mayor (6 Und)</span>
-                        </div>
-                        <div class = "container col s6">
-                            <span> $12.000 c/u</span>
-                        </div>
-                      </div>
-                </div>
+              <h5><%= data.name %> </h5>
+              <div class = "divider"></div>
 
-                <div class="card-action center-align">
-                  <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
-                </div>
+              <div class="input-field offset-l3 col l6 m6 s6">
+                <input oninput = "getPrice('<%= data.name %>')" name = "ammount" placeholder="Cantidad" type="Number" class="validate">
               </div>
-            </div>
-          -->
+
+              <div id = "addToBag" onclick = "addElementToCart('<%= data.name %>')" class = "btn-large">
+                Añadir a la bolsa
+                <i class="material-icons">add_shopping_cart</i>
+              </div>
+              <p>Total: <p id = "total">0</p></p>
+              <p id = 'unit'>Precio Unidad: <%= data.price %></p>
+              <p id = 'whole'>Precio Mayor: <%= data.wholesale %> (Minimo <%= data.minForDiscount %> Und)</p>
+              <p id = ''>Descripcion: <%= data.description %> </p>
 
           </div>
         </div>
@@ -239,8 +224,7 @@
     </div>
 
   </main>
-
-
+</div>
 
 
 
@@ -289,19 +273,20 @@
     </footer>
 
 <!-- jQuery -->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
     <!-- JS - Materialize -->
-    <script src="vendor/materialize/js/materialize.js"></script>
-    <script src="vendor/aos-master/dist/aos.js"></script>
+    <script src="../vendor/materialize/js/materialize.js"></script>
+    <script src="../vendor/aos-master/dist/aos.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
-    <script src="assets/js/utilities/protection.js"></script>
-    <script src="assets/js/utilities/session.js"></script>
-    <script src="assets/js/utilities/db.js"></script>
-    <script src="assets/js/utilities/scroll.js"></script>
 
-    <script src="assets/js/home/fragances/graphics.js"></script>
-    <script src="assets/js/home/fragances/fragances.js"></script>
+    <script src="../assets/js/utilities/session.js"></script>
+    <script src="../assets/js/home/utilities/protection.js"></script>
+    <script src="../assets/js/home/utilities/db.js"></script>
+    <script src="../assets/js/home/utilities/cart.js"></script>
+    <script src="../assets/js/home/utilities/cartGraphics.js"></script>
+
+    <script src="../assets/js/home/details/details.js"></script>
 
 </body>
 </html>

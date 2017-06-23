@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 var fragancesSchema = new Schema({
 
     name:{type:String,required:true,unique:true},
-    size:{type:Schema.ObjectId, ref:'fragancesSize',required:false},
+    size:{type:Schema.ObjectId, ref:'categories',required:false},
     gender:{type:String,default:'Mujer'},
-    fragance:{type:Schema.ObjectId, ref:'fragancesCategories',required:false},
-    group:{type:Schema.ObjectId, ref:'fragancesCollections',required:false},
-    brand:{type:Schema.ObjectId, ref:'brands',required:false},
+    fragance:{type:Schema.ObjectId, ref:'categories',required:false},
+    group:{type:Schema.ObjectId, ref:'categories',required:false},
+    brand:{type:Schema.ObjectId, ref:'categories',required:false},
     discount:{type:Number,default:0},
     ammount:{type:Number,required:true},
     price:{type:Number,required:true},// Precio por unidad

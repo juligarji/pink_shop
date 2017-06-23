@@ -5,7 +5,7 @@ var crypto = require('crypto');
 var Schema = mongoose.Schema;
 
 var usersSc = new Schema({
-  
+
     email:{type:String,unique:true,lowercase:true},
     permits:{type:Number,required:true},
     displayName:{type:String},

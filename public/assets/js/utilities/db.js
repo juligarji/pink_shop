@@ -3,7 +3,7 @@ var DB = {
    INDEX : 0,
 
   currentCall : function (data,url,sucessCall,failCall){
-    console.log('llamada :' + DB.INDEX);
+    
     Protection.avoidDobleClick(function(){// prevenir que se envie inmediatamente una accion
 
       var newData = JSON.stringify(data);

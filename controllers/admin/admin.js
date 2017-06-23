@@ -8,7 +8,7 @@ var errorHandler = require('../error/errorHandler.js');
 /* Middleware para las rutas */
 var fragances = require('./fragances.js');
 var images = require('./images.js');
-
+var categories = require('./categories.js');
 
 /*Rutas de Acceso */
     // protegiendo las rutas para el acceso no autorizado
@@ -25,5 +25,10 @@ router.post('/editphotosfragance',routesProtect.isAuth,routesProtect.onlyAdmin,f
       // imagenes
 router.post('/newpicture',routesProtect.isAuth,routesProtect.onlyAdmin,images.upload,images.createPicture);
 router.post('/deletepicture',routesProtect.isAuth,routesProtect.onlyAdmin,images.deletePicture);
+
+// Direcciones de otras paginas de administrador
+router.get('/categorias',routesProtect.isAuth,routesProtect.onlyAdmin,categories.renderCategories);
+router.post('/createcategory',routesProtect.isAuth,routesProtect.onlyAdmin,categories.createCategory);
+router.post('/deletecategory',routesProtect.isAuth,routesProtect.onlyAdmin,categories.deleteCategory);
 
 module.exports = router;

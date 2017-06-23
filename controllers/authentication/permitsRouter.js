@@ -1,6 +1,8 @@
 var express = require('express');
 var users = require('../../models/models/users.js');
 
+
+
 function routeByPermits(req,res,next){
     /*var permits = res.locals.user.permits;
     console.log(permits);*/
