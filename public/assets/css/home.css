@@ -9,6 +9,8 @@ nav{
   -webkit-animation-delay: 0.1s;
   -moz-animation-delay: 0.1s;
   -o-animation-delay: 0.1s;
+ /* padding-bottom: -50px;*/
+  font-size: 50px;
 }
 
 nav a.brand-logo img{/* Logo de la barra*/
@@ -26,11 +28,24 @@ nav a.brand-logo img{/* Logo de la barra*/
   -o-animation-delay: 0.2s;
 }
 
+body{
+  font-family: 'Dosis', sans-serif;
+ 
+}
+
 /* Estilos del modal */
 
 #modalLog{
   width:50%;
+  height: 800px;
 }
+
+main{
+  /*padding-top: -50px;*/
+  margin-top: -15px;
+}
+
+
 .toastStyle{
   background-color: red;
   text-align: center;
@@ -40,27 +55,52 @@ nav a.brand-logo img{/* Logo de la barra*/
 }
 
 
-@media only screen and (max-width: 992px) {
+   
 
-    nav{
+    /*#mainContainer{
+      padding-top: 60px;
+    }*/
+  
+    #publicitySmallUp{
+        height: 350px; 
+        width: 100%;
+        padding-bottom: 0px;
+        margin-bottom:0px;
+    }
+
+    #publicitySmallDown{
+      height: 300px;
+      width: 100%;
+    }
+
+    #publicityBig{
+      height: 650px;
+    }
+
+
+
+/* REsponsive para tablets */
+@media only screen and (max-width:991px){
+   nav{
       position: fixed;
       height:150px;
       clear:both;
       z-index: 10;
     }
 
-    #mainContainer{
-      padding-top: 50px;
+    main{
+      padding-top: 5%;
     }
-
-}
-
-/* REsponsive para tablets */
-@media only screen and (max-width:991px){
 
   #modalLog{
       width:80%;
   }
+
+  #mainContainer{
+      padding-top: 50px;
+    }
+
+   
 }
 
 /* responsive para celulares */
@@ -68,8 +108,11 @@ nav a.brand-logo img{/* Logo de la barra*/
 
   #modalLog{
       width:100%;
-
   }
+
+   main{
+      padding-top:30px;
+    }
 }
 
 
@@ -78,6 +121,7 @@ nav a.brand-logo img{/* Logo de la barra*/
 ul.side-nav  h5{
   margin-left: 10px;
 }
+.
 
 ul.side-nav a.btn{
   background-color: #d0006f;
@@ -102,11 +146,48 @@ ul.side-nav a.btn{
 
 #homeProducts div.card{
     /*background-color: rgba(208,0,111,0.2);*/
-    background-color: #09A1B2;
+    background-color: rgb(255,237,95);
+
     /*position: static;
     float:right;
     background-color: black;*/
 }
+
+/* titulo de nuevos productos */
+.titles h1{
+  color :rgb(178,18,95);
+  text-shadow: 10px 10px 5px rgb(250,250,250);
+}
+
+/* Modificacion estetica de los elementos grafios de los productos */
+#homeProducts div.card img{
+  height: 500px;
+  width: 281px;
+  margin:auto;
+}
+
+#homeProducts span.card-title{
+  text-decoration:none;
+  /*font-style: bold rgb(0,0,0);*/
+  color:rgb(178,18,95);
+  text-shadow: 1px 1px 5px rgb(250,250,250);
+  font-size: 35px;
+}
+
+#homeProducts div.card-content p{/* los rotulos */
+  text-decoration:none;
+  /*font-style: bold rgb(0,0,0);*/
+  color:rgb(0,0,0);
+  font-size: 15px;
+}
+
+#homeProducts div.card-content span{/* los precios */
+  color:rgb(178,18,95);
+  text-decoration:none;
+  font-size: 25px;
+}
+
+
 
 
 /* Perfumes */

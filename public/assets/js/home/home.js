@@ -39,5 +39,28 @@ $(window).ready(function(){
             selectors: ['main'] // Checks for event loop lag signaling that javascript is being executed
         }
   };
+  $(".card").hide();
+
+  var showElements = function(){
+      //alert('aparecieron');
+      
+      $('.card').eq(0).toggle(1000);
+       $('.card').eq(1).toggle(1500);
+       $('.card').eq(2).toggle(2000);
+       $('.card').eq(3).toggle(2500);
+       $('.card').eq(4).toggle(3000);
+       $('.card').eq(5).toggle(3500);
+       $('.card').eq(6).toggle(4000);
+  
+
+      
+  };
+  var options = [
+   // {selector: '.class', offset: 200, callback: customCallbackFunc } },
+    {selector: '#homeProducts', offset: 100, callback: function() {
+      showElements();
+    } },
+  ];
+  Materialize.scrollFire(options);
 
 });
