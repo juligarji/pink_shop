@@ -63,4 +63,11 @@ $(window).ready(function(){
   ];
   Materialize.scrollFire(options);
 
+  $(window).resize(function(){
+    if($( window ).width()>991){
+      $('.carousel').carousel();
+      $('.carousel.carousel-slider').carousel({fullWidth: true});
+    }
+  });
+
 });

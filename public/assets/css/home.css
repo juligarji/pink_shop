@@ -3,13 +3,12 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-/* Navigation bar */
+/* BARRA DE NAVEGACION */
 nav{
   background-color:#d0006f;
   -webkit-animation-delay: 0.1s;
   -moz-animation-delay: 0.1s;
   -o-animation-delay: 0.1s;
- /* padding-bottom: -50px;*/
   font-size: 50px;
 }
 
@@ -21,6 +20,7 @@ nav a.brand-logo img{/* Logo de la barra*/
   -o-animation-delay: 0.5s;
 }
 
+
 /* Banner principal */
 #mainBanner{
   -webkit-animation-delay: 0.2s;
@@ -28,16 +28,9 @@ nav a.brand-logo img{/* Logo de la barra*/
   -o-animation-delay: 0.2s;
 }
 
+/* MODIFICACION DEL CUERPO */
 body{
   font-family: 'Dosis', sans-serif;
- 
-}
-
-/* Estilos del modal */
-
-#modalLog{
-  width:50%;
-  height: 800px;
 }
 
 main{
@@ -46,40 +39,30 @@ main{
 }
 
 
-.toastStyle{
-  background-color: red;
-  text-align: center;
-  padding-left: 50%;
-  margin:auto;
-  position:absolute;
+/* ESTILOS INICIALES */
+
+#modalLog{
+  width:50%;
+}
+
+#publicitySmallUp{
+    height: 350px; 
+    width: 100%;
+    padding-bottom: 0px;
+    margin-bottom:0px;
+}
+
+#publicitySmallDown{
+  height: 300px;
+  width: 100%;
+}
+
+#publicityBig{
+  height: 650px;
 }
 
 
-   
-
-    /*#mainContainer{
-      padding-top: 60px;
-    }*/
-  
-    #publicitySmallUp{
-        height: 350px; 
-        width: 100%;
-        padding-bottom: 0px;
-        margin-bottom:0px;
-    }
-
-    #publicitySmallDown{
-      height: 300px;
-      width: 100%;
-    }
-
-    #publicityBig{
-      height: 650px;
-    }
-
-
-
-/* REsponsive para tablets */
+/* CONFIGURACION PARA TABLETS*/
 @media only screen and (max-width:991px){
    nav{
       position: fixed;
@@ -99,11 +82,10 @@ main{
   #mainContainer{
       padding-top: 50px;
     }
-
-   
 }
 
-/* responsive para celulares */
+
+/* CONFIGURACION DE CELULARES */
 @media only screen and (max-width:600px){
 
   #modalLog{
@@ -115,18 +97,15 @@ main{
     }
 }
 
-
-
-/*Menu movil */
+/* MENU MOVIL */
 ul.side-nav  h5{
   margin-left: 10px;
 }
-.
+
 
 ul.side-nav a.btn{
   background-color: #d0006f;
 }
-
 
 
 /* Home */
@@ -162,7 +141,7 @@ ul.side-nav a.btn{
 /* Modificacion estetica de los elementos grafios de los productos */
 #homeProducts div.card img{
   height: 500px;
-  width: 281px;
+  /*width: 281px;*/
   margin:auto;
 }
 
@@ -218,5 +197,5 @@ footer{
   clear:both;
   background-color:#d0006f;
   width:100%;
-  float:left
+  /*float:left*/
 }

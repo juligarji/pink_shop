@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menjar</title>
+
+  <!--  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
+    <!-- Import Google Icon -->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+     <link href="vendor/aos-master/dist/aos.css" rel="stylesheet">
+    <!-- CSS - Materialize -->
+    <link rel="stylesheet" href="vendor/materialize/css/materialize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="vendor/pace/pace.css">
+    <link rel = "stylesheet" href = "assets/css/home.css">
+    <!-- Custom -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+      <!-- Menu -->
+        <nav class="nav-extended animated fadeIn col s12 l12 m12">
+          <div class="nav-wrapper col l12 m12 s12">
+
+            <div class = "row">
+              <a href="#" class="brand-logo center"><img class = "animated tada" src = "assets/img/logo_base.png"></a>
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <!-- Iconos de cuenta y carrito de compras -->
+              <ul id="nav-mobile" class="right">
+                <li><a href="#modalLog"><i class="material-icons">account_circle</i></a></li>
+                <li><a href="badges.html"><i class="material-icons">shopping_cart</i></a></li>
+              </ul>
+            </div>
+
+            <div class = "row hide-on-med-and-down" >
+              <div class = "container center">
+                <ul>
+                  <li class="active"><a href="#test1"><i class="material-icons">home</i></a></li>
+                  <li><a href="/perfumeria">Perfumeria</a></li>
+                  <li><a href="#test2">Maquillaje</a></li>
+                  <li><a href="#test3">Cuidado Piel</a></li>
+                  <li><a href="#test4">Ropa</a></li>
+                  <li><a href="#test4">Accesorios</a></li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+      </nav>
+
+      <!-- menu lateral para moviles -->
+      
+    <ul class="side-nav" id="mobile-demo">
+        <li>  <h5> Categorias</h5>
+              <div class = "divider"></div>
+        </li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/perfumeria">Perfumeria</a></li>
+        <li><a href="badges.html">Maquillaje</a></li>
+        <li><a href="#test3">Cuidado Piel</a></li>
+        <li><a href="collapsible.html">Ropa</a></li>
+        <li><a href="mobile.html">Accesorios</a></li>
+
+        <li>  <h5> Informacion</h5>
+              <div class = "divider"></div>
+        </li>
+        <li><a href="sass.html"><i class="material-icons">account_circle</i>Ingresar</a></li>
+        <li><a href="sass.html"><i class="material-icons">shopping_cart</i>Carro de compras</a></li>
+        <li><a href="sass.html"><i class="material-icons">help</i>Ayuda</a></li>
+        <li>
+            <div class = "section">
+              <div class = "center">
+                <a class="btn-floating btn-large waves-effect waves-light red" onclick = "$('.button-collapse').sideNav('hide');">
+                  <div class = "center">
+                    <i class="material-icons">close</i>
+                  </div>
+                </a>
+              </div>
+            </div>
+        </li>
+    </ul>
+  
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  
+  <main style = "clear:both">
+
+    <div id = "mainContainer" class = "col l12 m12 s12">
+
+    
+
+    <div>
+        <div class = "col m12 s12 l12 animated fadeInUp">
+            <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "assets/img/page/mainBanner.png"></a>
+        </div>
+    </div>
+
+    <div id="test1" class="col s12 m12 l10 offset-l1">
+   
+      <div class="carousel carousel-slider hide-on-med-and-down animated fadeInUp col s12 m12" height = "500px" data-indicators="true">
+          <a  class="carousel-item" href="#one!"><img width="100%" height="100%" src="assets/img/page/carousel1.jpg"></a>
+          <a class="carousel-item" href="#two!"><img width="100%" height="100%"  src="assets/img/page/carousel2.jpg" ></a>
+          <a class="carousel-item" href="#three!"><img width="100%" height="100%"  src="assets/img/page/carousel1.jpg" ></a>
+          <a class="carousel-item" href="#four!"><img width="100%" height="100%"  src="assets/img/page/carousel2.jpg" ></a>
+      </div>
+
+ seccion publicitaria de la home 
+      <div id = "adver" class = " col m12 s12 l12">
+      
+          <div class = "row" height = "500px">
+
+            <div class = "col m6 s12">
+              <a class = "col m12 s12" ><img id = "publicitySmallUp" class = "animated fadeInUp" src = "assets/img/page/publicitySmallUp.png" width = "100%" height="100%"></a>
+              <a class = "col m12 s12" ><img id = "publicitySmallDown" class = "animated fadeInUp" src = "assets/img/page/publicitySmallDown.png" width = "100%" height="100%"></a>
+            </div>
+            <div class = "col m6 s12">
+              <a class = "col m12 s12"><img id = "publicityBig" class = "animated fadeInUp" src = "assets/img/page/publicityBig.png"  width = "100%" height="100%"></a>
+            </div>
+          </div>
+   
+      </div>
+
+     seccion de productos  de la home 
+      <div class = "col l12 m12 s12 titles center">
+          <h1 class = "col l12 m12 s12"> Nuevos productos </h1>
+          <div class = "divider col l12 m12 s12"></div>
+   
+      <div id = "homeProducts" class = "col m12 s12 l12 grid">
+          <div class = "row">
+   
+        <div class="col s12 l4 m6 grid-item">
+          <a href = "#">
+              <div class="card center">
+            <div class="card-image">
+              <img src="assets/img/page/test_product.jpg">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>Mayor: <span>28000</span> </p>
+              <p>Detal: <span>28000</span> </p>
+            </div>
+            
+          </div>
+          </a>
+        </div>
+
+        <div class="col s12 l4 m6 grid-item">
+          <a href = "#">
+              <div class="card">
+            <div class="card-image">
+              <img src="assets/img/page/test_product.jpg">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            
+          </div>
+          </a>
+        </div>
+
+        <div class="col s12 l4 m6 grid-item">
+          <a href = "#">
+              <div class="card">
+            <div class="card-image">
+              <img src="assets/img/page/test_product.jpg">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            
+          </div>
+          </a>
+        </div>
+
+        <div class="col s12 l4 m6 grid-item">
+          <a href = "#">
+              <div class="card">
+            <div class="card-image">
+              <img src="assets/img/page/test_product.jpg">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            
+          </div>
+          </a>
+        </div>
+
+        <div class="col s12 l4 m6 grid-item ">
+          <a href = "#">
+              <div class="card">
+            <div class="card-image">
+              <img src="assets/img/page/test_product.jpg">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            
+          </div>
+          </a>
+        </div>
+
+        <div class="col s12 l4 m6 grid-item">
+          <a href = "#">
+              <div class="card">
+            <div class="card-image">
+              <img src="assets/img/page/test_product.jpg">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            
+          </div>
+          </a>
+        </div> 
+
+
+          </div>
+            
+
+
+
+        
+        <div class = "row">
+
+      
+
+
+
+          <div class = "col m4 s12 grid-item animated fadeInUp">
+            <div class="card hoverable col m12 s12">
+              <div class="card-image">
+                <img class = "responsive-img" src="http://via.placeholder.com/50x60">
+                <span class="card-title">Perfume Victoria Secret</span>
+              </div>
+
+              <div class="card-content">
+                    <div class "row">
+                      <div class = "container col s7">
+                        <span>Unidad</span>
+                      </div>
+                      <div class = "container col s5">
+                          <span> $15.000</span>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
+
+                    <div class = "row">
+                      <div class = "container col s6">
+                        <span>Mayor (6 Und)</span>
+                      </div>
+                      <div class = "container col s6">
+                          <span> $12.000 c/u</span>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="card-action center-align">
+                <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class = "col m4 s12 grid-item animated fadeInUp">
+            <div class="card hoverable col m12 s12">
+              <div class="card-image">
+                <img class = "responsive-img" src="http://via.placeholder.com/150x600">
+                <span class="card-title">Perfume Victoria Secret</span>
+              </div>
+
+              <div class="card-content">
+                    <div class "row">
+                      <div class = "container col s7">
+                        <span>Unidad</span>
+                      </div>
+                      <div class = "container col s5">
+                          <span> $15.000</span>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
+              </div>
+
+              <div class="card-action center-align">
+                <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col m4 s12 grid-item animated fadeInUp">
+            <div class="card hoverable col m12 s12">
+              <div class="card-image">
+                <img class = "responsive-img" src="http://via.placeholder.com/150x600">
+                <span class="card-title">Perfume Victoria Secret</span>
+              </div>
+
+              <div class="card-content">
+                    <div class "row">
+                      <div class = "container col s7">
+                        <span>Unidad</span>
+                      </div>
+                      <div class = "container col s5">
+                          <span> $15.000</span>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
+
+                    <div class = "row">
+                      <div class = "container col s6">
+                        <span>Mayor (6 Und)</span>
+                      </div>
+                      <div class = "container col s6">
+                          <span> $12.000 c/u</span>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="card-action center-align">
+                <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col m4 s12 grid-item animated fadeInUp">
+            <div class="card hoverable col m12 s12">
+              <div class="card-image">
+                <img class = "responsive-img" src="http://via.placeholder.com/150x600">
+                <span class="card-title">Perfume Victoria Secret</span>
+              </div>
+
+              <div class="card-content">
+                    <div class "row">
+                      <div class = "container col s7">
+                        <span>Unidad</span>
+                      </div>
+                      <div class = "container col s5">
+                          <span> $15.000</span>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
+
+                    <div class = "row">
+                      <div class = "container col s6">
+                        <span>Mayor (6 Und)</span>
+                      </div>
+                      <div class = "container col s6">
+                          <span> $12.000 c/u</span>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="card-action center-align">
+                <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col m4 s12 grid-item animated fadeInUp">
+            <div class="card hoverable col m12 s12">
+              <div class="card-image">
+                <img class = "responsive-img" src="http://via.placeholder.com/150x600">
+                <span class="card-title">Perfume Victoria Secret</span>
+              </div>
+
+              <div class="card-content">
+                    <div class "row">
+                      <div class = "container col s7">
+                        <span>Unidad</span>
+                      </div>
+                      <div class = "container col s5">
+                          <span> $15.000</span>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
+
+                    <div class = "row">
+                      <div class = "container col s6">
+                        <span>Mayor (6 Und)</span>
+                      </div>
+                      <div class = "container col s6">
+                          <span> $12.000 c/u</span>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="card-action center-align">
+                <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col m4 s12 grid-item animated fadeInUp">
+            <div class="card hoverable col m12 s12">
+              <div class="card-image">
+                <img class = "responsive-img" src="http://via.placeholder.com/150x600">
+                <span class="card-title">Perfume Victoria Secret</span>
+              </div>
+
+              <div class="card-content">
+                    <div class "row">
+                      <div class = "container col s7">
+                        <span>Unidad</span>
+                      </div>
+                      <div class = "container col s5">
+                          <span> $15.000</span>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
+
+                    <div class = "row">
+                      <div class = "container col s6">
+                        <span>Mayor (6 Und)</span>
+                      </div>
+                      <div class = "container col s6">
+                          <span> $12.000 c/u</span>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="card-action center-align">
+                <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+          
+
+      </div>
+
+
+    </div>
+
+  
+
+  </div>
+
+  </main>
+-->
+
+  <footer class = "col l12 m12 s12">
+    
+        <div class = "row">
+          <div class = "container col m4 s6">
+            <h5 class="white-text">Categorias</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Perfumeria</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Maquillaje</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Cuidado Piel</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Ropa</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Accesorios</a></li>
+            </ul>
+          </div>
+          <div class = "container col m4 s6">
+            <h5 class="white-text">Paginas</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Ingresar</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Contacto</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Ayuda</a></li>
+            </ul>
+          </div>
+          <div class = "container col m4 s12">
+            <h5 class="white-text">Contacto</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Youtube</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">ventas@nombretienda.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-copyright">
+          <div class="container col s12 center-align">
+          © 2017 Pink Seduction
+          </div>
+          <div class="container col s12 center-align">
+          Powered by Wolfay Projects
+          </div>
+        </div>
+
+
+     
+
+          <div id="modalLog" class="modal">
+
+              <div class="modal-content">
+
+                <div class = "right">
+                    <a class="btn-floating btn-small waves-effect waves-light black" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
+                </div>
+
+                <h4 class = "center">Ingresa a Sweet Tentation</h4>
+                <div class = "divider"></div>
+                <div class = "row">
+                    <div class = "container col m6 s6">
+                      <a href="#!" class="btn  waves-effect waves-green col l10 m10 s12 offset-l2 offset-m2 offset-s0">Facebook</a>
+                    </div>
+                    <div class = "container col m6 s6">
+                      <a href="#!" class="btn modal-close waves-effect waves-green col l10 m10 s12">Twitter</a>
+                    </div>
+                </div>
+
+                <p class = "center">O ingresa con tu cuenta</p>
+
+                <div class = "row">
+                  <form class = "col m12 l12" method = 'post' onsubmit="openSession(event)">
+
+                    <div class = "row">
+                      <div class="input-field col l8 m8 s11 offset-l2 offset-s1">
+                       <input name = "email" id="email" type="email" class="validate">
+                       <label for="email">Email</label>
+                     </div>
+                    </div>
+
+                    <div class = "row">
+                      <div class="input-field col l8 s11 offset-l2 offset-s1">
+                       <input name = "password" id="password" type="password" class="validate">
+                       <label for="password">Contraseña</label>
+                     </div>
+                    </div>
+                    <div class = "row center">
+                        <input type = "submit" class = "btn" value = "Ingresar">
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+                <div class = "divider"></div>
+                  <h5 class = "center">¿ Sin cuenta ?</h5>
+                  <div class = "row center">
+                      <a class = "btn submit center">Crear Cuenta</a>
+                  </div>
+        </div>
+
+    </footer>
+        
+<!-- jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <!-- JS - Materialize -->
+    <script src="vendor/materialize/js/materialize.js"></script>
+    <script src="vendor/aos-master/dist/aos.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="vendor/pace/pace.js"></script>
+    <script src="assets/js/utilities/session.js"></script>
+    <script src="assets/js/home/graphics.js"></script>
+    <script src="assets/js/home/home.js"></script>
+</body>
+</html>
