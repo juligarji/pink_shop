@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  
+
   <header>
     <nav class="nav-extended animated fadeInDown col l12 m12 s12">
       <div class="nav-wrapper">
@@ -30,7 +30,9 @@
 
           <ul id="nav-mobile" class="right">
             <li><a href="#modalLog"><i class="material-icons">account_circle</i></a></li>
-                    <li><a href="badges.html"><i class="material-icons">shopping_cart</i></a></li>
+                    <li><a href="badges.html"><i class="material-icons">shopping_cart</i></a>
+            </li>
+
           </ul>
         </div>
 
@@ -47,7 +49,7 @@
           </div>
         </div>
       </div>
-      
+
     </nav>
 
     <ul class="side-nav" id="mobile-demo">
@@ -84,23 +86,23 @@
     <div class = "col l12 m12 s12">
 
       <div class = "section">
-      
+
           <div class = "col m12 s12 l12 animated fadeInLeft">
                   <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "assets/img/page/mainBanner.png"></a>
           </div>
 
-            
+
               <div class = "test1" class="col s12 m12 l10 offset-l1">
-                
+
                 <div class="carousel carousel-slider hide-on-med-and-down animated fadeInRight col l12 m12 s12" height = "500px" data-indicators="true">
                   <a  class="carousel-item" href="#one!"><img width="100%" height="100%" src="assets/img/page/carousel1.jpg"></a>
                   <a class="carousel-item" href="#two!"><img width="100%" height="100%"  src="assets/img/page/carousel2.jpg" ></a>
                   <a class="carousel-item" href="#three!"><img width="100%" height="100%"  src="assets/img/page/carousel1.jpg" ></a>
                   <a class="carousel-item" href="#four!"><img width="100%" height="100%"  src="assets/img/page/carousel2.jpg" ></a>
                 </div>
-                
 
-                
+
+
                 <div id = "adver" class = " col s12 m12 l12">
                   <div class = "row" height = "500px">
 
@@ -114,14 +116,14 @@
                     </div>
                   </div>
                 </div>
-                 
-                </div>  
+
+                </div>
 
                 <div class = "col l12 m12 s12 titles center">
                   <h1 class = "col l12 m12 s12"> Nuevos Productos </h1>
                     <div class = "divider col l12 m12 s12"></div>
                 </div>
-                
+
                 <div id = "homeProducts" class = "col m12 s12 l12 grid">
                   <div class = "row">
 
@@ -216,70 +218,174 @@
                     </div>
 
                   </div>
-                </div> 
-                
-              
+                </div>
+
+
         </div>
     </div>
 
   <!-- Modal de Logearse -->
   <div id="modalLog" class="modal">
     <div class="modal-content">
-      <div class = "right">
-        <a class="btn-floating btn-small waves-effect waves-light" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
-      </div>
 
-      <div class = "row">
-        <h4 class = "center">Ingresa a Sweet Tentation</h4>
-        <div class = "divider"></div>
-      </div>
-      
-      <div class = "row">
-        <div class = "container col m6 s6">
-                      <a href="#!" class="btn  waves-effect waves-green col l10 m10 s12 offset-l2 offset-m2 offset-s0 blue darken-4">Facebook</a>
-                </div>
-                <div class = "container col m6 s6">
-                      <a href="#!" class="btn modal-close waves-effect waves-green col l10 m10 s12 light-blue">Twitter</a>
-                </div>
-      </div>
+      <div id = "loginForm">
+        <div class = "right">
+          <a class="btn-floating btn-small waves-effect waves-light" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
+        </div>
 
-      <div class = "row">
-        <p class = "center">O ingresa con tu cuenta</p>
-      </div>
+        <div class = "row">
+          <h4 class = "center">Ingresa a Sweet Tentation</h4>
+          <div class = "divider"></div>
+        </div>
 
-      <div class = "row">
-        <form class = "col m12 l12 s12" method = 'post' onsubmit="openSession(event)">
-                  <div class = "row">
-                      <div class="input-field col l8 m8 s11 offset-l2 offset-m2 offset-s1">
-                          <input name = "email" id="email" type="email" class="validate">
-                          <label for="email">Email</label>
-                      </div>
-                    </div>
+        <div class = "row">
+          <div class = "container col m6 s6">
+                        <a href="#!" class="btn  waves-effect waves-green col l10 m10 s12 offset-l2 offset-m2 offset-s0 blue darken-4">Facebook</a>
+                  </div>
+                  <div class = "container col m6 s6">
+                        <a href="#!" class="btn modal-close waves-effect waves-green col l10 m10 s12 light-blue">Twitter</a>
+                  </div>
+        </div>
 
+        <div class = "row">
+          <p class = "center">O ingresa con tu cuenta</p>
+        </div>
+
+        <div class = "row">
+          <form class = "col m12 l12 s12" method = 'post' onsubmit="openSession(event)">
                     <div class = "row">
-                      <div class="input-field col l8 m8 s11 offset-l2 offset-m2 offset-s1">
-                        <input name = "password" id="password" type="password" class="validate">
-                          <label for="password">Contraseña</label>
+                        <div class="input-field col l8 m8 s11 offset-l2 offset-m2 offset-s1">
+                            <input name = "email" id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class = "row center">
-                      <input type = "submit" class = "btn" value = "Ingresar">
-                    </div>
-                </form>
+                      <div class = "row">
+                        <div class="input-field col l8 m8 s11 offset-l2 offset-m2 offset-s1">
+                          <input name = "password" id="password" type="password" class="validate">
+                            <label for="password">Contraseña</label>
+                        </div>
+                      </div>
+
+                      <div class = "row center">
+                        <input type = "submit" class = "btn" value = "Ingresar">
+                      </div>
+                  </form>
+        </div>
+
+        <div class = "row">
+          <div class = "divider"></div>
+          <h5 class = "center">¿ Sin cuenta ?</h5>
+          <div class = "row center">
+                        <a onclick = "toggleLogin()" class = "btn submit center">Crear Cuenta</a>
+                  </div>
+        </div>
       </div>
 
-      <div class = "row">
-        <div class = "divider"></div>
-        <h5 class = "center">¿ Sin cuenta ?</h5>
-        <div class = "row center">
-                      <a class = "btn submit center">Crear Cuenta</a>
-                </div>
+      <div id = "registryForm" style = "display:none">
+        <div class = "right">
+          <a class="btn-floating btn-small waves-effect waves-light" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
+        </div>
+
+        <div class = "row">
+          <h4 class = "center">Registrate</h4>
+          <div class = "divider"></div>
+        </div>
+
+        <div class = "row">
+          <div class = "container col m6 s6">
+                        <a href="#!" class="btn  waves-effect waves-green col l10 m10 s12 offset-l2 offset-m2 offset-s0 blue darken-4">Facebook</a>
+                  </div>
+                  <div class = "container col m6 s6">
+                        <a href="#!" class="btn modal-close waves-effect waves-green col l10 m10 s12 light-blue">Twitter</a>
+                  </div>
+        </div>
+
+        <div class = "row">
+          <p class = "center">O registrate con nosotros</p>
+        </div>
+
+        <div class = "row">
+          <form class = "col m12 l12 s12" method = 'post' onsubmit="openSession(event)">
+                    <div class = "row">
+                        <div class="input-field col l6 m6 s11">
+                            <input name = "name" id="name" type="email" class="validate">
+                            <label for="email">Nombres</label>
+                        </div>
+                        <div class="input-field col l6 m6 s11">
+                          <input name = "password" id="password" type="password" class="validate">
+                            <label for="password">Apellidos</label>
+                        </div>
+
+                        <div class="input-field col l8 m8 s11 offset-l2 offset-m2">
+                          <input name = "password" id="password" type="email" class="validate">
+                            <label for="password">Correo Electronico</label>
+                        </div>
+
+                        <div class="input-field col l6 m6 s11">
+                          <input name = "password" id="password" type="password" class="validate">
+                            <label for="password">Contraseña</label>
+                        </div>
+
+                        <div class="input-field col l6 m6 s11">
+                          <input name = "password" id="password" type="password" class="validate">
+                            <label for="password">Repetir Contraseña</label>
+                        </div>
+
+                        <div class="input-field col l3 m3 s11">
+                          <select>
+                              <option value="" disabled selected>Ciudad</option>
+                              <option value = "colombia">Bogota</option>
+                              <option value = "colombia">Medellin</option>
+                              <option value = "colombia">Cali</option>
+                          </select>
+                        </div>
+
+                        <div class = "input-field col l7 m7 s11">
+                          <input name = "password" id="password" type="text" class="validate">
+
+                            <label for="password">Direccion</label>
+                        </div>
+
+                        <div class = "input-field col l2 m2 s4 offset-s4 hoverable z-depth-1 center">
+
+                              <i class="material-icons medium">my_location</i>
+
+                        </div>
+
+                        <div class="input-field col l6 m6 s11">
+                          <input name = "password" id="password" type="number" class="validate">
+                            <label for="password">Telefono celular(opcional)</label>
+                        </div>
+
+                        <div class="input-field col l6 m6 s11">
+                          <input name = "password" id="password" type="text" class="validate">
+                            <label for="password">Codigo de Registro(opcional)</label>
+                        </div>
+
+
+                      </div>
+
+                      <div class = "row center">
+                        <input type = "submit" class = "btn" value = "Registrarse">
+                      </div>
+                  </form>
+        </div>
+
+        <div class = "row">
+          <div class = "divider"></div>
+          <h5 class = "center">¿ Ya tienes una cuenta ?</h5>
+          <div class = "row center">
+                        <a onclick = "toggleLogin()" class = "btn submit center">Ingresar</a>
+                  </div>
+        </div>
       </div>
+
+
     </div>
   </div>
 
-  
+
   <footer class="">
     <div class = "container">
       <div class = "row">
@@ -326,8 +432,8 @@
             </div>
       </div>
     </div>
-      
-  </footer>  
+
+  </footer>
 
 <!--
   <footer class="page-footer">

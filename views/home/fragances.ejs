@@ -14,7 +14,7 @@
     <!-- CSS - Materialize -->
     <link rel="stylesheet" href="vendor/materialize/css/materialize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel = "stylesheet" href = "assets/css/home.css">
+    <link rel = "stylesheet" href = "assets/css/fragances.css">
     <!-- Custom -->
 </head>
 
@@ -23,7 +23,7 @@
 <!-- HEADER -->
   <header>
       <!-- Menu -->
-        <nav class="nav-extended animated fadeIn col s12">
+        <nav class="nav-extended animated fadeInDown col s12">
           <div class="nav-wrapper">
 
             <div class = "row">
@@ -31,7 +31,7 @@
               <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <!-- Iconos de cuenta y carrito de compras -->
               <ul id="nav-mobile" class="right">
-                <li><a href="login.html"><i class="material-icons">account_circle</i></a></li>
+                <li><a href="#modalLog"><i class="material-icons">account_circle</i></a></li>
                 <li><a href="badges.html"><i class="material-icons">shopping_cart</i></a></li>
               </ul>
             </div>
@@ -89,156 +89,73 @@
 
   <!-- pruebas:  style = "background-color:blue" -->
   <main style = "clear:both">
+    <div class = "col m12 s12 l12 animated fadeInRight">
+            <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "assets/img/page/mainBanner.png"></a>
+    </div>
 
-    <div id = "mainContainer">
+          <!-- Aqui va el contenedor de los productos -->
+    <div class = "row">
+          <div id = "menuContainer" class = "col l2 z-depth-1 center animated fadeInLeft">
+            <div class = "row">
+              <span class = "titles"> <h4>Buscador</h4></span>
+              <div class = "divider"></div>
+            </div>
+            <div class = "row">
+              <form action="#">
+                <h5>Tamaño</h5>
+                <p>
+                  <input type="checkbox" id="test5" />
+                  <label for="test5">Red</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="test6" checked="checked" />
+                  <label for="test6">Yellow</label>
+                </p>
+                <div class = "divider"></div>
+
+                <h5>Fragancia</h5>
+                <p>
+                  <input type="checkbox" id="test5" />
+                  <label for="test5">Red</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="test6" checked="checked" />
+                  <label for="test6">Yellow</label>
+                </p>
+                <div class = "divider"></div>
+
+                <h5>Marca</h5>
+                <p>
+                  <input type="checkbox" id="test5" />
+                  <label for="test5">Red</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="test6" checked="checked" />
+                  <label for="test6">Yellow</label>
+                </p>
+                <div class = "divider"></div>
+
+                <h5> Ordenar Por </h5>
+                <select>
+                    <option value = "price">Precio</option>
+                    <option value = "date">Fecha</option>
+                </select>
+                <div class = "divider"></div>
+
+                <a class="waves-effect waves-light btn">Buscar
+                </a>
+              </form>
+            </div>
+          </div>
+
+          <div id = "productContainer" class = "container col l10 m9 s12 center">
+            <!-- Elementos creados por la vista -->
+          </div>
+    </div>
+    <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+  </main>
 
     <!-- Seccion Home -->
-    <div>
-        <div class = "col m12 s12 animated fadeInUp">
-            <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "http://via.placeholder.com/800x70"></a>
-        </div>
-    </div>
-
-    <!-- Distribucion de la Perfumeria -->
-    <div id="fraganceProducts" class="col l12 m12 s12">
-        <div class = "row">
-
-          <!-- contenedor del menu de busqueda -->
-          <!--
-          <div class = "container rect_marg col m2 s12 z-depth-4">
-              <form action = "#">
-
-              <h5> Tamaño</h5>
-                <div class = "divider"></div>
-                <div class = "row">
-                    <div class = "inputGroup">
-                      <input name="fraganceType" type="radio" id="radio1" />
-                      <label for="radio1">Test1</label>
-                      <br>
-                      <input name="fraganceType" type="radio" id="radio2" />
-                      <label for="radio2">Test2</label>
-                      <br>
-                      <input name="fraganceType" type="radio" id="radio3" />
-                      <label for="radio3">Test3</label>
-                      <br>
-                    </div>
-
-                </div>
-
-                <h5> Marcas </h5>
-                  <div class = "divider"></div>
-                  <div class = "row">
-                      <div class = "inputGroup">
-                        <input name="fraganceType" type="radio" id="radio1" />
-                        <label for="radio1">Blue</label>
-                        <br>
-                        <input name="fraganceType" type="radio" id="radio2" />
-                        <label for="radio2">Blue</label>
-                        <br>
-                        <input name="fraganceType" type="radio" id="radio3" />
-                        <label for="radio3">Blue</label>
-                        <br>
-                      </div>
-                  </div>
-
-                  <h5>Fragancias</h5>
-                    <div class = "divider"></div>
-                    <div class = "row">
-                        <div class = "inputGroup">
-                          <input name="fraganceType" type="radio" id="radio1" />
-                          <label for="radio1">Blue</label>
-                          <br>
-                          <input name="fraganceType" type="radio" id="radio2" />
-                          <label for="radio2">Blue</label>
-                          <br>
-                          <input name="fraganceType" type="radio" id="radio3" />
-                          <label for="radio3">Blue</label>
-                          <br>
-                        </div>
-                    </div>
-
-                  <div class = "center">
-                    <button class="btn waves-effect waves-light center" type="submit" name="action">Buscar
-                        <i class="material-icons right">send</i>
-                    </button>
-                  </div>
-
-                </form>
-          </div>
-        -->
-        <div class = "col l2">
-            <ul class="collapsible" data-collapsible="acordion" style = "width:100%;margin:0">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-          </ul>
-        </div>
-          <!-- Aqui va el contenedor de los productos -->
-          <div id = "productContainer" class = "col l10 m10 s12" >
-          <!--
-            <div class = "col l4 m4 s6 product">
-
-                <img class = "responsive-img col s12" src="http://via.placeholder.com/150x600">
-                <div class = "divider"></div>
-                <div class = " center col l12 m12 s12 grey">
-                    <span>Nuevo producto</span>
-                    <p>45000</p>
-                </div>
-            </div>
-          -->
-
-            <!-- EJEMPLO DE LAS CARTAS
-
-             <div class = "col m4 s12 animated fadeInUp">
-              <div class="card hoverable col m12 s12">
-                <div class="card-image">
-                  <img class = "responsive-img" src="http://via.placeholder.com/150x600">
-                  <span class="card-title">Perfume Victoria Secret</span>
-                </div>
-
-                <div class="card-content">
-                      <div class "row">
-                        <div class = "container col s7">
-                          <span>Unidad</span>
-                        </div>
-                        <div class = "container col s5">
-                            <span> $15.000</span>
-                        </div>
-                      </div>
-                      <div class = "divider"></div>
-
-                      <div class = "row">
-                        <div class = "container col s6">
-                          <span>Mayor (6 Und)</span>
-                        </div>
-                        <div class = "container col s6">
-                            <span> $12.000 c/u</span>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="card-action center-align">
-                  <a href="#"> <i class="small material-icons">shopping_cart</i>Agregar</a>
-                </div>
-              </div>
-            </div>
-          -->
-
-          </div>
-        </div>
-
-    </div>
-
-  </main>
 
 
 

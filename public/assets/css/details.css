@@ -1,0 +1,255 @@
+.main-carousel img {
+  display: block;
+  height: 700px;
+
+}
+
+
+
+-particle, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* BARRA DE NAVEGACION */
+nav{
+  background-color:#d0006f;
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -o-animation-delay: 0.1s;
+  font-size: 50px;
+}
+
+nav a.brand-logo img{/* Logo de la barra*/
+  width:45%;
+  margin-top: 5px;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+}
+
+
+/* Banner principal */
+#mainBanner{
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+}
+
+/* MODIFICACION DEL CUERPO */
+body{
+  font-family: 'Dosis', sans-serif;
+}
+
+.section{
+  margin-top: -25px;
+}
+/* ESTILOS INICIALES */
+
+/* Modal de ingreso */
+#modalLog{
+  width:50%;
+}
+
+#modalLog a.btn-floating{
+  background-color: black
+}
+
+#modalLog h4{
+  color:rgb(178,18,97);
+  text-shadow: 1px 2px 3px rgba(50,50,50,0.6);
+}
+
+#modalLog input[type="submit"]{
+  background-color:rgb(178,18,97);
+}
+#modalLog a.submit{
+  background-color:rgb(178,18,97);
+}
+
+#publicitySmallUp{
+    height: 350px;
+    width: 100%;
+    padding-bottom: 0px;
+    margin-bottom:0px;
+}
+
+#publicitySmallDown{
+  height: 300px;
+  width: 100%;
+}
+
+#publicityBig{
+  height: 650px;
+}
+
+
+#homeProducts div.grid-item:nth-child(2){
+   /* padding-top: 50px;*/
+    margin-top:45px;
+}
+
+/* CONFIGURACION PARA TABLETS*/
+@media only screen and (max-width:991px){
+   nav{
+      position: fixed;
+      height:150px;
+      clear:both;
+      z-index: 10;
+    }
+
+    .section{
+  margin-top: 10%;
+  }
+
+  #modalLog{
+      width:80%;
+  }
+
+  #mainContainer{
+      padding-top: 50px;
+    }
+
+
+}
+
+
+/* CONFIGURACION DE CELULARES */
+@media only screen and (max-width:600px){
+
+  #modalLog{
+      width:100%;
+  }
+
+     .section{
+  margin-top: 20%;
+  }
+
+  #homeProducts div.grid-item:nth-child(2){
+   /* padding-top: 50px;*/
+    margin-top:0px;
+}
+}
+
+/* MENU MOVIL */
+ul.side-nav  h5{
+  margin-left: 10px;
+}
+
+
+ul.side-nav a.btn{
+  background-color: #d0006f;
+}
+
+
+/* Home */
+#adver{
+  margin-top: 5px;
+}
+
+#adver div.m6{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#homeProducts img{
+    /*min-height: 60px;*/
+    max-height: 300px;
+}
+
+#homeProducts div.card{
+    /*background-color: rgba(208,0,111,0.2);*/
+    background-color: rgb(255,237,95);
+
+    /*position: static;
+    float:right;
+    background-color: black;*/
+}
+
+
+/* titulo de nuevos productos */
+.titles h1{
+  color :rgb(178,18,95);
+  text-shadow: 1px 1px 5px rgb(245,245,245);
+}
+
+/* Modificacion estetica de los elementos grafios de los productos */
+#homeProducts div.card img{
+  height: 500px;
+  /*width: 281px;*/
+  margin:auto;
+}
+
+#homeProducts span.card-title{
+  text-decoration:none;
+  /*font-style: bold rgb(0,0,0);*/
+  color:rgb(178,18,95);
+  text-shadow: 1px 1px 5px rgb(250,250,250);
+  font-size: 35px;
+}
+
+#homeProducts div.card-content p{/* los rotulos */
+  text-decoration:none;
+  /*font-style: bold rgb(0,0,0);*/
+  color:rgb(0,0,0);
+  font-size: 15px;
+}
+
+#homeProducts div.card-content span{/* los precios */
+  color:rgb(178,18,95);
+  text-decoration:none;
+  font-size: 25px;
+}
+
+
+
+
+/* Perfumes */
+
+#fraganceProducts img{
+
+    background-color: red;
+    max-height: 200px;
+}
+
+#fraganceProducts button{
+  background-color: #d0006f;
+
+  margin-bottom: 10px;
+
+  /*background-color: black;*/
+
+}
+
+.inputGroup{
+  padding-left: 30px;
+
+}
+
+
+/* Footer */
+footer{
+  clear:both;
+  background-color:#d0006f;
+  width:100%;
+  /*float:left*/
+}
+
+
+
+
+/* pruebas */
+.card.small {
+  height: auto;
+}
+.card.small .card-content {
+  height: auto;
+}
+.card.small .card-action {
+  position: relative;
+}
+
+html, body {
+   /*max-width: 100%;*/
+    overflow-x: hidden;
+}

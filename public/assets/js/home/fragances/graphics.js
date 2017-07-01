@@ -12,19 +12,57 @@ var Graphics = {
 
     /* <img class = "responsive-img col s12" src="${PUBLIC_ADDRESS} ${mainPhoto}">   */
     var element = `
-    <div value = "${data.name}" class = "col l4 m4 s6 product">
-      <a href = '${VIEW_DETAILS}${data.name}'>
-        <img class = "responsive-img col s12" src="http://via.placeholder.com/150x600">
-        <div class = "divider"></div>
-        <div class = " center col l12 m12 s12 grey">
-            <span>${data.name}</span>
-            <p>${data.price}</p>
+
+      <a href = "${VIEW_DETAILS}${data.name}" class = "product">
+        <div class = "card center col l4 m4 s6 animated fadeInDown">
+          <div class="card-content" style = "background-image:url('assets/img/page/test_product.jpg');">
+            <div class = "card-info center">
+              <span class="card-title">${data.name}</span>
+              <p>Mayor: <span>28000</span> </p>
+              <p>Detal: <span>${data.price}</span> </p>
+            </div>
+          </div>
         </div>
       </a>
-    </div>
     `;
-        container.append(element);
 
+    var newComp = $(element);
+    
+      container.append(newComp);
+
+        /*$('#square').css('width','100px');
+        $('#square').css('height','100px');
+        $('#square').css('background','red');
+        $('#square').css('margin-top','80%');
+        $('#square').css('margin-left','auto');*/
+
+
+/*
+<div value = "${data.name}" class="col l4 m6 s12 product">
+  <a href = "${VIEW_DETAILS}${data.name}">
+    <div class = "card large center">
+      <div class="card-content">
+        <img src="assets/img/page/test_product.jpg">
+            <span class="card-title">${data.name}</span>
+
+        <p>Mayor: <span>28000</span> </p>
+            <p>Detal: <span>${data.price}</span> </p>
+      </div>
+    </div>
+  </a>
+</div>
+
+
+<div class="col l4" style = "height:500px;border:solid black;background-image:'assets/img/page/test_product.jpg'">
+    <img src = "http://via.placeholder.com/150x600">
+    <span> ${data.name}</span>
+</div>
+
+<div id = "square" class = "center" style = "margin-top:90%">
+  <p class = "white center-align"> Por Mayor: <span class = "white"> ${data.name}</span></p>
+</div>
+
+*/
   },
 
   loadToContainer : function(arrayData,newReg){

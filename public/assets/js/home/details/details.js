@@ -44,6 +44,32 @@ $(window).ready(function(){
         }
   };
 
+  /* Carrusel */
+
+  var $carousel = $('.main-carousel').flickity({
+  imagesLoaded: true,
+  percentPosition: false,
+  autoplay:true
+});
+/*
+var $imgs = $carousel.find('.carousel-cell img');
+// get transform property
+var docStyle = document.documentElement.style;
+var transformProp = typeof docStyle.transform == 'string' ?
+  'transform' : 'WebkitTransform';
+// get Flickity instance
+var flkty = $carousel.data('flickity');
+
+$carousel.on( 'scroll.flickity', function() {
+  flkty.slides.forEach( function( slide, i ) {
+    var img = $imgs[i];
+    var x = ( slide.target + flkty.x ) * -1/3;
+    img.style[ transformProp ] = 'translateX(' + x  + 'px)';
+  });
+});
+*/
+
+
 /* Estado inicial */
 CartGraphics.paintMarker(Cart.getLength(),'#cartSize');
 });
@@ -75,5 +101,4 @@ function addElementToCart(name){
   Cart.addToCart(name,ammount);
   CartGraphics.paintMarker(Cart.getLength(),'#cartSize');
   //console.log(Cart.getCart(),null,'\t');
-
 }

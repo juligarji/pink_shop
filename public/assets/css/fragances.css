@@ -1,0 +1,287 @@
+-particle, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* BARRA DE NAVEGACION */
+nav{
+  background-color:#d0006f;
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -o-animation-delay: 0.1s;
+  font-size: 50px;
+}
+
+nav a.brand-logo img{/* Logo de la barra*/
+  width:45%;
+  margin-top: 5px;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+}
+
+
+/* Banner principal */
+#mainBanner{
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+}
+
+/* MODIFICACION DEL CUERPO */
+body{
+  font-family: 'Dosis', sans-serif;
+}
+
+.section{
+  margin-top: -25px;
+}
+/* ESTILOS INICIALES */
+
+/* Modal de ingreso */
+#modalLog{
+  width:50%;
+}
+
+#modalLog a.btn-floating{
+  background-color: black
+}
+
+#modalLog h4{
+  color:rgb(178,18,97);
+  text-shadow: 1px 2px 3px rgba(50,50,50,0.6);
+}
+
+#modalLog input[type="submit"]{
+  background-color:rgb(178,18,97);
+}
+#modalLog a.submit{
+  background-color:rgb(178,18,97);
+}
+
+
+div.product{
+  /*max-width:281px;
+  height:500px;
+  margin-right:4%;
+  margin-bottom: 1%;*/
+  height: 500px;
+}
+
+#productContainer div.card-content{
+  height:500px;
+  background-size:cover;
+}
+
+/* CONFIGURACION PARA TABLETS*/
+@media only screen and (max-width:991px){
+   nav{
+      position: fixed;
+      height:150px;
+      clear:both;
+      z-index: 10;
+    }
+
+  .section{
+    margin-top: 10%;
+  }
+
+  #modalLog{
+      width:80%;
+  }
+
+  #mainContainer{
+      padding-top: 50px;
+    }
+
+    div.product{
+      max-width:168px;
+      height:450px;
+      margin-right:1%;
+      margin-bottom: 1%;
+    }
+
+    #productContainer div.card-content{
+      height:300px;
+      max-width: 168px;
+      background-size:cover;
+    }
+
+}
+
+/* CONFIGURACION DE CELULARES */
+@media only screen and (max-width:600px){
+
+  #modalLog{
+      width:100%;
+  }
+
+     .section{
+  margin-top: 20%;
+  }
+
+
+  div.product{
+    max-width:123px;
+    height:220px;
+    margin-right:2%;
+    margin-left:2%;
+    margin-bottom: 1%;
+    float:center;
+  }
+
+  #productContainer div.card-content{
+    height:200px;
+    max-width: 112px;
+    background-size:cover;
+  }
+
+}
+
+/* MENU MOVIL */
+ul.side-nav  h5{
+  margin-left: 10px;
+}
+
+
+ul.side-nav a.btn{
+  background-color: #d0006f;
+}
+
+
+/* Home */
+
+
+
+#productContainer img{
+    /*min-height: 60px;*/
+    max-height: 300px;
+}
+
+/* titulo de nuevos productos */
+.titles h1{
+  color :rgb(178,18,95);
+  text-shadow: 1px 1px 5px rgb(245,245,245);
+}
+
+#productContainer .product:nth-child(1){
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  -o-animation-delay: 0.9s;
+
+}
+/* Modificacion estetica de los elementos grafios de los productos */
+#productContainer div.card img{
+  height: 800px;
+  width: 281px;
+  margin:auto;
+}
+
+#productContainer span.card-title{
+  text-decoration:none;
+  /*font-style: bold rgb(0,0,0);*/
+  color:rgb(178,18,95);
+  text-shadow: 1px 1px 5px rgb(250,250,250);
+  font-size: 35px;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#productContainer div.card-info{
+    /*background-color: black;*/
+    margin-top:140%;
+    font-size:80px;
+}
+
+#productContainer div.card-content p{/* los rotulos */
+  text-decoration:none;
+  /*font-style: bold rgb(0,0,0);*/
+  color:rgb(0,0,0);
+  font-size: 15px;
+}
+
+#productContainer div.card-content span{/* los precios */
+  color:rgb(178,18,95);
+  text-decoration:none;
+  font-size: 25px;
+}
+
+
+
+
+/* Perfumes */
+
+#fraganceProducts img{
+
+    background-color: red;
+    max-height: 200px;
+}
+
+#fraganceProducts button{
+  background-color: #d0006f;
+
+  margin-bottom: 10px;
+
+  /*background-color: black;*/
+
+}
+
+.inputGroup{
+  padding-left: 30px;
+
+}
+
+
+/* Footer */
+footer{
+  clear:both;
+  background-color:#d0006f;
+  width:100%;
+  /*float:left*/
+}
+
+
+
+
+/* pruebas */
+/*
+.card.small {
+  height: auto;
+}
+.card.small .card-content {
+  height: auto;
+}
+.card.small .card-action {
+  position: relative;
+}
+*/
+
+/* volver arriba */
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #d0006f;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+#back-to-top:hover {
+    background: #e9ebec;
+}
+#back-to-top.show {
+    opacity: 1;
+}
+
+html, body {
+   /*max-width: 100%;*/
+    overflow-x: hidden;
+}
