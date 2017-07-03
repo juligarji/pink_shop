@@ -3,7 +3,7 @@ var DB = {
    INDEX : 0,
 
   currentCall : function (data,url,sucessCall,failCall){
-    
+
     Protection.avoidDobleClick(function(){// prevenir que se envie inmediatamente una accion
 
       var newData = JSON.stringify(data);
@@ -16,12 +16,12 @@ var DB = {
       });
 
       call.done(function(data){
-          sucessCall(data.data);
+          sucessCall(data);
       });
 
       call.fail(function(jqXHR, textStatus, error){
           failCall(jqXHR.responseJson);
-          console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
+          //console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
       });
     });
   },

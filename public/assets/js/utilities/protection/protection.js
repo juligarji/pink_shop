@@ -1,5 +1,4 @@
 
-
 var Protection = {
   FLAG : true,
 
@@ -21,5 +20,17 @@ var Protection = {
       }
       callback();
   },
+  ensureFill : function(data,failHandler,callback){
+      var arr = Object.values(data);
+
+      for(var i=0;i<arr.length;i++){
+        if(arr[i]==""||arr[i]==undefined||arr[i]==null){
+          failHandler('Por Favor Rellenar Todos Los Campos');
+          return;
+        }
+      }
+
+      callback();
+  }
 
 };

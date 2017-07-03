@@ -15,7 +15,7 @@ var ScrollIssues = {
           ScrollIssues.FLAG=false;
           DB.getMoreElements(ammount,address,function(arrayData){
 
-                graphicsCall(arrayData,false);
+                graphicsCall(arrayData.data,false);
                 ScrollIssues.FLAG = true;
           });
         }
@@ -30,7 +30,7 @@ var ScrollIssues = {
 
     if (Math.floor($scrollWidth - $width) == $scrollLeft){
       DB.getMoreElements(ammount,address,function(arrayData){
-            graphicsCall(arrayData,false);
+            graphicsCall(arrayData.data,false);
       });
     }
   },
@@ -51,7 +51,8 @@ var ScrollIssues = {
   scrollCall : function(ammount,address,newData,graphicsCall){
     DB.getMoreElements(ammount,address,function(arrayData){
           //Graphics.fillTable(arrayData);
-          graphicsCall(arrayData,newData);
+          //console.log(arrayData,null,'\t');
+          graphicsCall(arrayData.data,newData);
     });
   },
 

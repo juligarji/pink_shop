@@ -1,0 +1,29 @@
+#backToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    background: #d0006f;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+    font-size: 30px;
+
+}
+#backToTop i{
+    vertical-align: middle;
+}
+#backToTop:hover {
+    background: #e9ebec;
+}
+#backToTop.show {
+    opacity: 1;
+}

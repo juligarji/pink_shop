@@ -1,0 +1,157 @@
+<div id="modalLog" class="modal">
+  <div class="modal-content">
+
+    <div id = "loginForm">
+      <div class = "right">
+        <a class="btn-floating btn-small waves-effect waves-light" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
+      </div>
+
+      <div class = "row">
+        <h4 class = "center">Ingresa a Sweet Tentation</h4>
+        <div class = "divider"></div>
+      </div>
+
+      <div class = "row">
+        <div class = "container col m6 s6">
+                      <a href="#!" class="btn  waves-effect waves-green col l10 m10 s12 offset-l2 offset-m2 offset-s0 blue darken-4">Facebook</a>
+                </div>
+                <div class = "container col m6 s6">
+                      <a href="#!" class="btn modal-close waves-effect waves-green col l10 m10 s12 light-blue">Twitter</a>
+                </div>
+      </div>
+
+      <div class = "row">
+        <p class = "center">O ingresa con tu cuenta</p>
+      </div>
+
+      <div class = "row">
+        <form class = "col m12 l12 s12" method = 'post'>
+                  <div class = "row">
+                      <div class="input-field col l8 m8 s11 offset-l2 offset-m2 offset-s1">
+                          <input name = "email" id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                      </div>
+                    </div>
+
+                    <div class = "row">
+                      <div class="input-field col l8 m8 s11 offset-l2 offset-m2 offset-s1">
+                        <input name = "password" id="password" type="password" class="validate">
+                          <label for="password">Contraseña</label>
+                      </div>
+                    </div>
+
+                    <div class = "row center">
+                      <input type = "submit" class = "btn" value = "Ingresar">
+                    </div>
+          </form>
+      </div>
+
+      <div class = "row">
+        <div class = "divider"></div>
+        <h5 class = "center">¿ Sin cuenta ?</h5>
+        <div class = "row center">
+                      <a class = "btn submit center modalToggleButton">Crear Cuenta</a>
+                </div>
+      </div>
+    </div>
+
+    <div id = "registryForm" style = "display:none">
+      <div class = "right">
+        <a class="btn-floating btn-small waves-effect waves-light" onclick = "$('#modalLog').modal('close');"><i class="material-icons tiny">close</i></a>
+      </div>
+
+      <div class = "row">
+        <h4 class = "center">Registrate</h4>
+        <div class = "divider"></div>
+      </div>
+
+      <div class = "row">
+        <div class = "container col m6 s6">
+                      <a href="#!" class="btn  waves-effect waves-green col l10 m10 s12 offset-l2 offset-m2 offset-s0 blue darken-4">Facebook</a>
+                </div>
+                <div class = "container col m6 s6">
+                      <a href="#!" class="btn modal-close waves-effect waves-green col l10 m10 s12 light-blue">Twitter</a>
+                </div>
+      </div>
+
+      <div class = "row">
+        <p class = "center">O registrate con nosotros</p>
+      </div>
+
+      <div class = "row">
+        <form class = "col m12 l12 s12" method = 'post' onsubmit="openSession(event)">
+                  <div class = "row">
+                      <div class="input-field col l6 m6 s11">
+                          <input name = "name" id="name" type="email" class="validate">
+                          <label for="email">Nombres</label>
+                      </div>
+                      <div class="input-field col l6 m6 s11">
+                        <input name = "password" id="password" type="password" class="validate">
+                          <label for="password">Apellidos</label>
+                      </div>
+
+                      <div class="input-field col l8 m8 s11 offset-l2 offset-m2">
+                        <input name = "password" id="password" type="email" class="validate">
+                          <label for="password">Correo Electronico</label>
+                      </div>
+
+                      <div class="input-field col l6 m6 s11">
+                        <input name = "password" id="password" type="password" class="validate">
+                          <label for="password">Contraseña</label>
+                      </div>
+
+                      <div class="input-field col l6 m6 s11">
+                        <input name = "password" id="password" type="password" class="validate">
+                          <label for="password">Repetir Contraseña</label>
+                      </div>
+
+                      <div class="input-field col l3 m3 s11">
+                        <select>
+                            <option value="" disabled selected>Ciudad</option>
+                            <option value = "colombia">Bogota</option>
+                            <option value = "colombia">Medellin</option>
+                            <option value = "colombia">Cali</option>
+                        </select>
+                      </div>
+
+                      <div class = "input-field col l7 m7 s11">
+                        <input name = "password" id="password" type="text" class="validate">
+
+                          <label for="password">Direccion</label>
+                      </div>
+
+                      <div class = "input-field col l2 m2 s4 offset-s4 hoverable z-depth-1 center">
+
+                            <i class="material-icons medium">my_location</i>
+
+                      </div>
+
+                      <div class="input-field col l6 m6 s11">
+                        <input name = "password" id="password" type="number" class="validate">
+                          <label for="password">Telefono celular(opcional)</label>
+                      </div>
+
+                      <div class="input-field col l6 m6 s11">
+                        <input name = "password" id="password" type="text" class="validate">
+                          <label for="password">Codigo de Registro(opcional)</label>
+                      </div>
+
+
+                    </div>
+
+                    <div class = "row center">
+                      <input type = "submit" class = "btn" value = "Registrarse">
+                    </div>
+                </form>
+      </div>
+
+      <div class = "row">
+        <div class = "divider"></div>
+        <h5 class = "center">¿ Ya tienes una cuenta ?</h5>
+        <div class = "row center">
+                      <a class = "btn submit center modalToggleButton">Ingresar</a>
+                </div>
+      </div>
+    </div>
+  </div>
+</div>

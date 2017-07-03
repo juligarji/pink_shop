@@ -1,45 +1,73 @@
 
-function openSession(e){
-  // validation code here
-    e.preventDefault();
+var Session = {
+  openSession : function (e,failHandler){
+    // validation code here
+      e.preventDefault();
 
-    var sentData = JSON.stringify({
-          email:$("input[name='email']").val(),
-          password:$("input[name='password']").val()
-    });
+      var sentData = {
+            email:$("input[name='email']").val(),
+            password:$("input[name='password']").val()
+      };
 
-    var call = $.ajax({
-          type:'POST',
-          url:'/sign/signin',
-          contentType: 'application/json',
-          data:sentData
-    });
+      Protection.ensureFill(sentData,failHandler,function(){
 
-    call.done(function(data){
-        document.cookie = "token=" + data.token + ";";
-        location.reload();
-    });
+        sentData = JSON.stringify(sentData);
 
-    call.fail(function(jqXHR, textStatus, error){
-        console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
-        var $toastContent = $('<I am toast content</span>');
-        Materialize.toast(jqXHR.responseJson, 5000);
-    });
-}
+        var call = $.ajax({
+              type:'POST',
+              url:'/sign/signin',
+              contentType: 'application/json',
+              data:sentData
+        });
 
-function closeSession(){
+        call.done(function(data){
 
-  var call =   $.ajax({
-        url : '/sign/signout',
-        type : 'GET'
-    });
+            document.cookie = "token=" + data.token + ";";
+            location.reload();
+        });
 
-    call.done(function(data){
-        console.log('Se ha cerrado sesion exitosamente');
-        location.reload();
-    });
+        call.fail(function(jqXHR, textStatus, error){
+            failHandler(jqXHR.responseText);
+        });
 
-    call.fail(function(data){
-        console.log('Error al cerrar sesion');
-    });
+      });
+
+
+  },
+
+  closeSession : function (){
+
+    var call =   $.ajax({
+          url : '/sign/signout',
+          type : 'GET'
+      });
+
+      call.done(function(data){
+          console.log('Se ha cerrado sesion exitosamente');
+          location.reload();
+      });
+
+      call.fail(function(data){
+          console.log('Error al cerrar sesion');
+      });
+  },
+
+  toggleLogin : function (){
+
+    if($('#loginForm').is(':visible')){
+
+      $('#loginForm').fadeOut('slow',function(){
+        $('#registryForm').fadeIn('slow');
+      });
+
+    }else{
+
+      $('#registryForm').fadeOut('slow',function(){
+        $('#loginForm').fadeIn('slow');
+      });
+
+    }
+
+  }
+
 }

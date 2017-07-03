@@ -10,8 +10,8 @@ var CartGraphics = {
     $(identifier).append(element);
     console.log(ammount);
   }*/
-
-  $(identifier).text(ammount);
+  var element = `[${ammount}] `;
+  $(identifier).text(element);
 
   }
 }

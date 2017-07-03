@@ -60,7 +60,7 @@ body{
 }
 
 #publicitySmallUp{
-    height: 350px; 
+    height: 350px;
     width: 100%;
     padding-bottom: 0px;
     margin-bottom:0px;
@@ -79,6 +79,10 @@ body{
 #homeProducts div.grid-item:nth-child(2){
    /* padding-top: 50px;*/
     margin-top:45px;
+}
+
+.carousel-cell img {
+  height: 480px;
 }
 
 /* CONFIGURACION PARA TABLETS*/
@@ -120,6 +124,13 @@ body{
   #homeProducts div.grid-item:nth-child(2){
    /* padding-top: 50px;*/
     margin-top:0px;
+}
+.carousel{
+  height: 190px;
+}
+.carousel-cell img {
+  height: 190px;
+  width: 100%;
 }
 }
 
@@ -245,3 +256,49 @@ html, body {
    /*max-width: 100%;*/
     overflow-x: hidden;
 }
+
+#advice{
+    position: fixed;
+    bottom: 0;
+    color:white;
+    /*top:0;*/
+    /*z-index: 100;*/
+    background-color:red;
+
+}
+
+
+/* Carousel */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #FAFAFA;
+}
+
+.carousel-cell {
+  width: 66%;
+  /*height: 400px;*/
+  margin-right: 10px;
+  background: #333;
+}
+
+.carousel-cell-image {
+  display: block;
+  max-height: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+          transition: opacity 0.4s;
+}
+
+/* fade in lazy loaded image */
+.carousel-cell-image.flickity-lazyloaded,
+.carousel-cell-image.flickity-lazyerror {
+  opacity: 1;
+}
+
+.flickity-page-dots { bottom: 10px; }

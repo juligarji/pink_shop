@@ -46,37 +46,13 @@ $(window).ready(function(){
 
 
   ScrollIssues.initScrollClient('#productContainer',GET_FRAGANCES,Graphics.loadToContainer);
-  //$('div.product a').attr('href',VIEW_DETAILS + $(this).attr('value'));
 
-/*
-  $('div.product').on('click',function(){
-    //alert('Si');
-    //console.log($(this).attr('value'));
-
-
-      var call = $.ajax({
-        url:VIEW_DETAILS + $(this).attr('value')
-        //body:JSON.stringify({name:$(this).attr('value')})
-      });
-
-      call.done(function(data){
-
-      });
-
-      call.fail(function(jqXHR, textStatus, error){
-          failCall(jqXHR.responseJson);
-          console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
-      });
-
-  });*/
-
-
-  var distance = $('#menuContainer').offset().top;
+  var distanceBackToTop = $('#menuContainer').offset().top;
 
   $(window).scroll(function() {
-    backToTop();
+    backToTop();//obligatorio
 
-    if ( $(this).scrollTop() >= distance ) {
+    if ( $(this).scrollTop() >= distanceBackToTop ) {
         console.log('is in top');
         $('#menuContainer').css('top',0);
         $('#menuContainer').css('position','fixed');
@@ -88,27 +64,6 @@ $(window).ready(function(){
         $('#productContainer').removeClass('push-l2');
     }
   });
-
-  if ($('#back-to-top').length) {
-    var scrollTrigger = 100, // px
-        backToTop = function () {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > scrollTrigger) {
-                $('#back-to-top').addClass('show');
-            } else {
-                $('#back-to-top').removeClass('show');
-            }
-        };
-    backToTop();
-
-  
-    $('#back-to-top').on('click', function (e) {
-        e.preventDefault();
-        $('html,body').animate({
-            scrollTop: 0
-        }, 700);
-    });
-}
 
 
 });
