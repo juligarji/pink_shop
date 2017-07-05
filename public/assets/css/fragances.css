@@ -151,17 +151,30 @@ ul.side-nav a.btn{
 
 /* Home */
 
-
-
 #productContainer img{
     /*min-height: 60px;*/
     max-height: 300px;
+}
+
+#menuContainer{
+  /*background-color: rgb(229,224,218);*/
+  box-shadow: 6px 6px 5px rgb(229,224,218);
+}
+#menuContainer .btn{
+    background-color: #d0006f;
 }
 
 /* titulo de nuevos productos */
 .titles h1{
   color :rgb(178,18,95);
   text-shadow: 1px 1px 5px rgb(245,245,245);
+  font-size: 35px;
+}
+
+.titles h4{
+  color :rgb(178,18,95);
+  text-shadow: 1px 1px 5px rgb(245,245,245);
+  font-size: 35px;
 }
 
 #productContainer .product:nth-child(1){
@@ -205,9 +218,6 @@ ul.side-nav a.btn{
   font-size: 25px;
 }
 
-
-
-
 /* Perfumes */
 
 #fraganceProducts img{
@@ -238,24 +248,6 @@ footer{
   width:100%;
   /*float:left*/
 }
-
-
-
-
-/* pruebas */
-/*
-.card.small {
-  height: auto;
-}
-.card.small .card-content {
-  height: auto;
-}
-.card.small .card-action {
-  position: relative;
-}
-*/
-
-/* volver arriba */
 
 
 html, body {

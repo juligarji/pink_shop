@@ -49,6 +49,10 @@ $(window).ready(function(){
 
   ScrollIssues.initResizeEvent('#fragancesTable tbody',GET_FRAGANCES,Graphics.loadToTable);
 
+  $('#closeSessionBtn').on('click',function(){
+    Session.closeSession();
+  });
+
 });// document ready function
 
 /* XXXXXXXXXX FUNCIONES PROPIAS XXXXXXXXXXX */
@@ -214,9 +218,8 @@ function submitEditModal(name){
 
     $('#editModal').modal('close');
     DB.currentCall(newData,EDIT_SINGLE_FRAGANCE,function(data){
-        Graphics.editRow(name,data);
+        Graphics.editRow(name,data.data);
     });
-
 }
 
 
@@ -227,7 +230,7 @@ function loadEditModal(name){
     console.log('como lo llama :' + name);
     DB.currentCall(newData,GET_SINGLE_FRAGANCE,function(data){
 
-        Graphics.fillEditModal(name,data,submitEditModal);
+        Graphics.fillEditModal(name,data.data,submitEditModal);
         $('#editModal').modal('open');
     },errorHandler);
 }

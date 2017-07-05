@@ -13,5 +13,5 @@ var CartGraphics = {
   var element = `[${ammount}] `;
   $(identifier).text(element);
 
-  }
+}
 }

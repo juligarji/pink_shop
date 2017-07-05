@@ -87,6 +87,44 @@ body{
   width:400px;
 }
 
+div.rowElement{
+
+  border:solid black;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.iconPre{
+    font-size:20px;
+    vertical-align: middle;
+}
+
+/* configuracion de los estilos para los elemntos del carro */
+div.cartElement{
+
+  box-shadow: 1px 6px 5px rgb(229,224,218);
+  border-radius: 15px;
+  border-bottom-style: groove;
+  border-top-width: 2px;
+  border-bottom-color: rgb(60,60,60);
+  font-size: 16px;
+}
+
+p.ammoSelect{
+  border:solid rgb(229,224,220);
+  border-radius: 50px;
+  cursor:pointer;
+  font-style: bold;
+}
+
+p.ammoSelect:hover{
+  transform: scale(1.2);
+  border:solid rgb(234,229,225);
+}
+p.ammoSelect:active{
+  background-color: #d0006f;
+}
+
 /* CONFIGURACION PARA TABLETS*/
 @media only screen and (max-width:991px){
    nav{
@@ -259,7 +297,6 @@ html, body {
 /*carousel*/
 * { box-sizing: border-box; }
 
-body { font-family: sans-serif; }
 
 .carousel {
   background: #EEE;

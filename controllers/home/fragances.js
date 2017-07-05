@@ -36,20 +36,21 @@ var viewDetails = function(req,res,next){
       console.log(fragan);
         res.status(200).render('home/details',{message:'Exitoso',data:fragan,addressPic:PUBLIC_ADDRESS});
   });
-
 }
 
 
 var calCurrentPrice = function(ammount,data){
   var price;
-  var disscount = ((100 - parseFloat(data.discount))/100);
+  var disscount = ((100 - data.discount)/100);
 
-  if(ammount < parseInt(data.minForDiscount)){
+  if(ammount < data.minForDiscount){
 
-      price = ((ammount * parseFloat(data.price))*disscount);
+      price = ((ammount * data.price)*disscount);
   }else{
+
           price = ((ammount * data.wholesale)*disscount);
   }
+
   return price;
 }
 
@@ -64,16 +65,31 @@ var getPrice = function(req,res,next){
   fragancesModel.getByName(data.name,function(fragan){
 
       var ammount = parseFloat(data.ammount);
+
       var output = calCurrentPrice(data.ammount,fragan);
-      console.log(output);
+
       res.status(200).send({message:'exito',data:output});
   });
 
 }
 
+var loadFragancesView = function(req,res){
+
+  if(!res.locals.authorized){// cambiar por rutas privadas de autenticas
+
+      res.status(200).render('home/fragances');
+      return;
+  }
+
+    res.status(200).render('home/fragances');
+
+}
+
+
 module.exports = {
     getFragances,
     getSingleFragance,
     viewDetails,
-    getPrice
+    getPrice,
+    loadFragancesView
 }

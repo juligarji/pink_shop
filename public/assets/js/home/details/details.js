@@ -73,6 +73,9 @@ function getPrice(name){
   }
 
   DB.currentCall(data,GET_PRICE,true,function(data){
+    console.log('aqui');
+    console.log(data);
+    CartGraphics.paintMarker(data,'#total');
   },errorCall);
 }
 

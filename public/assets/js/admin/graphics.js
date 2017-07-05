@@ -144,10 +144,10 @@ var Graphics = {
   fillEditModal : function(index,data,callback){
 
 
-    //$('#editModal').children('input').val('');
+    $('#editModal').children('input').val('');
 
+    $(`#editModal input[name='name']`).attr('value',data.name);
 
-    //$(`#editModal input[name='name']`).attr('value',data.name);
     $(`#editModal input[name='name']`).val(data.name);
     $(`#editModal select[name='size']`).find(`option[value='${data.size}']`).attr(`selected`,true);
     $(`#editModal select[name='gender']`).find(`option[value='${data.gender}']`).attr(`selected`,true);
