@@ -44,28 +44,28 @@ $(window).ready(function(){
   };
 
 
+  if($('#productContainer').children().length>=6){
+    ScrollIssues.initScrollClient('#productContainer',GET_FRAGANCES,Graphics.loadToContainer);
 
-  ScrollIssues.initScrollClient('#productContainer',GET_FRAGANCES,Graphics.loadToContainer);
+    var distanceBackToTop = $('#menuContainer').offset().top;
 
-  var distanceBackToTop = $('#menuContainer').offset().top;
+    $(window).scroll(function() {
+      backToTop();//obligatorio
 
-  $(window).scroll(function() {
-    backToTop();//obligatorio
-
-    if ( $(this).scrollTop() >= distanceBackToTop ) {
-        console.log('is in top');
-        $('#menuContainer').css('top',0);
-        $('#menuContainer').css('position','fixed');
-        $('#productContainer').addClass('push-l2');
-    } else {
-        console.log('is not in top');
-        $('#menuContainer').css('position','relative');
-        $('#menuContainer').css('top','auto');
-        $('#productContainer').removeClass('push-l2');
-    }
-  });
-
-
+      if ( $(this).scrollTop() >= distanceBackToTop ) {
+          console.log('is in top');
+          $('#menuContainer').css('top',0);
+          $('#menuContainer').css('position','fixed');
+          $('#productContainer').addClass('push-l2');
+      } else {
+          console.log('is not in top');
+          $('#menuContainer').css('position','relative');
+          $('#menuContainer').css('top','auto');
+          $('#productContainer').removeClass('push-l2');
+      }
+    });
+  }
+  
 });
 
 

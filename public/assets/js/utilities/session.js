@@ -9,7 +9,7 @@ var Session = {
             password:$("input[name='password']").val()
       };
 
-      Protection.ensureFill(sentData,failHandler,function(){
+      Protection.ensureFill(sentData,function(){
 
         sentData = JSON.stringify(sentData);
 
@@ -30,7 +30,7 @@ var Session = {
             failHandler(jqXHR.responseText);
         });
 
-      });
+      },failHandler);
 
 
   },

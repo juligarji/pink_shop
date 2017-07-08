@@ -1,5 +1,5 @@
 
-var users = require('../../models/models/users.js');//modelo del usuario
+var users = require('../../../models/models/users.js');//modelo del usuario
 var services = require('../serverResources/services.js');
 var bcrypt = require('bcrypt-nodejs');
 var errorHandler = require('../error/errorHandler.js');

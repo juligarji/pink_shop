@@ -1,6 +1,7 @@
 
 var fragancesModel = require('../../models/models/frangances/fragancesModel.js');
 
+
 var PRODUCTS_ADDRESS = './public/assets/img/products/';
 var PUBLIC_ADDRESS = 'assets/img/products/';
 var errorHandler = require('../error/errorHandler.js');

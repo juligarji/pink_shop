@@ -13,13 +13,14 @@ var db = require('./models/db/connection');
 // desde aqui se indexa todo en contenido de la plataforma
 
 // Agregamos nuestros puntos de conexion
-var home = require('./controllers/home/home.js');
-
+//var home = require('./controllers/home/home.js');
+/* Nuevas rutas XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 var test = require('./controllers/test/test.js');
+var home = require('./newControllers/routes/home.js');
+var admin = require('./newControllers/routes/admin.js');
+var sign = require('./newControllers/routes/sign.js');
 
-var sign = require('./controllers/sign/sign.js');
-
-var admin = require('./controllers/admin/admin.js');
+//var admin = require('./controllers/admin/admin.js');
 
 var app = express();
 

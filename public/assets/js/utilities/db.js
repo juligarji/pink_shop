@@ -20,7 +20,7 @@ var DB = {
       });
 
       call.fail(function(jqXHR, textStatus, error){
-          failCall(jqXHR.responseJson);
+          failCall(jqXHR.responseText);
           //console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
       });
     });

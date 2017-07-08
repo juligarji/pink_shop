@@ -1,5 +1,5 @@
 var express = require('express');
-var users = require('../../models/models/users.js');
+var users = require('../../models/models/users/users.js');
 
 
 

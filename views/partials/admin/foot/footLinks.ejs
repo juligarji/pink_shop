@@ -1,0 +1,21 @@
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+<!-- JS - Materialize -->
+<script src="../vendor/materialize/js/materialize.js"></script>
+<script src="../vendor/aos-master/dist/aos.js"></script>
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<!-- Utilidades comunes en todas las paginas -->
+<script src="../assets/js/utilities/protection.js"></script>
+<script src="../assets/js/utilities/db.js"></script>
+<script src="../assets/js/utilities/session.js"></script>
+<script src="../assets/js/utilities/dialogs.js"></script>
+<script src="../assets/js/utilities/issuesGraphic.js"></script>
+<script>
+  $('#closeSessionBtn').on('click',function(){
+      Session.closeSession();
+  });
+</script>

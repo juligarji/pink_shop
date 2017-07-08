@@ -1,0 +1,97 @@
+<div id="editModal" class="modal">
+    <div class="modal-content">
+
+      <div class = "col l12 m12 s12">
+        <div class = "row">
+            <a onclick = "$('#editModal').modal('close');" class="btn-floating btn-small waves-effect waves-light black right"><i class="material-icons">clear</i></a>
+        </div>
+          <div class = "row">
+            <form id = "fraganceForm" method = "post" class = "col l12 s12" onsubmit = "event.preventDefault()">
+
+                  <div class="input-field col l3 m4 s12">
+                    <input name = "name" placeholder="Nombre(Unico)" id="first_name" type="text" class="validate">
+                  </div>
+                  <div class="input-field col l3 m4 s12">
+                    <select name = "size">
+                      <option value="" disabled selected>Tamaño</option>
+                      <option value="test1">test1</option>
+                      <option value="test2">test2</option>
+                      <option value="test3">test3</option>
+                    </select>
+                  </div>
+                  <div class="input-field col l3 m4 s12">
+                    <select name = "gender">
+                      <option value="" disabled selected>Genero</option>
+                      <option value="Hombre">Hombre</option>
+                      <option value="Mujer">Mujer</option>
+                    </select>
+                  </div>
+
+                  <div class="input-field col l3 m4 s12">
+                    <select name = "fragance">
+                      <option value="" disabled selected>Fragancia</option>
+                      <option value="Test1">Test1</option>
+                      <option value="Test2">Test2</option>
+                    </select>
+                  </div>
+
+
+                <div class="input-field col l3 m4 s12">
+                  <select name = "group">
+                    <option value="" disabled selected>Temporada</option>
+                    <option value="Test1">Test1</option>
+                    <option value="Test2">Test2</option>
+                  </select>
+                </div>
+
+                <div class="input-field col l3 m4 s12">
+                  <select name = "brand">
+                    <option value="" disabled selected>Marca</option>
+                    <option value="Test1">Test1</option>
+                    <option value="Test2">Test2</option>
+                  </select>
+                </div>
+
+                <div class="input-field col l2 m3 s6">
+                  <input name = "discount" placeholder="Descuento" id="first_name" type="number" class="validate">
+                </div>
+
+                <div class="input-field col l2 m3 s6">
+                  <input name = "price" placeholder="Precio" id="first_name" type="number" class="validate">
+                </div>
+
+                <div class="input-field col l2 m3 s6">
+                  <input name = "minForDiscount" placeholder="Min para May" id="first_name" type="number" class="validate">
+                </div>
+
+
+                <div class="input-field col l2 m3 s6">
+                  <input name = "wholesale" placeholder="Precio (May)" id="first_name" type="number" class="validate">
+                </div>
+
+                <div class="input-field col l10 m12 s12">
+                    <input name = "description" placeholder="Descripcion" id="first_name" type="text" class="validate">
+                </div>
+
+                <div class = " col l2 m2 s5 z-depth-1 pink lighten-1" >
+                    <input name = "ammount" placeholder="Cantidad" id="ammount" type="number" class="validate">
+                </div>
+
+                <div class = "col l10 m10 s7">
+                  <div class = "section">
+                    <!--<button class="btn waves-effect green lighten-1 waves-light col l12 m12 s12" type="submit" name="action">
+                        Guardar
+                        <i class="material-icons right">send</i>
+                    </button> -->
+                    <button class = "btn waves-effect green lighten-1 waves-light col l12 m12 s12" id = 'editModalAction'>
+                        <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+
+                </div>
+            </form>
+          </div>
+      </div>
+        <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+    </div>
+  </div>

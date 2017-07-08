@@ -4,7 +4,7 @@
 // Proteger rutas privadas a usuarios no autenticados
 var services = require('../serverResources/services.js');//importar funcionalidades de encode y decode token
 //var cookieParser = require('cookie-parser');
-var users = require('../../models/models/users.js');
+var users = require('../../models/models/users/users.js');
 
 function isAuth(req,res,next){// verifi si esta autenticado
 

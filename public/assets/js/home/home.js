@@ -67,13 +67,7 @@ $(window).ready(function(){
 
 
   /* Inicializar componentes de parte grafica */
-  $('#loginForm form').submit(function(event){
 
-    Session.openSession(event,Dialogs.failMessage);
-  });
-  $('.modalToggleButton').on('click',function(){
-      Session.toggleLogin();
-  });
 
 
   $(window).resize(function(){

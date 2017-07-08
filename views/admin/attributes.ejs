@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <%- include('../partials/admin/head/headConfig') %>
+
+   <link rel = "stylesheet" href = "../assets/css/adminIndex.css">
+
+    <!-- Custom -->
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+    <%- include('../partials/admin/head/header') %>
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  <main style = "clear:both">
+
+      <div class = "row">
+        <!-- Menu acordeon de navegacion -->
+        <%- include('../partials/admin/menu/sideMenu') %>
+
+            <div class = " col l10 s12 m12 " style = "z-index:-100">
+              <% kind.forEach(function(kindElement){ %>
+              <div class="col l6 z-depth-1">
+                <h5 class = "center"><%= kindElement.name %></h5>
+                <ul value = "<%= kindElement._id %>" id = "componentsList" class="collapsible" data-collapsible="accordion">
+                    <% kindElement.components.forEach(function(componentElement){ %>
+                  <li value = "<%=componentElement._id%>">
+                    <div class="collapsible-header"><i class="material-icons">filter_drama</i><%=componentElement.name%>
+
+                    </div>
+                    <div class="collapsible-body">
+
+                      <!--  <a class="waves-effect waves-light btn" onclick = "deleteComponent(event,'<%= componentElement._id%>')"><i class="material-icons left">close</i></a> -->
+
+                        <div class = "row">
+                          <div class = "container col l12">
+                            <a class="waves-effect waves-light btn red" onclick = "deleteComponent(event,'<%= componentElement._id%>')"><i class="material-icons left">close</i></a>
+                          </div>
+                          <div class="container attributeContainer " value="<%=componentElement._id%>">
+                            <%componentElement.attributes.forEach(function(attributesElement){%>
+                            <div value = "<%= attributesElement._id %>" class = "col l5 z-depth-2 offset-l1">
+                              <span>  <%= attributesElement.value %></span> <a onclick = "deleteAttributeToComp(event,'<%= componentElement._id%>','<%= attributesElement._id%>')" class="btn-floating btn-small waves-effect waves-light right"><i class="material-icons">close</i></a>
+                            </div>
+                            <% }); %>
+                          </div>
+
+                          <div class = "container col l12">
+                            <div class = "col l12">
+                              <form value = "<%= componentElement._id%>" onsubmit="createAttributeToComp(event,'<%= componentElement._id%>');" method="post">
+                                <div class="input-field col l7 s6">
+                                  <input name = "value" placeholder="Valor" type="text" class="validate">
+                                </div>
+                                <div class="input-field col l3">
+                                  <input name = "discount" placeholder="Desc" type="number" class="validate">
+                                </div>
+                                <div class = "input-field col l2">
+                                    <button type="submit" class = "waves-effect waves-light btn green"><i class="material-icons left">add</i></button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+                        </div>
+                    </div>
+                  </li>
+                    <% }); %>
+                  </ul>
+
+                    <div class="col l12">
+                      <form value = "<%= kindElement._id%>" onsubmit="createComponent(event,'<%= kindElement._id%>');" method="post">
+                        <div class="input-field col l9 s6">
+                          <input name = "name" placeholder="Nombre" type="text" class="validate">
+                        </div>
+                      <div class="input-field col l3 s12">
+                        <select name = "isNumeric">
+                          <option value="" selected disabled>Es #?</option>
+                          <option value="true">Si</option>
+                          <option value="false">No</option>
+                        </select>
+
+                      </div>
+                      <button type = "submit" class = "btn">
+                        <i class="material-icons">fiber_new</i>
+                        Crear Atributo
+                      </button>
+                      </form>
+
+                    </div>
+              </div>
+              <% }); %>
+
+            </div>
+
+
+  <!-- Modal para la edicion de los productos -->
+
+  </main>
+
+    <footer class = "col l12 m12 s12">
+      <%- include('../partials/admin/foot/footer') %>
+    </footer>
+
+<!-- jQuery -->
+<%- include('../partials/admin/foot/footLinks') %>
+
+<script src="../assets/js/admin/attributes/graphics.js"></script>
+<script src="../assets/js/admin/attributes/attributes.js"></script>
+
+</body>
+</html>

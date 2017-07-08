@@ -1,0 +1,59 @@
+<div id = "photoModal" class = "modal">
+    <div class = "modal-content">
+      <div class = "row">
+          <a onclick = "$('#photoModal').modal('close');" class="btn-floating btn-small waves-effect waves-light black right"><i class="material-icons">clear</i></a>
+      </div>
+      <div class = "row">
+
+        <div class="slider col s12">
+          <ul class="slides">
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class = "row">
+        <div class = "divider"></div>
+        <div class = "section"></div>
+
+        <div class = "col l10 s10">
+          <form action="#">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input id = "localPhotoFile" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class = "col l2 s2">
+          <a id = "photoModalAction" class="btn-floating btn-small waves-effect waves-light blue">
+                <i class="material-icons">file_upload</i>
+          </a>
+        </div>
+
+        <div class = "divider"></div>
+        <div class = "section"></div>
+      </div>
+
+      <div class = "col l12 m12 s12">
+        <table class = "centered striped">
+            <thead>
+                <th class = "col l1 m1 s1">Numero</th>
+                <th>Archivo</th>
+                <th>Acciones</th>
+            </thead>
+            <tbody>
+                <!-- tabla de agregar, las listas de las fotografias -->
+            </tbody>
+        </table>
+
+      </div>
+
+    </div>
+</div>

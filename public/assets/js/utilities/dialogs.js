@@ -3,7 +3,7 @@ var Dialogs = {
   sucessMessage : function(msg){
     var element = `
     <div class = "alertMess" style = "position:relative">
-      <h3>You've clicked OK</h3>
+      <h3>${msg}</h3>
     </div>
     `;
       alertify.success(element).closeLogOnClick(true);
@@ -15,6 +15,15 @@ var Dialogs = {
     </div>
     `;
       alertify.error(element).closeLogOnClick(true);
+  },
+  confirmBox : function(msg,callback,failback){
+      alertify.confirm(msg,
+      function(){
+        callback();
+      },
+      function(){
+        failback();
+      });
   },
   cartMessage : function(cartAdd){
     var element = `

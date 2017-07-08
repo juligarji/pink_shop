@@ -1,36 +1,39 @@
 
-var fragancesModel = require('../../models/models/frangances/fragancesModel.js');
+//var productsModel = require('../../models/models/frangances/productsModel.js');
 var fs = require('fs');
 
 var PRODUCTS_ADDRESS = './public/assets/img/products/';
 var errorHandler = require('../error/errorHandler.js');
 
-// middleware para las rutas del administrador
 
-var createFragance = function(req,res,next){//POST
+var createProduct = function(req,res,next){//POST
 
   var data = req.body;
 
 
   var newData = {
       name : data.name,
-    //  size: data.size,
-      gender : data.gender,
-      //fragance : data.fragance,
-      //group : data.group,
-      //brand : data.brand,
-      discount : parseFloat(data.discount),
-      ammount:parseInt(data.ammount),
-      price : parseFloat(data.price),
-      description : data.description,
-      minForDiscount : parseInt(data.minForDiscount),
-      wholesale : parseFloat(data.wholesale),
-      photos : data.photos,
+      reference: data.reference,
+      kind:data.kind,
+      brand:data.brand,
+      ammount:data.ammount,
+      tax:data.tax,
+      realPrice:data.realPrice,
+      price:data.price,
+      priceWholesale:data.priceWholesale,
+      description:data.description,
+      photos:data.photos,
+
+      discountGeneral:data.discountGeneral,
+      discountWholesale:data.discountWholesale,
+      minForWholesale:data.minForWholesale,
+
       modified_at : Date.now()
+
   }
 
 
-  fragancesModel.create(newData,function(newFragance){
+  productsModel.create(newData,function(newFragance){
 
     console.log('la fragancia a sido creada con exito');
     res.status(200).send({message:newFragance.name,data:newFragance});
@@ -63,10 +66,10 @@ if(photoName == undefined){return;}
 var deleteFragance = function(req,res,next){
     var data = req.body;
 
-    fragancesModel.getByName(data.name,function(frag){
+    productsModel.getByName(data.name,function(frag){
 
         deleteCurrentPicture(frag.photos[0],frag.photos);
-        fragancesModel.remove(frag.name,function(){
+        productsModel.remove(frag.name,function(){
 
             res.status(200).send({message:'Borrado exitoso'});
         });
@@ -81,7 +84,7 @@ var getFragances = function(req,res,next){
       var index = parseInt(data.index);
       var recent = data.recent;
 
-  fragancesModel.getPartial(recent,ammount,index,function(data){
+  productsModel.getPartial(recent,ammount,index,function(data){
 
       res.status(200).send({message:'Busqueda exitosa',data:data});
       console.log('busqueeda exitosa');
@@ -91,7 +94,7 @@ var getFragances = function(req,res,next){
 var getSingleFragance = function(req,res,next){
     var data = req.body;
 
-    fragancesModel.getByName(data.name,function(fragan){
+    productsModel.getByName(data.name,function(fragan){
         res.status(200).send({message:'Busqueda unitaria exitosa',data:fragan});
     });
 }
@@ -103,7 +106,7 @@ var editSingleFragance = function(req,res,next){
         name : data.name,
       //  size: data.size,
         gender : data.gender,
-        //fragance : data.fragance,
+        //product : data.product,
         //group : data.group,
         //brand : data.brand,
         discount : parseFloat(data.discount),
@@ -116,7 +119,7 @@ var editSingleFragance = function(req,res,next){
         modified_at : Date.now()
     }
 
-    fragancesModel.updateByName(data.oldName,newData,function(fragan){
+    productsModel.updateByName(data.oldName,newData,function(fragan){
         //console.log(fragan,null,'\t');
         res.status(200).send({message:'Edicion exitosa',data:fragan});
     });
@@ -125,7 +128,7 @@ var editSingleFragance = function(req,res,next){
 var editPhotosFragance = function(req,res,next){
     var data = req.body;
 
-    fragancesModel.updatePicturesByName(data.name,data.photos,function(fragan){
+    productsModel.updatePicturesByName(data.name,data.photos,function(fragan){
         res.status(200).send({message:'Edicion de Imagenes exitosa'});
     });
 }

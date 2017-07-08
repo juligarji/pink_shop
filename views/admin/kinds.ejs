@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/admin/head/headConfig') %>
+
+   <link rel = "stylesheet" href = "../assets/css/adminIndex.css">
+
+
+    <!-- Custom -->
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+    <%- include('../partials/admin/head/header') %>
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  <main style = "clear:both">
+
+      <div class = "row">
+        <!-- Menu acordeon de navegacion -->
+        <%- include('../partials/admin/menu/sideMenu') %>
+
+              <div class = " col l10 s12 m12" style = "z-index:-100">
+                    <!-- Creacion de nuevos perfumes -->
+
+                      <div class = "divider"></div>
+
+                      <h1>SIIII</h1>
+                      <div class = "divider"></div>
+
+                    <div class = "container col l12 m12 s12 z-depth-3">
+
+                      <div class = "row">
+                        <form onsubmit = "uploadKind(event)">
+                        <div class="input-field col l6 s12">
+                          <input name = "name" id="name" type="text" class="validate">
+                          <label for="name">Nombre(Unico)</label>
+                        </div>
+
+                        <div class="input-field col l6 s12">
+                          <select name = "view">
+                            <option value="" disabled selected>Vista Asociada</option>
+                            <option value="home/fragances">Perfumes</option>
+                            <option value="home/fragances">Maquillaje</option>
+                            <option value="home/fragances">Cuidado Piel</option>
+                            <option value="home/fragances">Ropa</option>
+                            <option value="home/fragances">Accesorios</option>
+                          </select>
+                        </div>
+
+                        <div class="input-field col l6 s12">
+                          <input name = "discount" id="discount" type="number" class="validate">
+                          <label for="discount">Descuento</label>
+                        </div>
+
+                        <div class="input-field col l6 s12">
+                          <textarea name = "description" class="materialize-textarea"></textarea>
+                          <label for="textarea1">Descripcion</label>
+                        </div>
+                        <div class="col l4">
+                            <button type = "submit" class = "btn">
+                              Subir
+                            </button>
+                        </div>
+                      </form>
+                      </div>
+
+                        <div class = "row">
+                          <div class = "divider"></div>
+                          <h1 class = 'center'>aqui va el contenido</h1>
+                          <div class = "divider"></div>
+
+                          <table id = "categoriesContainer" class="bordered responsive-table">
+                            <thead>
+                              <tr>
+                                <th>Nombre</th>
+                                <th>Vista Asociada</th>
+                                <th>Descuento</th>
+                                <th>Descripcion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% list.forEach(function(element){ %>
+                              <tr value = "<%=element._id%>">
+                                <td><%=element.name%></td>
+                                <td><%=element.associatedView%></td>
+                                <td><%=element.discount%></td>
+                                <td class = "truncate"><%=element.description%></td>
+                                <td>
+                                  <a onclick = "editKind'<%=element._id%>')" class="btn-floating btn-small waves-effect waves-light blue">
+                                    <i class="material-icons">
+                                      edit
+                                    </i>
+                                  </a>
+                                  <a onclick = "deleteKind('<%=element._id%>')" class="btn-floating btn-small waves-effect waves-light red">
+                                    <i class="material-icons">
+                                      close
+                                    </i>
+                                  </a>
+                                </td>
+                              </tr>
+                              <% }); %>
+
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+      </div>
+
+</div>
+  <!-- Modal para la edicion de los productos -->
+
+  </main>
+
+  <footer class = "col l12 m12 s12">
+      <%- include('../partials/admin/foot/footer') %>
+    </footer>
+
+    <%- include('../partials/admin/foot/footLinks') %>
+
+<script src="../assets/js/admin/kinds/graphics.js"></script>
+<script src="../assets/js/admin/kinds/kinds.js"></script>
+
+</body>
+</html>
