@@ -170,7 +170,7 @@ var componentsModel = {
             failback(err);
             return;
           }
-        
+
           comp.attributes.push(attributeId);
           comp.save(function(err){
               if(err){
@@ -201,6 +201,15 @@ var componentsModel = {
             }
           callback(comp);
         });
+      });
+    },
+    deleteMultipleByIds : function(arrayIds,callback,failback){// borrar multiple
+      components.remove({_id:{$in:arrayIds}},function(err){
+        if(err){
+          failback(err);
+          return;
+        }
+        callback();
       });
     }
 }

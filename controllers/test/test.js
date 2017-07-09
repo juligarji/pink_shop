@@ -141,11 +141,31 @@ router.get('/verAtributos',function(req,res,next){
       });
 });
 
+router.get('/borrarAtributos',function(req,res,next){
+    /*salesInfo.find({},function(err,data){
+        res.send(data);
+    });*/
+    attributes.remove(function(err){
+      if(err) throw err;
+        res.send('bien borrado');
+    })
+});
+
 router.get('/verComponentes',function(req,res,next){
 
       components.find({},function(err,data){
           res.send(data);
       });
+});
+
+router.get('/borrarComponentes',function(req,res,next){
+    /*salesInfo.find({},function(err,data){
+        res.send(data);
+    });*/
+    components.remove(function(err){
+      if(err) throw err;
+        res.send('bien borrado');
+    })
 });
 
 router.get('/verMarcas',function(req,res,next){
@@ -155,11 +175,28 @@ router.get('/verMarcas',function(req,res,next){
       });
 });
 
+var kindsModel = require('../../models/models/products/kindsModel');
+
 router.get('/verTipos',function(req,res,next){
 
-      kinds.find({},function(err,data){
+      /*kinds.find({},function(err,data){
           res.send(data);
+      });*/
+      kindsModel.getAllPopulated(function(kind){
+            res.send(kind);
+      },function(err){
+
       });
+});
+
+router.get('/borrarTipos',function(req,res,next){
+    /*salesInfo.find({},function(err,data){
+        res.send(data);
+    });*/
+    kinds.remove(function(err){
+      if(err) throw err;
+        res.send('bien borrado');
+    })
 });
 
 router.get('/verImpuestos',function(req,res,next){

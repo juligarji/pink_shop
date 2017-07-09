@@ -1,5 +1,8 @@
 
 var kindsModel = require('../../../models/models/products/kindsModel.js');
+var attributesModel = require('../../../models/models/products/attributes/attributesModel.js');
+var componentsModel = require('../../../models/models/products/attributes/componentsModel.js');
+
 var errorHandler = require('../../middleware/error/errorHandler.js');
 
 var renderKinds = function(req,res,next){
@@ -34,15 +37,39 @@ var createKind = function(req,res,next){
 }
 
 var deleteKind = function(req,res,next){
-  var data = req.body;
+    var data = req.body;
 
-  kindsModel.remove(data.id,function(){
+    kindsModel.getByIdPopulated(data.id,function(kind){
+      var arrayAttributes = [];
+      var arrayComponents = [];
 
-      res.status(200).send({message:'Categoria removida exitosamente'});
-  },function(err){
-    console.log('error al borrar');
+      kind.components.forEach(function(componentElement){
+          arrayComponents.push(componentElement._id);
+            componentElement.attributes.forEach(function(attributeElement){
+                arrayAttributes.push(attributeElement._id);
+            });
+      });
+
+      attributesModel.deleteMultipleByIds(arrayAttributes,function(){
+          componentsModel.deleteMultipleByIds(arrayComponents,function(){
+
+              kindsModel.removeById(data.id,function(){
+                  res.status(200).send({message:'Categoria removida exitosamente'});
+              },function(err){
+                    errorHanlder.mongoose(err,res);
+              });
+
+          },function(err){
+              errorHandler.mongoose(err,res);
+          });
+      },function(err){
+        errorHandler.mongoose(err,res);
+      });
+
+    },function(err){
       errorHandler.mongoose(err,res);
-  });
+    });
+
 }
 
 module.exports = {

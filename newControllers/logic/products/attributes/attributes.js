@@ -9,7 +9,7 @@ var renderAttributes = function(req,res,next){
 
 
 kindsModel.getAllPopulated(function(kind){
-
+    
     res.status(200).render('admin/attributes.ejs',{kind:kind});
 
 },function(err){

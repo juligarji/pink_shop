@@ -31,6 +31,16 @@ var kindsModel = {
                 callback();
     });
   },
+  removeById : function(objectId,callback,failback){
+
+    kinds.findOneAndRemove({_id:objectId},function(err){
+                if(err){
+                    failback(err);
+                  return;
+                }
+                callback();
+    });
+  },
   updateByName : function(name,newObject,callback,failback){
 
     kinds.findOneAndUpdate({name:name},{ $set:newObject}, { new: true }, function (err,fragan) {
@@ -186,6 +196,15 @@ var kindsModel = {
           callback(kid);
         });
     },
+    getByIdPopulated : function(objId,callback,failback){
+      kinds.findOne({_id:objId}).deepPopulate('components.attributes').exec(function(err,kid){
+        if(err){
+          failback(err);
+          return;
+        }
+        callback(kid);
+      });
+    },
     getMaxDiscount : function(objId,callback,failback){
         kinds.findOne({_id:objId}).populate('attributes').exec(function(err,kin){
           var outObj = {
@@ -201,6 +220,15 @@ var kindsModel = {
 
           callback(Math.max(bufferArray));
         });
+    },
+    deleteMultipleByIds : function(arrayIds,callback,failback){// borrar multiple
+      kinds.remove({_id:{$in:arrayIds}},function(err){
+        if(err){
+          failback(err);
+          return;
+        }
+        callback();
+      });
     }
 
 }
