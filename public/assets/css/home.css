@@ -162,8 +162,9 @@ ul.side-nav a.btn{
 
 #homeProducts div.card{
     /*background-color: rgba(208,0,111,0.2);*/
-    background-color: rgb(255,237,95);
-
+    /*background-color: rgb(255,237,95);*/ /*Amarillo*/
+    background-color: rgb(229,224,218);
+    box-shadow: 1px 6px 5px rgb(50,50,50);/*Color bueno*/
     /*position: static;
     float:right;
     background-color: black;*/
@@ -302,3 +303,6 @@ body { font-family: sans-serif; }
 }
 
 .flickity-page-dots { bottom: 10px; }
+
+
+/* valores para la prueba */
