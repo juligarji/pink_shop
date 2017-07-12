@@ -29,25 +29,34 @@ var productsSchema = new Schema({
 
 productsSchema.plugin(deepPopulate,{
   whitelist:[
-    'product.kind',
-    'product.kind.attributes',
-    'product.brand',
-    'product.tax',
+    'kind',
+    'kind.components',
+    'kind.components.attributes',
+    'attributes',
+    'brand',
+    'tax',
   ],
   populate:{
 
-    'product.kind':{
-      select:['attributes','discount']
+    'kind':{
+      select:['name','components','discount']
     },
-    'product.kind.attributes':{
-      select:['discount']
+    'kind.components':{
+      select:['name','attributes']
     },
-    'product.brand':{
-      select:['discount']
+    'attributes':{
+      select:['value','discount']
     },
-    'product.tax':{
-      select:['value']
+    'kind.components.attributes':{
+      select:['value','discount']
     },
+    'brand':{
+      select:['name','discount','description']
+    },
+    'tax':{
+      select:['name','value']
+    },
+
   }
 })
 

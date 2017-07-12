@@ -1,0 +1,107 @@
+<!-- Menu -->
+  <nav class="nav-extended animated fadeIn col s12">
+    <div class="nav-wrapper">
+      <div class = "row">
+        <a href="#" class="brand-logo center"><img class = "animated tada" src = "assets/img/logo_base.png"></a>
+        <a href="#" data-activates="SideMenu" class="button-collapse"><i class="material-icons">menu</i></a>
+
+          <!-- Botones de la barra de navegacion -->
+        <ul id="nav-mobile" class="right">
+
+          <li><a class='dropdown-button' href='#' data-activates='settingsMenu'><i class="material-icons">settings</i></a></li>
+
+            <!-- Menu de configuracion de modo administrador -->
+            <ul id='settingsMenu' class='dropdown-content'>
+              <li><a href="#!">Previsualizar</a></li>
+              <li class="divider"></li>
+              <li><a id = "closeSessionBtn"><i class="material-icons">clear</i>Cerrar sesion</a></li>
+            </ul>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+
+<!-- menu lateral para moviles -->
+<ul class="side-nav" id="SideMenu">
+    <li>  <h5> Categorias</h5>
+          <div class = "divider"></div>
+    </li>
+
+    <li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Estadisticas</div>
+          <div class="collapsible-body"><p>En construccion</p></div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Productos</div>
+          <div class="collapsible-body">
+              <ul>
+                <li><a  href = "#">Perfumeria</a></li>
+                <li><a  href = "#">Maquillaje</a></li>
+                <li><a  href = "#">Cuidado Piel</a></li>
+                <li><a  href = "#">Ropa</a></li>
+                <li><a  href = "#">Accesorios</a></li>
+
+              </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Clientes</div>
+          <div class="collapsible-body">
+              <ul>
+                <li><a  href = "#">Lista datos</a></li>
+                <li><a  href = "#">Maximos Compradores</a></li>
+                <li><a  href = "#">Orden Ventas</a></li>
+
+              </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Ventas</div>
+          <div class="collapsible-body"><p>En construccion</p></div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Preferencias</div>
+          <div class="collapsible-body">
+              <ul>
+                <li><a  href = "#">Pagina</a></li>
+              </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+        <div class = "section">
+          <div class = "center">
+            <a class="btn-floating btn-large waves-effect waves-light red" onclick = "$('.button-collapse').sideNav('hide');">
+              <div class = "center">
+                <i class="material-icons">close</i>
+              </div>
+            </a>
+          </div>
+        </div>
+    </li>
+</ul>

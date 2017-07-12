@@ -1,7 +1,8 @@
 
-var GET_FRAGANCES = '/getfragances';
-var GET_SINGLE_FRAGANCE = '/getfragances';
-var GET_PRICE = '/getfragancesprice';
+var GET_FRAGANCES = '/getproducts';
+var GET_SINGLE_FRAGANCE = '/getproduct';
+var IN_STOCK = '/productinstock';
+var GET_PRICE = '/getproductprice';
 
 $(window).ready(function(){
 
@@ -47,16 +48,12 @@ $(window).ready(function(){
   $('.materialboxed').materialbox();
   /* Carrusel */
 
-
-
-
 /* Estado inicial */
-  CartGraphics.paintMarker(Cart.getLength(),'#cartAmmount');
 
 });
 
-function errorCall(message){
-  console.log(message);
+function failHandler(message){
+  Dialogs.failMessage(message);
 }
 
 function initOptions(data){
@@ -66,19 +63,18 @@ function initOptions(data){
     })
 }
 
-function getPrice(name){
-  var data = {
+function getPrice(id){
+  var newData = {
     ammount: $("input[name='ammount']").val(),
-    name:name
+    idProd : id
   }
-
-  DB.currentCall(data,GET_PRICE,true,function(data){
-    console.log('aqui');
-    console.log(data);
-    CartGraphics.paintMarker(data,'#total');
-  },errorCall);
+  if(newData.ammount>0){
+    DB.currentCall(newData,GET_PRICE,function(data){
+      CartGraphics.paintMarker(data.data,'#total');
+    },failHandler);
+  }
 }
-
+/*
 function addElementToCart(name){
 
   var ammount = $("input[name='ammount']").val();
@@ -87,6 +83,34 @@ function addElementToCart(name){
   Dialogs.cartMessage('#');
   //console.log(Cart.getCart(),null,'\t');
 }
+*/
+function addElementToCart(id){
+  var newData = {
+    ammount: $("input[name='ammount']").val(),
+    idProd : id
+  }
+
+  if(newData.ammount>0){
+    DB.currentCall(newData,IN_STOCK,function(data){
+      if(data.data){
+        Cart.addToCart(newData.idProd,newData.ammount,function(){
+
+          Cart.getLength(function(leng){
+
+              CartGraphics.paintMarker(leng,'#cartAmmount');
+              Dialogs.sucessMessage(data.message);
+          });
+
+        })
+
+      }else{
+          failHandler(data.message);
+      }
+    },failHandler);
+  }
+}
+
+
 
 /* El carrusel */
 var $carousel = $('.main-carousel').flickity({

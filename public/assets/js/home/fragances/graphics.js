@@ -13,9 +13,9 @@ var Graphics = {
     /* <img class = "responsive-img col s12" src="${PUBLIC_ADDRESS} ${mainPhoto}">   */
     var element = `
 
-      <a href = "${VIEW_DETAILS}${data.name}" class = "product">
+      <a href = "${VIEW_DETAILS}${data._id}" class = "product">
         <div class = "card center col l4 m4 s6 animated fadeInDown">
-          <div class="card-content" style = "background-image:url('assets/img/page/test_product.jpg');">
+          <div class="card-content" style = "background-image:url('../${PUBLIC_ADDRESS}${data.photos[0]}')">
             <div class = "card-info center">
               <span class="card-title">${data.name}</span>
               <p>Mayor: <span>28000</span> </p>
@@ -27,7 +27,7 @@ var Graphics = {
     `;
 
     var newComp = $(element);
-    
+
       container.append(newComp);
 
         /*$('#square').css('width','100px');

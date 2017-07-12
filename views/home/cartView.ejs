@@ -56,7 +56,10 @@
         </div>
       </div>
     </div>
+      <div id="productsContainer" class="row">
 
+      </div>
+<!--
     <div class = "row cartElement">
       <div class = "col l12">
         <div class = "col l2 center" >
@@ -91,8 +94,8 @@
         </div>
       </div>
     </div>
-
-
+-->
+<!--
     <div class = "row cartElement">
       <div class = "col l12">
         <div class = "col l2 center" >
@@ -127,6 +130,8 @@
         </div>
       </div>
     </div>
+-->
+
 
     <!-- Finalizacion de la compra -->
   <div class="row" style = "background-color:rgb(229,224,218);">
@@ -178,7 +183,7 @@
                 Subtotal
             </div>
             <div class="col l6">
-                $ 50.000
+                <span id = "subtotalCont">$ 50.000</span>
             </div>
           </div>
 
@@ -187,7 +192,7 @@
                 Precio Envio
             </div>
             <div class="col l6">
-                $ 2.800
+                <span id = "shipmentCont">$ 2.800</span>
             </div>
           </div>
 
@@ -196,7 +201,7 @@
                 Total
             </div>
             <div class="col l6">
-                $ 52.800
+              <span id = "totalCont">$ 52.800</span>
             </div>
           </div>
 
@@ -232,7 +237,7 @@
 
 
       <%- include('../partials/foot/footLinks') %>
-
+    <script src="../assets/js/home/cartView/graphics.js"></script>
     <script src="../assets/js/home/cartView/cartView.js"></script>
 
 </body>

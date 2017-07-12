@@ -6,6 +6,7 @@ var brandsSchema = new Schema({
 
     name:{type:String,required:true,unique:true},
     discount:{type:Number,default:0},
+    description:{type:String,default:'Nueva Marca'},
 
     created_at:{type:Date,default:Date.now},
     modified_at:{type:Date,required:true}

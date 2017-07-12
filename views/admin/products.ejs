@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <%- include('../partials/admin/head/headConfig') %>
+
+    <link rel = "stylesheet" href = "../assets/css/adminIndex.css">
+
+    <!-- Custom -->
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+      <%- include('../partials/admin/head/header') %>
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  <main style = "clear:both">
+      <div class = "row">
+        <!-- Menu acordeon de navegacion -->
+        <%- include('../partials/admin/menu/sideMenu') %>
+
+        <div class = " col l10 s12" style = "z-index:-100">
+          <div class = "row">
+            <!-- Creacion de nuevos perfumes -->
+
+                  <h5 class = "center"> Agregar Nuevo Perfume </h5>
+                  <ul class="tabs tabs-fixed-width">
+                    <li id = "createTab" class="tab col s3"><a class = "active" href="#createContainer">CREAR</a></li>
+                    <li id = "editTab" class="tab col s3 disabled"><a href="#editContainer">EDITAR</a></li>
+
+                  </ul>
+                    <div id = "createContainer" class = "section">
+
+                    <div class = "col l12 m12 s12 z-depth-2">
+                      <form id = "productsForm" class = "col l12 s12" method="post" onsubmit="uploadProduct(event,true)">
+                        <div class = "row">
+
+
+
+                                <div class="input-field col l3 m4 s12">
+                                  <input name = "name" placeholder="Nombre" id="first_name" type="text" class="validate">
+                                </div>
+                                <div class="input-field col l3 m4 s12">
+                                  <input name = "reference" placeholder="Referencia(Unico)" id="first_name" type="text" class="validate">
+                                </div>
+                                <div class="input-field col l3 m4 s12">
+                                  <select name = "brand">
+                                    <option value="" disabled selected>Marca</option>
+                                    <% brands.forEach(function(brandsElement){ %>
+                                      <option value="<%= brandsElement._id %>"> <%=brandsElement.name %></option>
+                                    <% }); %>
+                                  </select>
+                                </div>
+
+                                <div class="input-field col l3 m4 s12">
+                                  <select name = "tax">
+                                    <option value="" disabled selected>Impuesto</option>
+                                    <% taxes.forEach(function(taxesElement){ %>
+                                      <option value="<%= taxesElement._id %>"> <%=taxesElement.name %></option>
+                                    <% }); %>
+
+                                  </select>
+                                </div>
+
+
+                              <div class="input-field col l2 m4 s12">
+                                <input name = "realPrice" placeholder="Precio Real(OP)" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l2 m4 s12">
+                                <input name = "price" placeholder="Precio publico" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "priceWholesale" placeholder="Precio mayor" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "discountGeneral" placeholder="Descuento General" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "discountWholesale" placeholder="Descuento Mayor" id="first_name" type="number" class="validate">
+                              </div>
+
+
+                              <div class="input-field col l2 m3 s6">
+                                <input name = "minForWholesale" placeholder="Min mayor" id="first_name" type="number" class="validate">
+                              </div>
+
+                              <div class="input-field col l10 m12 s12">
+                                  <input name = "description" placeholder="Descripcion" id="first_name" type="text" class="validate">
+                              </div>
+
+                              <div class = " col l2 m2 s5 z-depth-1 pink lighten-1" >
+                                  <input name = "ammount" placeholder="Cantidad" id="ammount" type="number" class="validate">
+                              </div>
+
+                              <div class = "col l12 m10 s7">
+
+                                  <div class="col l7">
+                                    <select name = "kind" onchange="getAttributes('#attributesCreateContainer','#productsForm')">
+                                      <option value="" disabled selected>Categoria</option>
+                                      <% kinds.forEach(function(kindsElement){ %>
+                                        <option value="<%= kindsElement._id %>"> <%=kindsElement.name %></option>
+                                      <% }); %>
+
+                                    </select>
+                                  </div>
+                                  <div class="col l5">
+                                    <a  onclick = "loadLocalModalPhotos()" class="btn waves-effect amber lighten-1 waves-light col l12 photoButton" name="action">
+                                        <i class="material-icons center">view_carousel</i>
+                                    </a>
+                                  </div>
+
+
+                                <!--  <button onclick="createFragance()" class="btn waves-effect green lighten-1 waves-light col l9 m9 s12" name="action">
+                                      Guardar
+                                      <i class="material-icons right">send</i>
+                                  </button> -->
+                                    <div "input-field col l5 m9 s12">
+
+
+                                    </div>
+
+
+                              </div>
+
+
+                        </div>
+                        <div class="row">
+                          <ul class="collapsible" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i>Atributos</div>
+    <div class="collapsible-body">
+      <div  class="row">
+          <div id = "attributesCreateContainer">
+
+          </div>
+        <!-- <div class="col l6 valign-wrapper z-depth-1 attributePill">
+              <div class="col l6">
+                  hola
+              </div>
+              <div class="col l6">
+                <div class="input-field">
+                  <select>
+                     <option value="" disabled selected>Choose your option</option>
+                     <option value="1">Option 1</option>
+                     <option value="2">Option 2</option>
+                     <option value="3">Option 3</option>
+                  </select>
+                </div>
+              </div>
+          </div>-->
+      </div>
+
+    </div>
+  </li>
+</ul>
+                        </div>
+                        <div class="row">
+                            <div class="col l12">
+                                <input type="submit" name="" value = "salvar" class = "btn">
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id = "editContainer" class = "section">
+
+                <div class = "col l12 m12 s12 z-depth-2">
+                  <form id = "editProductsForm" class = "col l12 s12" method="post" onsubmit="uploadProduct(event,false)">
+                    <div class = "row">
+
+
+
+                            <div class="input-field col l3 m4 s12">
+                              <input name = "name" placeholder="Nombre" id="first_name" type="text" class="validate">
+                            </div>
+                            <div class="input-field col l3 m4 s12">
+                              <input name = "reference" placeholder="Referencia(Unico)" id="first_name" type="text" class="validate">
+                            </div>
+                            <div class="input-field col l3 m4 s12">
+                              <select name = "brand" class = "browser-default">
+                                <option value="" disabled>Marca</option>
+                                <% brands.forEach(function(brandsElement){ %>
+                                  <option value="<%= brandsElement._id %>"> <%=brandsElement.name %></option>
+                                <% }); %>
+                              </select>
+                            </div>
+
+                            <div class="input-field col l3 m4 s12">
+                              <select name = "tax" class = "browser-default">
+                                <option value="" disabled>Impuesto</option>
+                                <% taxes.forEach(function(taxesElement){ %>
+                                  <option value="<%= taxesElement._id %>"> <%=taxesElement.name %></option>
+                                <% }); %>
+
+                              </select>
+                            </div>
+
+
+                          <div class="input-field col l2 m4 s12">
+                            <input name = "realPrice" placeholder="Precio Real(OP)" id="first_name" type="number" class="validate">
+                          </div>
+
+                          <div class="input-field col l2 m4 s12">
+                            <input name = "price" placeholder="Precio publico" id="first_name" type="number" class="validate">
+                          </div>
+
+                          <div class="input-field col l2 m3 s6">
+                            <input name = "priceWholesale" placeholder="Precio mayor" id="first_name" type="number" class="validate">
+                          </div>
+
+                          <div class="input-field col l2 m3 s6">
+                            <input name = "discountGeneral" placeholder="Descuento General" id="first_name" type="number" class="validate">
+                          </div>
+
+                          <div class="input-field col l2 m3 s6">
+                            <input name = "discountWholesale" placeholder="Descuento Mayor" id="first_name" type="number" class="validate">
+                          </div>
+
+
+                          <div class="input-field col l2 m3 s6">
+                            <input name = "minForWholesale" placeholder="Min mayor" id="first_name" type="number" class="validate">
+                          </div>
+
+                          <div class="input-field col l10 m12 s12">
+                              <input name = "description" placeholder="Descripcion" id="first_name" type="text" class="validate">
+                          </div>
+
+                          <div class = " col l2 m2 s5 z-depth-1 pink lighten-1" >
+                              <input name = "ammount" placeholder="Cantidad" id="ammount" type="number" class="validate">
+                          </div>
+
+                          <div class = "col l12 m10 s7">
+
+                              <div class="col l7">
+                                <select name = "kind" onchange="getAttributes('#attributesEditContainer','#editProductsForm')" class = "browser-default">
+                                  <option value="" disabled>Categoria</option>
+                                  <% kinds.forEach(function(kindsElement){ %>
+                                    <option value="<%= kindsElement._id %>"> <%=kindsElement.name %></option>
+                                  <% }); %>
+
+                                </select>
+                              </div>
+                              <div class="col l5">
+                                <a  onclick = "loadEditModalPhotos()" class="btn waves-effect amber lighten-1 waves-light col l12" name="action">
+                                    <i class="material-icons center">view_carousel</i>
+                                </a>
+                              </div>
+
+                            <!--  <button onclick="createFragance()" class="btn waves-effect green lighten-1 waves-light col l9 m9 s12" name="action">
+                                  Guardar
+                                  <i class="material-icons right">send</i>
+                              </button> -->
+                                <div "input-field col l5 m9 s12">
+
+
+                                </div>
+
+
+                          </div>
+
+
+                    </div>
+                    <div class="row">
+                      <ul class="collapsible" data-collapsible="accordion">
+<li>
+<div class="collapsible-header"><i class="material-icons">filter_drama</i>Atributos</div>
+<div class="collapsible-body">
+  <div  class="row">
+      <div id = "attributesEditContainer">
+
+      </div>
+    <!-- <div class="col l6 valign-wrapper z-depth-1 attributePill">
+          <div class="col l6">
+              hola
+          </div>
+          <div class="col l6">
+            <div class="input-field">
+              <select>
+                 <option value="" disabled selected>Choose your option</option>
+                 <option value="1">Option 1</option>
+                 <option value="2">Option 2</option>
+                 <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
+      </div>-->
+  </div>
+
+</div>
+</li>
+</ul>
+                    </div>
+                    <div class="row">
+                        <div class="col l12">
+                            <input type="submit" name="" value = "salvar" class = "btn">
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col l12">
+                  <form id="searchForm" class="" onsubmit="makeProductSearch(event)" method="post">
+                    <div class="col l3">
+                      <div class="nav-wrapper">
+
+                          <div class="input-field">
+                            <input name = "search" id="search" type="search">
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                          </div>
+
+                      </div>
+                    </div>
+                    <div class="col l1">
+                      <div class="">
+                        <p>
+                          <input name="typeSearch" type="radio" id="test1" value="name" checked/>
+                          <label for="test1">Nombre</label>
+                        </p>
+                        <p>
+                          <input name="typeSearch" type="radio" id="test2" value="reference"/>
+                          <label for="test2">Referencia</label>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col l2 red">
+                      <div class="">
+                        <select name = "kind"  onchange = "getAttributesToSearch('#searchFormAttributes','#searchForm')">
+                          <option value="-1" selected>Todos</option>
+                          <% kinds.forEach(function(kindsElement){ %>
+                            <option value="<%= kindsElement._id %>"> <%=kindsElement.name %></option>
+                          <% }); %>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col l2 red">
+                      <div class="">
+                        <select name = "orderType">
+                          <option value="created_at" selected>Fecha</option>
+                          <option value="ammount">Cantidad</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col l1">
+                      <div class="">
+                        <p>
+                          <input name="orderSort" type="radio" id="test3" value="higher"/>
+                          <label for="test3">Mayor</label>
+                        </p>
+                        <p>
+                          <input name="orderSort" type="radio" id="test4" value="lower" checked/>
+                          <label for="test4">Menor</label>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col l1">
+                        <input type="date" class="datepicker" name="datePicker">
+                    </div>
+                    <div class="col l2">
+                        <input type = "submit" class = "btn" value = "buscar">
+                        <a onclick = "alert('boton')" class = "btn">Resetear</a>
+                    </div>
+                    <div class="col l2">
+                      <select name = "brand" class = "browser-default">
+                        <option value="-1" selected>Todas</option>
+                        <% brands.forEach(function(brandsElement){ %>
+                          <option value="<%= brandsElement._id %>"> <%=brandsElement.name %></option>
+                        <% }); %>
+                      </select>
+                    </div>
+                    <div class="col l2">
+                        <input type = "number" name = 'limit' value = "0">
+                    </div>
+
+                    <div class="col l8">
+                        <div id = "searchFormAttributes">
+
+
+
+                        </div>
+                    </div>
+                  </form>
+            </div>
+                <div class = "col l12 m12 s12">
+                  <div class = "divider"></div>
+
+                    <table id = "fragancesTable" class = "responsive-table bordered striped col l12 m12 s12" style = "overflow:scroll">
+                      <colgroup>
+                        <col span="1">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Referencia</th>
+                          <th>Marca</th>
+                          <th>Precio</th>
+                          <th>Descuento</th>
+                          <th>Cantidad</th>
+                          <th>Descripcion</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+
+                      <tbody style = "overflow:scroll">
+
+                        <% products.forEach(function(productsElement){ %>
+                          <tr value = "<%=productsElement._id %>">
+                                <td><span class="nameData"><%=productsElement.name %></span></td>
+                                <td><span class="referenceData"><%=productsElement.reference %></span></td>
+                                <td><span class="brandData"><%=productsElement.brand.name %></span></td>
+                                <td>
+                                  <div class="row">
+                                    <div class="col l12">
+                                      <span>Al Detal:<span class="priceData"> <%=productsElement.price %></span> </span>                                    </div>
+                                    <div class="col l12">
+                                        <span>Mayor: <span class="priceWholesaleData"><%=productsElement.priceWholesale %></span> </span>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="row">
+                                    <div class="col l12">
+                                      <span>Detal: <span class="discountGeneralData"><%=productsElement.discountGeneral%>%</span> </span>
+                                    </div>
+                                    <div class="col l12">
+                                      <span>Mayor: <span class="discountWholesaleData"><%=productsElement.discountWholesale%>%</span> </span>
+                                    </div>
+                                    <div class="col l12">
+                                      <span>Minimo: <span class="minForWholesaleData"><%=productsElement.minForWholesale%></span> (Und) </span>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td><span class="ammountData"><%=productsElement.ammount %></span></td>
+                                <td> <span class="descriptionData"><%=productsElement.description %></span></td>
+                                <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditProduct('<%=productsElement._id %>')">
+                                      <i class="material-icons">edit</i>
+                                </a>
+
+                                    <a onclick = "deleteProduct('<%=productsElement._id %>')" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
+                                </td>
+                              </tr>
+                        <% }); %>
+
+
+                    <!--    <tr> EJEMPLO DE COMPONENTE DE TABLA
+                          <td>Menjar</td>
+                          <td>Primavera</td>
+                          <td>Victoria Secret</td>
+                          <td>0%</td>
+                          <td>15</td>
+                          <td>12000</td>
+                          <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal(-1)">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a class="btn-floating btn-small waves-effect waves-light amber" onclick = "loadPhotoModal(-1)">
+                                    <i class="material-icons">view_carousel</i>
+                              </a>
+
+                              <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
+                          </td>
+                        </tr> -->
+
+
+                      </tbody>
+                    </table>
+
+                </div>
+
+      </div>
+  </div>
+  </div>
+
+  <!-- Modal para la edicion de las fotos de los productos -->
+  <%- include('../partials/admin/modal/photoModal') %>
+
+  <!-- Modal para la edicion de los productos -->
+  <%- include('../partials/admin/modal/editModal') %>
+  </main>
+
+  <footer class = "col l12 m12 s12">
+    <%- include('../partials/admin/foot/footer') %>
+    </footer>
+
+<!-- jQuery -->
+    <%- include('../partials/admin/foot/footLinks') %>
+
+    <script src="//cdn.jsdelivr.net/pouchdb/6.2.0/pouchdb.min.js"></script>
+    <script src="../assets/js/admin/memory.js"></script>
+    <script src="../assets/js/admin/products/graphics.js"></script>
+
+    <script src="../assets/js/admin/products/products.js"></script>
+</body>
+</html>

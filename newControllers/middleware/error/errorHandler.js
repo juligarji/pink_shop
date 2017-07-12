@@ -1,11 +1,20 @@
 
 var errorHandler ={
 
-  handle : function(err){
+  handle : function(err,res){
       // Provisional manejo
 
-      if(err.code ==11000){
-        console.log('llave duplicada');
+      switch(err.code){
+        case 404:
+          //res.status(500).send(err.message);
+          console.log(err);
+          break;
+
+         default:
+          //res.status(500).send('Error en el servidor');
+          console.log('error del servidor');
+          break;
+
       }
       return;
   },

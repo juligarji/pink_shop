@@ -2,6 +2,7 @@
 
 var ScrollIssues = {
   FLAG : true,
+  ACTIVE : true,
   CURRENT_WIDTH : $(document).width(),
 
   scrollBig : function(ammount,address,graphicsCall){
@@ -15,6 +16,10 @@ var ScrollIssues = {
           ScrollIssues.FLAG=false;
           DB.getMoreElements(ammount,address,function(arrayData){
 
+                if(arrayData.data.length==0){
+                  ScrollIssues.exitEvent(window);
+                  return;
+                }
                 graphicsCall(arrayData.data,false);
                 ScrollIssues.FLAG = true;
           });
@@ -30,6 +35,10 @@ var ScrollIssues = {
 
     if (Math.floor($scrollWidth - $width) == $scrollLeft){
       DB.getMoreElements(ammount,address,function(arrayData){
+            if(arrayData.data.length==0){
+              ScrollIssues.exitEvent();
+              return;
+            }
             graphicsCall(arrayData.data,false);
       });
     }
@@ -52,6 +61,10 @@ var ScrollIssues = {
     DB.getMoreElements(ammount,address,function(arrayData){
           //Graphics.fillTable(arrayData);
           //console.log(arrayData,null,'\t');
+          if(arrayData.data.length==0){
+            ScrollIssues.exitEvent();
+            return;
+          }
           graphicsCall(arrayData.data,newData);
     });
   },
@@ -94,8 +107,8 @@ var ScrollIssues = {
           }
   },
   initScrollClient : function(tableContainer,address,graphicsCall){
-    $(window).unbind('scroll');
-    $(tableContainer).unbind('scroll');
+    /*$(window).unbind('scroll');
+    $(tableContainer).unbind('scroll');*/
 
 
     if($(document).width()>992){
@@ -104,7 +117,9 @@ var ScrollIssues = {
       ScrollIssues.scrollCall(6,address,true,graphicsCall);
 
       $(window).on('scroll',function(){
-        ScrollIssues.scrollBig(6,address,graphicsCall);
+        if(ScrollIssues.ACTIVE){
+          ScrollIssues.scrollBig(6,address,graphicsCall);
+        }
       });
 
     }else{
@@ -115,20 +130,28 @@ var ScrollIssues = {
             ScrollIssues.scrollCall(6,address,true,graphicsCall);
 
             $(tableContainer).on('scroll',function(){
-              ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
+              if(ScrollIssues.ACTIVE){
+                  ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
+              }
             });
 
           }else{
                 // Pantalla pequeña celular
-                console.log('Celular pantalla');
 
                 ScrollIssues.scrollCall(6,address,true,graphicsCall);
 
                 $(tableContainer).on('scroll',function(){
-                  ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
+                  if(ScrollIssues.ACTIVE){
+                    ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
+                  }
                 });
               }
           }
+  },
+  exitEvent(container){
+    ScrollIssues.ACTIVE = false;
+    //$(container).unbind('scroll');
   }
+
 
 }

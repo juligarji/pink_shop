@@ -61,10 +61,7 @@ $(window).ready(function(){
   ];
   Materialize.scrollFire(options);
 
-  CartGraphics.paintMarker(Cart.getLength(),'#cartAmmount');
-
-
-
+  
 
   /* Inicializar componentes de parte grafica */
 

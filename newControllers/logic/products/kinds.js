@@ -15,7 +15,8 @@ var renderKinds = function(req,res,next){
 
 var createKind = function(req,res,next){
   var data = req.body;
-
+  data.name = data.name.toLowerCase();
+  console.log('aqui XXXXXXXXXXXXXXXXX');
   kindsModel.create(data,function(newData){
       res.status(200).send({message:'Categoria creada exitosamente',data:newData.name});
   });

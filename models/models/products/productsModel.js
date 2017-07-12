@@ -43,6 +43,7 @@ var productsModel = {
     });
 
   },
+
   delete : function(callback,failback){
       products.remove(function(err){
           if(err){
@@ -73,7 +74,7 @@ var productsModel = {
       callback(prod);
     });
   },
-  getPartial : function(recent,ammount,index,callback,failback){
+  getPartial : function(recent,ammount,index,kind,callback,failback){
 
         var skipVal = index*ammount;
         var limitVal = ammount;
@@ -84,8 +85,7 @@ var productsModel = {
         }else{
             order = 'asc';
         }
-
-        products.find({},'',
+        products.find({kind:kind},'',
         {// parametros de la busqueda
           skip:skipVal,
           limit:limitVal,
@@ -127,7 +127,6 @@ var productsModel = {
     });
   },
 
-
     getById : function(objId,callback,failback){
       products.findOne({_id:objId},function(err,prod){
           if(err){
@@ -139,8 +138,6 @@ var productsModel = {
     },
 
 
-
-
     /* funciones propias */
 
     getTaxById : function(objId,callback,failback){
@@ -150,6 +147,16 @@ var productsModel = {
           return;
         }
         callback(prod.tax.value);
+      });
+    },
+    removeById : function(objectId,callback,failback){
+
+      products.findOneAndRemove({_id:objectId},function(err){
+                  if(err){
+                    failback(err);
+                    return;
+                  }
+                  callback();
       });
     },
 
@@ -171,7 +178,7 @@ var productsModel = {
         return false;
     },
     populateAllDataById : function(dataId,callback,failback){
-      products.findOne({_id:dataId}).deepPopulate('product.brand product.kind product.kind.attributes product.tax').exec(function(err,prod){
+      products.findOne({_id:dataId}).deepPopulate('kind kind.components kind.components.attributes attributes brand tax').exec(function(err,prod){
         if(err){
           failback(err);
           return;
@@ -180,8 +187,110 @@ var productsModel = {
           callback(prod);
 
           });
+      },
+      populateAllDataByMultipleId : function(arrayId,callback,failback){
+        products.find({_id:{$in:arrayId}}).deepPopulate('kind kind.components kind.components.attributes attributes brand tax').exec(function(err,prod){
+          if(err){
+            failback(err);
+            return;
+          }
+            console.log('populate exitoso');
+            callback(prod);
 
-      }
+            });
+        },
+      getAllPopulated : function(callback,failback){
+        products.find({}).deepPopulate('kind kind.components kind.components.attributes attributes brand tax').exec(function(err,prod){
+          if(err){
+            failback(err);
+            return;
+          }
+            console.log('populate exitoso');
+            callback(prod);
+
+            });
+      },
+      updatePicturesById : function(objId,newPhotos,callback,failback){
+
+        products.findOneAndUpdate({_id:objId},{ $set:{photos:newPhotos}}, { new: false }, function (err,prod) {
+          if(err){
+            failback(err);
+            return;
+          }
+            callback(prod);
+        });
+
+      },
+      updateAllById : function(idObj,newObject,callback,failback){
+
+        products.findOneAndUpdate({_id:idObj},{ $set:newObject}, { new: true }, function (err,prod) {
+          if(err){
+            failback(err);
+            return;
+          }
+            callback(prod);
+        });
+
+      },
+      getQuerySearch : function(data,callback,failback){
+
+            var query = {};
+            var options= {
+              sort:{},
+            };
+            if(data.limit>0){
+                options.limit=data.limit;
+            }
+
+            if(data.search!=''){ // tipo de busqueda
+              if(!data.exactTypeSearch){
+                query[data.typeSearch] = {
+                    $regex : data.search,
+                    $options:'i'
+                };
+              }else{
+                    query[data.typeSearch] = data.search;
+              }
+            }
+
+            if(data.kind!=-1){ // el tipo es importante
+              query.kind = data.kind;
+              var attributesArray = [];
+              data.attributes.forEach(function(attr){
+                if(attr!=-1){
+                  attributesArray.push(attr);
+                }
+              });
+              if(attributesArray.length>0){// si hay atributos
+                query.attributes = {$in : attributesArray}
+              }
+            }
+            if(data.brand!=-1){
+              query.brand = data.brand;
+            }
+
+            if(data.datePicker!=''&&data.datePicker!=undefined){// se definio una fecha
+              query.created_at = {
+                $gte:data.lowerDate,
+                $lt:data.upperDate
+              }
+            }
+
+            if(data.typeSort=='lower'){
+              options.sort[data.orderType]=1;
+            }else{
+                options.sort[data.orderType]=-1;
+            }
+
+
+            products.find(query,'',options,function(err,prod){
+              if(err){
+                failback(err);
+                return;
+              }
+              callback(prod);
+            });
+      },
 }
 
 

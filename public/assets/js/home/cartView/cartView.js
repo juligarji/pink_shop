@@ -2,6 +2,7 @@
 var GET_FRAGANCES = '/getfragances';
 var GET_SINGLE_FRAGANCE = '/getfragances';
 var GET_PRICE = '/getfragancesprice';
+var TOTALIZATE_CART = '/totalizatecart';
 
 $(window).ready(function(){
 
@@ -51,20 +52,53 @@ $(window).ready(function(){
 
 
 /* Estado inicial */
-  CartGraphics.paintMarker(Cart.getLength(),'#cartAmmount');
 
 });
 
-function errorCall(message){
-  console.log(message);
+function failHandler(message){
+  Dialogs.failMessage(message);
 }
 
-function initOptions(data){
 
-    $("input[name='ammount']").keyPress(function(){
-      console.log('boton');
-    })
+function totalizate(){
+
+  /*
+    data {
+      products = Array con producto - cantidad
+      meta =  { objeto con datos de la compra
+          promotionalCode; Codigo promocional, de una regla de descuento
+          shipment ; (boolean) si incluye precio de envio, se calcula con datos de usuario
+    }
+  }
+  */
+
+    Cart.getCart(function(car){
+      var newData = {
+        products : car,
+        meta : {
+            promotionalCode : null,
+            shipment : false
+        }
+      }
+
+      DB.currentCall(newData,TOTALIZATE_CART,function(data){
+
+        data.data.products.forEach(function(element){
+            if(element.state=='empty'){
+              Cart.deleteFromCart(element._id,function(){
+
+              });
+            }else{
+                Graphics.addElementToContainer('#productsContainer',element);
+                Graphics.paintTotals(data.data.meta);
+            }
+        });
+        console.log(data);
+      },failHandler);
+    });
 }
+
+
 
 function getPrice(name){
   var data = {
@@ -108,3 +142,6 @@ $carousel.on( 'scroll.flickity', function() {
     img.style[ transformProp ] = 'translateX(' + x  + 'px)';
   });
 });
+
+
+totalizate();

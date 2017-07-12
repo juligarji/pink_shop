@@ -19,13 +19,12 @@ var helperPrice = {
         discountGeneral:info[0].product.discountGeneral
 
       }*/
-      var discAttr = Math.max(values.attributes);
-
+      var discAttr = Math.max.apply(null,values.attributes);
 
         tax = ((100 + values.tax)/100);
 
 
-        discount =  Math.max(values.kind,values.brand,values.discountGeneral,parseFloat(discAttr));
+        discount =  Math.max(values.kind,values.brand,values.discountGeneral,discAttr);
 
         discount = ((100 - discount)/100);
 
@@ -39,7 +38,37 @@ var helperPrice = {
 
               return priceByAmmount;
     },
+    calTotalPrice : function(arrayData,meta){
+      /*data {
+        products = Array con producto - cantidad
+        meta =  { objeto con datos de la compra
+            promotionalCode; Codigo promocional, de una regla de descuento
+            shipment ; (boolean) si incluye precio de envio, se calcula con datos de usuario
 
+      }
+    }*/
+
+
+    // Colocar reglas de codigo promocional y envio
+    // calculo provisional
+    var outTotal;
+    var price = 0,ammount=0,shipmentPrice=0;
+    arrayData.forEach(function(element){
+      if(element.state!='empty'){
+        price = price + element.price;
+        ammount = price + element.ammount;
+      }
+    });
+
+      outTotal = {
+        subTotalPrice : price,
+        totalPrice : price + shipmentPrice,// provisional
+        totalAmmount : ammount,
+        discount : 0 // proviosional
+      }
+
+      return outTotal;
+    },
   sortDataSale : function(saleData){
       var info = saleData;
 
@@ -69,13 +98,19 @@ var helperPrice = {
       return outObj;
   },
   sortDataPrice : function(productData,ammount){
-    var info = saleData;
+    var info = productData;
 
     var attributes = [];
 
-    for(var i=0;i<info.kind.attributes.length;i++){
-      attributes.push(parseFloat(info.kind.attributes[i].discount));
-    }
+    info.attributes.forEach(function(attr){
+
+          attributes.push(attr.discount);
+    });
+
+    /*for(var i=0;i<info.attributes.length;i++){
+      attributes.push(parseFloat(info.attributes[i].discount));
+    }*/
+
     if(attributes==[]){
       attributes.push(0);
     }
@@ -93,6 +128,37 @@ var helperPrice = {
       discountWholesale:info.discountWholesale,
       discountGeneral:info.discountGeneral
 
+    }
+    return outObj;
+  },
+  sortDataTotalize : function(productData,ammount){
+
+    var state;
+    var realAmmount;
+    if(productData.ammount == 0){
+        state = "empty";
+    };
+    if(productData.ammount < ammount){
+      state = "missing";
+      realAmmount = ProductData.ammount;
+    };
+    if(productData.ammount >= ammount){
+      state = "stock";
+      realAmmount = ammount;
+    }
+
+    var outObj;
+    if(state!="empty"){
+        var sortData = helperPrice.sortDataPrice(productData,realAmmount);
+          outObj = {
+          sortData : sortData,
+          state : state,
+          ammount : realAmmount
+        }
+    }else{
+        outObj = {
+        state : state
+      }
     }
     return outObj;
   }

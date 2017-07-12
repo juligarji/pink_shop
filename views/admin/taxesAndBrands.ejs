@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <%- include('../partials/admin/head/headConfig') %>
+
+   <link rel = "stylesheet" href = "../assets/css/adminIndex.css">
+
+    <!-- Custom -->
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+    <%- include('../partials/admin/head/header') %>
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  <main style = "clear:both">
+
+      <div class = "row">
+        <!-- Menu acordeon de navegacion -->
+        <%- include('../partials/admin/menu/sideMenu') %>
+            <div class="row">
+              <div class = " col l10 s12 m12 " style = "z-index:-100">
+
+                <div class="col l7">
+
+                  <div class="row">
+                    <div class="col l4 yellow">
+                        Nombre
+                    </div>
+                    <div class="col l2 orange">
+                        Descuento
+                    </div>
+                    <div class="col l6 red">
+                          Descripcion
+                    </div>
+                  </div>
+                  <div class = "row valign-wrapper">
+                      <form id="formBrands" onsubmit="createBrand(event)" method="post">
+                        <div class="input-field col l4">
+                          <input name="name" placeholder="nombre" type="text" class="validate">
+                        </div>
+
+                        <div class="input-field col l2">
+                          <input name="discount" placeholder="dis"  type="number" class="validate">
+
+                        </div>
+
+                        <div class="input-field col l6">
+                          <textarea name="description" class="materialize-textarea"></textarea>
+                        </div>
+                        <div class="input-field col l12">
+                          <button class="waves-effect waves-light btn">Subir</buttons>
+                        </div>
+                      </form>
+
+                    </div>
+
+
+
+
+
+
+
+                      <table class = "bordered">
+                        <colgroup>
+                          <col span="1" width = "34%">
+                          <col span="1" width = "16%">
+                          <col span="1" width = "40%">
+                          <col span="1" width = "10%">
+
+                        </colgroup>
+                          <thead>
+                            <th>Nombre</th>
+                            <th>Descuento</th>
+                            <th>descripcion</th>
+                            <th></th>
+                          </thead>
+                          <tbody id = "brandsContainer">
+                            <% brands.forEach(function(brandElement){%>
+                            <tr value = "<%= brandElement._id%>">
+                              <td>
+                                <p><%= brandElement.name%> </p>
+                              </td>
+                              <td>
+                                <p><%= brandElement.discount%></p>
+                              </td>
+                              <td>
+                                <p>
+                                  <%= brandElement.description%>
+                                </p>
+                              </td>
+                              <td>
+                                <a onclick="editBrand('<%= brandElement._id%>')" width = "50%" style = "font-size:15px" class="waves-effect waves-teal btn-flat blue"><i class="material-icons">&#xE3C9;</i></a>
+                                  <a onclick="deleteBrand('<%= brandElement._id%>')" width = "50%" style = "font-size:15px" class="waves-effect waves-teal btn-flat red"><i class="material-icons">&#xE5CD;</i></a>
+                              </td>
+                            </tr>
+                            <% }); %>
+                          </tbody>
+                      </table>
+
+
+
+
+
+
+
+                </div>
+
+                <div class="col l5">
+                  <div class="row">
+                    <div class="col l8 yellow">
+                        si
+                    </div>
+                    <div class="col l4 red">
+                        no
+                    </div>
+                    <form id = "formTaxes" onsubmit="createTax(event)" method="post">
+                      <div class="input-field col l8">
+                        <input name = "name" placeholder="nombre" type="text" class="validate">
+                      </div>
+
+                      <div class="input-field col l4">
+                        <input name = "value" placeholder="valor(%)"  type="number" class="validate">
+                      </div>
+                      <div class="input-field col l12">
+                        <button class="waves-effect waves-light btn">Subir</buttons>
+                      </div>
+                    </form>
+
+                  </div>
+
+                  <div class="row">
+                      <table class = "bordered">
+                        <col span="1" width = "72%">
+                        <col span="1" width = "18%">
+                        <col span="1" width = "10%">
+                        <thead>
+                            <tr>
+                              <th>Nombre</th>
+                              <th>Valor(%)</th>
+                              <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id = "taxesContainer">
+                            <% taxes.forEach(function(taxElement){%>
+                            <tr value = "<%= taxElement._id%>">
+                              <td><%= taxElement.name%></td>
+                              <td><%= taxElement.value%></td>
+                              <td>
+                                <a onclick= "editTax('<%= taxElement._id%>')"width = "50%" style = "font-size:15px" class="waves-effect waves-teal btn-flat blue"><i class="material-icons">&#xE3C9;</i></a>
+                                  <a onclick= "deleteTax('<%= taxElement._id%>')" width = "50%" style = "font-size:15px" class="waves-effect waves-teal btn-flat red"><i class="material-icons">&#xE5CD;</i></a>
+                              </td>
+                            </tr>
+
+                            <% }); %>
+                        </tbody>
+                      </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+  <!-- Modal para la edicion de los productos -->
+
+  </main>
+
+    <footer class = "col l12 m12 s12">
+      <%- include('../partials/admin/foot/footer') %>
+    </footer>
+
+<!-- jQuery -->
+<%- include('../partials/admin/foot/footLinks') %>
+
+<script src="../assets/js/admin/taxesAndBrands/graphics.js"></script>
+<script src="../assets/js/admin/taxesAndBrands/taxesAndBrands.js"></script>
+
+</body>
+</html>

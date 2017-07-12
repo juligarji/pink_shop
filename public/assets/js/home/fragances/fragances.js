@@ -1,8 +1,11 @@
 
-var GET_FRAGANCES = '/getfragances';
+var GET_PRODUCTS = '/getproducts';
 var VIEW_DETAILS = '/detalles/';
 
 $(window).ready(function(){
+
+  var KIND = $('#INIT').attr('value');
+
 
 /* LOAD COMPONENTS */
     $('.carousel').carousel();
@@ -43,29 +46,35 @@ $(window).ready(function(){
         }
   };
 
+    var meta = {
+      kind : KIND,
+      address : GET_PRODUCTS
+    }
 
-  if($('#productContainer').children().length>=6){
-    ScrollIssues.initScrollClient('#productContainer',GET_FRAGANCES,Graphics.loadToContainer);
+    ScrollIssues.initScrollClient('#productContainer',meta,Graphics.loadToContainer);
 
     var distanceBackToTop = $('#menuContainer').offset().top;
 
     $(window).scroll(function() {
       backToTop();//obligatorio
 
-      if ( $(this).scrollTop() >= distanceBackToTop ) {
-          console.log('is in top');
-          $('#menuContainer').css('top',0);
-          $('#menuContainer').css('position','fixed');
-          $('#productContainer').addClass('push-l2');
-      } else {
-          console.log('is not in top');
-          $('#menuContainer').css('position','relative');
-          $('#menuContainer').css('top','auto');
-          $('#productContainer').removeClass('push-l2');
+      if($('#productContainer').children().length>3){
+
+        if ( $(this).scrollTop() >= distanceBackToTop ) {
+            $('#menuContainer').css('top',0);
+            $('#menuContainer').css('position','fixed');
+            $('#productContainer').addClass('push-l2');
+        } else {
+            console.log('is not in top');
+            $('#menuContainer').css('position','relative');
+            $('#menuContainer').css('top','auto');
+            $('#productContainer').removeClass('push-l2');
+        }
       }
+
     });
-  }
-  
+
+
 });
 
 

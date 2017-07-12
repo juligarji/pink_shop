@@ -20,6 +20,13 @@ var home = require('./newControllers/routes/home.js');
 var admin = require('./newControllers/routes/admin.js');
 var sign = require('./newControllers/routes/sign.js');
 
+Date.prototype.addDays= function(h){
+
+    this.setDate(this.getDate()+h);
+
+    return this;
+}
+
 //var admin = require('./controllers/admin/admin.js');
 
 var app = express();

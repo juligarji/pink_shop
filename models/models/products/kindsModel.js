@@ -63,7 +63,7 @@ var kindsModel = {
   },
   getByName : function(objectName,callback,failback){
 
-    kinds.findOne({name:objectName},'-_id',function(err,fragan){
+    kinds.findOne({name:objectName},function(err,fragan){
         if(err){
           failback(err);
           return;

@@ -4,7 +4,9 @@
   <script src="vendor/materialize/js/materialize.js"></script>
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="//cdn.jsdelivr.net/pouchdb/6.2.0/pouchdb.min.js"></script>
   <script src="vendor/pace/pace.js"></script>
+
   <script src="assets/js/utilities/dialogs.js"></script>
   <script src="assets/js/utilities/backToTop.js"></script>
 
@@ -17,14 +19,19 @@
     <script src="assets/js/utilities/db.js"></script>
     <script src="assets/js/utilities/scroll.js"></script>
     <script>
+    /* Configuracion final de cosas comunes */
         $('#loginForm form').submit(function(event){
-
           Session.openSession(event,Dialogs.failMessage);
         });
 
         $('.modalToggleButton').on('click',function(){
             Session.toggleLogin();
         });
+
+        Cart.getLength(function(leng){
+            CartGraphics.paintMarker(leng,'#cartAmmount');
+        });
+
     </script>
 
 <!--

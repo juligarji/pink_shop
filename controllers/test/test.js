@@ -208,9 +208,19 @@ router.get('/verImpuestos',function(req,res,next){
 
 /* Segundaws pruebas */
 var salesModel = require('../../models/models/sales/salesModel.js');
+var productsModel = require('../../models/models/products/productsModel.js');
 var sales = require('../../models/db/schemas/sales/sales.js');
 var salesInfo = require('../../models/db/schemas/sales/salesInfo.js');
 var usersModel = require('../../models/models/users/users.js');
+
+
+router.get('/verProductosPopulated',function(req,res,next){
+    productsModel.getAllPopulated(function(data){
+      res.send(data);
+    },function(err){
+      res.send({message:'Error',data:err});
+    })
+});
 
 router.post('/crearUsuario',function(req,res,next){
     var data = req.body;

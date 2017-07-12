@@ -2,22 +2,10 @@
 <html lang="es">
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Menjar</title>
+  <%- include('../partials/admin/head/headConfig') %>
 
-  <!--  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
-    <!-- Import Google Icon -->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link href="vendor/aos-master/dist/aos.css" rel="stylesheet">
-    <!-- CSS - Materialize -->
-    <link rel="stylesheet" href="vendor/materialize/css/materialize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="vendor/pace/pace.css">
     <link rel = "stylesheet" href = "assets/css/adminIndex.css">
 
-    <script src="vendor/pace/pace.js"></script>
     <!-- Custom -->
 </head>
 
@@ -39,147 +27,14 @@
             <!-- Creacion de nuevos perfumes -->
 
 
-                  <h5 class = "center"> Agregar Nuevo Perfume </h5>
+                  <h5 class = "center">Index</h5>
                     <div class = "section">
-                    <div class = "col l12 m12 s12 z-depth-2">
-
-                        <div class = "row">
-                          <form id = "fraganceForm" class = "col l12 s12" method="post">
-
-                                <div class="input-field col l3 m4 s12">
-                                  <input name = "name" placeholder="Nombre(Unico)" id="first_name" type="text" class="validate">
-                                </div>
-                                <div class="input-field col l3 m4 s12">
-                                  <select name = "size">
-                                    <option value="" disabled selected>Tamaño</option>
-                                    <option value="test1">test1</option>
-                                    <option value="test2">test2</option>
-                                    <option value="test3">test3</option>
-                                  </select>
-                                </div>
-                                <div class="input-field col l3 m4 s12">
-                                  <select name = "gender">
-                                    <option value="" disabled selected>Genero</option>
-                                    <option value="Hombre">Hombre</option>
-                                    <option value="Mujer">Mujer</option>
-                                  </select>
-                                </div>
-
-                                <div class="input-field col l3 m4 s12">
-                                  <select name = "fragance">
-                                    <option value="" disabled selected>Fragancia</option>
-                                    <option value="Test1">Test1</option>
-                                    <option value="Test2">Test2</option>
-                                  </select>
-                                </div>
 
 
-                              <div class="input-field col l3 m4 s12">
-                                <select name = "group">
-                                  <option value="" disabled selected>Temporada</option>
-                                  <option value="Test1">Test1</option>
-                                  <option value="Test2">Test2</option>
-                                </select>
-                              </div>
-
-                              <div class="input-field col l3 m4 s12">
-                                <select name = "brand">
-                                  <option value="" disabled selected>Marca</option>
-                                  <option value="Test1">Test1</option>
-                                  <option value="Test2">Test2</option>
-                                </select>
-                              </div>
-
-                              <div class="input-field col l2 m3 s6">
-                                <input name = "discount" placeholder="Descuento" id="first_name" type="number" class="validate">
-                              </div>
-
-                              <div class="input-field col l2 m3 s6">
-                                <input name = "price" placeholder="Precio" id="first_name" type="number" class="validate">
-                              </div>
-
-                              <div class="input-field col l2 m3 s6">
-                                <input name = "minForDiscount" placeholder="Min para May" id="first_name" type="number" class="validate">
-                              </div>
-
-
-                              <div class="input-field col l2 m3 s6">
-                                <input name = "wholesale" placeholder="Precio (May)" id="first_name" type="number" class="validate">
-                              </div>
-
-                              <div class="input-field col l10 m12 s12">
-                                  <input name = "description" placeholder="Descripcion" id="first_name" type="text" class="validate">
-                              </div>
-
-                              <div class = " col l2 m2 s5 z-depth-1 pink lighten-1" >
-                                  <input name = "ammount" placeholder="Cantidad" id="ammount" type="number" class="validate">
-                              </div>
-
-                              <div class = "col l10 m10 s7">
-                                <div class = "section">
-
-                                  <a  onclick = "loadLocalModalPhotos()" class="btn waves-effect amber lighten-1 waves-light col l3 m3 s12" name="action">
-                                      <i class="material-icons center">view_carousel</i>
-                                  </a>
-
-                                <!--  <button onclick="createFragance()" class="btn waves-effect green lighten-1 waves-light col l9 m9 s12" name="action">
-                                      Guardar
-                                      <i class="material-icons right">send</i>
-                                  </button> -->
-                                    <a onclick = "createFragance()" class = "btn waves-effect green lighten-1 waves-light col l9 m9 s12">
-                                      Guardar
-                                      <i class="material-icons right">send</i>
-                                    </a>
-                                </div>
-
-                              </div>
-                          </form>
-                        </div>
-                    </div>
                 </div>
 
                 <div class = "col l12 m12 s12">
                   <div class = "divider"></div>
-
-                    <table id = "fragancesTable" class = "responsive-table bordered striped col l12 m12 s12" style = "overflow:scroll">
-
-                      <thead>
-                        <tr>
-                          <th>Nombre</th>
-                          <th>Grupo</th>
-                          <th>Marca</th>
-                          <th>Descuento</th>
-                          <th>Cantidad</th>
-                          <th>Precio</th>
-                          <th>Acciones</th>
-                        </tr>
-                      </thead>
-
-                      <tbody style = "overflow:scroll">
-
-
-
-                    <!--    <tr> EJEMPLO DE COMPONENTE DE TABLA
-                          <td>Menjar</td>
-                          <td>Primavera</td>
-                          <td>Victoria Secret</td>
-                          <td>0%</td>
-                          <td>15</td>
-                          <td>12000</td>
-                          <td><a class="btn-floating btn-small waves-effect waves-light blue" onclick = "loadEditModal(-1)">
-                                <i class="material-icons">edit</i>
-                              </a>
-                              <a class="btn-floating btn-small waves-effect waves-light amber" onclick = "loadPhotoModal(-1)">
-                                    <i class="material-icons">view_carousel</i>
-                              </a>
-
-                              <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
-                          </td>
-                        </tr> -->
-
-
-                      </tbody>
-                    </table>
 
                 </div>
 
@@ -199,21 +54,12 @@
     </footer>
 
 <!-- jQuery -->
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
-    <!-- JS - Materialize -->
-    <script src="vendor/materialize/js/materialize.js"></script>
-    <script src="vendor/aos-master/dist/aos.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <%- include('../partials/admin/foot/footLinks') %>
 
-    <script src="assets/js/utilities/protection.js"></script>
-    <script src="assets/js/utilities/session.js"></script>
-    <script src="assets/js/utilities/db.js"></script>
-    <script src="assets/js/admin/memory.js"></script>
-    <script src="assets/js/admin/graphics.js"></script>
+
     <script src="assets/js/utilities/scroll.js"></script>
+
+
     <script src="assets/js/admin/adminIndex.js"></script>
 </body>
 </html>

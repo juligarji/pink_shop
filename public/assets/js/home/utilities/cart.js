@@ -1,76 +1,141 @@
 
-var Cart = {
-    getCart : function(){
+var Cart = (function(){
+
+  var NAME='cart';
+  var ShoppingDB = new PouchDB('ShoppingCart');
+  var INFO_CALLER = '//ipapi.co/json/';
+
+  ShoppingDB.info(function(err,res){
+      if(err){
+        console.log(err);
+        return;
+      }
+
+      if(res.doc_count==0){
+        ShoppingDB.put({
+          _id:NAME,
+          products:[]
+        },function(err,img){
+          if(err){
+            console.log(err);
+            return;
+          }
+        });
+      }
+  });
+  return  {
+    getCart : function(callback){
         //cambiar por base de datos en local
-      if(sessionStorage.cart==undefined || sessionStorage.cart==""){
-        return [];
-      }
-
-        var buffer = JSON.parse(sessionStorage.cart);
-        var outBuffer = [];
-
-        for(var i=0;i<buffer.length;i++){
-          if(buffer[i]!={}){
-            outBuffer.push(buffer[i]);
-          }
-        }
-
-        return outBuffer;
-      //retornar Array con las direcciones
-      },
-
-      addToCart : function(name,ammount){
-        // cambiar por base de datos
-        var cartArray;
-        if(sessionStorage.cart==undefined || sessionStorage.cart==""){
-          cartArray =  [];
-        }else{
-              cartArray = JSON.parse(sessionStorage.cart);
-        }
-
-        var exis = -1;
-
-        for(var i=0;i<cartArray.length;i++){
-            if(cartArray[i].name == name){
-              exis = i;
-              break;
+        ShoppingDB.get(NAME,function(err,car){
+            if(err){
+              console.log(err);
+              return;
             }
-        }
-
-        if(exis!=-1){
-          cartArray[exis].ammount = ammount;
-
-          cartArray[exis].date = Date.now();
-        }else{
-          var obj = {
-            name: name,
-            ammount: ammount,
-            date: Date.now()
-          }
-          cartArray.push(obj);
-        }
-        sessionStorage.cart = JSON.stringify(cartArray);
+            callback(car.products);
+        });
       },
-      deleteFromCart : function(name){
+      addToCart : function(idProd,ammount,callback){
+          Cart.existsInCart(idProd,function(index,car){
 
-          var cartArray = Cart.getCart();
+               $.getJSON(INFO_CALLER)
+                  .done(function(data){
+                    if(index==-1){
+                      var newObj = {
+                        idProd : idProd,
+                        ammount : ammount,
+                        created_at : Date.now(),
+                        modified_at : Date.now(),
+                        meta : data
+                      }
+                      car.products.push(newObj);
+                    }else{
+                        car.products[index].ammount = ammount;
+                        car.products[index].modified_at = Date.now();
+                        car.products[index].meta = data;
+                    }
+                    ShoppingDB.put(car);
+                    callback();
+                    return;
+                  })
+                  .fail(function(err){
+                      console.log(err);
 
-          var max = cartArray.length;
-
-          for(var i=0;i<max;i++){
-            if(cartArray[i].name==name){
-              cartArray.splice(i,1);
-              break;
+                      if(index==-1){
+                        var newObj = {
+                          idProd : idProd,
+                          ammount : ammount,
+                          created_at : Date.now(),
+                          modified_at : Date.now(),
+                        }
+                        car.products.push(newObj);
+                      }else{
+                          car.products[index].ammount = ammount;
+                          car.products[index].modified_at = Date.now();
+                      }
+                      ShoppingDB.put(car);
+                      callback();
+                      return;
+                  })
+          });
+      },
+      existsInCart : function(idProd,callback){
+        ShoppingDB.get(NAME,function(err,car){
+            if(err){
+              console.log(err);
+              return;
             }
-          }
-          sessionStorage.cart =  JSON.stringify(cartArray);
+
+            var max = car.products.length;
+            for(var i=0;i<max;i++){
+
+              if(car.products[i].idProd==idProd){
+                callback(i,car);
+                return;
+              }
+            }
+            callback(-1,car);
+        });
+
       },
-      getLength : function(){
-        return Cart.getCart().length;
+      deleteFromCart : function(idProd,callback){
+
+          Cart.existsInCart(idProd,function(index,car){
+              if(index!=-1){
+                car.products.splice(index,1);
+                ShoppingDB.put(car);
+                callback();
+              }
+          });
       },
-      deleteAllCart : function(){
-        sessionStorage.cart = undefined;
+      getLength : function(callback){
+        ShoppingDB.get(NAME,function(err,car){
+            if(err){
+              console.log(err);
+              return;
+            }
+            callback(car.products.length);
+        })
+      },
+      deleteAllCart : function(callback){
+        ShoppingDB.get(NAME,function(err,car){
+            if(err){
+              console.log(err);
+              return;
+            }
+            car.products = [];
+            ShoppingDB.put(car);
+            callback();
+        });
+      },
+      getSingleFromCart(idProd,callback){
+        Cart.existsInCart(idProd,function(index,car){
+            if(index!=-1){
+              callback(car.products[index]);
+            }else{
+              callback(undefined);
+            }
+        });
       }
+  }
 
-
-}
+})();

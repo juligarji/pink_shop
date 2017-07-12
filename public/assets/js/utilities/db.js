@@ -1,17 +1,16 @@
 
 var DB = {
    INDEX : 0,
-
+   FLAG : true,
   currentCall : function (data,url,sucessCall,failCall){
 
-    Protection.avoidDobleClick(function(){// prevenir que se envie inmediatamente una accion
+    //Protection.avoidDobleClick(function(){// prevenir que se envie inmediatamente una accion
 
       var newData = JSON.stringify(data);
       var call =   $.ajax({
             url : url,
             type : 'POST',
             contentType: 'application/json',
-            async: false,
             data: newData
       });
 
@@ -23,12 +22,19 @@ var DB = {
           failCall(jqXHR.responseText);
           //console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
       });
-    });
+    //});
   },
 
-  pictureCall : function(fileContainer,type,address,sucessCall,failCall){
+  pictureCall : function(fileContainer,type,address,sucessCall,failCall,button){
+// arrreglar doble click
+    $(button).attr('disabled','disabled');
+    if(!DB.FLAG){
+      return;
+    }
+    DB.FLAG = false;
 
     Protection.avoidDobleClick(function(){
+
 
       var myFormData = new FormData();
       var pictureInput = document.getElementById(fileContainer).files[0];
@@ -51,26 +57,31 @@ var DB = {
           // lA SUBIDA AL SERVIDOR FUE EXITOSA
           sucessCall(data.data);
           /* Almacenamiento solo para pruebas*/
+          $(button).removeAttr('disabled');
+          DB.FLAG = true;
       });
 
       call.fail(function(jqXHR, textStatus, error){
           console.log('<error>: ' + jqXHR.responseJson + error + textStatus);
           failCall(jqXHR.responseJson);
+          $(button).removeAttr('disabled');
       });
     });
   },
 
   /* Manejo de llamadas a base de datos remota */
 
-   getMoreElements : function(ammount,url,callback){
+   getMoreElements : function(ammount,meta,callback){
+
 
     var newData = {
       ammount : ammount,
       index : DB.INDEX,
+      kind : meta.kind,
       recent : true
     }
 
-    DB.currentCall(newData,url,
+    DB.currentCall(newData,meta.address,
       function(data){
       callback(data);
       DB.INDEX ++;

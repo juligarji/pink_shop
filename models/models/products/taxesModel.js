@@ -136,6 +136,16 @@ var taxesModel = {
           callback(prod);
       });
     },
+    removeById : function(objectId,callback){
+
+      taxes.findOneAndRemove({_id:objectId},function(err){
+                  if(err){
+                    errorHandler.handle(err);
+                    return;
+                  }
+                  callback();
+      });
+    },
 
 }
 

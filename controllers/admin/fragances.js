@@ -61,8 +61,8 @@ if(photoName == undefined){return;}
         });
     });
 
-
 }
+
 var deleteFragance = function(req,res,next){
     var data = req.body;
 

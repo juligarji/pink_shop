@@ -138,6 +138,17 @@ var brandsModel = {
           callback(prod);
       });
     },
+    removeById : function(objectId,callback,failback){
+
+      brands.findOneAndRemove({_id:objectId},function(err){
+                  if(err){
+
+                    failback(err);
+                    return;
+                  }
+                  callback();
+      });
+    },
 
 }
 

@@ -28,28 +28,11 @@
     <div class = "row">
       <div class = "col l9 m9 s12">
         <div class="main-carousel animated fadeInLeft">
-          <% data.photos.forEach(function(photo){ %>
-          <div class="carousel-cell">
-            <img src="../<%=addressPic%><%=photo%>" alt="orange tree" />
-          </div>
-          <div class="carousel-cell">
-            <img src="../<%=addressPic%><%=photo%>" alt="orange tree" />
-          </div>
+          <% product.photos.forEach(function(photo){ %>
           <div class="carousel-cell">
             <img src="../<%=addressPic%><%=photo%>" alt="orange tree" />
           </div>
           <% }); %>
-            
-            <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-
         </div>
         <br>
       </div>
@@ -57,25 +40,25 @@
       <div class = " center col l3 m3 s12 z-depth-4 animated fadeInRight">
 
           <div class = "titles">
-            <h4><%= data.name %></h4>
+            <h4><%= product.name %></h4>
           </div>
           <div class = "divider"></div>
 
           <div class="input-field offset-l3 col l6 m6 s8 offset-s2">
-            <input oninput = "getPrice('<%= data.name %>')" name = "ammount" placeholder="Cantidad" type="Number" class="validate">
+            <input oninput = "getPrice('<%= product._id %>')" name = "ammount" placeholder="Cantidad" type="Number" class="validate">
           </div>
 
-          <div id = "addToBag" onclick = "addElementToCart('<%= data.name %>')" class = "btn-large">
+          <div id = "addToBag" onclick = "addElementToCart('<%=product._id%>')" class = "btn-large">
             Añadir a la bolsa
             <i class="material-icons">add_shopping_cart</i>
           </div>
           <p class = "bookmark">Total: <p class = "mainUnit" id = "total">0</p></p>
-          <p class = "bookmark" id = 'unit'>Precio Unidad: <span class = "bagViewUnit"> $<%= data.price %></span></p>
-          <p class = "bookmark"id = 'whole'>Precio Mayor: <span class = "bagViewUnit">$<%= data.wholesale %></span>
-            <sub>(Minimo <span class = "bagViewUnit"><%= data.minForDiscount %></span> Und)</sub>
+          <p class = "bookmark" id = 'unit'>Precio Unidad: <span class = "bagViewUnit"> $<%= product.price %></span></p>
+          <p class = "bookmark"id = 'whole'>Precio Mayor: <span class = "bagViewUnit">$<%= product.wholesale %></span>
+            <sub>(Minimo <span class = "bagViewUnit"><%= product.minForDiscount %></span> Und)</sub>
           </p>
           <p>Descripcion:  </p>
-          <p><%= data.description %></p>
+          <p><%= product.description %></p>
 
       </div>
     </div>
@@ -91,21 +74,9 @@
     </footer>
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-    <!-- JS - Materialize -->
-    <script src="../vendor/materialize/js/materialize.js"></script>
-    <script src="../vendor/aos-master/dist/aos.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
-    <script src="../assets/js/utilities/dialogs.js"></script>
+<%- include('../partials/foot/later/footLinks') %>
 
-    <script src="../assets/js/utilities/session.js"></script>
-    <script src="../assets/js/home/utilities/protection.js"></script>
-    <script src="../assets/js/home/utilities/db.js"></script>
-    <script src="../assets/js/home/utilities/cart.js"></script>
-    <script src="../assets/js/home/utilities/cartGraphics.js"></script>
+
 
     <script src="../assets/js/home/details/details.js"></script>
 

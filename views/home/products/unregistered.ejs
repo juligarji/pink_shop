@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../../partials/head/later/client') %>
+
+
+    <link rel = "stylesheet" href = "../assets/css/fragances.css">
+    <!-- Custom -->
+</head>
+
+<body>
+
+<!-- HEADER -->
+  <header>
+    <%- include('../../partials/navbar/unregistered') %>
+
+  </header>
+
+  <!-- pruebas:  style = "background-color:blue" -->
+  <main style = "clear:both">
+    <div class = "col m12 s12 l12 animated fadeInRight">
+            <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "../assets/img/page/mainBanner.png"></a>
+    </div>
+
+          <!-- Aqui va el contenedor de los productos -->
+    <div class = "row">
+          <%- include('../../partials/menu/productSearchMenu') %>
+
+          <div id = "productContainer" class = "container col l10 m9 s12 center">
+            <!-- Elementos creados por la vista -->
+            <!-- Simples pruebas cambiar por agregados reales -->
+
+          </div>
+    </div>
+    <a href="#" id="backToTop" title="Back to top"><i class="material-icons">arrow_upward</i></a>
+  </main>
+
+    <!-- Seccion Home -->
+    <%- include('../../partials/logModal') %>
+
+<!-- Footer -->
+  <footer class = "col l12 m12 s12">
+    <%- include('../../partials/footer/unregistered') %>
+  </footer>
+
+<!-- jQuery -->
+
+    <div class = "red" id = "INIT" value = "<%=kind%>">
+          hola!!!!
+    </div>
+
+
+    <%- include('../../partials/foot/later/footLinks') %>
+
+
+
+
+    <script src="../assets/js/home/fragances/graphics.js"></script>
+    <script src="../assets/js/home/fragances/fragances.js"></script>
+
+</body>
+</html>
