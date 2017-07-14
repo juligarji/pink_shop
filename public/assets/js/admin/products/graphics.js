@@ -4,6 +4,7 @@ var Graphics = {
   createNewBrand : function(data){
       var element = `
       <tr value="${data._id}">
+
         <td>
           <p>${data.name} </p>
         </td>
@@ -50,7 +51,7 @@ fillAttributes : function(container,data){
                     ${componentsElement.name}
                 </div>
                 <div class="col l6">
-                  <div class="input-field">
+                  <div class="input-field attributeInput">
                     <select class = "browser-default attributeSelector">
                        ${options}
                     </select>
@@ -159,7 +160,13 @@ fillEditProductAttributes : function(container,data){
 },
 addRow : function(containerTable,data){
   var element = `
-  <tr value = "${data._id}">
+        <tr value = "${data._id}">
+        <td>  <p>
+            <input class = "eraseCheck" type="checkbox" id="${data._id}" />
+            <label for = "${data._id}"></label>
+              </p>
+
+        </td>
         <td><span class="nameData">${data.name}</span></td>
         <td><span class="referenceData">${data.reference}</span></td>
         <td><span class="brandData">${data.brand.name}</span></td>
@@ -234,7 +241,7 @@ fillSearchForm : function(container,data){
                 </div>
                 <div class="col l7">
                   <div class="input-field">
-                    <select class = "browser-default attributeSelector">
+                    <select class = "browser-default attributeInput">
                        ${options}
                     </select>
                   </div>

@@ -58,8 +58,12 @@ productsSchema.plugin(deepPopulate,{
     },
 
   }
-})
+});
+
+productsSchema.index({name : 'text',description:'text',reference:'text'});
+//productsSchema.droopIndexes();
 
 var products = mongoose.model('products',productsSchema);
+//products.collection.dropIndexes();
 
 module.exports = products;

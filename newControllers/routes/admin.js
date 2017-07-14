@@ -35,7 +35,12 @@ router.post('/newpicture',routesProtect.isAuth,routesProtect.onlyAdmin,images.up
 router.post('/deletepicture',routesProtect.isAuth,routesProtect.onlyAdmin,images.deletePicture);
 */
 // Direcciones de otras paginas de administrador
+var adminIndex = function(req,res,next){
+    res.status(200).render('admin/index');
+}
 
+
+router.get('/',routesProtect.isAuth,routesProtect.onlyAdmin,adminIndex);
 router.get('/categorias',routesProtect.isAuth,routesProtect.onlyAdmin,kinds.renderKinds);
 router.get('/atributos',routesProtect.isAuth,routesProtect.onlyAdmin,attributes.renderAttributes);
 router.get('/impuestos-marcas',routesProtect.isAuth,routesProtect.onlyAdmin,taxes.renderTaxesAndBrands);
@@ -61,6 +66,7 @@ router.post('/products-getattributes',routesProtect.isAuth,routesProtect.onlyAdm
 router.post('/createproduct',routesProtect.isAuth,routesProtect.onlyAdmin,products.createProduct);
 router.post('/getEditProduct',routesProtect.isAuth,routesProtect.onlyAdmin,products.getEditProduct);
 router.post('/deleteproduct',routesProtect.isAuth,routesProtect.onlyAdmin,products.deleteProduct);
+router.post('/deletemultipleproducts',routesProtect.isAuth,routesProtect.onlyAdmin,products.deleteMultipleProducts);
 router.post('/products-editphotos',routesProtect.isAuth,routesProtect.onlyAdmin,products.editPhotosProduct);
 router.post('/products-editsingle',routesProtect.isAuth,routesProtect.onlyAdmin,products.editProduct);
 router.post('/products-query',routesProtect.isAuth,routesProtect.onlyAdmin,products.queryAdmin);

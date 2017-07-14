@@ -61,7 +61,18 @@ var kindsModel = {
           callback();
       });
   },
-  getByName : function(objectName,callback,failback){
+  getByNamePopulated : function(objectName,callback,failback){
+
+    kinds.findOne({name:objectName}).deepPopulate('components.attributes').exec(function(err,kid){
+      if(err){
+        failback(err);
+        return;
+      }
+      callback(kid);
+    });
+
+  },
+  getByPopulated : function(objectName,callback,failback){
 
     kinds.findOne({name:objectName},function(err,fragan){
         if(err){

@@ -12,7 +12,13 @@ var cart = require('../logic/products/cart.js');
 /* Puntos de acceso */
 // protegiendo las rutas para el acceso no autorizado
 
-router.post('/getproducts',products.getProducts);
+var mainPage = function(req,res,next){
+    res.status(200).render('home/index');
+    return;
+}
+
+
+router.post('/getproductsqueried',products.getProductsQueried);
 router.post('/getsingleproduct',products.getSingleProduct);
 router.post('/getproductprice',products.getPrice);
 router.post('/productinstock',products.isInStock);
@@ -20,6 +26,7 @@ router.post('/productinstock',products.isInStock);
 
 
 router.get('/',routesProtect.isAuth,permitsRouter.routeByPermits);
+router.get('/home',mainPage);
 // crear rutas segun los productos que desee mostrar */
 router.get('/productos/:type',routesProtect.isAuth,products.loadProductsView);
 router.get('/detalles/:idProd',products.viewDetails);
@@ -27,8 +34,6 @@ router.get('/detalles/:idProd',products.viewDetails);
 router.get('/carrito',cart.loadCartView);
 
 router.post('/totalizatecart',cart.totalizateCart);
-
-
 
 
 /*router.get('/detalles',function(req,res){

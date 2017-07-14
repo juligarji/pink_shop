@@ -32,9 +32,9 @@ var productsModel = {
                 callback();
     });
   },
-  updateByName : function(name,newObject,callback,failback){
+  updateByName : function(name,newObj,callback,failback){
 
-    products.findOneAndUpdate({name:name},{ $set:newObject}, { new: true }, function (err,prod) {
+    products.findOneAndUpdate({name:name},{ $set:newObj}, { new: true }, function (err,prod) {
       if(err){
         failback(err);
         return;
@@ -74,29 +74,69 @@ var productsModel = {
       callback(prod);
     });
   },
-  getPartial : function(recent,ammount,index,kind,callback,failback){
+  getPartialQueried : function(recent,ammount,index,kind,searchValues,callback,failback){
 
         var skipVal = index*ammount;
         var limitVal = ammount;
         var order;
+        var query = {};
+        var sortOrder = {};
 
         if(recent){
             order = 'desc'
         }else{
             order = 'asc';
         }
-        products.find({kind:kind},'',
+
+        //console.log(searchValues,null,'\t');
+
+        if(searchValues!=undefined){
+
+           /*sortOrder = {
+              searchValues['orderType'] : order
+          }*/
+          sortOrder[searchValues.orderType] = order;
+
+          if(query.search!="" && query.search!=undefined){
+            query.$text = {
+                /*$search : {
+                  $regex : searchValues.search,
+                  $options:'i'
+                },*/ // rivisar con la nueva version de Mongoose
+                // importante
+                $search:searchValues.search,
+                //$caseSensitive : false,
+                //$diacriticSensitive: false
+            }
+          }
+
+          if(searchValues.attributes.length>0){
+              query.attributes = {$in:searchValues.attributes}
+          }
+
+        }else{
+
+          sortOrder = {
+             created_at : order
+         }
+
+        }
+
+        query.kind = kind;
+
+        console.log('Query !!!! >>ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ:');
+        console.log(query,null,'\t');
+        products.find(query,'',
         {// parametros de la busqueda
           skip:skipVal,
           limit:limitVal,
-          sort:{
-              created_at : order
-          }
+          sort:sortOrder
         },function(err,prod){
           if(err){
             failback(err);
             return;
           }
+            console.log(prod,null,'\t');
           callback(prod);
         });
   },
@@ -136,7 +176,15 @@ var productsModel = {
           callback(prod);
       });
     },
-
+    getMultipleById : function(arrayId,callback,failback){
+      products.find({_id:{$in:arrayId}},function(err,prod){
+          if(err){
+            failback(err);
+            return;
+          }
+          callback(prod);
+      });
+    },
 
     /* funciones propias */
 
@@ -157,6 +205,22 @@ var productsModel = {
                     return;
                   }
                   callback();
+      });
+    },
+    removeMultipleById : function(arrayId,callback,failback){
+        if(arrayId.length==0){
+          failback({
+            message:'La query para remover se encuentra vacia',
+            code : 404
+          });
+          return;
+        }
+      products.remove({_id:{$in:arrayId}},function(err){
+        if(err){
+          failback(err);
+          return;
+        }
+        callback();
       });
     },
 

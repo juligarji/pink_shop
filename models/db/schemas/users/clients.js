@@ -12,6 +12,6 @@ var clientsSchema = new Schema({// los precios son por kilo
 
 });
 
-var clients = mongoose.model('clientss',clientssSchema);
+var clients = mongoose.model('clients',clientsSchema);
 
 module.exports = clients;

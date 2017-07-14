@@ -3,7 +3,7 @@
 var services = require('../serverResources/services.js');//importar funcionalidades de encode y decode token
 //var cookieParser = require('cookie-parser');
 var usersModel = require('../../../models/models/users/users.js');
-
+var errorHandler = require('../error/errorHandler.js');
 function isAuth(req,res,next){// verifi si esta autenticado
 
 
@@ -14,7 +14,7 @@ function isAuth(req,res,next){// verifi si esta autenticado
     return;
   }
 
-    var token = req.cookies.token;
+    var token = req.cookies.shop;
     //var token = req.headers.authorization.split(" ")[1];// Lectura de token atravez del header
   //  var token = req.get('Cookie');
 
@@ -38,29 +38,39 @@ function onlyAdmin(req,res,next){
 
   if(!res.locals.authorized){// Esta autorizado para ingresar con permisos
       //res.send({message:'No autorizado'});
-      res.send({message:'No autorizado'});
+      //res.render('home/index',{message:'No autorizado'});
+      res.redirect('/');
       return;
   }
+  usersModel.getPermits(req.user,function(data){
 
-  usersModel.getByName(req.user,function(data){
-    var permits = data.permits;
-    switch(permits){
+    switch(data){
 
         case 4:
           next();
             break;
+        case 2 :
+          next();
+            break
 
         default:
-          res.send({message:'No autorizado'});
-
+          /*res.writeHead(301,{Location:'/'});
+          res.end();*/
+          console.log('imposible');
+          res.redirect('/');
+          //res.redirect('/');
             return;
     }
+
+  },function(err){
+      errorHandler.mongoose(err,res);
+
   });
 }
 
 function onlyRegistered(req,res,next){
   if(!res.locals.authorized){// Esta autorizado para ingresar con permisos
-      res.send({message:'No autorizado'});
+      res.redirect('/');
       return;
   }
 
@@ -74,6 +84,9 @@ function onlyRegistered(req,res,next){
             break;
 
         case 2:
+          next();
+            break;
+        case 1:
           next();
             break;
 

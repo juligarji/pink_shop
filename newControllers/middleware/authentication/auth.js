@@ -1,25 +1,70 @@
 
 var users = require('../../../models/models/users/users.js');//modelo del usuario
 var services = require('../serverResources/services.js');
-var bcrypt = require('bcrypt-nodejs');
+var encryptor = require('../serverResources/encryptor');
 var errorHandler = require('../error/errorHandler.js');
+var serverCodes = require('../../../serverCodes.js');
+
 
 function signUp(req,res){ //REgistrarse
+      var data = req.body;
 
     var user = {
-      email:req.body.email,
-      displayName:req.body.displayName,
-      password:req.body.password,
-      permits:parseInt(req.body.permits)
+      email:data.email,
+      displayName:data.displayName,
+      password:data.password
     }
 
-    users.create(user,function(newUser){
-        return res.status(200).send({token:services.createToken(newUser)});
+    users.create(user,function(newUser){// aregrlal autorizacion
+
+      encryptor.compare(user.idPermits,serverCodes.SUPER_KEY,function(cond){
+
+        if(cond){// es un super usuario
+            users.asignPermits(newUser.email,4,function(){
+
+              res.status(200).send({token:services.createToken(newUser)});
+
+            },function(err){
+                errorHandler.mongoose(err,res);
+            });
+            return;
+        }
+
+        encryptor.compare(user.idPermits,serverCodes.ADMIN_KEY,function(variable){
+            if(variable){
+              users.asignPermits(newUser.email,2,function(){
+
+                res.status(200).send({token:services.createToken(newUser)});
+
+              },function(err){
+                  errorHandler.mongoose(err,res);
+              });
+              return;
+            }
+
+            users.asignPermits(newUser.email,1,function(){
+              // es un usuario cualquiera
+
+
+
+              res.status(200).send({token:services.createToken(newUser)});
+
+            },function(err){
+                errorHandler.mongoose(err,res);
+            });
+
+        });
+      });
+
+    },function(err){
+        errorHandler.mongoose(err,res);
+        return;
     });
+
 }
 
 function signIn(req,res,next){//loggearse
-  console.log(req.body,null,'\t');
+
   users.getByName(req.body.email,function(data){
       if(data==null){
           res.locals.authorized = false;
@@ -38,7 +83,7 @@ function signIn(req,res,next){//loggearse
                 res.end();
                 return;
             }
-
+            console.log('autorizado');
             res.locals.authorized = true;
             res.locals.user = data;
             res.locals.token = services.createToken(data);
@@ -49,7 +94,7 @@ function signIn(req,res,next){//loggearse
 
 function signOut(req,res,next){
 
-    res.clearCookie('token');
+    res.clearCookie('shop');
     res.status(200);
     next();
 }
@@ -57,14 +102,9 @@ function signOut(req,res,next){
 function checkPassword(email,pass,callback){//verificar si las contraseñas concuerdan
 
     users.getEnct(email,function(data){
-
-                bcrypt.compare(pass,data,function(err,response){
-                  if(err){
-                    errorHandler.handle(err,'Error al comparar contraseña');
-                    return;
-                  }
-                  callback(response);
-                });
+          encryptor.compare(pass,data,function(state){
+              callback(state);
+          });
     });
   }
 

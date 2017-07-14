@@ -10,38 +10,18 @@ var interfaceInstance = new Interface('interfaceInstance',Object.keys(CRUDaccess
 
 var salesModel = {
 
-  create : function(objectData,callback){
+  create : function(quotData,callback,failback){
 
-      var saleData = objectData;
-
-      salesInfo.insertMany(saleData.info,function(err,info){
-        if (err){
-              errorHandler.handle(err);
-              return;
+      var saleData = sortDataFromQuotation(quotData);
+      var newSale = new Sale(saleData);
+      newSale.save(function(err){
+        if(err){
+          failback(err);
+          return;
         }
-        var currentIds = [];
-        var max = info.length;
-        for(var i=0;i<max;i++){
-          currentIds.push(info[i]._id);
-        }
+        callback(newSale);
+      })
 
-        /*console.log("ids");
-        console.log(currentIds,null,'\t');*/
-
-        saleData.info = currentIds;
-
-        var newSale = new sales(saleData);
-        newSale.save(function(err){
-          if (err){// cambiar para borrar sale info si llega a fallar
-                errorHandler.handle(err);
-                return;
-          }
-
-            callback(newSale);
-        });
-        //saleData.info = info;
-        //objectData
-      });
   },
     remove : function(objectId,callback){},
     updateByName : function(oldObject,newObject,callback){},
@@ -49,9 +29,19 @@ var salesModel = {
     getByName : function(objectName,callback){},
     getAll : function(callback){},
     getPartial : function(recent,ammount,index,callback){},
-    getByParameters : function(recent,ammount,index,parameters,callback){}
+    getByParameters : function(recent,ammount,index,parameters,callback){},
 
     /* funciones propias */
+    sortDataFromQuotation : function(quot){
+       var outObj = {
+         user:quot.user,
+         reference:quot.reference,
+         products:quot.products,
+         meta:quot.metaInfo,
+         requested_at:quot.created_at
+       }
+       return outObj;
+    }
 
 }
 

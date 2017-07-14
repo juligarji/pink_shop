@@ -5,51 +5,21 @@ var DELETE_PICTURE = '/admin/deletepicture';
 var CREATE_PRODUCT = '/admin/createproduct';
 var EDIT_SINGLE_PRODUCT = '/admin/products-editsingle';
 var DELETE_PRODUCT = '/admin/deleteproduct';
+var DELETE__MULTIPLE_PRODUCTS = '/admin/deletemultipleproducts';
 var GET_EDIT_PRODUCT = '/admin/getEditProduct';
 var EDIT_PHOTOS_PRODUCT = '/admin/products-editphotos';
-var PRODUCTS_QUERY = '/admin/products-query';
 
-$(document).ready(function(){
 
-  $('select').material_select();
-  $('.collapsible').collapsible();
-
-  $(".button-collapse").sideNav();
-  $('.slider').slider();
-
-  $('.carousel').carousel();
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
-
-  $('.datepicker').pickadate({
-   selectMonths: true, // Creates a dropdown to control month
-   selectYears: 12 // Creates a dropdown of 15 years to control year
- });
-
-  $('.modal').modal();
-  Materialize.updateTextFields();
-
-  $('.dropdown-button').dropdown({
-     inDuration: 300,
-     outDuration: 225,
-     constrainWidth: false, // Does not change width of dropdown to that of the activator
-     hover: false, // Activate on hover
-     gutter: 0, // Spacing from edge
-     belowOrigin: true, // Displays dropdown below the button
-     alignment: 'left', // Displays dropdown with edge aligned to the left of button
-     stopPropagation: false // Stops event propagation
-  });
-
-    paceOptions = {
-    ajax: true, // Monitors all ajax requests on the page
-    document: false, // Checks for the existance of specific elements on the page
-    eventLag: false, // Checks the document readyState
-  };
-
-});
-
+/* Funcciones de inicializacion */
 function failHandler(msg){
   Dialogs.failMessage(msg);
 }
+
+ProductSearcher.init('#searchForm','.attributeInput',function(dataObj){
+
+      Graphics.fillTableSearch('#fragancesTable tbody',dataObj.data);
+
+},failHandler);
 
 function uploadProduct(ev,newProduct){
   ev.preventDefault();
@@ -346,32 +316,47 @@ function loadEditModalPhotos(){
 
 
 /* busqueda */
-function makeProductSearch(ev){
-  ev.preventDefault();
 
-  var newData = {
-    search : $('#searchForm input[name="search"]').val(),
-    typeSearch : $('input[name="typeSearch"]:checked').val(),
-    kind : $('#searchForm select[name="kind"]').val(),
-    orderType : $('#searchForm select[name="orderType"]').val(),
-    typeSort : $('input[name="orderSort"]:checked').val(),
-    datePicker : $('#searchForm input[name="datePicker"]').val(),
-    brand : $('#searchForm select[name="brand"]').val(),
-    limit : $('#searchForm input[name="limit"]').val()
+
+
+/* borrado multiple */
+function selectAll(component){
+
+  if($(component).is(':checked')){
+      $('#fragancesTable tbody .eraseCheck').prop('checked', true);
+      return;
   }
-
-  var attributesArray =[];
-
-
-  var max = $(`#searchForm .attributeSelector`).length;
-  for(var i=0;i<max;i++){
-    attributesArray.push($(`#searchForm .attributeSelector`).eq(i).val());
-  }
-  newData.attributes = attributesArray;
-    console.log(newData);
-
-  DB.currentCall(newData,PRODUCTS_QUERY,function(data){
-    Graphics.fillTableSearch('#fragancesTable',data.data);
-  },failHandler);
-
+    $('#fragancesTable tbody .eraseCheck').prop('checked', false);
 }
+
+
+function deleteMultiple(){
+
+  var data = $('#fragancesTable tbody .eraseCheck:checked');
+
+  if(data.length==0){
+    Dialogs.failMessage('Seleccione Algunos Productos');
+    return;
+  }
+
+  Dialogs.confirmBox(`Seguro Desea Eliminar estos ${data.length} Productos ?`,function(){
+
+          var arrayId = [];
+          for(var i=0;i<data.length;i++){
+              arrayId.push(data.eq(i).attr('id'));
+          };
+
+          var newData = {
+            arrayIdProd : arrayId
+          }
+          DB.currentCall(newData,DELETE__MULTIPLE_PRODUCTS,function(){
+            //  Graphics.deleteRow(id);
+              arrayId.forEach(function(element){
+                Graphics.deleteRow('#fragancesTable tbody',element);
+              });
+
+          },failHandler);
+        },function(){
+
+          });
+  }

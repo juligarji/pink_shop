@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 //var favicon = require('serve-favicon');
 
+
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -19,6 +20,7 @@ var test = require('./controllers/test/test.js');
 var home = require('./newControllers/routes/home.js');
 var admin = require('./newControllers/routes/admin.js');
 var sign = require('./newControllers/routes/sign.js');
+var sales = require('./newControllers/routes/sales.js');
 
 Date.prototype.addDays= function(h){
 
@@ -30,6 +32,9 @@ Date.prototype.addDays= function(h){
 //var admin = require('./controllers/admin/admin.js');
 
 var app = express();
+
+app.use(express.static(__dirname +'/public'));
+//app.use('/public', express.static(__dirname + '/public'));
 
 app.disable('x-powered-by');// desactivar la tecnologia por seguridad
 
@@ -59,8 +64,8 @@ app.use('/', home);
 app.use('/test', test);
 app.use('/sign', sign);
 app.use('/admin', admin);
+app.use('/ventas',sales);
 
-app.use(express.static(__dirname + '/public'));
 
 
 // Manejo de errores - Pendiente de implementar

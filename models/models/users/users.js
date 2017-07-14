@@ -64,7 +64,36 @@ var fragancesModel = {
           }
           callback(user.password);
         });
+    },
 
+    getPermits : function(email,callback){
+
+        users.findOne({email:email}).select('permits').exec(function (err, user) {
+          if(err){
+            errorHandler.handle(err);
+            return;
+          }
+          callback(user.permits);
+        });
+    },
+    asignPermits : function(email,permits,callback,failback){
+
+      users.findOneAndUpdate({email:email},{ $set:{permits:permits}}, { new: false }, function (err,prod) {
+        if(err){
+          failback(err);
+          return;
+        }
+          callback();
+      });
+    },
+    getIdByName : function(email,callback,failback){// cuidado con este dato
+      users.findOne({email:email}).select('_id').exec(function(err,data){
+        if(err){
+          failback(err);
+          return;
+        }
+        callback(data._id);
+      })
     }
 
 }

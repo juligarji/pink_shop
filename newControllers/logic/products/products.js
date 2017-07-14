@@ -11,18 +11,29 @@ var helperPrice = require('../../../models/models/helpers/helperPrice.js');
 // middleware para las rutas del administrador
 var images = require('../../middleware/images/images.js');
 
-var getProducts = function(req,res,next){
+var getProductsQueried = function(req,res,next){
     var data = req.body;
 
       var ammount = parseInt(data.ammount);
       var index = parseInt(data.index);
       var recent = data.recent;
       var kind = data.kind;
+      var query = data.query;
 
-  productsModel.getPartial(recent,ammount,index,kind,function(data){
-      console.log(data);
+      if(query!=undefined){
+        if(query.attributes==undefined){
+          query.attributes = [];
+        }
+      }
+      console.log(data,null,'\t');
+      
+
+  productsModel.getPartialQueried(recent,ammount,index,kind,query,function(data){
+
       res.status(200).send({message:'Busqueda exitosa',data:data});
-      console.log('busqueeda exitosa');
+
+  },function(err){
+    errorHandler.mongoose(err,res);
   });
 }
 
@@ -83,19 +94,13 @@ var isInStock = function(req,res,next){
 var loadProductsView = function(req,res){
   var data = req.params;
 
-  kindsModel.getByName(data.type,function(data){
+  kindsModel.getByNamePopulated(data.type,function(data){
 
     if(data==null||data==undefined){
         res.status(404).render('errors/404');
         return;
     }
-
-    /*if(res.locals.authorized){
-      res.status(404).render('errors/404');
-      return;
-    }*/
-
-    res.status(200).render('home/products/unregistered',{kind:data._id});
+    res.status(200).render('home/products/unregistered',{kind:data._id,components:data.components});
   });
 }
 
@@ -108,7 +113,7 @@ var renderProducts = function(req,res,next){
       brandsModel.getAll(function(brand){
         taxesModel.getAll(function(tax){
 
-          console.log('render con exito');
+
           res.status(200).render('admin/products',{products:prod,kinds:kid,brands:brand,taxes:tax});
 
 
@@ -157,7 +162,7 @@ var createProduct = function(req,res,next){//POST
 
 
   productsModel.create(newData,function(newProduct){
-    console.log('eL PRO a sido creada con exito');
+
     res.status(200).send({message:'Producto creado con exito',data:newProduct});
   },function(err){
       errorHandler.mongoose(err,res);
@@ -176,7 +181,7 @@ var getEditProduct = function(req,res,next){
 }
 var editProduct = function(req,res,next){
   var data = req.body;
-  console.log(req.body,null,'\t');
+
   productsModel.updateAllById(data.meta,data.data,function(prod){
       res.status(200).send({message:'Producto actualizado exitosamente',data:prod});
   },function(err){
@@ -200,6 +205,25 @@ var deleteProduct = function(req,res,next){
     });
 }
 
+var deleteMultipleProducts = function(req,res,next){
+    var data = req.body;
+
+    productsModel.getMultipleById(data.arrayIdProd,function(prod){
+        var arrayPhotos = [];
+        prod.forEach(function(element){
+          arrayPhotos = arrayPhotos.concat(element.photos);
+        });
+
+        images.deleteArrayOfPictures(arrayPhotos[0],arrayPhotos);
+        productsModel.removeMultipleById(data.arrayIdProd,function(){
+
+            res.status(200).send({message:'Borrado exitoso'});
+        });
+    },function(err){
+      errorHandler.mongoose(err,res);
+    });
+}
+
 var getAttributes = function(req,res,next){
   var data = req.body;
 
@@ -213,8 +237,7 @@ var getAttributes = function(req,res,next){
 
 var editPhotosProduct = function(req,res,next){
     var data = req.body;
-    console.log('nuevos datos :');
-    console.log(data,null,'\t');
+
     productsModel.updatePicturesById(data.idProd,data.photos,function(prod){
         res.status(200).send({message:'Edicion de Imagenes exitosa'});
     });
@@ -255,7 +278,7 @@ var queryAdmin = function(req,res,next){
 
 module.exports = {
     client : {
-      getProducts,
+      getProductsQueried,
       getSingleProduct,
       viewDetails,
       getPrice,
@@ -267,6 +290,7 @@ module.exports = {
       createProduct,
       editProduct,
       deleteProduct,
+      deleteMultipleProducts,
       getEditProduct,
       renderProducts,
       editPhotosProduct,

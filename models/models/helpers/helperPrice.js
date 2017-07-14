@@ -19,6 +19,7 @@ var helperPrice = {
         discountGeneral:info[0].product.discountGeneral
 
       }*/
+
       var discAttr = Math.max.apply(null,values.attributes);
 
         tax = ((100 + values.tax)/100);
@@ -29,13 +30,17 @@ var helperPrice = {
         discount = ((100 - discount)/100);
 
               if(values.ammount < values.minForWholesale){// precio al por menor
+
                   priceByAmmount = ((values.price * values.ammount)*discount);
               }else{
+
+
                     discount = Math.max(discount,values.discountWholesale);
+                    discount = ((100 - discount)/100);
+
                     priceByAmmount = ((values.priceWholesale * values.ammount)*discount);
               }
               priceByAmmount = (priceByAmmount * tax);
-
               return priceByAmmount;
     },
     calTotalPrice : function(arrayData,meta){
@@ -52,7 +57,7 @@ var helperPrice = {
     // Colocar reglas de codigo promocional y envio
     // calculo provisional
     var outTotal;
-    var price = 0,ammount=0,shipmentPrice=0;
+    var price = 0,ammount=0,shipmentPrice=0,totalTax=0;// calcular el impuesto final
     arrayData.forEach(function(element){
       if(element.state!='empty'){
         price = price + element.price;
@@ -63,8 +68,10 @@ var helperPrice = {
       outTotal = {
         subTotalPrice : price,
         totalPrice : price + shipmentPrice,// provisional
+        shipmentPrice : shipmentPrice,
         totalAmmount : ammount,
-        discount : 0 // proviosional
+        discount : 0 ,
+        totalTax : totalTax// proviosional
       }
 
       return outTotal;

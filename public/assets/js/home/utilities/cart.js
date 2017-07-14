@@ -101,8 +101,11 @@ var Cart = (function(){
 
           Cart.existsInCart(idProd,function(index,car){
               if(index!=-1){
+                console.log('splice :' + index);
+                console.log(car,null,2);
                 car.products.splice(index,1);
                 ShoppingDB.put(car);
+                console.log(car,null,0);
                 callback();
               }
           });

@@ -71,27 +71,36 @@ var DB = {
 
   /* Manejo de llamadas a base de datos remota */
 
-   getMoreElements : function(ammount,meta,callback){
+   getMoreElements : function(ammount,meta,callback,failback){
 
-
+      // PUEDE TENER O NO QUERY
+      // meta tendra, address,query
     var newData = {
       ammount : ammount,
       index : DB.INDEX,
       kind : meta.kind,
+      query : meta.query,
       recent : true
     }
+    if(DB.FLAG){
+      DB.FLAG = false;
 
-    DB.currentCall(newData,meta.address,
-      function(data){
-      callback(data);
-      DB.INDEX ++;
+      DB.currentCall(newData,meta.address,
 
-    },function(err){
+        function(data){
+        callback(data);
+        DB.INDEX ++;
+          DB.FLAG = true;
+      },failback);
+    }
 
-
-    });
 
   },
+
+    restartGetMoreCall : function(){
+      DB.INDEX = 0;
+      //DB.getMoreElements(ammount,meta,callback,failback);
+    },
 
    getSingle : function(name,url,data){
 

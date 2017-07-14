@@ -22,10 +22,10 @@ var Graphics = {
 
           <div class = "col l3" >
             <div class = "col l6">
-              <p>${data.kind.name}</p>
+              <p>${data.kind}</p>
             </div>
             <div class = "col l6">
-              <p>${data.brand.name}</p>
+              <p>${data.brand}</p>
             </div>
           </div>
           <div class = "col l1 center" >
@@ -37,7 +37,17 @@ var Graphics = {
             <p>${data.price}</p>
           </div>
           <div class = "col l4" >
-            <p>${data.description}</p>
+            <div class = "row valign-wrapper">
+              <div class = "col l10">
+                <p>${data.description}</p>
+              </div>
+              <div class = "col l2">
+              <div onclick = "deleteElement('${data._id}')">
+                  <i class="material-icons">&#xE872;</i>
+              </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -49,7 +59,10 @@ var Graphics = {
   },
 
   deleteComponent : function(container,id){
-       $(container).children(`tr[value='${id}']`).remove();
+       $(container).children(`div[value='${id}']`).remove();
+  },
+  resetContainer : function(container) {
+      $(container).empty();
   },
 
   paintTotals : function(meta){

@@ -308,7 +308,7 @@
             </div>
 
             <div class="col l12">
-                  <form id="searchForm" class="" onsubmit="makeProductSearch(event)" method="post">
+                  <form id="searchForm" method="post">
                     <div class="col l3">
                       <div class="nav-wrapper">
 
@@ -399,6 +399,8 @@
                       </colgroup>
                       <thead>
                         <tr>
+                          <th>
+                          </th>
                           <th>Nombre</th>
                           <th>Referencia</th>
                           <th>Marca</th>
@@ -406,7 +408,15 @@
                           <th>Descuento</th>
                           <th>Cantidad</th>
                           <th>Descripcion</th>
-                          <th></th>
+                          <th>
+                            <p>
+                              <input onclick = "selectAll(this)" type="checkbox" class="filled-in" id="filled-in-box" />
+                              <label for="filled-in-box">Seleccionar Todo</label>
+                              <div onclick = "deleteMultiple()">
+                                  <i class="material-icons">&#xE872;</i>
+                              </div>
+                            </p>
+                          </th>
                         </tr>
                       </thead>
 
@@ -414,6 +424,12 @@
 
                         <% products.forEach(function(productsElement){ %>
                           <tr value = "<%=productsElement._id %>">
+                                <td>  <p>
+                                    <input class = "eraseCheck" type="checkbox" id="<%=productsElement._id %>" />
+                                    <label for = "<%=productsElement._id %>"></label>
+                                      </p>
+
+                                </td>
                                 <td><span class="nameData"><%=productsElement.name %></span></td>
                                 <td><span class="referenceData"><%=productsElement.reference %></span></td>
                                 <td><span class="brandData"><%=productsElement.brand.name %></span></td>
@@ -496,7 +512,9 @@
     <script src="//cdn.jsdelivr.net/pouchdb/6.2.0/pouchdb.min.js"></script>
     <script src="../assets/js/admin/memory.js"></script>
     <script src="../assets/js/admin/products/graphics.js"></script>
+    <script src="../assets/js/utilities/productSearcher.js"></script>
 
     <script src="../assets/js/admin/products/products.js"></script>
+
 </body>
 </html>

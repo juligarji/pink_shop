@@ -7,11 +7,11 @@ var Schema = mongoose.Schema;
 var usersSc = new Schema({
 
     email:{type:String,unique:true,lowercase:true},
-    permits:{type:Number,required:true},
+    permits:{type:Number,default:1,select:false},
     displayName:{type:String},
     avatar:{type:String},
     password:{type:String,select:false},
-    singupDate:{type:Date,default:Date.now()},
+    singupDate:{type:Date,default:Date.now},
     lastLogin:{type:Date}
 });
 

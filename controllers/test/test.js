@@ -290,4 +290,13 @@ router.get('/borrarVentas',function(req,res,next){
     })
 });
 
+/* PUEBAS DE QUOTATIONS Y verVentas*/
+var quotations = require('../../models/db/schemas/sales/quotations');
+router.get('/verCotizaciones',function(req,res,next){
+      quotations.find({},function(err,quo){
+          if(err) throw err;
+          res.send(quo);
+      })
+});
+
 module.exports = router;

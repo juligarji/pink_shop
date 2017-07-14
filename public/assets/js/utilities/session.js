@@ -22,7 +22,7 @@ var Session = {
 
         call.done(function(data){
 
-            document.cookie = "token=" + data.token + ";";
+            /*document.cookie = "token=" + data.token + ";";*/
             location.reload();
         });
 
