@@ -75,6 +75,27 @@ function PayElements(){
     DB.currentCall(newData,PAY_PRODUCTS,function(data){
 
       console.log(data);
+      return;
+      
+      var newData = JSON.stringify(data.data.body);
+      var call =   $.ajax({
+            url : data.data.address,
+            type : 'POST',
+            contentType: 'application/json',
+            async: true,
+            data: newData
+      });
+
+      call.done(function(data){
+          console.log('sucess');
+      });
+
+      call.fail(function(jqXHR, textStatus, error){
+          console.log('fail');
+          console.log(jqXHR.responseText);
+      });
+
+
     },failHandler);
   });
 }

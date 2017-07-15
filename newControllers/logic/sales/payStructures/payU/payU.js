@@ -30,7 +30,7 @@ payU.configBody = function(data,client,reference,callback){
             shippingCountry : 'Colombia',
             telephone : client.phoneNumber
         }
-        callback(sendBody);
+        callback({address:config.address,body:sendBody});
   });
 
 }
