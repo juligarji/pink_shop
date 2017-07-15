@@ -49,7 +49,7 @@ function uploadProduct(ev,newProduct){
       minForWholesale : $(`${container} input[name="minForWholesale"]`).val(),
       description : $(`${container} input[name="description"]`).val(),
       ammount : $(`${container} input[name="ammount"]`).val(),
-      photos : locPics,
+      //photos : locPics,
       kind:$(`${container} select[name="kind"]`).val(),
     }
 
@@ -62,10 +62,10 @@ function uploadProduct(ev,newProduct){
 
 
 
-    if(newData.photos.length==0){
+    /*if(newData.photos.length==0){
       failHandler('Por favor seleccione alguna foto');
       return;
-    }
+    }*/
 
 
     Protection.ensureFill(newData,function(){
