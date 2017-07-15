@@ -210,6 +210,7 @@ router.get('/verImpuestos',function(req,res,next){
 var salesModel = require('../../models/models/sales/salesModel.js');
 var productsModel = require('../../models/models/products/productsModel.js');
 var sales = require('../../models/db/schemas/sales/sales.js');
+var quotations = require('../../models/db/schemas/sales/quotations.js');
 var salesInfo = require('../../models/db/schemas/sales/salesInfo.js');
 var usersModel = require('../../models/models/users/users.js');
 
@@ -235,20 +236,23 @@ router.get('/verUsuarios',function(req,res,next){
 });
 
 // ventas
+
+var salesModel = require('../../models/models/sales/salesModel.js');
+var quotationsModel = require('../../models/models/sales/quotationsModel.js');
+
+
 router.post('/crearVenta',function(req,res,next){
     var data = req.body;
-    var info = [{
-      product:'595ef3c73a89061709b914aa',
-      ammount:5
-    },
-    {
-      product:'595f90bd360ef30f8900759e',
-      ammount:5
-    }];
-    data.info = info;
 
-    salesModel.create(data,function(usr){
-      res.send(usr);
+    quotationsModel.getByReference(data.reference,function(dat){
+        console.log(dat);
+      salesModel.create(dat,function(usr){
+        res.send(usr);
+      },function(err){
+        throw err;
+      });
+    },function(err){
+        throw err;
     });
 });
 

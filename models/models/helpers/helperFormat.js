@@ -16,7 +16,8 @@ var helperFormat = {
             ammount : dataElement.ammount,
             tax : dataElement.tax.value,
             price : dataElement.price,
-            photos: dataElement.photos
+            photos: dataElement.photos,
+            state:dataElement.state
           });
       });
 

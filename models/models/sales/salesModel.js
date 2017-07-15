@@ -12,8 +12,9 @@ var salesModel = {
 
   create : function(quotData,callback,failback){
 
-      var saleData = sortDataFromQuotation(quotData);
-      var newSale = new Sale(saleData);
+      var saleData = salesModel.sortDataFromQuotation(quotData);
+        console.log(saleData);
+      var newSale = new sales(saleData);
       newSale.save(function(err){
         if(err){
           failback(err);

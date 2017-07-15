@@ -138,6 +138,16 @@ var Cart = (function(){
               callback(undefined);
             }
         });
+      },
+      modifySingleAmount(idProd,amount,callback){
+        Cart.existsInCart(idProd,function(index,car){
+            if(index!=-1){
+              car.products[index].ammount = amount;
+              car.products[index].modified_at = Date.now();
+              ShoppingDB.put(car);
+            }
+            callback()
+        });
       }
   }
 

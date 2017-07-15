@@ -1,7 +1,9 @@
 var config = require('./config.js');
 var encryptor = require('../../../../middleware/serverResources/encryptor.js');
+var errorHandler = require('../../../../middleware/error/errorHandler.js');
 var parentPayments = require('../parentPayments.js');
-
+var quotationsModel = require('../../../../../models/models/sales/quotationsModel.js');
+var salesModel = require('../../../../../models/models/sales/salesModel.js');
 var payU = new parentPayments();
 
 payU.configBody = function(data,client,reference,callback){
@@ -69,11 +71,14 @@ payU.handleResponse = function(req,res,next){
     quotationsModel.getByReference(data.reference_sale,function(quot){
 
         if(quot==null){
-            errorHandler.salesError(err,res,{code:'501',obj:'Null Quotations'});
+            errorHandler.salesError(null,res,{code:'501',obj:'Null Quotations'});
+            console.log('no existe la transaccion');
             return;
         }
+        data.value = parseFloat(data.value);
 
         var new_value  = data.value.toFixed(2);
+
             new_value = new_value.split('');
 
            if(new_value[new_value.length-1]==0){
@@ -81,19 +86,25 @@ payU.handleResponse = function(req,res,next){
            }
             new_value = new_value.join('');
 
-        var StringToCompare = config.apiKey + '~' + data.merchantId + '~' + data.reference_sale + '~' + new_value + '~'+ data.currency + '~' + data.state_pol;
+            console.log('value :' + new_value);
 
+        var StringToCompare = config.apiKey + '~' + data.merchantId + '~' + data.reference_sale + '~' + new_value + '~'+ data.currency + '~' + data.state_pol;
+            console.log('Clave hash string :' + StringToCompare);
+            console.log('clave hash recibida :' + data.sign);
             encryptor.encryptStringToMd5(StringToCompare,function(hash){
+              console.log('Clave hash creado :' + hash);
                 if(hash!=data.sign){
-                  errorHandler.salesError(err,res,{code:'600',obj:'Invalid Sign PayU'});
+                  console.log('hash diferente');
+                  errorHandler.salesError(null,res,{code:'600',obj:'Invalid Sign PayU'});
                   return;
                 }
-
+                  data.state_pol = parseInt(data.state_pol);
                 switch(data.state_pol){
                     case 4:// transaccion aprovada, dinero en cuenta
                       salesModel.create(quot,function(newSale){
                             //espacio para ver que hacer cuando finalice la compra
                             req.stateOfTransaction = 1;
+                            console.log('Transaccion exitosa !');
                       },function(err){
                           errorHandler.mongoose(err,res);
                           return;
@@ -103,18 +114,19 @@ payU.handleResponse = function(req,res,next){
                       quotationsModel.deleteByReference(quot.reference,function(){
                             // ver que hacer cuando se cancela una peticion
                             req.stateOfTransaction = 3;
+                            console.log('Transaccion caduca');
                       },function(err){
                         errorHandler.mongoose(err,res);
                         return;
                       });
                         break;
                     case 6:// transaccion rechazada pero puede volver
-                        res.status(200).end();
                         req.stateOfTransaction = 2;
+                        console.log('Transaccion Rechazada');
                         break;
                 }
                 console.log('ESTADOS DE POL');
-                console.log(data.sate_pol);
+                console.log(data.state_pol);
                 next();
                 // logica para insertar la venta y borrar la cotizacion
             });

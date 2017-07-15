@@ -61,7 +61,7 @@ var helperPrice = {
     arrayData.forEach(function(element){
       if(element.state!='empty'){
         price = price + element.price;
-        ammount = price + element.ammount;
+        ammount = ammount + element.ammount;
       }
     });
 
@@ -142,14 +142,15 @@ var helperPrice = {
 
     var state;
     var realAmmount;
-    if(productData.ammount == 0){
+
+    if(productData.ammount == 0||ammount==0){
         state = "empty";
     };
-    if(productData.ammount < ammount){
+    if(productData.ammount < ammount && productData.ammount>0){
       state = "missing";
-      realAmmount = ProductData.ammount;
+      realAmmount = productData.ammount;
     };
-    if(productData.ammount >= ammount){
+    if(productData.ammount >= ammount && ammount>0){
       state = "stock";
       realAmmount = ammount;
     }

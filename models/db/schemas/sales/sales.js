@@ -68,17 +68,19 @@ function nestedUpdateInventory(index,arrayData){
 salesSchema.pre('save',function(next){
 // Esta funcion elimina el registro en la tabla de quotations, y actualiza el inventario,
 // antes de crear el nuevo registro de ventas
-  quotations.findOneAndRemove({reference:this.reference},function(err,quot){
+
+  var prevData = this;
+
+  quotations.findOneAndRemove({reference:this.reference},function(err){
       if(err){
         errorHandler.handle(err);
         return;
       }
       var hashObjects = {};
       var arrayData = [];
-
-      this.products.forEach(function(element){
-          hashObjects[element.id] = ammount;
-          arrayData.push(element._id);
+      prevData.products.forEach(function(element){
+          hashObjects[element.id] = element.ammount;
+          arrayData.push(element.id);
       });
 
       products.find({_id:{$in:arrayData}}).select('ammount').exec(function(err,prod){
@@ -86,11 +88,13 @@ salesSchema.pre('save',function(next){
               errorHandler.handle(err);
               return;
           }
+
           prod.forEach(function(element){// disminuir inventario
               element.ammount -= hashObjects[element._id];
           });
 
           nestedUpdateInventory(0,prod);
+            console.log(prod);
           next();
       });
   });

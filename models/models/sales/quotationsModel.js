@@ -178,13 +178,14 @@ var quotationsModel = {
       return outObj;
     },
     deleteByReference : function(objectReference,callback,failback){
-      quotations.findOneAndRemove({reference:objectReference},function(err){
+        quotations.findOneAndRemove({reference:objectReference},function(err){
                   if(err){
                     failback(err);
                     return;
                   }
                   callback();
       });
+      callback(); // cambiar no olbvidar
     }
 
 }

@@ -70,7 +70,7 @@ var payments = (function(){
  },
  handleStateResponse : function(req,res,next){
         console.log('EL ESTADO FINAL DE LA TRANSACCION FUE :' + req.stateOfTransaction);
-        res.status(200).end();
+        res.status(200).send({state:req.stateOfTransaction});
  }
 
 }

@@ -20,22 +20,37 @@ function totalizate(){
             shipment : false
         }
       }
+      console.log('CARRO');
       console.log(car);
       if(car.length==0){
         return;
       }
       DB.currentCall(newData,TOTALIZATE_CART,function(data){
 
+
         data.data.products.forEach(function(element){
-            if(element.state=='empty'){
+          //console.log(element);
+            console.log(element);
+            switch(element.state){
+              case 'empty':
               Cart.deleteFromCart(element._id,function(){
+                Dialogs.failMessage(`Las existencias de ${element.name} se agotaron, disculpe las molestias.`);
               });
-            }else{
+                break;
+
+              case 'missing':
+              Cart.modifySingleAmount(element._id,element.ammount,function(){
+                Dialogs.failMessage(`Del producto ${element.name} solo se tienen ${element.ammount} Und, disculpe las molestias`);
                 Graphics.addElementToContainer('#productsContainer',element);
-                Graphics.paintTotals(data.data.meta);
+              });
+                break;
+              default :
+                  Graphics.addElementToContainer('#productsContainer',element);
+                  break;
             }
         });
-        console.log(data);
+        Graphics.paintTotals(data.data.meta);
+
       },failHandler);
     });
 }
