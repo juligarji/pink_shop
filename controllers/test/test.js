@@ -299,4 +299,11 @@ router.get('/verCotizaciones',function(req,res,next){
       })
 });
 
+router.get('/borrarCotizaciones',function(req,res,next){
+      quotations.remove(function(err){
+          if(err) throw err;
+          res.send('exitoso');
+      })
+});
+
 module.exports = router;

@@ -75,8 +75,15 @@ function PayElements(){
     DB.currentCall(newData,PAY_PRODUCTS,function(data){
 
       console.log(data);
-      return;
-      
+
+      if(data.type=='graphic'){
+          $('#productsContainer').append(data.data.body);
+          document.getElementById('formBuy').submit();
+          console.log(data.data.body);
+          return;
+      }
+
+
       var newData = JSON.stringify(data.data.body);
       var call =   $.ajax({
             url : data.data.address,

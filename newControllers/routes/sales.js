@@ -12,5 +12,5 @@ var payments = require('../logic/sales/payments.js');
 
 /* manejador de metodos de pago*/
 router.post('/payproducts',payments.payProducts);
-router.post('/recievebypayu',payments.getCurrentMethods()['payU'].handleResponse);
+router.post('/recievebypayu',payments.getCurrentMethods()['payU'].handleResponse,payments.handleStateResponse);
 module.exports = router;
