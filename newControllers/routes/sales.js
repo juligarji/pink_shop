@@ -13,4 +13,9 @@ var payments = require('../logic/sales/payments.js');
 /* manejador de metodos de pago*/
 router.post('/payproducts',payments.payProducts);
 router.post('/recievebypayu',payments.getCurrentMethods()['payU'].handleResponse,payments.handleStateResponse);
+router.get('/recievebypayu',function(req,res,next){
+      console.log('SE HIZO UN GET A RECIEVE PAYU !!');
+      res.send('hola chavales');
+      res.end();
+});
 module.exports = router;
