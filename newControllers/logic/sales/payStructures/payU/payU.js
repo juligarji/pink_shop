@@ -87,7 +87,7 @@ payU.handleResponse = function(req,res,next){
 
             console.log('value :' + new_value);
 
-        var StringToCompare = config.apiKey + '~' + data.merchantId + '~' + data.reference_sale + '~' + new_value + '~'+ data.currency + '~' + data.state_pol;
+        var StringToCompare = config.apiKey + '~' + data.merchant_id + '~' + data.reference_sale + '~' + new_value + '~'+ data.currency + '~' + data.state_pol;
             console.log('Clave hash string :' + StringToCompare);
             console.log('clave hash recibida :' + data.sign);
             encryptor.encryptStringToMd5(StringToCompare,function(hash){
