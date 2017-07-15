@@ -40,9 +40,9 @@ payU.configBody = function(data,client,reference,callback){
 
         <input name="merchantId"    type="hidden"  value="${config.merchantId}">
           <input name="referenceCode" type="hidden"  value="${reference}" >
-          <input name="description"   type="hidden"  value="1${descriptionSell}"  >
+          <input name="description"   type="hidden"  value="1${descriptionSell}">
           <input name="amount"        type="hidden"  value="${data.meta.totalPrice}">
-          <input name="tax"           type="hidden"  value="${data.meta.totalTax}"  >
+          <input name="tax"           type="hidden"  value="${data.meta.totalTax}">
           <input name="taxReturnBase" type="hidden"  value="0" >
           <input name="signature"     type="hidden"  value="${hash}">
           <input name="accountId"     type="hidden"  value="${config.accountId}" >
@@ -54,9 +54,8 @@ payU.configBody = function(data,client,reference,callback){
           <input name="shippingCountry"    type="hidden"  value="Colombia" >
           <input name="telephone"    type="hidden"  value="${client.phoneNumber}" >
           <input name="test"          type="hidden"  value="1" >
-          <!--
           <input name="responseUrl"    type="hidden"  value="http://http://pink-shop.herokuapp.com/" >
-          <input name="confirmationUrl"    type="hidden"  value="${config.confirmationUrl}" >-->
+          <input name="confirmationUrl"    type="hidden"  value="${config.confirmationUrl}" >
 
         </form>`;
         callback({data:{address:config.address,body:element},type:'graphic'});
