@@ -61,7 +61,6 @@ function uploadProduct(ev,newProduct){
     }
 
 
-
     /*if(newData.photos.length==0){
       failHandler('Por favor seleccione alguna foto');
       return;

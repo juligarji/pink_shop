@@ -54,7 +54,7 @@ payU.configBody = function(data,client,reference,callback){
           <input name="test"          type="hidden"  value="1" >
           <!--
           <input name="responseUrl"    type="hidden"  value="http://http://pink-shop.herokuapp.com/" >
-          <input name="confirmationUrl"    type="hidden"  value="" >-->
+          <input name="confirmationUrl"    type="hidden"  value="${config.confirmationUrl}" >-->
 
         </form>`;
         callback({data:{address:config.address,body:element},type:'graphic'});
