@@ -5,7 +5,8 @@ var dataRequired = {
     apiKey : process.env.PAYU_API_KEY || '4Vj8eK4rloUd272L48hsrarnUA',
     handleAddress : '/sales/recievebypayu',
     address : 'https://sandbox.gateway.payulatam.com/ppp-web-gateway',
-    confirmationUrl : 'http://pink-shop.herokuapp.com/ventas/recievebypayu'
+    confirmationUrl : 'http://pink-shop.herokuapp.com/ventas/recievebypayu',
+    responseUrl:'http://pink-shop.herokuapp.com/'//cambiar por una creada
 }
 
 module.exports = dataRequired;

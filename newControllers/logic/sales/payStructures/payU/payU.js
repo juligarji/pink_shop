@@ -54,7 +54,7 @@ payU.configBody = function(data,client,reference,callback){
           <input name="shippingCountry"    type="hidden"  value="Colombia" >
           <input name="telephone"    type="hidden"  value="${client.phoneNumber}" >
           <input name="test"          type="hidden"  value="1" >
-          <input name="responseUrl"    type="hidden"  value="http://http://pink-shop.herokuapp.com/" >
+          <input name="responseUrl"    type="hidden"  value="${config.responseUrl}" >
           <input name="confirmationUrl"    type="hidden"  value="${config.confirmationUrl}" >
 
         </form>`;
