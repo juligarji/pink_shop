@@ -1,0 +1,19 @@
+
+#lateralSearcher{
+  background-color: rgb(30,30,30);
+}
+
+#lateralSearcher .title{
+  font-family: 'Fresca', sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  color: #d0006f;
+  text-shadow: white 1px 1px 1px;
+}
+#lateralSearcher input[name="search"]{
+  background-color: white;
+  padding-left: 0px;
+  font-size: 18px;
+  height: 30px;
+  font-family: 'Dosis', sans-serif;
+}
