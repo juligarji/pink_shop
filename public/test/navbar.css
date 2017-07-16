@@ -1,0 +1,60 @@
+
+#navBar{
+  /*background-color:#d0006f;*/
+  font-family: 'Fresca', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #d0006f;
+  color: white;
+  width: 100%;
+  /*box-shadow: #d0006f 0px 5px 8px;*/
+  /*background-color: rgb(229,224,218);*/
+  background-color: rgb(30,30,30);
+}
+
+.brand-logo{
+    background-color: black;
+    margin-left: 20px;
+}
+
+
+.navSelec{
+  font-size: 25px;
+}
+.navSelec:hover{
+    background-color: #d0006f;
+    color:rgb(229,224,218);
+
+   -webkit-transform: rotate(5deg);
+   -moz-transform: rotate(5deg);
+   -o-transform: rotate(5deg);
+
+
+   -webkit-transition-duration: 0.5s; /* Safari */
+   -moz-transition-duration: 0.5s;
+   -o-transition-duration: 0.5s;
+   cursor:pointer;
+}
+
+.navIcon{
+  font-size: 40px;
+}
+.
+.navIcon:hover{
+  /*-webkit-transform: rotate(15deg);
+  -webkit-transition-duration: 0.5s;
+  text-shadow: rgb(50,50,50) 2px 1px 5px;*/
+  background-color: #d0006f;
+
+  cursor:pointer;
+}
+
+@media only screen and (max-width:991px){
+  .navIcon{
+    font-size: 80px;
+    right: 0px;
+  }
+  .navTitle{
+    font-size: 45px;
+  }
+}

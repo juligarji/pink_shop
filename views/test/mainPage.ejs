@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Neuton" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+      <link rel="stylesheet" href="footer.css">
+      <link rel="stylesheet" type="text/css" href="section.css">
+  </head>
+  <body>
+
+    <div  class="row">
+      <div id="mainCont" class="col l12 m12 s12">
+
+          <%- include('../test/navbar') %>
+
+        <div class=" col l10 m10 s12 offset-l1">
+          <div class="grid col l12 m12 s12">
+          <!--<div class="grid-item grid-item--width3 grid-item--height4"></div>
+          <div class="grid-item grid-item--height3"></div>
+          <div class="grid-item grid-item--width2 grid-item--height3 "></div>
+          <div class="grid-item grid-item--width1 grid-item--height2"></div>
+          <div class="grid-item grid-item--width1 grid-item--height1"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2"></div>-->
+
+          <div class="grid-item grid-item--width3 grid-item--height4 z-depth-2 mainMasItem">
+            <div class="carousel"
+data-flickity='{ "imagesLoaded": true, "percentPosition": false }'>
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" alt="orange tree" />
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" alt="submerged" />
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" alt="look-out" />
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" alt="One World Trade" />
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" alt="drizzle" />
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" alt="cat nose" />
+</div>
+
+          </div>
+
+        <div class="grid-item grid-item--width1 grid-item--height3 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width2 grid-item--height3 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height5 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height1 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height3"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2 z-depth-2 mainMasItem"></div>
+        </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+
+            <%- include('../test/footer') %>
+
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+          <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+          <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+        <script type="text/javascript" src = "section.js">
+
+        </script>
+  </body>
+</html>

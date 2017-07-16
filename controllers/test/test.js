@@ -310,4 +310,8 @@ router.get('/borrarCotizaciones',function(req,res,next){
       })
 });
 
+router.get('/viewNewPage',function(req,res,next){
+    res.render('test/mainPage');
+});
+
 module.exports = router;

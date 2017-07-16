@@ -1,0 +1,15 @@
+/*body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+*/
+ .page-footer{
+     background-color: rgb(30,30,30);
+     font-family: 'Fresca', sans-serif;
+     font-weight: bold;
+ }
