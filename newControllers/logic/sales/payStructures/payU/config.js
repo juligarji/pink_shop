@@ -8,8 +8,6 @@ var dataRequired = {
     confirmationUrl : 'http://pink-shop.herokuapp.com/ventas/recievebypayu',
     responseUrl:'http://pink-shop.herokuapp.com/'//cambiar por una creada
 
-
-    
 }
 
 module.exports = dataRequired;

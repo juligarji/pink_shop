@@ -318,4 +318,8 @@ router.get('/productos',function(req,res,next){
       res.render('test/products');
 });
 
+router.get('/detalles',function(req,res,next){
+      res.render('test/details');
+});
+
 module.exports = router;

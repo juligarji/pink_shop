@@ -1,4 +1,9 @@
-
+a:link{
+  color: inherit;
+}
+a:visited{
+  color: inherit;
+}
 #navBar{
   /*background-color:#d0006f;*/
   font-family: 'Fresca', sans-serif;

@@ -1,5 +1,7 @@
+  var GRAPHIC_FLAG = true;
 
 $(document).ready(function(){
+
 /*
   $('.grid').masonry({
   itemSelector: '.grid-item',
@@ -11,12 +13,15 @@ $(document).ready(function(){
 
 $('.grid').masonry({
   itemSelector: '.grid-item',
-  columnWidth: 213,
+  columnWidth: 240,
   fitWidth: true,
   gutter: 10
   //containerStyle: null
-
 });
 
+$('.collapsible').collapsible();
+$('select').material_select();
+
+$('.modal').modal();
 
 });

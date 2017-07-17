@@ -1,6 +1,15 @@
 * { box-sizing: border-box; }
 body { font-family: sans-serif; }
 
+a:link{
+  color: inherit;
+}
+
+#productsContainer .productInfo{
+  color:white;
+}
+
+
 #mainCont{
 
   display: table;
@@ -46,16 +55,94 @@ body { font-family: sans-serif; }
   clear: both;
 }
 
+/* products info*/
+#productsContainer .productInfo{
+
+}
+
+#productsContainer .productInfo .title{
+font-family: 'Fresca', sans-serif;
+font-size: 1.4em;
+text-shadow: rgb(30,30,30) 2px 2px 1px;
+box-shadow:0px 1px 1px rgb(30,30,30);
+}
+
+#productsContainer .productInfo .wholesaleInfo {
+  background-color:rgb(240,240,240);
+  color:black;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.1em;
+}
+
+#productsContainer .productInfo .wholesaleInfo .number{
+  font-family: 'Fresca', sans-serif;
+  color: #d0006f;
+  font-size: 1.8em;
+  text-shadow: black 2px 1px 1px;;
+}
+
+
+#productsContainer .productInfo .detailInfo {
+  background-color:rgb(30,30,30);
+  color:rgb(240,240,240);
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.1em;
+}
+
+#productsContainer .productInfo .detailInfo .number{
+  font-family: 'Fresca', sans-serif;
+  color: #d0006f;
+  font-size: 1.8em;
+  text-shadow: rgb(240,240,240) 1px 1px 1px;;
+}
+
+#productsContainer .productInfo .shoppingButton{
+    font-family: 'Fresca', sans-serif;
+    color: #EEE;
+    font-size:  2em;
+    text-shadow: rgb(30,30,30) 2px 2px 1px;
+}
+/*
+#productsContainer .productInfo .wholesaleInfo{
+    background-color: rgb(240,240,240);
+    font-family: 'Fresca', sans-serif;
+    color:black;
+}*/
+
+
+/*
+#productsContainer .productInfo .number{
+
+    color:rgb(30,30,30);
+    color:white;
+    font-family: 'Fresca', sans-serif;
+    font-size: 30px;
+}
+
+#productsContainer .productInfo .numberSign{
+    color:white;
+}
+*/
 /* ---- grid-item ---- */
 
 .grid-item {
-  width: 213px;
-  height: 250px;
+  width: 240px;
+  height: 514px;
   float: left;
-  background: #D26;
+  /*background: #D26; originalmente*/
+  background: #d0006f;
   border: 2px solid #333;
   /*border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;*/
+}
+
+.grid-item--placeHolder{
+  height:100px;
+}
+
+.grid-item--entyreWidth{
+  height:100px;
+  width:720px;
 }
 
 .grid-item--width1 { width: 213px; }

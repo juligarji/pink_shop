@@ -1,0 +1,85 @@
+<div id="lateralSearcher" class="col l3 z-depth-2 center">
+      <h5 class = "title">Buscador</h5>
+      <div class="divider"></div>
+
+        <div class="valign-wrapper">
+          <div class="input-field col l10">
+            <input name="search" type="text" required>
+          </div>
+          <div class="col l2">
+              <i style = "color:white" class="fa fa-search" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="colapHeader valign-wrapper z-depth-3" style = "margin-left:-10px;margin-right:-10px" onclick = "toggleInfoSideSearch('lio')">
+           <span class = "center-align"> Tamaño</span>
+            <div class="col l1">
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div id="lio" class = "colapBody z-depth-1">
+          <div class="row">
+            <br>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="<id de attr>" checked="checked"/>
+              <label for="filled-in-box align-wrapper" ></label><span>Pequeño</span>
+            </div>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="filled-in-box" checked="checked"/>
+              <label for="filled-in-box align-wrapper"></label><span>Mediano</span>
+            </div>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="filled-in-box" checked="checked"/>
+              <label for="filled-in-box align-wrapper" ></label><span>Grande</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="colapHeader valign-wrapper z-depth-3" style = "margin-left:-10px;margin-right:-10px" onclick = "toggleInfoSideSearch('lio2')">
+           <span class = "center-align">Marca</span>
+            <div class="col l1">
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div id="lio2" class = "colapBody z-depth-1">
+          <div class="row">
+            <br>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="filled-in-box" checked="checked"/>
+              <label for="filled-in-box align-wrapper" ></label><span>Victoria Secret</span>
+            </div>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="filled-in-box" checked="checked"/>
+              <label for="filled-in-box align-wrapper" ></label><span>Do</span>
+            </div>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="filled-in-box" checked="checked"/>
+              <label for="filled-in-box align-wrapper" ></label><span>Splash</span>
+            </div>
+            <div class=" col l10 offset-l2 valign-wrapper">
+              <input type="checkbox" class="filled-in menuCheckbox" id="filled-in-box" checked="checked"/>
+              <label for="filled-in-box align-wrapper" ></label><span>Ok Docs</span>
+            </div>
+          </div>
+        </div>
+        <p class = "subtitle">Ordenado por :</p>
+
+        <div class="col l12 offset-l1 orderSelec">
+          <div class="col l6 center">
+            <div class="circle valign-wrapper" value="price"><span style = "position:relative;left:25px;">Precio</span></div>
+          </div>
+          <div class="col l6 center">
+            <div class="circle valign-wrapper circle-selected" value="created_at"><span style = "position:relative;left:25px;">Fecha</span></div>
+          </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="col l8 offset-l2 z-depth-2 searchButtonCont center waves-effect waves-light">
+            Buscar <i class="fa fa-share-square right" aria-hidden="true"></i></button>
+        </div>
+
+</div>
