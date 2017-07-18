@@ -57,7 +57,7 @@
 #lateralSearcher .colapBody{
   margin-left: -10px;
   margin-right: -10px;
-  background-color: rgb(229,224,218);
+  background-color: rgb(240,240,240);
   display:block;
   margin-bottom: 1px;
   padding-bottom: 1px;
@@ -112,6 +112,7 @@ label{
   border:white solid 2px;
   cursor:pointer;
 }
+
 .circle span{
   color:white;
   font-family: 'Dosis', sans-serif;

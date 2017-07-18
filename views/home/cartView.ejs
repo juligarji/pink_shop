@@ -26,36 +26,52 @@
 
     <div class="divider"></div>
 
-    <div class = "row cartElement">
+
+    <div class = "row cartElement" value = "">
       <div class = "col l12">
         <div class = "col l2 center" >
-          <span class = "titles">PRODUCTO</span>
+          <div style = "overflow:hidden">
+            <img src="../assets/img/page/test_pro" width="60%" style = "margin:-20% 0px -20% 0px;">
+          </div>
         </div>
-        <div class = "col l10" >
+        <div class = "col l10 valign-wrapper" >
           <div class = "col l3" >
-              <span class = "titles">NOMBRE</span>
+              <p>Hola</p>
         </div>
 
           <div class = "col l3" >
             <div class = "col l6">
-              <span class = "titles">TIPO</span>
+              <p>Si</p>
             </div>
             <div class = "col l6">
-              <span class = "titles">MARCA</span>
+              <p>Victoria Secret</p>
             </div>
           </div>
           <div class = "col l1 center" >
-            <span class = "titles">CANTIDAD</span>
+            <p class = "ammoSelect">+</p>
+            <p class = "ammo">50.000</p>
+            <p class = "ammoSelect">-</p>
           </div>
           <div class = "col l1" >
-            <span class = "titles">PRECIO</span>
+            <p>${data.price}</p>
           </div>
           <div class = "col l4" >
+            <div class = "row valign-wrapper">
+              <div class = "col l10">
+                <p>La mejor de todos</p>
+              </div>
+              <div class = "col l2">
+              <div onclick = "deleteElement('${data._id}')">
+                  <i class="material-icons">&#xE872;</i>
+              </div>
+              </div>
+            </div>
 
           </div>
         </div>
       </div>
     </div>
+
       <div id="productsContainer" class="row">
 
       </div>

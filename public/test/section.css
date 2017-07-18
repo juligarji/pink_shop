@@ -24,9 +24,7 @@ body { font-family: sans-serif;
   }
 }
 
-.grid-item {
-  margin-bottom: 10px;
-}
+
 
 @media screen and ( min-width: 768px ) {
   .carousel img {
@@ -34,10 +32,29 @@ body { font-family: sans-serif;
   }
 }
 
+
+
+.social a{
+    font-size: 4em;
+    text-shadow: white 1px 1px 1px;
+}
+
+.social a:hover{
+    font-size: 4.5em;
+    text-shadow: white 1px 1px 1px;
+}
+
+
+
+/* configuracion de masonry*/
 .grid {
   background: #EEE;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.grid-item {
+  margin-bottom: 10px;
 }
 
 /* clearfix */

@@ -1,0 +1,127 @@
+/*
+
+  font-family: 'Fresca', sans-serif;
+  font-family: 'Dosis', sans-serif;
+
+  COLORES >>>>
+  rgb(30,30,30)  negro
+  rgb(240,240,240) blanco
+  :#d0006f; rosado
+*/
+
+#homeProducts img{
+    /*min-height: 60px;*/
+    max-height: 300px;
+
+}
+
+#listContainer{
+  /*background-color: rgb(30,30,30);
+  color:rgb(240,240,240);*/
+
+  background-color: rgb(240,240,240);
+  color:rgb(30,30,30);
+  margin-left: 4.3%;
+
+}
+
+
+#headerList{
+    font-family: 'Fresca', sans-serif;
+    color: #d0006f;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow: black 0px 1px 0px;
+}
+
+#headerList .headerSub{
+
+
+}
+
+.cartElement{
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    box-shadow: #d0006f 1px 1px 1px;
+}
+.cartElement .elementCont{
+  padding:0px;
+}
+.cartElement .number{
+    font-family: 'Fresca', sans-serif;
+    color:rgb(30,30,30);
+    font-size: 1.5em;
+}
+
+.cartElement .amoSelect{
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.cartElement .amoSelect:active{
+    cursor: pointer;
+    color: #d0006f;
+    text-shadow: rgb(30,30,30) 1px 0px 0px;
+}
+
+.cartElement .elementCont .trash{
+  font-size: 1.8em;
+  text-shadow: #d0006f 2px 2px 2px;
+  cursor: pointer;
+
+}
+
+.circle{
+	width: 18px;
+	height:18px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 50px;
+
+  cursor:pointer;
+  background:#d0006f;
+}
+
+.circle:active{
+	border:rgb(30,30,30) solid 2px;
+}
+
+.circle i{
+  font-size: 20px;
+}
+
+#payInfo{
+  background-color: rgb(20,20,20);
+  font-family: 'Dosis', sans-serif;
+}
+
+#payInfo .title{
+  color:#d0006f;
+  font-family: 'Fresca', sans-serif;
+  text-shadow: rgb(240,240,240) 1px 1px 0px;
+  font-size: 2.5em;
+}
+#payInfo .description{
+  color:rgb(240,240,240);
+
+  font-size: 1.2em;
+}
+
+#payInfo .number{
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.3em;
+}
+
+#totalCont {
+    color:#d0006f;
+    font-size: 1.4em;
+}
+
+#payBut{
+  margin-top: 5px;
+  font-family: 'Fresca', sans-serif;
+  font-size: 2em;
+  background-color: #d0006f;
+
+}

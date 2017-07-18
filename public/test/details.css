@@ -1,0 +1,147 @@
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+-particle, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+#carouselContainer{
+  background-color: rgb(30,30,30);
+}
+.carousel-cell {
+  margin-right: 20px;
+  overflow: hidden;
+
+  background-color: #d0006f;
+
+}
+
+.carousel-cell img {
+  height: 650px;
+  width:400px;
+}
+
+
+/* CONFIGURACION PARA TABLETS*/
+@media only screen and (max-width:991px){
+
+
+    .carousel-cell img {
+      height: 500px;
+    }
+
+}
+
+
+/* CONFIGURACION DE CELULARES */
+@media only screen and (max-width:600px){
+
+
+.carousel-cell img {
+  height: 400px;
+}
+
+}
+
+/*  menu de info  */
+#infoProduct{
+  background-color:rgb(30,30,30);
+  padding:0;
+}
+
+#infoProduct .title{
+  color:#d0006f;
+  font-family: 'Fresca', sans-serif;
+  font-weight: bold;
+  font-size: 2.1em;
+  text-shadow: rgb(240,240,240) 1px 1px 1px;
+
+}
+#infoProduct .mainNumberCont{
+  margin-top: 12px;
+}
+#infoProduct .mainNumber{
+  background-color: rgb(240,240,240);
+  height: 60px;
+  font-family: 'Fresca', sans-serif;
+
+}
+#infoProduct .mainNumber input{
+  text-align: center;
+  height: 60px;
+  font-size: 2em;
+}
+
+
+#infoProduct .mainSign{
+  font-size: 1.5em;
+  color:rgb(240,240,240);
+  font-family: 'Dosis', sans-serif;
+}
+
+.circle{
+	width: 28px;
+	height:28px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 50px;
+
+  cursor:pointer;
+  background:#d0006f;
+}
+
+.circle:active{
+	border:rgb(30,30,30) solid 2px;
+}
+
+.circle i{
+  font-size: 23px;
+}
+
+#infoProduct .prodInfo{
+  background-color:rgb(240,240,240);
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.2em;
+}
+#infoProduct .prodInfo .sign{
+      font-family: 'Fresca', sans-serif;
+      font-size: 2.1em;
+      color:black;
+}
+
+#infoProduct .prodInfo .number{
+      font-family: 'Fresca', sans-serif;
+      font-size: 2.1em;
+      text-shadow: rgb(30,30,30) 2px 1px 1px;
+      color:#d0006f;
+}
+
+#infoProduct .total{
+    font-size: 1em;
+    box-shadow: #d0006f 2px 3px 1px;
+}
+#infoProduct .total .number{
+    font-size: 2.3em;
+    font-weight: bold;
+    color: rgb(30,30,30);
+    text-shadow: #d0006f 1px 1px 1px;
+}
+ #infoProduct .addCartButton{
+   font-family: 'Fresca', sans-serif;
+   font-weight: bold;
+   background-color: #d0006f;
+   cursor:pointer;
+   font-size: 2.3em;
+   text-shadow: rgb(240,240,240) 2px 1px 1px;
+ }
+
+
+#infoProduct .description{
+  background-color: rgb(240,240,240);
+  font-size: 1.2em;
+  font-family: 'Dosis', sans-serif;
+  color: rgb(30,30,30);
+  margin-bottom: 15px;
+}

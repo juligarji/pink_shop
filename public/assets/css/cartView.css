@@ -243,15 +243,12 @@ ul.side-nav a.btn{
   font-size: 25px;
 }
 
-
-
-
 /* Perfumes */
 
 #fraganceProducts img{
 
     background-color: red;
-    max-height: 200px;
+    max-height: 300px;
 }
 
 #fraganceProducts button{

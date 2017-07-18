@@ -322,4 +322,8 @@ router.get('/detalles',function(req,res,next){
       res.render('test/details');
 });
 
+router.get('/carro',function(req,res,next){
+      res.render('test/cartView');
+});
+
 module.exports = router;

@@ -10,11 +10,9 @@
       <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
       <link rel="stylesheet" href="../vendor/materialize/css/materialize.css">
 
-      <link rel="stylesheet" href="loader.css">
-      <link rel="stylesheet" href="footer.css">
-      <link rel="stylesheet" href="menuLateral.css">
-      <link rel="stylesheet" type="text/css" href="products.css">
-      <link rel="stylesheet" href="master-hover.css">
+      <link rel="stylesheet" type="text/css" href="master-hover.css">
+      <link rel="stylesheet" type="text/css" href="details.css">
+
   </head>
   <body>
 
@@ -22,75 +20,114 @@
       <div id="mainCont" class="col l12 m12 s12">
 
           <%- include('../test/navbar') %>
-          <div class="row">
-            <!-- codigo de la barra latetral, deparar luego -->
-              <%- include('../test/sideSearchMenu') %>
-            <div id="productsContainer" class="col l8" style='margin-left:15px'>
+          <div class="col l12">
+              <div id="carouselContainer" class="col l6 offset-l1">
 
-                <div class="grid col l12">
-                  <div class="grid-item z-depth-3 hvr-rotate">
-                    <a href="#">
-                      <img src="../assets/img/products/test_product.jpg-1499868502189" width="100%" height="70%" alt ="La Imagen no pudo cargarse :(">
-                      <div class="productInfo">
-                          <div class="col l12 title center">
-                              Victoria Secret seduction
-                          </div>
-                          <div class="col l6 center z-depth-1 wholesaleInfo">
-                                <div class="subtitle">
-                                    Mayor
-                                </div>
-                                <div class="number">
-                                    <span class = "numberSign">$</span>240.000
-                                </div>
-                          </div>
-                          <div class="col l6 center z-depth-1 detailInfo">
-                            <div class="subtitle">
-                                  Detal
-                            </div>
-                            <div class="number">
-                                <span class = "numberSign">$</span>260.000
-                            </div>
-                          </div>
-                          <div class="col l12 center shoppingButton">
-                            <span>Comprar   <i class="fa fa-cart-plus" aria-hidden="true"></i> </span>
-                          </div>
-                      </div>
+                <div class="main-carousel">
 
-                    </a>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" height="100%" alt="orange tree" />
                   </div>
-                  <div class="grid-item grid-item--placeHolder">
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
                   </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
                   </div>
 
-                  <div class="grid-item grid-item--entyreWidth">
-                    <div class="spinner">
-                      <div class="rect1"></div>
-                      <div class="rect2"></div>
-                      <div class="rect3"></div>
-                      <div class="rect4"></div>
-                      <div class="rect5"></div>
-                    </div>
+                    <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
                   </div>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
+
                 </div>
+              </div>
+              <div id="infoProduct" class=" col l4 offset-l1 z-depth-1">
+                    <div class="title center">
+                        Informacion del Producto
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                      <div class="valign-wrapper mainNumberCont">
+                        <div class="center col l12">
+                          <div class="mainNumber col l4 offset-l3 z-depth-1 center" >
+                                <input min="1" max="9999" m placeholder="#" value=1 id="first_name" type="number">
+                          </div>
+                          <div class="col l2">
+                              <div class="circle">
+                                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                              </div>
+                              <div class="circle center">
+                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                              </div>
+                          </div>
+                        </div>
 
-            </div>
+                      </div>
+                    </div>
+
+                    <div class="col l12" style = "padding:0px;">
+                        <div class="row">
+                          <div class="left col l8 prodInfo z-depth-4">
+                            <div class="center">
+                              <div class="col l12">
+                                  <div>
+                                    <span>Precio Mayor </span>
+                                    <span class = "sign">$</span><span class = "number">240.000</span> c/u
+                                  </div>
+                              </div>
+                                <div class=" col l12">
+                                      <span>Minimo <span class = "number">6</span> Unidades </span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                          <div class="row">
+                            <div class="right col l9 prodInfo z-depth-4">
+                                <span>Precio Detal <span class = "sign">$</span><span class = "number">260.000</span> c/u</span>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col l7 prodInfo total center">
+
+                          <p>
+                            <span>
+                              Total
+                            </span>
+                            <span class = "sign">$</span>
+                            <span class = "number">
+                              99.999.999
+                            </span>
+                          </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col l12 addCartButton center z-depth-4 hvr-pulse-shrink">
+
+                          <p>
+                            Agregar al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                          </p>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col l10 offset-l1 z-depth-4 description">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        </p>
+                        <br>
+                    </div>
+
+              </div>
           </div>
 
       </div>
@@ -108,8 +145,7 @@
           <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
-        <script type="text/javascript" src = "products.js"></script>
-        <script type="text/javascript" src = "sideSearchMenu.js"></script>
-        <script type="text/javascript" src = "product.js"></script>
+        <script type="text/javascript" src = "details.js"></script>
+
   </body>
 </html>
