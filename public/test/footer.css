@@ -4,3 +4,25 @@
      font-family: 'Fresca', sans-serif;
      font-weight: bold;
  }
+
+
+
+ @media only screen and (max-width:991px){
+   .page-footer{
+     font-size: 2.1em;
+     right: 0px;
+   }/*
+   .navTitle{
+     font-size: 45px;
+   }*/
+ }
+
+ @media only screen and (max-width:599px){
+   .page-footer{
+     font-size: 80px;
+     right: 0px;
+   }/*
+   .navTitle{
+     font-size: 45px;
+   }*/
+ }
