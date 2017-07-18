@@ -73,7 +73,16 @@ footer, header, hgroup, menu, nav, section {
   height: 60px;
   font-size: 2em;
 }
+#mainInfoCont .title{
+  font-family: 'Dosis', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+}
+#mainInfoCont .value{
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.1em;
 
+}
 
 #infoProduct .mainSign{
   font-size: 1.5em;
@@ -104,6 +113,7 @@ footer, header, hgroup, menu, nav, section {
   background-color:rgb(240,240,240);
   font-family: 'Dosis', sans-serif;
   font-size: 1.2em;
+  font-size: 1.1em;
 }
 #infoProduct .prodInfo .sign{
       font-family: 'Fresca', sans-serif;

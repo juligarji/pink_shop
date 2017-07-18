@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+      <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+      <link rel="stylesheet" href="../vendor/materialize/css/materialize.css">
+      <link rel="stylesheet" href="footer.css">
+      <link rel="stylesheet" type="text/css" href="master-hover.css">
+      <link rel="stylesheet" type="text/css" href="registry.css">
+  </head>
+  <body>
+
+    <div  class="row">
+      <div id="mainCont" class="col l12 m12 s12">
+
+          <%- include('../test/navbar') %>
+          <div class="row">
+            <div id="signUpCont" class="col l6 offset-l1 z-depth-4">
+
+              <div class="container">
+
+                <div class="col l12 title">
+                    Registrate a Nuestra Tienda
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                    <input placeholder="Nombre" name = "name" id="name" type="text" class="validate z-depth-2">
+
+                </div>
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Apellido" name = "lastname" id="password" type="text" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l8 m8 s11 offset-l2 offset-m2">
+                  <input placeholder="Correo Electronico" name = "email" id="email" type="email" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Contraseña" name = "password" id="password" type="password" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Repetir Contraseña" name = "password" id="password" type="password" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l3 m3 s11 city">
+                  <select class = "browser-default">
+                      <option value="" disabled selected>Ciudad</option>
+                      <option value = "colombia">Bogota</option>
+                      <option value = "colombia">Medellin</option>
+                      <option value = "colombia">Cali</option>
+                  </select>
+                </div>
+
+                <div class = "input-field col l7 m7 s11">
+                  <input  placeholder="Direccion" name = "address" id="address" type="text" class="validate z-depth-2">
+
+                </div>
+
+                <div class = "input-field col l2 m2 s4 offset-s4 z-depth-2 center location">
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input  placeholder="Numero celular" type="number" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Codigo Reg (opcional)"  name = "password" id="password" type="text" class="validate z-depth-2">
+
+                </div>
+
+                <div class = "row center">
+                  <div class="col l12 hvr-rotate">
+                      <button type = "submit" class = "btn" value = "Ingresar"> Registrarme <i class="fa fa-id-badge" aria-hidden="true"></i></button>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+            </div>
+            <div class="col l3 offset-l1">
+
+
+              <div class="row">
+                <div id="signInCont" class="col l12 z-depth-4">
+                  <div class="title center">
+                      Ingresa con tu cuenta
+                  </div>
+
+                  <div class="input-field col l10 offset-l1">
+                    <input placeholder="Correo" type="email" class="validate">
+                  </div>
+
+                  <div class="input-field col l10 offset-l1">
+                    <input placeholder="Contraseña" type="password" class="validate">
+                  </div>
+
+                  <div class = "row center">
+                    <div class="col l10 offset-l1">
+                        <button type = "submit" class = "btn valign-wrapper hvr-rotate" value = "Ingresar"> Ingresar <i class="fa fa-user" aria-hidden="true"></i></button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row green">
+                <div id="socialInCont" class="col l12 z-depth-4">
+
+                  <div class="title center">
+                      Ingresa con tus redes sociales
+                  </div>
+                  <div class="row">
+                    <div class="col l12 center fb">
+                        Ingresa con Facebook <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="col center l12 google">
+                        Ingresa con tu cuenta de google <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+              <div id="downBanner" class="col l12 z-depth-5">
+                <a href="#" target="_blank">
+                  <div class="col l10">
+                    Comprar <span class = "res">Online</span> nunca fue tan facil
+                  </div>
+                  <div class="col l2">
+                      <i class="fa fa-hand-pointer-o hvr-buzz" aria-hidden="true"></i>
+                  </div>
+
+                </a>
+
+              </div>
+          </div>
+
+          <%- include('../test/footer') %>
+
+          <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+          <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+          <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+          <script src="../vendor/materialize/js/materialize.js"></script>
+
+        <script type="text/javascript" src = "registry.js">
+
+        </script>
+  </body>
+</html>

@@ -90,6 +90,10 @@
 .circle i{
   font-size: 20px;
 }
+#listContainer .discount{
+  color:red;
+}
+
 
 #payInfo{
   background-color: rgb(20,20,20);
@@ -112,6 +116,23 @@
   font-family: 'Fresca', sans-serif;
   font-size: 1.3em;
 }
+
+#payInfo .loadCode{
+  font-family: 'Fresca', sans-serif;
+  background-color: rgb(30,30,30);
+  color:rgb(240,240,240);
+  padding:5px;
+  cursor:pointer;
+  font-size: 1.3em;
+}
+
+#payInfo .loadCode:active{
+
+  background-color:#d0006f;
+  border:rgb(30,30,30) solid 1px;
+
+}
+
 
 #totalCont {
     color:#d0006f;

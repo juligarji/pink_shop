@@ -1,0 +1,232 @@
+
+/*
+
+  font-family: 'Fresca', sans-serif;
+  font-family: 'Dosis', sans-serif;
+
+  COLORES >>>>
+  rgb(30,30,30)  negro
+  rgb(240,240,240) blanco
+  :#d0006f; rosado
+*/
+
+
+#signUpCont{
+  background-color:rgb(30,30,30);
+  background-color:#d0006f;
+  font-family: 'Dosis', sans-serif;
+}
+
+#signUpCont .title{
+
+  background-color:#d0006f;
+  font-family: 'Fresca', sans-serif;
+  text-shadow: rgb(240,240,240) 1px 1px 1px;
+  font-weight: bold;
+  font-size: 2.2em;
+}
+
+#signUpCont .city select{
+  background-color: rgb(240,240,240);
+
+
+}
+
+#signUpCont .location{
+
+  background-color:white;
+  font-size: 2em;
+  cursor: pointer;
+
+}
+
+#signUpCont input[name='address']{
+
+  background-color:white;
+  font-size: 1em;
+}
+
+#signUpCont button[type=submit]{
+
+  background-color:rgb(30,30,30);
+  font-size: 2.3em;
+  font-family: 'Fresca', sans-serif;
+  text-shadow: #d0006f 1px 1px 1px;
+}
+
+#signUpCont button[type=submit] i{
+  font-size: 1.3em;
+}
+
+
+/* parte de ingreso */
+
+#signInCont{
+  background-color: rgb(30,30,30)
+}
+
+#signInCont .title{
+  color:#d0006f;
+  font-family: 'Fresca', sans-serif;
+  text-shadow: rgb(240,240,240) 1px 1px 1px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+#signInCont input{
+
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.2em;
+}
+
+#signInCont button{
+  background-color: rgb(240,240,240);
+  box-shadow: #d0006f 1px 1px 1px;
+  color:#d0006f;
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.5em;
+  text-shadow: black 1px 1px 0px;
+}
+
+#signInCont button i{
+    font-size: 2.1em;
+}
+
+
+#socialInCont{
+  background-color: rgb(30,30,30);
+  font-family: 'Dosis', sans-serif;
+  color:rgb(240,240,240);
+}
+
+#socialInCont .title{
+
+  font-family: 'Fresca', sans-serif;
+  text-shadow: #d0006f 1px 1px 0px;
+  font-size: 1.5em;
+  color:rgb(240,240,240);
+}
+
+#socialInCont .fb{
+  background-color: rgb(59,89,152);
+  cursor: pointer;
+}
+
+#socialInCont .google{
+  background-color: rgb(211,72,54);
+  cursor: pointer;
+}
+
+#socialInCont i{
+  font-size: 2.5em;
+}
+
+
+/* banner inferior de publicidad */
+#downBanner{
+  background-color: #FFE319;
+  font-family: 'Fresca', sans-serif;
+  font-size:4em;
+}
+
+#downBanner .res{
+  font-weight: bold;
+  color:#d0006f;
+  font-size: 1.1em;
+  text-shadow: rgb(30,30,30) 1px 2px 0px;
+
+}
+
+
+
+
+.input-field input{
+  background-color: rgb(240,240,240);
+  font-size: 1.3em;
+  box-shadow: #d0006f 1px 1px 1px;
+}
+
+.input-field input[type=text]:focus {
+   border-bottom: 1px solid #d0006f;
+   box-shadow: 0 1px 0 0 #d0006f;
+ }
+
+.input-field input[type=email]:focus {
+border-bottom: 1px solid #d0006f;
+box-shadow: 0 1px 0 0 #d0006f;
+}
+
+.input-field input[type=password]:focus {
+border-bottom: 1px solid #d0006f;
+box-shadow: 0 1px 0 0 #d0006f;
+}
+
+.input-field input[type=number]:focus {
+  border-bottom: 1px solid #d0006f;
+  box-shadow: 0 1px 0 0 #d0006f;
+}
+
+.input-field .prefix.active {
+     color: red;
+   }
+
+
+   ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+       color:    #848484;
+   }
+
+
+
+
+
+
+
+
+
+
+
+.grid {
+  background: #EEE;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  margin-bottom: 10px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 213px;
+  height: 250px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  /*border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;*/
+}
+
+.grid-item--width1 { width: 213px; }
+.grid-item--width2 { width: 426px; }
+.grid-item--width3 { width: 639px; }
+.grid-item--width4 { width: 852px; }
+/*
+.grid-item--height1 { height: 62px; }
+.grid-item--height2 { height: 124px; }
+.grid-item--height3 { height: 184px; }
+.grid-item--height4 { height: 248px; }
+.grid-item--height5 { height: 310px; }
+*/
+.grid-item--height1 { height: 100px; }
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 300px; }
+.grid-item--height4 { height: 400px; }
+.grid-item--height5 { height: 500px; }

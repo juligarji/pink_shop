@@ -3,7 +3,8 @@
   <head>
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-
+      <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
       <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
@@ -18,148 +19,152 @@
 
           <%- include('../test/navbar') %>
 
-        <div id="listContainer" class="col l11 m10 s12 z-depth-5">
+        <div class="row">
+          <div id="listContainer" class="col l11 m10 s12 z-depth-5">
 
-          <div id = "headerList">
+            <div id = "headerList">
 
-            <div class = "col l12">
-
-              <div class = "col l2 center headerSub" >
-                  Producto
-              </div>
-
-              <div class = "col l10 center" >
-                <div class = "col l2 headerSub" >
-                      Nombre
-                  </div>
-
-                <div class = "col l3" >
-                  <div class = "col l6 headerSub">
-                    Tipo
-                  </div>
-                  <div class = "col l6 headerSub">
-                    Marca
-                  </div>
-                </div>
-
-                <div class = "col l1 center headerSub" >
-                    Num
-                </div>
+              <div class = "col l12">
 
                 <div class = "col l2 center headerSub" >
-                    Precio
+                    Producto
                 </div>
 
-                <div class = "col l4" >
-                  <div class = "row ">
-                    <div class = "col l10 headerSub">
-                        Descripcion
+                <div class = "col l10 center" >
+                  <div class = "col l2 headerSub" >
+                        Nombre
                     </div>
-                    <div class = "col l2 headerSub">
-                        ac
+
+                  <div class = "col l3" >
+                    <div class = "col l6 headerSub">
+                      Tipo
+                    </div>
+                    <div class = "col l6 headerSub">
+                      Marca
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-
-          <div class = "row cartElement" value = "">
-            <div class = "col l12">
-
-              <div class = "col l2 center elementCont" >
-                <a href="#" target='_blank'>
-                  <div style = "overflow:hidden">
-                    <img src="../assets/img/page/test_product.jpg" width="75%" style = "margin:-20% 0px -20% 0px;">
+                  <div class = "col l1 center headerSub" >
+                      Num
                   </div>
-                </a>
-              </div>
 
-              <div class = "col l10 valign-wrapper elementCont" >
-                <div class = "col l2" >
-                    <p>Splash 11-1</p>
-              </div>
-
-                <div class = "col l3" >
-                  <div class = "col l6 elementCont">
-                    <p>Perfume</p>
+                  <div class = "col l2 center headerSub" >
+                      Precio
                   </div>
-                  <div class = "col l6 elementCont center">
-                    <p>Victoria Secret</p>
-                  </div>
-                </div>
 
-                <div class = "col l1 center elementCont amount" style = "padding:0">
-                  <p class = "amoSelect"><i class="fa fa-plus-square" aria-hidden="true"></i></p>
-                  <p class = "number">1</p>
-                  <p class = "amoSelect"><i class="fa fa-minus-square" aria-hidden="true"></i></p>
-                </div>
-
-                <div class = "col l2 elementCont center" >
-                  <span class ="number">9'999.999</span>
-                </div>
-
-                <div class = "col l4" >
-                  <div class = "row valign-wrapper">
-                    <div class = "col l10 elementCont">
-                      <p>La mejor de todos</p>
-                    </div>
-                    <div class = "col l2 elementCont">
-                    <div class = "trash" onclick = "deleteElement('${data._id}')">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </div>
+                  <div class = "col l4" >
+                    <div class = "row ">
+                      <div class = "col l10 headerSub">
+                          Descripcion
+                      </div>
+                      <div class = "col l2 headerSub">
+                          ac
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class = "row cartElement" value = "">
-            <div class = "col l12">
 
-              <div class = "col l2 center elementCont" >
-                <a href="#" target='_blank'>
-                  <div style = "overflow:hidden">
-                    <img src="../assets/img/page/test_product.jpg" width="75%" style = "margin:-20% 0px -20% 0px;">
-                  </div>
-                </a>
-              </div>
+            <div class = "row cartElement" value = "">
+              <div class = "col l12">
 
-              <div class = "col l10 valign-wrapper elementCont" >
-                <div class = "col l2" >
-                    <p>Splash 11-1</p>
-              </div>
-
-                <div class = "col l3" >
-                  <div class = "col l6 elementCont">
-                    <p>Perfume</p>
-                  </div>
-                  <div class = "col l6 elementCont center">
-                    <p>Victoria Secret</p>
-                  </div>
-                </div>
-
-                <div class = "col l1 center elementCont amount" style = "padding:0">
-                  <p class = "amoSelect"><i class="fa fa-plus-square" aria-hidden="true"></i></p>
-                  <p class = "number">1</p>
-                  <p class = "amoSelect"><i class="fa fa-minus-square" aria-hidden="true"></i></p>
-                </div>
-
-                <div class = "col l2 elementCont center" >
-                  <span class ="number">9'999.999</span>
-                </div>
-
-                <div class = "col l4" >
-                  <div class = "row valign-wrapper">
-                    <div class = "col l10 elementCont">
-                      <p>La mejor de todos</p>
+                <div class = "col l2 center elementCont" >
+                  <a href="#" target='_blank'>
+                    <div style = "overflow:hidden">
+                      <img src="../assets/img/page/test_product.jpg" width="75%" style = "margin:-20% 0px -20% 0px;">
                     </div>
-                    <div class = "col l2 elementCont">
-                    <div class = "trash" onclick = "deleteElement('${data._id}')">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class = "col l10 valign-wrapper elementCont" >
+                  <div class = "col l2" >
+                      <p>Splash 11-1</p>
+                </div>
+
+                  <div class = "col l3" >
+                    <div class = "col l6 elementCont">
+                      <p>Perfume</p>
                     </div>
+                    <div class = "col l6 elementCont center">
+                      <p>Victoria Secret</p>
+                    </div>
+                  </div>
+
+                  <div class = "col l1 center elementCont amount" style = "padding:0">
+                    <p class = "amoSelect"><i class="fa fa-plus-square" aria-hidden="true"></i></p>
+                    <p class = "number">1</p>
+                    <p class = "amoSelect"><i class="fa fa-minus-square" aria-hidden="true"></i></p>
+                  </div>
+
+                  <div class = "col l2 elementCont center" >
+                    <span class ="number">9'999.999</span>
+                    <span class = "discount">-99.000</span>
+                  </div>
+
+                  <div class = "col l4" >
+                    <div class = "row valign-wrapper">
+                      <div class = "col l10 elementCont">
+                        <p>La mejor de todos</p>
+                      </div>
+                      <div class = "col l2 elementCont">
+                      <div class = "trash" onclick = "deleteElement('${data._id}')">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class = "row cartElement" value = "">
+              <div class = "col l12">
+
+                <div class = "col l2 center elementCont" >
+                  <a href="#" target='_blank'>
+                    <div style = "overflow:hidden">
+                      <img src="../assets/img/page/test_product.jpg" width="75%" style = "margin:-20% 0px -20% 0px;">
+                    </div>
+                  </a>
+                </div>
+
+                <div class = "col l10 valign-wrapper elementCont" >
+                  <div class = "col l2" >
+                      <p>Splash 11-1</p>
+                </div>
+
+                  <div class = "col l3" >
+                    <div class = "col l6 elementCont">
+                      <p>Perfume</p>
+                    </div>
+                    <div class = "col l6 elementCont center">
+                      <p>Victoria Secret</p>
+                    </div>
+                  </div>
+
+                  <div class = "col l1 center elementCont amount" style = "padding:0">
+                    <p class = "amoSelect"><i class="fa fa-plus-square" aria-hidden="true"></i></p>
+                    <p class = "number">1</p>
+                    <p class = "amoSelect"><i class="fa fa-minus-square" aria-hidden="true"></i></p>
+                  </div>
+
+                  <div class = "col l2 elementCont center" >
+                    <span class ="number">9'999.999</span>
+                    <span class = "discount">-99.000</span>
+                  </div>
+
+                  <div class = "col l4" >
+                    <div class = "row valign-wrapper">
+                      <div class = "col l10 elementCont">
+                        <p>La mejor de todos</p>
+                      </div>
+                      <div class = "col l2 elementCont">
+                      <div class = "trash" onclick = "deleteElement('${data._id}')">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                      </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -168,111 +173,115 @@
           </div>
         </div>
 
-        <div id = "payInfo" class="col l12 z-depth-4">
+
           <div class="row">
-            <div class="col l12">
-              <div class="col l6">
-                  <div class="title">
-                      (Nombre tienda)
+            <div id = "payInfo" class="col l12 z-depth-4">
+              <div class="row">
+                <div class="col l12">
+                  <div class="col l6">
+                      <div class="title">
+                          (Nombre tienda)
+                      </div>
+                      <p class = "description">Siempre estaremos encantados de atenderte,
+                        recuerda que las entregas se realizan en el transcurso de 3 a 7 dias
+                        despues de la confirmacion de la compra.</p>
                   </div>
-                  <p class = "description">Siempre estaremos encantados de atenderte,
-                    recuerda que las entregas se realizan en el transcurso de 3 a 7 dias
-                    despues de la confirmacion de la compra.</p>
-              </div>
-              <div class="col l6" style = "box-shadow:1px 6px 5px rgb(60,60,60);background-color:rgb(250,250,250)">
-                <div class="col l6">
-                  <div class="col l12 valign-wrapper">
-                    <div class="input-field col l8 s6">
-                    <input placeholder="Codigo de Descuento" id="first_name" type="text">
+                  <div class="col l6" style = "box-shadow:1px 6px 5px rgb(60,60,60);background-color:rgb(250,250,250)">
+                    <div class="col l6">
+                      <div class="col l12 valign-wrapper">
+                        <div class="input-field col l8 s6">
+                        <input placeholder="Codigo de Descuento" id="first_name" type="text">
 
-                  </div>
-                  <div class = "col l4">
-                    <button class = "">Ingresar</button>
-                  </div>
-                  </div>
+                      </div>
+                      <div class = "col l4 red" style = "padding:0">
+                        <div class = "loadCode z-depth-2">Ingresar</div>
+                      </div>
+                      </div>
 
-                  <div class="col l12 valign-wrapper">
-                    <div class="col l8">
-                      Codigo Promocional:
+                      <div class="col l12 valign-wrapper">
+                        <div class="col l8">
+                          Codigo Promocional:
+                        </div>
+                        <div class="col l4">
+                          <ul>
+                            <li></li>
+                          </ul>
+                        </div>
+
+                      </div>
+
+
                     </div>
-                    <div class="col l4">
-                      <ul>
-                        <li></li>
-                      </ul>
+
+                    <div class="col l6">
+                      <div class="col l12">
+                        <div class =  "container">
+                          <p>
+                            <input type="checkbox" id="test5" />
+                            <label for="test5">Recoger En tienda</label>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Subtotal
+                        </div>
+                        <div class="col l6">
+                            <span id = "subtotalCont" class = "number">$ 50.000</span>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Precio Envio
+                        </div>
+                        <div class="col l6">
+                            <span id = "shipmentCont" class = "number">$ 2.800</span>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Descuento
+                        </div>
+                        <div class="col l6">
+                            <span id = "shipmentCont" class = "number" style="color:green">25.000</span>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Total
+                        </div>
+                        <div class="col l6">
+                          <span id = "totalCont" class = "number">$ 52.800</span>
+                        </div>
+                      </div>
+
                     </div>
 
                   </div>
-
-
                 </div>
 
-                <div class="col l6">
-                  <div class="col l12">
-                    <div class =  "container">
-                      <p>
-                        <input type="checkbox" id="test5" />
-                        <label for="test5">Recoger En tienda</label>
-                      </p>
+                <div class="row">
+                  <div class = "l12">
+                    <div class="offset-l7 col l5">
+                        <div class="col l5">
+                          <button class = "btn" style = "background-color:rgb(25,25,25);">Regresar</button>
+                        </div>
+                        <div class="col l7">
+                          <button id='payBut' class = "btn hvr-bob">Comprar  <i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                        </div>
                     </div>
                   </div>
-
-                  <div class="col l12">
-                    <div class="col l6">
-                        Subtotal
-                    </div>
-                    <div class="col l6">
-                        <span id = "subtotalCont" class = "number">$ 50.000</span>
-                    </div>
-                  </div>
-
-                  <div class="col l12">
-                    <div class="col l6">
-                        Precio Envio
-                    </div>
-                    <div class="col l6">
-                        <span id = "shipmentCont" class = "number">$ 2.800</span>
-                    </div>
-                  </div>
-
-                  <div class="col l12">
-                    <div class="col l6">
-                        Descuento
-                    </div>
-                    <div class="col l6">
-                        <span id = "shipmentCont" class = "number" style="color:green">25.000</span>
-                    </div>
-                  </div>
-
-                  <div class="col l12">
-                    <div class="col l6">
-                        Total
-                    </div>
-                    <div class="col l6">
-                      <span id = "totalCont" class = "number">$ 52.800</span>
-                    </div>
-                  </div>
-
                 </div>
+
 
               </div>
             </div>
-
-            <div class="row">
-              <div class = "l12">
-                <div class="offset-l7 col l5">
-                    <div class="col l5">
-                      <button class = "btn" style = "background-color:rgb(25,25,25);">Regresar</button>
-                    </div>
-                    <div class="col l7">
-                      <button id='payBut' class = "btn hvr-bob">Comprar  <i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-              </div>
-            </div>
-
-
           </div>
-        </div>
+
 
 
 

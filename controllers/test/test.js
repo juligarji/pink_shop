@@ -326,4 +326,8 @@ router.get('/carro',function(req,res,next){
       res.render('test/cartView');
 });
 
+router.get('/registrarse',function(req,res,next){
+      res.render('test/registry');
+});
+
 module.exports = router;
