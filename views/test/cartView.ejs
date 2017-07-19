@@ -2,25 +2,20 @@
 <html>
   <head>
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-      <link rel="stylesheet" href="master-hover.css">
-      <link rel="stylesheet" href="footer.css">
-      <link rel="stylesheet" type="text/css" href="cartView.css">
+    <%- include('../partials/head/later/client') %>
+
+
+      <link rel = "stylesheet" href = "../assets/css/home/cartView/cartView.css">
   </head>
   <body>
                         <!--  <img src="../assets/img/page/test_product.jpg" width="60%" style = "margin:-20% 0px -20% 0px;"> -->
     <div  class="row">
       <div id="mainCont" class="col l12 m12 s12">
 
-          <%- include('../test/navbar') %>
+          <%- include('../partials/navbar/navbar') %>
 
         <div class="row">
-          <div id="listContainer" class="col l11 m10 s12 z-depth-5">
+          <div id="productsContainer" class="col l11 m10 s12 z-depth-5">
 
             <div id = "headerList">
 
@@ -228,7 +223,7 @@
                             Subtotal
                         </div>
                         <div class="col l6">
-                            <span id = "subtotalCont" class = "number">$ 50.000</span>
+                            <span id = "subtotalCont" class = "number"></span>
                         </div>
                       </div>
 
@@ -237,7 +232,7 @@
                             Precio Envio
                         </div>
                         <div class="col l6">
-                            <span id = "shipmentCont" class = "number">$ 2.800</span>
+                            <span id = "shipmentCont" class = "number"></span>
                         </div>
                       </div>
 
@@ -246,7 +241,7 @@
                             Descuento
                         </div>
                         <div class="col l6">
-                            <span id = "shipmentCont" class = "number" style="color:green">25.000</span>
+                            <span id = "discount" class = "number" style="color:green"></span>
                         </div>
                       </div>
 
@@ -255,7 +250,7 @@
                             Total
                         </div>
                         <div class="col l6">
-                          <span id = "totalCont" class = "number">$ 52.800</span>
+                          <span id = "totalCont" class = "number"></span>
                         </div>
                       </div>
 
@@ -290,16 +285,11 @@
 
 
 
-            <%- include('../test/footer') %>
+            <%- include('../partials/footer/footer') %>
 
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-          <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-          <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+            <%- include('../partials/foot/footLinks') %>
 
-
-        <script type="text/javascript" src = "section.js">
-
-        </script>
+        <script src="../assets/js/home/cartView/graphics.js"></script>
+        <script src="../assets/js/home/cartView/cartView.js"></script>
   </body>
 </html>

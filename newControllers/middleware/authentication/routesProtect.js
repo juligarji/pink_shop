@@ -97,9 +97,38 @@ function onlyRegistered(req,res,next){
   });
 }
 
+function onlyClient(req,res,next){
+  if(!res.locals.authorized){// Esta autorizado para ingresar con permisos
+      res.redirect('/');
+      return;
+  }
+
+  usersModel.getByName(req.user,function(data){
+    var permits = data.permits;
+
+    switch(permits){
+
+        case 4:
+          res.send({message:'Permisos menores'});
+            break;
+
+        case 2:
+          res.send({message:'Permisos menores'});
+            break;
+        case 1:
+          next();
+            break;
+
+        default:
+          res.send({message:'No autorizado'});
+            return;
+    }
+  });
+}
 
 module.exports = {
   isAuth,
   onlyRegistered,
-  onlyAdmin
+  onlyAdmin,
+  onlyClient
 };

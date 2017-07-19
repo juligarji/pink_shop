@@ -15,11 +15,24 @@ $('.grid').masonry({
   fitWidth: true,
   gutter: 10
   //containerStyle: null
+
 });
+
+
 
 
 
 $('select').material_select();
 
 
+
+});
+
+function failHandler(msg){
+  Dialogs.failMessage(msg);
+}
+
+
+$('#logInForm').on('submit',function(ev){
+    Session.openSession(ev,'#logInForm',failHandler);
 });

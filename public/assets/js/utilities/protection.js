@@ -24,6 +24,7 @@ var Protection = {
       var arr = Object.values(data);
 
       for(var i=0;i<arr.length;i++){
+        arr[i] = $.trim(arr[i]);
         if(arr[i]==""||arr[i]==undefined||arr[i]==null){
           failHandler('Por Favor Rellenar Todos Los Campos');
           return;
@@ -31,6 +32,10 @@ var Protection = {
       }
 
       callback();
+  },
+  formatCorrectText : function(stringData){
+    var aux = $.trim(stringData);
+    return aux.toLowerCase();
   }
 
 };

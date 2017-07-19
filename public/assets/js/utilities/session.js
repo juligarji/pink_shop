@@ -1,13 +1,14 @@
 
 var Session = {
-  openSession : function (e,failHandler){
+  openSession : function (e,formContainer,failHandler){
     // validation code here
       e.preventDefault();
 
       var sentData = {
-            email:$("input[name='email']").val(),
-            password:$("input[name='password']").val()
+            email:Protection.formatCorrectText($(`${formContainer} input[name='email']`).val()),
+            password:$.trim($(`${formContainer} input[name='password']`).val())
       };
+
 
       Protection.ensureFill(sentData,function(){
 
@@ -22,8 +23,9 @@ var Session = {
 
         call.done(function(data){
 
+            window.location.replace(data.data);
             /*document.cookie = "token=" + data.token + ";";*/
-            location.reload();
+            /*location.reload();*/
         });
 
         call.fail(function(jqXHR, textStatus, error){
@@ -44,30 +46,12 @@ var Session = {
 
       call.done(function(data){
           console.log('Se ha cerrado sesion exitosamente');
-          location.reload();
+          window.location.replace('/');
       });
 
       call.fail(function(data){
           console.log('Error al cerrar sesion');
       });
-  },
-
-  toggleLogin : function (){
-
-    if($('#loginForm').is(':visible')){
-
-      $('#loginForm').fadeOut('slow',function(){
-        $('#registryForm').fadeIn('slow');
-      });
-
-    }else{
-
-      $('#registryForm').fadeOut('slow',function(){
-        $('#loginForm').fadeIn('slow');
-      });
-
-    }
-
   }
 
 }

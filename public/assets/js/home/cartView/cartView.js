@@ -9,6 +9,16 @@ function failHandler(message){
   Dialogs.failMessage(message);
 }
 
+function redirectIfEmpty(){
+  Cart.getLength(function(lon){
+      if(lon==0){
+        window.location.replace("/home");
+      }
+  });
+}
+
+redirectIfEmpty();
+
 
 function totalizate(){
 
@@ -67,6 +77,8 @@ function deleteElement(id){
             Graphics.resetContainer('#productsContainer');
             totalizate();
 
+            CartGraphics.paintTotalElements();
+            redirectIfEmpty();
       });
 
   },function(){

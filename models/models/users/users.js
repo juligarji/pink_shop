@@ -67,12 +67,13 @@ var fragancesModel = {
     },
 
     getPermits : function(email,callback){
-
+        console.log('entro + ' + email);
         users.findOne({email:email}).select('permits').exec(function (err, user) {
           if(err){
             errorHandler.handle(err);
             return;
           }
+
           callback(user.permits);
         });
     },

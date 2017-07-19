@@ -1,260 +1,192 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html>
+  <head>
+
     <%- include('../partials/head/later/client') %>
 
-    <link rel = "stylesheet" href = "../assets/css/cartView.css">
-    <!-- Custom -->
-</head>
 
-<body>
+      <link rel = "stylesheet" href = "../assets/css/home/cartView/cartView.css">
+  </head>
+  <body>
+                        <!--  <img src="../assets/img/page/test_product.jpg" width="60%" style = "margin:-20% 0px -20% 0px;"> -->
+    <div  class="row">
+      <div id="mainCont" class="col l12 m12 s12">
 
-<!-- HEADER -->
-  <header>
-    <%- include('../partials/navbar/unregistered') %>
-  </header>
+          <%- include('../partials/navbar/navbar') %>
 
-  <!-- pruebas:  style = "background-color:blue" -->
-    <div class = "col m12 s12 l12 animated fadeInRight">
-            <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "../assets/img/page/mainBanner.png"></a>
-    </div>
+        <div class="row">
+          <div id="productsContainer" class="col l11 m10 s12 z-depth-5 animated bounceInDown">
 
-  <div id = "mainContainer">
-    <div class="divider"></div>
-    <!-- ejemplo de contenedor -->
+            <div id = "headerList">
 
+              <div class = "col l12">
 
-    <div class="divider"></div>
+                <div class = "col l2 center headerSub" >
+                    Producto
+                </div>
 
+                <div class = "col l10 center" >
+                  <div class = "col l2 headerSub" >
+                        Nombre
+                    </div>
 
-    <div class = "row cartElement" value = "">
-      <div class = "col l12">
-        <div class = "col l2 center" >
-          <div style = "overflow:hidden">
-            <img src="../assets/img/page/test_pro" width="60%" style = "margin:-20% 0px -20% 0px;">
-          </div>
-        </div>
-        <div class = "col l10 valign-wrapper" >
-          <div class = "col l3" >
-              <p>Hola</p>
-        </div>
+                  <div class = "col l3" >
+                    <div class = "col l6 headerSub">
+                      Tipo
+                    </div>
+                    <div class = "col l6 headerSub">
+                      Marca
+                    </div>
+                  </div>
 
-          <div class = "col l3" >
-            <div class = "col l6">
-              <p>Si</p>
-            </div>
-            <div class = "col l6">
-              <p>Victoria Secret</p>
-            </div>
-          </div>
-          <div class = "col l1 center" >
-            <p class = "ammoSelect">+</p>
-            <p class = "ammo">50.000</p>
-            <p class = "ammoSelect">-</p>
-          </div>
-          <div class = "col l1" >
-            <p>${data.price}</p>
-          </div>
-          <div class = "col l4" >
-            <div class = "row valign-wrapper">
-              <div class = "col l10">
-                <p>La mejor de todos</p>
-              </div>
-              <div class = "col l2">
-              <div onclick = "deleteElement('${data._id}')">
-                  <i class="material-icons">&#xE872;</i>
-              </div>
+                  <div class = "col l1 center headerSub" >
+                      Num
+                  </div>
+
+                  <div class = "col l2 center headerSub" >
+                      Precio
+                  </div>
+
+                  <div class = "col l4" >
+                    <div class = "row ">
+                      <div class = "col l10 headerSub">
+                          Descripcion
+                      </div>
+                      <div class = "col l2 headerSub">
+                          ac
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
+
           </div>
         </div>
-      </div>
-    </div>
-
-      <div id="productsContainer" class="row">
-
-      </div>
-<!--
-    <div class = "row cartElement">
-      <div class = "col l12">
-        <div class = "col l2 center" >
-          <div style = "overflow:hidden">
-            <img src="assets/img/products/test_product.jpg-1499028865666" width="60%" style = "margin:-20% 0px -20% 0px;">
-          </div>
-        </div>
-        <div class = "col l10 valign-wrapper" >
-          <div class = "col l3" >
-              <p>Fragancia 1</p>
-        </div>
-
-          <div class = "col l3" >
-            <div class = "col l6">
-              <p>Splash</p>
-            </div>
-            <div class = "col l6">
-              <p>Victoria Secret</p>
-            </div>
-          </div>
-          <div class = "col l1 center" >
-            <p class = "ammoSelect">+</p>
-            <p class = "ammo">1</p>
-            <p class = "ammoSelect">-</p>
-          </div>
-          <div class = "col l1" >
-            <p> $ 25.000</p>
-          </div>
-          <div class = "col l4" >
-            <p>store</p>
-          </div>
-        </div>
-      </div>
-    </div>
--->
-<!--
-    <div class = "row cartElement">
-      <div class = "col l12">
-        <div class = "col l2 center" >
-          <div style = "overflow:hidden">
-            <img src="assets/img/products/test_product.jpg-1499028865666" width="60%" style = "margin:-20% 0px -20% 0px;">
-          </div>
-        </div>
-        <div class = "col l10 valign-wrapper" >
-          <div class = "col l3" >
-              <p>Fragancia 2</p>
-        </div>
-
-          <div class = "col l3" >
-            <div class = "col l6">
-              <p>Splash</p>
-            </div>
-            <div class = "col l6">
-              <p>Victoria Secret</p>
-            </div>
-          </div>
-          <div class = "col l1 center" >
-            <p class = "ammoSelect">+</p>
-            <p class = "ammo">1</p>
-            <p class = "ammoSelect">-</p>
-          </div>
-          <div class = "col l1" >
-            <p> $ 25.000</p>
-          </div>
-          <div class = "col l4" >
-            <p>store</p>
-          </div>
-        </div>
-      </div>
-    </div>
--->
 
 
-    <!-- Finalizacion de la compra -->
-  <div class="row" style = "background-color:rgb(229,224,218);">
-    <div class="col l12">
-      <div class="col l6">
-          <h4>Pink Shop</h4>
-          <p>En esta tienda estamos encantados de atenderte,
-          vuelve pronto para ver mas increibles promociones que tenemos para ti</p>
-      </div>
-      <div class="col l6" style = "box-shadow:1px 6px 5px rgb(60,60,60);background-color:rgb(250,250,250)">
-        <div class="col l6">
-          <div class="col l12 valign-wrapper">
-            <div class="input-field col l8 s6">
-            <input placeholder="Codigo de Descuento" id="first_name" type="text">
-            <label for="first_name">Codigo de Descuento</label>
-          </div>
-          <div class = "col l4">
-            <button class = "">Ingresar</button>
-          </div>
-          </div>
+          <div class="row">
+            <div id = "payInfo" class="col l12 z-depth-4">
+              <div class="row">
+                <div class="col l12">
+                  <div class="col l6">
+                      <div class="title">
+                          (Nombre tienda)
+                      </div>
+                      <p class = "description">Siempre estaremos encantados de atenderte,
+                        recuerda que las entregas se realizan en el transcurso de 3 a 7 dias
+                        despues de la confirmacion de la compra.</p>
+                  </div>
+                  <div class="col l6" style = "box-shadow:1px 6px 5px rgb(60,60,60);background-color:rgb(250,250,250)">
+                    <div class="col l6">
+                      <div class="col l12 valign-wrapper">
+                        <div class="input-field col l8 s6">
+                        <input placeholder="Codigo de Descuento" id="first_name" type="text">
 
-          <div class="col l12 valign-wrapper">
-            <div class="col l8">
-              Codigo Promocional:
-            </div>
-            <div class="col l4">
-              <ul>
-                <li>XVYTJDGH</li>
-              </ul>
-            </div>
+                      </div>
+                      <div class = "col l4 red" style = "padding:0">
+                        <div class = "loadCode z-depth-2">Ingresar</div>
+                      </div>
+                      </div>
 
-          </div>
+                      <div class="col l12 valign-wrapper">
+                        <div class="col l8">
+                          Codigo Promocional:
+                        </div>
+                        <div class="col l4">
+                          <ul>
+                            <li></li>
+                          </ul>
+                        </div>
+
+                      </div>
 
 
-        </div>
+                    </div>
 
-        <div class="col l6">
-          <div class="col l12">
-            <div class =  "container">
-              <p>
-                <input type="checkbox" id="test5" />
-                <label for="test5">Recoger En tienda</label>
-              </p>
+                    <div class="col l6">
+                      <div class="col l12">
+                        <div class =  "container">
+                          <p>
+                            <input type="checkbox" id="test5" />
+                            <label for="test5">Recoger En tienda</label>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Subtotal
+                        </div>
+                        <div class="col l6">
+                            <span id = "subtotalCont" class = "number"></span>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Precio Envio
+                        </div>
+                        <div class="col l6">
+                            <span id = "shipmentCont" class = "number"></span>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Descuento
+                        </div>
+                        <div class="col l6">
+                            <span id = "discount" class = "number" style="color:green"></span>
+                        </div>
+                      </div>
+
+                      <div class="col l12">
+                        <div class="col l6">
+                            Total
+                        </div>
+                        <div class="col l6">
+                          <span id = "totalCont" class = "number"></span>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class = "l12">
+                    <div class="offset-l7 col l5">
+                        <div class="col l5">
+                          <button class = "btn" style = "background-color:rgb(25,25,25);">Regresar</button>
+                        </div>
+                        <div class="col l7">
+                          <button id='payBut' class = "btn hvr-bob">Comprar  <i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
             </div>
           </div>
 
-          <div class="col l12">
-            <div class="col l6">
-                Subtotal
-            </div>
-            <div class="col l6">
-                <span id = "subtotalCont">$ 50.000</span>
-            </div>
-          </div>
 
-          <div class="col l12">
-            <div class="col l6">
-                Precio Envio
-            </div>
-            <div class="col l6">
-                <span id = "shipmentCont">$ 2.800</span>
-            </div>
-          </div>
 
-          <div class="col l12">
-            <div class="col l6">
-                Total
-            </div>
-            <div class="col l6">
-              <span id = "totalCont">$ 52.800</span>
-            </div>
-          </div>
-
-        </div>
 
       </div>
     </div>
 
-    <div class="row">
-      <div class = "l12">
-        <div class="offset-l7 col l5">
-            <div class="col l5">
-              <button class = "btn" style = "background-color:rgb(25,25,25);">Regresar</button>
-            </div>
-            <div class="col l7">
-              <button id='payBut' class = "btn" style = "background-color:#d0006f;">Comprar !</button>
-            </div>
-        </div>
-      </div>
-    </div>
 
 
-  </div>
+            <%- include('../partials/footer/footer') %>
 
-  </div>
+            <%- include('../partials/foot/later/footLinks') %>
 
-<%- include('../partials/logModal') %>
-
-<!-- Footer -->
-  <footer class = "col l12 m12 s12">
-      <%- include('../partials/footer/unregistered') %>
-    </footer>
-
-
-      <%- include('../partials/foot/footLinks') %>
-    <script src="../assets/js/home/cartView/graphics.js"></script>
-    <script src="../assets/js/home/cartView/cartView.js"></script>
-
-</body>
+        <script src="../assets/js/home/cartView/graphics.js"></script>
+        <script src="../assets/js/home/cartView/cartView.js"></script>
+  </body>
 </html>

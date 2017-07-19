@@ -83,9 +83,9 @@ function signIn(req,res,next){//loggearse
                 res.end();
                 return;
             }
-            console.log('autorizado');
+
             res.locals.authorized = true;
-            res.locals.user = data;
+            res.locals.user = req.body.email;
             res.locals.token = services.createToken(data);
             next();
       });

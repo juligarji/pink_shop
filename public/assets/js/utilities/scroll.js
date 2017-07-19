@@ -59,19 +59,6 @@ var ScrollIssues = (function(){
         }
       },
 
-      initResizeEvent : function(tableContainer,address,graphicsCall){
-
-        ScrollIssues.initScrollState(tableContainer,address,graphicsCall);
-
-        $(window).resize(function(){
-          if($(document).width() != ScrollIssues.CURRENT_WIDTH){
-            DB.INDEX =0;
-            ScrollIssues.initScrollState(tableContainer,address,graphicsCall);
-            ScrollIssues.CURRENT_WIDTH = $(document).width();
-          }
-        });
-      },
-
       scrollCall : function(ammount,newData,isNew){
 
           if(SCROLL_FLAG){
@@ -80,97 +67,23 @@ var ScrollIssues = (function(){
             scroll_isNew = isNew;
             if(isNew){
               DB.restartGetMoreCall();
+              console.log('nuevo !!!');
             }
             DB.getMoreElements(ammount,newData,function(arrayData){
                   //Graphics.fillTable(arrayData);
                   //console.log(arrayData,null,'\t');
+                  console.log('DATA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+                  console.log(arrayData,null,2);
                   if(arrayData.data.length==0){
                     ScrollIssues.exitEvent();
                     return;
                   }
 
                   scroll_graphicCall(arrayData.data,scroll_isNew);
+
             },scroll_failback);
           }
           SCROLL_FLAG = true;
-      },
-
-      initScrollState : function(tableContainer,address,graphicsCall){
-        $(window).unbind('scroll');
-        $(tableContainer).unbind('scroll');
-
-
-        if($(document).width()>992){
-          //Pantalla grande
-
-          ScrollIssues.scrollCall(6,address,true,graphicsCall);
-
-          $(window).on('scroll',function(){
-            ScrollIssues.scrollBig(6,address,graphicsCall);
-          });
-
-        }else{
-              if($(document).width()>600){
-                // Pantalla mediana de tablet
-                console.log('Tablet pantalla');
-
-                ScrollIssues.scrollCall(6,address,true,graphicsCall);
-
-                $(tableContainer).on('scroll',function(){
-                  ScrollIssues.scrollSmall(tableContainer,6,address,graphicsCall);
-                });
-
-              }else{
-                    // Pantalla pequeña celular
-                    console.log('Celular pantalla');
-
-                    ScrollIssues.scrollCall(3,address,true,graphicsCall);
-
-                    $(tableContainer).on('scroll',function(){
-                      ScrollIssues.scrollSmall(tableContainer,3,address,graphicsCall);
-                    });
-                  }
-              }
-      },
-      initScrollClient : function(tableContainer,address,graphicsCall){
-        /*$(window).unbind('scroll');
-        $(tableContainer).unbind('scroll');*/
-        if($(document).width()>992){
-          //Pantalla grande
-
-          ScrollIssues.scrollCall(6,address,true,graphicsCall);
-
-          $(window).on('scroll',function(){
-            if(ScrollIssues.SCROLL_FLAG){
-              ScrollIssues.scrollBig(6,address,graphicsCall);
-            }
-          });
-
-        }else{
-              if($(document).width()>600){
-                // Pantalla mediana de tablet
-                console.log('Tablet pantalla');
-
-                ScrollIssues.scrollCall(6,address,true,graphicsCall);
-
-                $(tableContainer).on('scroll',function(){
-                  if(ScrollIssues.SCROLL_FLAG){
-                      ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
-                  }
-                });
-
-              }else{
-                    // Pantalla pequeña celular
-
-                    ScrollIssues.scrollCall(6,address,true,graphicsCall);
-
-                    $(tableContainer).on('scroll',function(){
-                      if(ScrollIssues.SCROLL_ACTIVE){
-                        ScrollIssues.scrollBig(tableContainer,6,address,graphicsCall);
-                      }
-                    });
-                  }
-              }
       },
 
       /* Existe aqui */
@@ -185,14 +98,19 @@ var ScrollIssues = (function(){
 
           $(window).on('scroll',function(){
 
+
             if(SCROLL_ACTIVE){
+                  console.log('scroll');
 
 
 
               var scrollHeight = $(document).height() - $('footer').innerHeight();
               var scrollPosition = $(window).height() + $(window).scrollTop();
 
-              if ((scrollHeight - scrollPosition) / scrollHeight <= 0) {
+              console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+              console.log('scrollHeight :' + $('footer').innerHeight());
+              console.log('scrollPosition: ' + scrollPosition);
+                            if ((scrollHeight - scrollPosition) / scrollHeight <= 0) {
                   // when scroll to bottom of the page
 
                       ScrollIssues.scrollCall(scroll_ammount_by_call,newData,false);
@@ -202,18 +120,20 @@ var ScrollIssues = (function(){
 
         });
       },
-      restartScrollDownOnly :  function(newData,address,graphicsCall,failCall){
+      restartScrollDownOnly :  function(newData,graphicsCall,failCall){
           $(window).unbind('scroll');
           ScrollIssues.activeEvent();
-          ScrollIssues.initScrollDownOnly(newData,address,graphicsCall,failCall);
+          ScrollIssues.initScrollDownOnly(newData,graphicsCall,failCall);
       },
 
       exitEvent(){
         SCROLL_ACTIVE = false;
+        $('footer').css('visibility','visible');
         //$(container).unbind('scroll');
       },
       activeEvent(){
         SCROLL_ACTIVE = true;
+        $('footer').css('visibility','hiden');
       }
     }
 

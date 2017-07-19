@@ -1,100 +1,194 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <%- include('../partials/head/later/client') %>
+<html>
+  <head>
 
-    <link rel = "stylesheet" href = "../assets/css/details.css">
 
-    <!-- Custom -->
-</head>
+        <%- include('../partials/head/later/client.ejs') %>
+      <link rel="stylesheet" type="text/css" href="../assets/css/home/details/details.css">
 
-<body>
+  </head>
+  <body>
 
-<!-- HEADER -->
-  <header>
-    <%- include('../partials/navbar/unregistered') %>
-  </header>
+    <div  class="row">
+      <div id="mainCont" class="col l12 m12 s12">
 
-  <!-- pruebas:  style = "background-color:blue" -->
-    <div class = "col m12 s12 l12 animated fadeInUp">
-            <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "../assets/img/page/mainBanner.png"></a>
-    </div>
-    <div id = "mainContainer">
+          <%- include('../partials/navbar/navbar') %>
+          <div class="col l12">
+              <div id="carouselContainer" class="col l6 offset-l1">
 
-    <!-- Seccion Home -->
-    <div class = "row">
+                <div class="main-carousel">
+                  <% product.photos.forEach(function(photo){ %>
+                  <div class="carousel-cell">
+                    <img src="../<%=addressPic%><%=photo%>" height="100%" alt="orange tree" />
+                  </div>
+                  <% }); %>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
 
-    </div>
-    <div class = "row">
-      <div class = "col l9 m9 s12">
-        <div class="main-carousel animated fadeInLeft">
-          <% product.photos.forEach(function(photo){ %>
-          <div class="carousel-cell">
-            <img src="../<%=addressPic%><%=photo%>" alt="orange tree" />
+                    <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
+                  <div class="carousel-cell">
+                    <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
+                  </div>
+
+                </div>
+              </div>
+              <div id="infoProduct" class=" col l4 offset-l1 z-depth-1">
+                    <div class="title center">
+                      <%= product.name %>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                      <div class="valign-wrapper mainNumberCont">
+                        <div class="center col l12">
+                          <div class="mainNumber col l4 offset-l3 z-depth-1 center" >
+                                <input id = "<%= product._id %>" oninput = "getPrice('<%= product._id %>')" name = "ammount" min="1" max="9999" m placeholder="#" value=1 id="first_name" type="number">
+                          </div>
+                          <div class="col l2">
+                              <div class="circle" onclick="changeValueInput(true)">
+                                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                              </div>
+                              <div class="circle center" onclick="changeValueInput(false)">
+                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                              </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                      <div class="row">
+                        <div id="mainInfoCont" class="left col l12 prodInfo z-depth-4">
+
+                            <div class="col l3 title">
+                                Referencia
+                            </div>
+                            <div class="col l3 value">
+                                XFGHJJLOT
+                            </div>
+                            <div class="col l3 title">
+                                Color
+                            </div>
+                            <div class="col l3 value">
+                                Azul
+                            </div>
+
+
+                            <div class="col l3 title">
+                                Tipo
+                            </div>
+                            <div class="col l3 value">
+                                Splash
+                            </div>
+                            <div class="col l3 title">
+                                unidades
+                            </div>
+                            <div class="col l3 value">
+                                2
+                            </div>
+
+
+                            <div class="col l3 title">
+                                Genero
+                            </div>
+                            <div class="col l3 value">
+                                Hombre
+                            </div>
+                            <div class="col l3 title">
+                                Fragancia
+                            </div>
+                            <div class="col l3 value">
+                                Primavera
+                            </div>
+
+
+
+
+                        </div>
+                      </div>
+
+
+                    <div class="col l12" style = "padding:0px;">
+                        <div class="row">
+                          <div class="left col l8 prodInfo z-depth-4">
+                            <div class="center">
+                              <div class="col l12">
+                                  <div>
+                                    <span>Precio Mayor </span>
+                                    <span class = "sign">$</span><span class = "number"><%= product.priceWholesale %></span> c/u
+                                  </div>
+                              </div>
+                                <div class=" col l12">
+                                      <span>Minimo <span class = "number"><%= product.minForWholesale %></span> Unidades </span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                          <div class="row">
+                            <div class="right col l9 prodInfo z-depth-4">
+                                <span>Precio Detal <span class = "sign">$</span><span class = "number"><%= product.price %></span> c/u</span>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col l7 prodInfo total center">
+
+                          <p>
+                            <span>
+                              Total
+                            </span>
+                            <span class = "sign">$</span>
+                            <span id = "total" class = "number">
+                              <%= product.price %>
+                            </span>
+                          </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div id = "addToBag" onclick = "addElementToCart('<%=product._id%>')"  class="col l12 addCartButton center z-depth-4 hvr-pulse-shrink">
+
+                          <p>
+                            Agregar al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                          </p>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col l10 offset-l1 z-depth-4 description">
+                        <p>
+                            <%= product.description %>
+                        </p>
+                        <br>
+                    </div>
+
+              </div>
           </div>
 
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-          <% }); %>
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-          <div class="carousel-cell">
-            <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
-          </div>
-        </div>
-        <br>
       </div>
-
-      <div class = " center col l3 m3 s12 z-depth-4 animated fadeInRight">
-
-          <div class = "titles">
-            <h4><%= product.name %></h4>
-          </div>
-          <div class = "divider"></div>
-
-          <div class="input-field offset-l3 col l6 m6 s8 offset-s2">
-            <input oninput = "getPrice('<%= product._id %>')" name = "ammount" placeholder="Cantidad" type="Number" class="validate">
-          </div>
-
-          <div id = "addToBag" onclick = "addElementToCart('<%=product._id%>')" class = "btn-large">
-            Añadir a la bolsa
-            <i class="material-icons">add_shopping_cart</i>
-          </div>
-          <p class = "bookmark">Total: <p class = "mainUnit" id = "total">0</p></p>
-          <p class = "bookmark" id = 'unit'>Precio Unidad: <span class = "bagViewUnit"> $<%= product.price %></span></p>
-          <p class = "bookmark"id = 'whole'>Precio Mayor: <span class = "bagViewUnit">$<%= product.wholesale %></span>
-            <sub>(Minimo <span class = "bagViewUnit"><%= product.minForDiscount %></span> Und)</sub>
-          </p>
-          <p>Descripcion:  </p>
-          <p><%= product.description %></p>
-
-      </div>
     </div>
-    <!-- Distribucion de la Perfumeria -->
 
-</div>
-
-<%- include('../partials/logModal') %>
-
-<!-- Footer -->
-  <footer class = "col l12 m12 s12">
-      <%- include('../partials/footer/unregistered') %>
-    </footer>
-
-<!-- jQuery -->
-<%- include('../partials/foot/later/footLinks') %>
+<!-- Estilos del modal, sacar de aqui -->
 
 
+            <%- include('../partials/footer/footer') %>
 
-    <script src="../assets/js/home/details/details.js"></script>
 
-</body>
+            <%- include('../partials/foot/later/footLinks') %>
+          <!--
+        <script type="text/javascript" src = "details.js"></script>
+-->
+        <script src="../assets/js/home/details/details.js"></script>
+
+  </body>
 </html>

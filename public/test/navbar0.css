@@ -1,0 +1,151 @@
+a:link{
+  color: inherit;
+}
+a:visited{
+  color: inherit;
+}
+#navBar{
+  /*background-color:#d0006f;*/
+  font-family: 'Fresca', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #d0006f;
+  color: white;
+  width: 100%;
+  /*box-shadow: #d0006f 0px 5px 8px;*/
+  /*background-color: rgb(229,224,218);*/
+  background-color: rgb(30,30,30);
+}
+
+.brand-logo{
+    background-color: black;
+    margin-left: 20px;
+}
+
+
+.navSelec{
+  font-size: 25px;
+}
+.navSelec:hover{
+    background-color: #d0006f;
+    color:rgb(229,224,218);
+
+   -webkit-transform: rotate(5deg);
+   -moz-transform: rotate(5deg);
+   -o-transform: rotate(5deg);
+
+
+   -webkit-transition-duration: 0.5s; /* Safari */
+   -moz-transition-duration: 0.5s;
+   -o-transition-duration: 0.5s;
+   cursor:pointer;
+}
+
+.navIcon{
+  font-size: 40px;
+}
+.
+.navIcon:hover{
+  /*-webkit-transform: rotate(15deg);
+  -webkit-transition-duration: 0.5s;
+  text-shadow: rgb(50,50,50) 2px 1px 5px;*/
+  background-color: #d0006f;
+
+  cursor:pointer;
+}
+
+/* tablet */
+@media only screen and (max-width:991px){
+  .navIcon{
+    font-size: 80px;
+    right: 0px;
+  }
+  .navTitle{
+    font-size: 45px;
+  }
+
+
+  /* cambio de menu de navigacion */
+  #slide-out{
+    font-size:1.8em;
+    background-color: #d0006f;
+    width:40%;
+  }
+
+  #slide-out .title{
+    font-size: 1.1em;
+    color : rgb(30,30,30);
+    text-shadow: rgb(240,240,240) 2px 2px 0px;
+  }
+
+  #slide-out a{
+    height: 2.2em;
+    display:block;
+    font-family: 'Dosis', sans-serif;
+    vertical-align: middle;
+  }
+
+  #slide-out a.link:nth-child(even){
+    background-color: rgb(30,30,30);
+    color:rgb(240,240,240);
+
+  }
+
+  #slide-out a.link:nth-child(odd){
+    background-color: rgb(240,240,240);
+    color:rgb(30,30,30);
+  }
+
+
+  #slide-out .sections{
+    display:inline-block;
+    color:rgb(30,30,30);
+    font-size: 4.2em;
+    text-shadow: rgb(240,240,240) 3px 3px 0px;
+  }
+
+
+}
+
+@media only screen and (max-width:599px){
+  #slide-out{
+    font-size:2.6em;
+    background-color: #d0006f;
+    width:60%;
+  }
+
+  #slide-out .title{
+    font-size: 1.1em;
+    color : rgb(30,30,30);
+    text-shadow: rgb(240,240,240) 2px 2px 0px;
+  }
+
+  #slide-out a{
+    height: 2.5em;
+    display:block;
+    font-family: 'Dosis', sans-serif;
+    vertical-align: middle;
+  }
+
+  #slide-out a.link:nth-child(even){
+    background-color: rgb(30,30,30);
+    color:rgb(240,240,240);
+
+  }
+
+  #slide-out a.link:nth-child(odd){
+    background-color: rgb(240,240,240);
+    color:rgb(30,30,30);
+  }
+
+
+  #slide-out .sections{
+    display:inline-block;
+    color:rgb(30,30,30);
+    font-size: 4.2em;
+    text-shadow: rgb(240,240,240) 3px 3px 0px;
+  }
+
+}
+
+/* cambio de menu de navigacion */

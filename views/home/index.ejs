@@ -1,212 +1,74 @@
+
 <!DOCTYPE html>
-<html lang = "es">
-<head>
+<html>
+  <head>
 
-    <%- include('../partials/head/client') %>
+      <%- include('../partials/head/later/client.ejs') %>
 
-    <link rel = "stylesheet" href = "assets/css/home.css">
-</head>
+      <link rel="stylesheet" type="text/css" href="assets/css/home/index/home.css">
+  </head>
+  <body>
 
-<body>
-  <header>
-    <%- include('../partials/navbar/unregistered') %>
-  </header>
+    <div  class="row">
+      <div id="mainCont" class="col l12 m12 s12">
 
-    <div class = "col l12 m12 s12">
+          <%- include('../partials/navbar/navbar') %>
 
-      <div class = "section">
+        <div class="col l10 m12 s12 offset-l1">
+          <div class="grid col l12 m12 s12">
+          <!--<div class="grid-item grid-item--width3 grid-item--height4"></div>
+          <div class="grid-item grid-item--height3"></div>
+          <div class="grid-item grid-item--width2 grid-item--height3 "></div>
+          <div class="grid-item grid-item--width1 grid-item--height2"></div>
+          <div class="grid-item grid-item--width1 grid-item--height1"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2"></div>-->
 
-          <div class = "col m12 s12 l12 animated fadeInLeft">
-                  <a id "mainBanner"  href = "#"><img height="80px" width = "100%" src = "assets/img/page/mainBanner.png"></a>
+          <div class="grid-item grid-item--width3 grid-item--height4 z-depth-2 mainMasItem">
+            <div class="carousel"
+                data-flickity='{ "imagesLoaded": true, "percentPosition": false }'>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" alt="orange tree" />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" alt="submerged" />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" alt="look-out" />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" alt="One World Trade" />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" alt="drizzle" />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" alt="cat nose" />
+            </div>
+
           </div>
 
+        <div class="grid-item grid-item--width1 grid-item--height3 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width2 grid-item--height3 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height5 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height1 z-depth-2 mainMasItem social">
+              <a href="#" target="_blank" class = "col l4">
+                  <i class="fa fa-facebook-official" aria-hidden="true"></i>
+              </a>
+              <a href="#" target="_blank" class = "col l4">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="#" target="_blank" class = "col l4">
+                  <i class="fa fa-youtube-square" aria-hidden="true"></i>
+              </a>
 
-              <div class = "test1" class="col s12 m12 l10 offset-l1">
-
-                <!--<div class="carousel animated fadeInLeft hide-on-med-and-down">
-
-                  <div class="carousel-cell">
-
-                    <img class="carousel-cell-image"
-                      data-flickity-lazyload="assets/img/page/carousel1.jpg" alt="grapes" />
-                  </div>
-                  <div class="carousel-cell">
-                      <img class="carousel-cell-image"
-                        data-flickity-lazyload="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/grapes.jpg" alt="grapes" />
-                      </div>
-
-                  <div class="carousel-cell">
-                    <img class="carousel-cell-image"
-                      data-flickity-lazyload="assets/img/page/carousel2.jpg" alt="Carousel 1" />
-                  </div>
-                  <div class="carousel-cell">
-                    <a class="carousel-item" href="#three!"><img src="assets/img/page/carousel1.jpg" ></a>
-                    <img class="carousel-cell-image"
-                      data-flickity-lazyload="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/grapes.jpg" alt="grapes" />
-                  </div>
-                  <div class="carousel-cell">
-                    <a class="carousel-item" href="#three!"><img src="assets/img/page/carousel2.jpg" ></a>
-                    <img class="carousel-cell-image"
-                      data-flickity-lazyload="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/grapes.jpg" alt="grapes" />
-                  </div>
-
-                </div>-->
-                <div class="col l12 m12 s12 carousel animated zoomIn"
-   data-flickity='{ "lazyLoad": true }'>
-  <div class="carousel-cell">
-    <img class="carousel-cell-image"
-      data-flickity-lazyload="assets/img/page/carousel1.jpg" alt="tulip" />
-  </div>
-  <div class="carousel-cell">
-    <img class="carousel-cell-image"
-      data-flickity-lazyload="assets/img/page/carousel2.jpg" alt="grapes" />
-  </div>
-  <div class="carousel-cell">
-    <img class="carousel-cell-image"
-      data-flickity-lazyload="assets/img/page/carousel1.jpg" alt="raspberries" />
-  </div>
-  <div class="carousel-cell">
-    <img class="carousel-cell-image"
-      data-flickity-lazyload="assets/img/page/carousel2.jpg" alt="wolf" />
-  </div>
-</div>
-
-                <div id = "adver" class = " col s12 m12 l12">
-                  <div class = "row" height = "500px">
-
-                    <div class = "col l6 m6 s12">
-                      <a class = "col m12 s12" ><img id = "publicitySmallUp" class = "animated fadeInRight" src = "assets/img/page/publicitySmallUp.png" width = "100%" height="100%"></a>
-                          <a class = "col m12 s12" ><img id = "publicitySmallDown" class = "animated fadeInLeft" src = "assets/img/page/publicitySmallDown.png" width = "100%" height="100%"></a>
-                    </div>
-
-                    <div class = "col l6 m6 s12">
-                      <a class = "col m12 s12"><img id = "publicityBig" class = "animated fadeInUp" src = "assets/img/page/publicityBig.png"  width = "100%" height="100%"></a>
-                    </div>
-                  </div>
-                </div>
-
-                </div>
-
-                <div class = "col l12 m12 s12 titles center">
-                  <h1 class = "col l12 m12 s12"> Nuevos Productos </h1>
-                    <div class = "divider col l12 m12 s12"></div>
-                </div>
-
-                <div id = "homeProducts" class = "col m12 s12">
-                  <div class = "row grid">
-
-                    <div class="col l4 m6 s12 grid-item ">
-                      <a href = "#">
-                        <div class = "card center">
-                          <div class="card-image">
-                            <img src="assets/img/page/test_product.jpg">
-                                <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>Mayor: <span>$ 28.000</span> </p>
-                                <p>Detal: <span>$ 25.000</span> </p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="col l4 m6 s12 grid-item">
-                      <a href = "#">
-                        <div class = "card center">
-                          <div class="card-image">
-                            <img src="assets/img/page/test_product.jpg">
-                                <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>Mayor: <span>$ 28.000</span> </p>
-                                <p>Detal: <span>$ 25.000</span> </p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="col l4 m6 s12 grid-item">
-                      <a href = "#">
-                        <div class = "card center">
-                          <div class="card-image">
-                            <img src="assets/img/page/test_product.jpg">
-                                <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>Mayor: <span>$ 28.000</span> </p>
-                                <p>Detal: <span>$ 25.000</span> </p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="col l4 m6 s12 grid-item">
-                      <a href = "#">
-                        <div class = "card center">
-                          <div class="card-image">
-                            <img src="assets/img/page/test_product.jpg">
-                                <span class="card-title">Fragancia</span>
-                          </div>
-                          <div class="card-content">
-                            <p>Mayor: <span>$ 28.000</span> </p>
-                                <p>Detal: <span>$ 25.000</span> </p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="col l4 m6 s12 grid-item">
-                      <a href = "#">
-                        <div class = "card center">
-                          <div class="card-image">
-                            <img src="assets/img/page/test_product.jpg">
-                                <span class="card-title">Fragancia</span>
-                          </div>
-                          <div class="card-content">
-                            <p>Mayor: <span>$ 28.000</span> </p>
-                                <p>Detal: <span>$ 25.000</span> </p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="col l4 m6 s12 grid-item">
-                      <a href = "#">
-                        <div class = "card center">
-                          <div class="card-image">
-                            <img src="assets/img/page/test_product.jpg">
-                                <span class="card-title">Fragancia</span>
-                          </div>
-                          <div class="card-content">
-                            <p>Mayor: <span>$ 28.000</span> </p>
-                                <p>Detal: <span>$ 25.000</span> </p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                  </div>
-                </div>
+          </div>
+          <div class="grid-item grid-item--width1 grid-item--height3"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2 z-depth-2 mainMasItem"></div>
+          <div class="grid-item grid-item--width1 grid-item--height2 z-depth-2 mainMasItem"></div>
         </div>
+        </div>
+
+
+      </div>
     </div>
 
-  <!-- Modal de Logearse -->
-
-    <%- include('../partials/logModal') %>
+            <%- include('../partials/footer/footer') %>
 
 
-    <a href="#" id="backToTop" title="Back to top"><i class="material-icons">arrow_upward</i></a>
 
-    <footer>
-    <%- include('../partials/footer/unregistered') %>
-  </footer>
+            <%- include('../partials/foot/later/footLinks') %>
+        <script type="text/javascript" src = "assets/js/home/index/index.js">
 
-
-  <%- include('../partials/foot/footLinks') %>
-
-
-    <script src="assets/js/home/graphics.js"></script>
-    <script src="assets/js/home/home.js"></script>
-
-</body>
+        </script>
+  </body>
 </html>

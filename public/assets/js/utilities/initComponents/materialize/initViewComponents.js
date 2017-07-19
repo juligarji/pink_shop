@@ -14,7 +14,7 @@ $(document).ready(function(){
    selectMonths: true, // Creates a dropdown to control month
    selectYears: 12 // Creates a dropdown of 15 years to control year
  });
-
+  $(".button-collapse").sideNav();
   $('.modal').modal();
   Materialize.updateTextFields();
 

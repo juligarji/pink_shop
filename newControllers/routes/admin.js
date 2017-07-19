@@ -36,6 +36,7 @@ router.post('/deletepicture',routesProtect.isAuth,routesProtect.onlyAdmin,images
 */
 // Direcciones de otras paginas de administrador
 var adminIndex = function(req,res,next){
+    console.log('PUUUUUNNN');
     res.status(200).render('admin/index');
 }
 

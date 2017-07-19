@@ -1,203 +1,164 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html>
+  <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Menjar</title>
 
-  <!--  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
-    <!-- Import Google Icon -->
-     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-     <link href="../vendor/aos-master/dist/aos.css" rel="stylesheet">
-    <!-- CSS - Materialize -->
-    <link rel="stylesheet" href="../vendor/materialize/css/materialize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel = "stylesheet" href = "../assets/css/details.css">
-    <!-- Custom -->
-</head>
+      <%- include('../partials/head/later/client.ejs') %>
+      <link rel="stylesheet" type="text/css" href="registry.css">
+      <link rel = "stylesheet" href = "../assets/css/home/registry/registry.css">
+  </head>
+  <body>
 
-<body>
+    <div  class="row">
+      <div id="mainCont" class="col l12 m12 s12">
 
-<!-- HEADER -->
-  <header>
-      <!-- Menu -->
-        <nav class="nav-extended animated fadeIn col s12">
-          <div class="nav-wrapper">
+          <%- include('../test/navbar') %>
+          <div class="row">
+            <div id="signUpCont" class="col l6 offset-l1 z-depth-4">
 
-            <div class = "row">
-              <a href="#" class="brand-logo center"><img class = "animated tada" src = "resources/img/logo_base.png"></a>
-              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <!-- Iconos de cuenta y carrito de compras -->
-              <ul id="nav-mobile" class="right">
-                <li><a href="login.html"><i class="material-icons">account_circle</i></a></li>
-                <li><a href="badges.html"><i class="material-icons cart">shopping_cart</i><span id = "cartSize">2</span></a></li>
-              </ul>
+              <div class="container">
+
+                <div class="col l12 title">
+                    Registrate a Nuestra Tienda
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                    <input placeholder="Nombre" name = "name" id="name" type="text" class="validate z-depth-2">
+
+                </div>
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Apellido" name = "lastname" id="password" type="text" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l8 m8 s11 offset-l2 offset-m2">
+                  <input placeholder="Correo Electronico" name = "email" id="email" type="email" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Contraseña" name = "password" id="password" type="password" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Repetir Contraseña" name = "password" id="password" type="password" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l3 m3 s11 city">
+                  <select class = "browser-default">
+                      <option value="" disabled selected>Ciudad</option>
+                      <option value = "colombia">Bogota</option>
+                      <option value = "colombia">Medellin</option>
+                      <option value = "colombia">Cali</option>
+                  </select>
+                </div>
+
+                <div class = "input-field col l7 m7 s11">
+                  <input  placeholder="Direccion" name = "address" id="address" type="text" class="validate z-depth-2">
+
+                </div>
+
+                <div class = "input-field col l2 m2 s4 offset-s4 z-depth-2 center location">
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input  placeholder="Numero celular" type="number" class="validate z-depth-2">
+
+                </div>
+
+                <div class="input-field col l6 m6 s11">
+                  <input placeholder="Codigo Reg (opcional)"  name = "password" id="password" type="text" class="validate z-depth-2">
+
+                </div>
+
+                <div class = "row center">
+                  <div class="col l12 hvr-rotate">
+                      <button type = "submit" class = "btn" value = "Ingresar"> Registrarme <i class="fa fa-id-badge" aria-hidden="true"></i></button>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
             </div>
+            <div class="col l3 offset-l1">
 
-            <div class = "row hide-on-med-and-down" >
-              <div class = "container center">
-                <ul>
-                  <li ><a href="/"><i class="material-icons">home</i></a></li>
-                  <li class="active"><a>Perfumeria</a></li>
-                  <li><a href="#test2">Maquillaje</a></li>
-                  <li><a href="#test3">Cuidado Piel</a></li>
-                  <li><a href="#test4">Ropa</a></li>
-                  <li><a href="#test4">Accesorios</a></li>
-                </ul>
+
+              <div class="row">
+                <div id="signInCont" class="col l12 z-depth-4">
+                  <div class="title center">
+                      Ingresa con tu cuenta
+                  </div>
+                  <form id="logInForm" method="post">
+                    <div class="input-field col l10 offset-l1">
+                      <input name = "email" placeholder="Correo" type="email" class="validate">
+                    </div>
+
+                    <div class="input-field col l10 offset-l1">
+                      <input name="password" placeholder="Contraseña" type="password" class="validate">
+                    </div>
+
+                    <div class = "row center">
+                      <div class="col l10 offset-l1">
+                          <button type = "submit" class = "btn valign-wrapper hvr-rotate" value = "Ingresar"> Ingresar <i class="fa fa-user" aria-hidden="true"></i></button>
+                      </div>
+
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+
+              <div class="row green">
+                <div id="socialInCont" class="col l12 z-depth-4">
+
+                  <div class="title center">
+                      Ingresa con tus redes sociales
+                  </div>
+                  <div class="row">
+                    <div class="col l12 center fb">
+                        Ingresa con Facebook <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="col center l12 google">
+                        Ingresa con tu cuenta de google <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
-
           </div>
-      </nav>
 
-      <!-- menu lateral para moviles -->
-    <ul class="side-nav" id="mobile-demo">
-        <li>  <h5> Categorias</h5>
-              <div class = "divider"></div>
-        </li>
-
-        <li><a href="/">Home</a></li>
-        <li><a href="/perfumeria">Perfumeria</a></li>
-        <li><a href="badges.html">Maquillaje</a></li>
-        <li><a href="#test3">Cuidado Piel</a></li>
-        <li><a href="collapsible.html">Ropa</a></li>
-        <li><a href="mobile.html">Accesorios</a></li>
-
-        <li>  <h5> Informacion</h5>
-              <div class = "divider"></div>
-        </li>
-        <li><a href="sass.html"><i class="material-icons">account_circle</i>Ingresar</a></li>
-        <li><a href="sass.html"><i class="material-icons cart">shopping_cart</i>Carro de compras</a></li>
-        <li><a href="sass.html"><i class="material-icons">help</i>Ayuda</a></li>
-        <li>
-            <div class = "section">
-              <div class = "center">
-                <a class="btn-floating btn-large waves-effect waves-light red" onclick = "$('.button-collapse').sideNav('hide');">
-                  <div class = "center">
-                    <i class="material-icons">close</i>
+          <div class="row">
+              <div id="downBanner" class="col l12 z-depth-5">
+                <a href="#" target="_blank">
+                  <div class="col l10">
+                    Comprar <span class = "res">Online</span> nunca fue tan facil
                   </div>
+                  <div class="col l2">
+                      <i class="fa fa-hand-pointer-o hvr-buzz" aria-hidden="true"></i>
+                  </div>
+
                 </a>
+
               </div>
-            </div>
-        </li>
-    </ul>
-
-  </header>
-
-  <!-- pruebas:  style = "background-color:blue" -->
-  <main style = "clear:both">
-
-    <div id = "mainContainer">
-
-    <div id="fraganceProducts" class="col l12 m12 s12">
-        <div class = "row">
-
-                   <div class="main-carousel" height="700px">
-
-
-                      <div class="carousel-cell">
-                          <img src = "../assets/img/page/test_product.jpg" height="700px">
-                      </div>
-
-                      <div class="carousel-cell">
-                          <img src = "../assets/img/page/test_product.jpg" height="700px">
-                      </div>
-                  </div>
-
-          <!-- Menu de navegacion para hacer las compras -->
-          <div class = " center col l3 z-depth-4">
-
-              <h5><%= data.name %> </h5>
-              <div class = "divider"></div>
-
-              <div class="input-field offset-l3 col l6 m6 s6">
-                <input oninput = "getPrice('<%= data.name %>')" name = "ammount" placeholder="Cantidad" type="Number" class="validate">
-              </div>
-
-              <div id = "addToBag" onclick = "addElementToCart('<%= data.name %>')" class = "btn-large">
-                Añadir a la bolsa
-                <i class="material-icons">add_shopping_cart</i>
-              </div>
-              <p>Total: <p id = "total">0</p></p>
-              <p id = 'unit'>Precio Unidad: <%= data.price %></p>
-              <p id = 'whole'>Precio Mayor: <%= data.wholesale %> (Minimo <%= data.minForDiscount %> Und)</p>
-              <p id = ''>Descripcion: <%= data.description %> </p>
-
           </div>
-        </div>
 
-    </div>
-
-  </main>
-</div>
+            <%- include('../partials/footer/footer.ejs') %>
 
 
-
-<!-- Footer -->
-  <footer class = "col l12 m12 s12">
-
-        <div class = "row">
-          <div class = "container col m4 s6">
-            <h5 class="white-text">Categorias</h5>
-            <u
-              <li><a class="grey-text text-lighten-3" href="#!">Perfumeria</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Maquillaje</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Cuidado Piel</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Ropa</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Accesorios</a></li>
-            </ul>
-          </div>
-          <div class = "container col m4 s6">
-            <h5 class="white-text">Paginas</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Ingresar</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Contacto</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Ayuda</a></li>
-            </ul>
-          </div>
-          <div class = "container col m4 s12">
-            <h5 class="white-text">Contacto</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Youtube</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">ventas@nombretienda.com</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-copyright">
-          <div class="container col s12 center-align">
-          © 2017 Pink Seduction
-          </div>
-          <div class="container col s12 center-align">
-          Powered by Wolfay Projects
-          </div>
-        </div>
-    </footer>
-
-<!-- jQuery -->
-    <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!-- JS - Materialize -->
-    <script src="../vendor/materialize/js/materialize.js"></script>
-    <script src="../vendor/aos-master/dist/aos.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+            <%- include('../partials/foot/later/footLinks') %>
 
 
+        <script type="text/javascript" src = "../assets/js/home/registry/registry.js"></script>
+        <script type="text/javascript" src = "../assets/js/utilities/session.js"></script>
 
-    <script src="../assets/js/utilities/session.js"></script>
-    <script src="../assets/js/home/utilities/protection.js"></script>
-    <script src="../assets/js/home/utilities/db.js"></script>
-    <script src="../assets/js/home/utilities/cart.js"></script>
-    <script src="../assets/js/home/utilities/cartGraphics.js"></script>
-
-    <script src="../assets/js/home/details/details.js"></script>
-
-</body>
+  </body>
 </html>

@@ -8,17 +8,17 @@
           </div>
 
           <div class="col l4 offset-l4 m6 navTitle center">
-            <a href="/test/home">(INSERTE NOMBRE AQUI)</a>
+            <a href="/home">PINK SHOP</a>
 
           </div>
           <div class="col l2 m3 offset-l2 valign-wrapper center">
 
               <div class="col l6">
-                <a href="/test/registrarse"><i class="fa fa-user-circle-o navIcon" aria-hidden="true"></i></a>
+                <a href="/ingresar"><i class="fa fa-user-circle-o navIcon" aria-hidden="true"></i></a>
 
               </div>
-              <div class="col l6">
-                  <a href="/test/carro"><i class="fa fa-shopping-cart navIcon" aria-hidden="true"></i></a>
+              <div id = "cartIconCont" class="col l6">
+                  <a href="/carrito"><i class="fa fa-shopping-cart navIcon" aria-hidden="true"></i></a>
 
               </div>
           </div>
@@ -28,12 +28,13 @@
 
         <div class="col l8 center hide-on-med-and-down">
           <div class="col l2 navSelec">
+            <a href="/productos/perfumes">
               Perfumes
-              <a class="dropdown-button" data-activates="dropdown1" ></a>
+            </a>
           </div>
 
           <div class="col l2 navSelec">
-            <a href="/test/productos">Accesorios</a>
+            <a href="/test/accesorios">Accesorios</a>
 
           </div>
           <div class="col l2 navSelec">
@@ -52,8 +53,11 @@
           </div>
         </div>
 
-
-
+        <div class="col l4 right-align ammountCart">
+          <a href="/carrito">
+              Tienes ( <span id = "totalCartElements"></span> ) tipos de producto en el carrito
+          </a>
+        </div>
 
         <ul id="slide-out" class="side-nav">
           <br>
@@ -110,8 +114,3 @@
 
 
       </div>
-
-
-        <script type="text/javascript" src = "navbar.js">
-
-        </script>

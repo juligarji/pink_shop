@@ -26,7 +26,7 @@ var getProductsQueried = function(req,res,next){
         }
       }
       console.log(data,null,'\t');
-      
+
 
   productsModel.getPartialQueried(recent,ammount,index,kind,query,function(data){
 
@@ -100,7 +100,9 @@ var loadProductsView = function(req,res){
         res.status(404).render('errors/404');
         return;
     }
-    res.status(200).render('home/products/unregistered',{kind:data._id,components:data.components});
+
+    console.log(data);
+    res.status(200).render('home/products/products',{kind:data._id,components:data.components});
   });
 }
 

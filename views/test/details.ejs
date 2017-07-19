@@ -3,15 +3,9 @@
 <html>
   <head>
 
+<%- include('../partials/head/later/client') %>
 
-    <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-      <link rel="stylesheet" href="../vendor/materialize/css/materialize.css">
-
-      <link rel="stylesheet" type="text/css" href="master-hover.css">
-      <link rel="stylesheet" type="text/css" href="details.css">
+      <link rel="stylesheet" type="text/css" href="../assets/css/home/details/details.css">
 
   </head>
   <body>
@@ -19,15 +13,16 @@
     <div  class="row">
       <div id="mainCont" class="col l12 m12 s12">
 
-          <%- include('../test/navbar') %>
+          <%- include('../partials/navbar/navbar') %>
           <div class="col l12">
               <div id="carouselContainer" class="col l6 offset-l1">
 
                 <div class="main-carousel">
-
+                  <% product.photos.forEach(function(photo){ %>
                   <div class="carousel-cell">
-                    <img src="../assets/img/page/test_product.jpg" height="100%" alt="orange tree" />
+                    <img src="../<%=addressPic%><%=photo%>" height="100%" alt="orange tree" />
                   </div>
+                  <% }); %>
                   <div class="carousel-cell">
                     <img src="../assets/img/page/test_product.jpg" alt="orange tree" />
                   </div>
@@ -49,14 +44,14 @@
               </div>
               <div id="infoProduct" class=" col l4 offset-l1 z-depth-1">
                     <div class="title center">
-                      Victoria secret Seduction
+                      <%= product.name %>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
                       <div class="valign-wrapper mainNumberCont">
                         <div class="center col l12">
                           <div class="mainNumber col l4 offset-l3 z-depth-1 center" >
-                                <input min="1" max="9999" m placeholder="#" value=1 id="first_name" type="number">
+                                <input oninput = "getPrice('<%= product._id %>')" name = "ammount" min="1" max="9999" m placeholder="#" value=1 id="first_name" type="number">
                           </div>
                           <div class="col l2">
                               <div class="circle">
@@ -129,18 +124,18 @@
                               <div class="col l12">
                                   <div>
                                     <span>Precio Mayor </span>
-                                    <span class = "sign">$</span><span class = "number">240.000</span> c/u
+                                    <span class = "sign">$</span><span class = "number"><%= product.priceWholesale %></span> c/u
                                   </div>
                               </div>
                                 <div class=" col l12">
-                                      <span>Minimo <span class = "number">6</span> Unidades </span>
+                                      <span>Minimo <span class = "number"><%= product.minForDiscount %></span> Unidades </span>
                                 </div>
                             </div>
                           </div>
                         </div>
                           <div class="row">
                             <div class="right col l9 prodInfo z-depth-4">
-                                <span>Precio Detal <span class = "sign">$</span><span class = "number">260.000</span> c/u</span>
+                                <span>Precio Detal <span class = "sign">$</span><span class = "number"><%= product.price %></span> c/u</span>
                             </div>
                           </div>
                     </div>
@@ -153,7 +148,7 @@
                               Total
                             </span>
                             <span class = "sign">$</span>
-                            <span class = "number">
+                            <span id = "total" class = "number">
                               99.999.999
                             </span>
                           </p>
@@ -161,7 +156,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col l12 addCartButton center z-depth-4 hvr-pulse-shrink">
+                      <div id = "addToBag" onclick = "addElementToCart('<%=product._id%>')"  class="col l12 addCartButton center z-depth-4 hvr-pulse-shrink">
 
                           <p>
                             Agregar al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i>
@@ -173,7 +168,7 @@
 
                     <div class="col l10 offset-l1 z-depth-4 description">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            <%= product.description %>
                         </p>
                         <br>
                     </div>
@@ -187,16 +182,14 @@
 <!-- Estilos del modal, sacar de aqui -->
 
 
-            <%- include('../test/footer') %>
-
-            <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-              <script src="../vendor/materialize/js/materialize.js"></script>
-
-          <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-          <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+            <%- include('../partials/footer/footer') %>
 
 
+            <%- include('../partials/foot/later/footLinks') %>
+          <!--
         <script type="text/javascript" src = "details.js"></script>
+-->
+        <script src="../assets/js/home/details/details.js"></script>
 
   </body>
 </html>

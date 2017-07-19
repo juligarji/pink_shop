@@ -1,9 +1,12 @@
+
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
-  <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
-  <script src="../vendor/materialize/js/materialize.js"></script>
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.js"></script>
+<script src="../vendor/materialize/js/materialize.js"></script>
+
+
   <script src="//cdn.jsdelivr.net/pouchdb/6.2.0/pouchdb.min.js"></script>
   <script src="../vendor/pace/pace.js"></script>
 
@@ -12,38 +15,26 @@
 
   <script src="../assets/js/home/utilities/cart.js"></script>
   <script src="../assets/js/home/utilities/cartGraphics.js"></script>
+  <script type="text/javascript">
+  CartGraphics.paintTotalElements();
 
+  Cart.getLength(function(lon){
+    if(lon==0){
+          $('#cartIconCont a').attr('href','#');
+          $('div.ammountCart a').attr('href','#');
+          $('div.ammountCart').on('click',function(){
+              Dialogs.failAlert('Muy vacio ...','Agrega algunos productos para verlos en el carrito');
+          });
+          $('#cartIconCont').on('click',function(){
+              Dialogs.failAlert('Muy vacio ...','Agrega algunos productos para verlos en el carrito');
+          });
+    }
+  });
+  </script>
 
   <script src="../assets/js/utilities/protection.js"></script>
   <script src="../assets/js/utilities/session.js"></script>
-    <script src="../assets/js/utilities/db.js"></script>
-    <script src="../assets/js/utilities/scroll.js"></script>
-    <script>
-    /* Configuracion final de cosas comunes */
-        $('#loginForm form').submit(function(event){
-          Session.openSession(event,Dialogs.failMessage);
-        });
+<script src="../assets/js/utilities/db.js"></script>
+<script src="../assets/js/utilities/scroll.js"></script>
 
-        $('.modalToggleButton').on('click',function(){
-            Session.toggleLogin();
-        });
-
-        Cart.getLength(function(leng){
-            CartGraphics.paintMarker(leng,'#cartAmmount');
-        });
-
-    </script>
-    <script src="../assets/js/utilities/initComponents/materialize/initViewComponents.js"></script>
-<!--
-  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
-  <script src="vendor/materialize/js/materialize.js"></script>
-  <script src="vendor/aos-master/dist/aos.js"></script>
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-
-  <script src="assets/js/utilities/protection.js"></script>
-  <script src="assets/js/utilities/session.js"></script>
-
-  <script src="assets/js/utilities/backToTop.js"></script>
-
--->
+<script src="../assets/js/utilities/initComponents/materialize/initViewComponents.js"></script>

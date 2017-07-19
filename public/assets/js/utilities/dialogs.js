@@ -6,7 +6,20 @@ var Dialogs = {
       <h3>${msg}</h3>
     </div>
     `;
-      alertify.success(element).closeLogOnClick(true);
+
+    /*swal(
+`Good job!`,
+`${msg}`,
+'success'
+);*/
+
+swal(
+  'Muchas Gracias',
+  `${msg}`,
+  'success'
+)
+
+      //alertify.success(element).closeLogOnClick(true);
   },
   failMessage : function(msg){
     var element = `
@@ -14,16 +27,37 @@ var Dialogs = {
       <h3>${msg}</h3>
     </div>
     `;
-      alertify.error(element).closeLogOnClick(true);
+
+    swal(
+`Oops`,
+`${msg}`,
+'error'
+);
+
+      //alertify.error(element).closeLogOnClick(true);
   },
   confirmBox : function(msg,callback,failback){
-      alertify.confirm(msg,
+    /*  alertify.confirm(msg,
       function(){
         callback();
       },
       function(){
         failback();
-      });
+      });*/
+
+      swal({
+  title: '',
+  text: `${msg}`,
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, borralos!',
+  cancelButtonText: 'Cancelar'
+}).then(function () {
+  callback();
+})
+
   },
   cartMessage : function(cartAdd){
     var element = `
@@ -35,6 +69,20 @@ var Dialogs = {
       </div>
       </div>
     `;
-      alertify.log(element);
-  }
+    /*
+      alertify.log(element);*/
+      swal(
+  `Good job!`,
+  `${cartAdd}`,
+  'success'
+  );
+},
+failAlert : function(title,msg){
+
+  swal(
+`${title}`,
+`${msg}`,
+'error'
+  )
+}
 }

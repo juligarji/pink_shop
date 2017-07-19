@@ -1,0 +1,129 @@
+
+/* rgb(229,224,218)  Color similar al blanco para fondo */
+/* color rosado estandar   color: #d0006f; */
+/* color negro estandar rgb(30,30,30) */
+#menuContainer{
+  background-color: rgb(30,30,30);
+}
+
+#menuContainer .title{
+  font-family: 'Fresca', sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  color: #d0006f;
+  text-shadow: white 1px 1px 1px;
+}
+#menuContainer input[name="search"]{
+  background-color: white;
+  padding-left: 0px;
+  font-size: 18px;
+  height: 30px;
+  font-family: 'Dosis', sans-serif;
+}
+#menuContainer ul .collapsible-header{
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.5em;
+  /*border: solid rgb(30,30,30);*/
+  border-width: 0.1px;
+  text-shadow: rgb(30,30,30) 1px 1px;
+  color: #d0006f;
+}
+#menuContainer .colapHeader{
+  margin-left: -10px;
+  margin-right: -10px;
+  background-color: white;
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.5em;
+  text-shadow: rgb(30,30,30) 1px 1px;
+  color: #d0006f;
+  height: 40px;
+  text-align: center;
+  font-size: 25px;
+  box-shadow: black -2px -2px 2px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+#menuContainer .colapHeader span{
+  position: relative;
+  left:35%;
+}
+
+#menuContainer .colapHeader i{
+  position: relative;
+  left:-18px;
+
+}
+
+#menuContainer .colapBody{
+  margin-left: -10px;
+  margin-right: -10px;
+  background-color: rgb(240,240,240);
+  display:block;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+  display: none;
+}
+#menuContainer .colapBody span{ /* estios de label de los checkbox */
+  font-family: 'Dosis', sans-serif;
+  color:rgb(30,30,30);
+  font-size: 1.3em;
+
+}
+#menuContainer .subtitle{
+  color:white;
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.2em;
+}
+
+#menuContainer .searchButtonCont{
+  background-color: #d0006f;
+  font-family: 'Fresca', sans-serif;
+  font-size: 1.5em;
+  text-shadow: white 1px 1px 1px;
+  border-bottom: solid 1px white;
+  border-right: solid 1px white;
+  margin-bottom: 5px;
+}
+
+
+
+
+/* color de selectores materalize */
+
+.menuCheckbox[type="checkbox"].filled-in:checked + label:after{
+     border: 1px solid #d0006f;
+     background-color: #d0006f;
+
+}
+label{
+   font-family: 'Dosis', sans-serif;
+   color: blue;
+   font-size: 25px;
+
+}
+
+/* dinujos en css*/
+.circle{
+	width: 20px;
+	height: 20px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 50px;
+  border:white solid 2px;
+  cursor:pointer;
+}
+
+.circle span{
+  color:white;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.2em;
+}
+
+.circle-selected{
+  width: 20px;
+	height: 20px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+  background:#d0006f;
+	border-radius: 50px;
+}

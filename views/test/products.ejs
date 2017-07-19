@@ -2,19 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-
-    <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-      <link rel="stylesheet" href="../vendor/materialize/css/materialize.css">
-
-      <link rel="stylesheet" href="loader.css">
-      <link rel="stylesheet" href="footer.css">
-      <link rel="stylesheet" href="menuLateral.css">
-      <link rel="stylesheet" type="text/css" href="products.css">
-      <link rel="stylesheet" href="master-hover.css">
+      <%- include('../../partials/head/later/client') %>
+      <link rel = "stylesheet" href = "../assets/css/home/products/products.css">
   </head>
   <body>
 
@@ -25,9 +14,9 @@
           <div class="row">
             <!-- codigo de la barra latetral, deparar luego -->
               <%- include('../test/sideSearchMenu') %>
-            <div id="productsContainer" class="col l8 m9" style='margin-left:15px'>
+            <div  class="col l8 m9" style='margin-left:15px'>
 
-                <div class="grid col l12">
+                <div id="productContainer" class="grid col l12">
                   <div class="grid-item z-depth-3 hvr-rotate">
                     <a href="#">
                       <img src="../assets/img/products/test_product.jpg-1499868502189" width="100%" height="70%" alt ="La Imagen no pudo cargarse :(">
@@ -122,20 +111,7 @@
 
                     </a>
                   </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
-                  <div class="grid-item">
-                  </div>
+
 
                   <div class="grid-item grid-item--entyreWidth">
                     <div class="spinner">
@@ -150,24 +126,19 @@
 
             </div>
           </div>
-
+            <a href="#" id="backToTop" title="Back to top"><i class="material-icons">arrow_upward</i></a>
       </div>
     </div>
-
+<div style = "display:none" id = "INIT" value = "<%=kind%>">
 <!-- Estilos del modal, sacar de aqui -->
-
-
             <%- include('../test/footer') %>
 
-            <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-              <script src="../vendor/materialize/js/materialize.js"></script>
-
-          <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-          <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<%- include('../../partials/foot/later/footLinks') %>
+            <script src="../assets/js/utilities/scroll.js"></script>
 
 
-        <script type="text/javascript" src = "products.js"></script>
-        <script type="text/javascript" src = "sideSearchMenu.js"></script>
-        <script type="text/javascript" src = "product.js"></script>
-  </body>
+
+            <script src="../assets/js/home/products/graphics.js"></script>
+            <script src="../assets/js/home/products/products.js"></script>
+
 </html>
