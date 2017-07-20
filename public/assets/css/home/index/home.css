@@ -50,11 +50,6 @@ body { font-family: sans-serif;
 .grid {
   background: #EEE;
   max-width: 1200px;
-  margin: 0 auto;
-}
-
-.grid-item {
-  margin-bottom: 10px;
 }
 
 /* clearfix */
@@ -66,29 +61,24 @@ body { font-family: sans-serif;
 
 /* ---- grid-item ---- */
 
+.grid-sizer,
 .grid-item {
-  width: 213px;
-  height: 250px;
+  width: 23%;
+}
+
+.grid-item {
+  height: 120px;
   float: left;
   background: #D26;
   border: 2px solid #333;
-  /*border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;*/
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
 }
 
-.grid-item--width1 { width: 213px; }
-.grid-item--width2 { width: 426px; }
-.grid-item--width3 { width: 639px; }
-.grid-item--width4 { width: 852px; }
-/*
-.grid-item--height1 { height: 62px; }
-.grid-item--height2 { height: 124px; }
-.grid-item--height3 { height: 184px; }
-.grid-item--height4 { height: 248px; }
-.grid-item--height5 { height: 310px; }
-*/
-.grid-item--height1 { height: 100px; }
+.grid-item--width2 { width:  46%; }
+.grid-item--width3 { width:  69%; }
+.grid-item--width4 { width:  92%; }
+
 .grid-item--height2 { height: 200px; }
-.grid-item--height3 { height: 300px; }
-.grid-item--height4 { height: 400px; }
-.grid-item--height5 { height: 500px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }

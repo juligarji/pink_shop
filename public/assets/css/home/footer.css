@@ -9,20 +9,20 @@ footer{
      font-weight: bold;
  }
 
-
+/* tablet */
  @media only screen and (max-width:991px){
    .page-footer{
-     font-size: 2.1em;
+     font-size: 2.2vh;
      right: 0px;
    }/*
    .navTitle{
      font-size: 45px;
    }*/
  }
-
+/* celular*/
  @media only screen and (max-width:599px){
    .page-footer{
-     font-size: 80px;
+     font-size: 2.5vh;
      right: 0px;
    }/*
    .navTitle{

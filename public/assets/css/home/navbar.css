@@ -8,23 +8,27 @@ a:visited{
   /*background-color:#d0006f;*/
   font-family: 'Fresca', sans-serif;
   font-weight: bold;
-  font-size: 18px;
-  color: #d0006f;
+  font-size: 1em;
+  font-size: 2.4vh;
+  color: rgb(30,30,30);
   color: white;
-  width: 100%;
   /*box-shadow: #d0006f 0px 5px 8px;*/
   /*background-color: rgb(229,224,218);*/
   background-color: rgb(30,30,30);
+  /*background-color: black;*/
 }
 
 .brand-logo{
-    background-color: black;
-    margin-left: 20px;
+    background-color: rgb(30,30,30);
+/*    margin-left: 20px;*/
+}
+.navTitle{
+    font-size: 5vh;
 }
 
 
 .navSelec{
-  font-size: 25px;
+  font-size: 1em;
 }
 .navSelec:hover{
     background-color: #d0006f;
@@ -42,7 +46,7 @@ a:visited{
 }
 
 .navIcon{
-  font-size: 40px;
+  font-size: 5vh;
 }
 .
 .navIcon:hover{
@@ -55,23 +59,25 @@ a:visited{
 }
 .ammountCart{
   border-bottom: #d0006f solid 2px;
+  font-size: 2.1vh;
   cursor: pointer;
 }
 #totalCartElements{
-  font-size: 1.6em;
+  font-size: 3.2vh;
   text-shadow: #d0006f 2px 1px 0px;
 }
 /* tablet */
 @media only screen and (max-width:991px){
+  .ammountCart{
+    font-size: 2.2vh;
+    cursor: pointer;
+  }
   .navIcon{
-    font-size: 80px;
-    right: 0px;
+    font-size: 7vh;
   }
-  .navTitle{
-    font-size: 45px;
+  #totalCartElements{
+    font-size: 3.2vh;
   }
-
-
   /* cambio de menu de navigacion */
   #slide-out{
     font-size:1.8em;
@@ -115,6 +121,20 @@ a:visited{
 }
 
 @media only screen and (max-width:599px){
+  .navTitle{
+      font-size: 3vh;
+  }
+  .ammountCart{
+    font-size: 2.7vh;
+    cursor: pointer;
+  }
+  .navIcon{
+    font-size: 5vh;
+  }
+  #totalCartElements{
+    font-size: 3.2vh;
+  }
+
   #slide-out{
     font-size:2.6em;
     background-color: #d0006f;

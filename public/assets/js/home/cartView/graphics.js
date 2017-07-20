@@ -1,6 +1,7 @@
 var PUBLIC_ADDRESS = 'assets/img/products/';
 var VIEW_DETAILS = '/detalles/';
 
+
 var Graphics = {
 
   addElementToContainer : function(container,data){
@@ -14,7 +15,7 @@ var Graphics = {
         <div class = "col l2 center elementCont" >
           <a href="#" target='_blank'>
             <div style = "overflow:hidden">
-              <img src="assets/img/page/test_product.jpg" width="75%" style = "margin:-20% 0px -20% 0px;">
+              <img src="assets/img/page/test_product.jpgn" width="75%" style = "margin:-20% 0px -20% 0px;">
             </div>
           </a>
         </div>
