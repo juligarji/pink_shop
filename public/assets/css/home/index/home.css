@@ -48,8 +48,9 @@ body { font-family: sans-serif;
 
 /* configuracion de masonry*/
 .grid {
-  background: #EEE;
-  max-width: 1200px;
+  background: red;
+  /*max-width: 1200px;*/
+  padding: 0px;
 }
 
 /* clearfix */
@@ -63,7 +64,8 @@ body { font-family: sans-serif;
 
 .grid-sizer,
 .grid-item {
-  width: 23%;
+  width: 20%;
+  position:relative;
 }
 
 .grid-item {
@@ -75,9 +77,9 @@ body { font-family: sans-serif;
   border-radius: 5px;
 }
 
-.grid-item--width2 { width:  46%; }
-.grid-item--width3 { width:  69%; }
-.grid-item--width4 { width:  92%; }
+.grid-item--width2 { width:  40%; }
+.grid-item--width3 { width:  60%; }
+.grid-item--width4 { width:  100%;}
 
 .grid-item--height2 { height: 200px; }
 .grid-item--height3 { height: 260px; }
