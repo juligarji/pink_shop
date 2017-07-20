@@ -8,27 +8,121 @@ body { font-family: sans-serif;
   margin: 0 auto;
 }
 
+.indexItemHeight{
+     height: 400px;
+}
 
+.carouselCont{
+    height: 380px;
+    background-color: #d0006f;
+}
 .carousel {
-  background: #EEE;
+  height: 380px;
+  background: #d0006f;
 }
 
 .carousel img {
   display: block;
-  height: 200px;s
+  height: 380px;
 }
 
-@media screen and ( min-width: 768px ) {
-  .carousel img {
-    height: 400px;
+/* TODO animar icocno de alerta */
+#exclamationAdd{
+    font-family: 'Fresca', sans-serif;
+    font-size: 4.2vh;
+    background-color: rgb(30,30,30);
+    color:rgb(240,240,240);
+}
+
+#exclamationAdd .title{
+    color:#FFE319;
+    font-size: 7vh;
+    text-shadow: white 2px 1px 0px;
+}
+#exclamationAdd .title i{
+    font-size: 9vh;
+    color:#d0006f;
+    text-shadow:#FFE319  1px 1px 0px;
+}
+#exclamationAdd .content span{
+    color:#d0006f;
+    font-size: 4.5vh;
+    text-shadow: rgb(240,240,240) 1px 1px 0px;
+}
+
+
+/* LARGE PAGE */
+@media screen and (max-width: 1199px){
+  .indexItemHeight{
+       height: 340px;
   }
+
+  #exclamationAdd{
+      font-size: 4.2vh;
+  }
+
+  #exclamationAdd .title{
+      font-size: 7vh;
+  }
+  #exclamationAdd .title i{
+      font-size: 9vh;
+  }
+  #exclamationAdd .content span{
+      font-size: 4.5vh;
+  }
+
 }
 
+@media screen and ( max-width: 991px ) {
 
+  .carouselCont,.carousel,.carousel img {
+    height: 350px;
+  }
 
+  #exclamationAdd{
+      font-size: 3vh;
+  }
+
+  #exclamationAdd .title{
+      font-size: 5vh;
+  }
+  #exclamationAdd .title i{
+      font-size: 6.5vh;
+  }
+  #exclamationAdd .content span{
+      font-size: 4vh;
+  }
+
+}
+
+@media screen and ( max-width: 600px ) {
+  .carouselCont,.carousel,.carousel img {
+    height: 250px;
+  }
+  .indexItemHeight{
+       height: 260px;
+  }
+
+  #exclamationAdd{
+      font-size: 5vh;
+  }
+
+  #exclamationAdd .title{
+      font-size: 6vh;
+  }
+  #exclamationAdd .title i{
+      font-size: 7vh;
+  }
+  #exclamationAdd .content span{
+      font-size: 6vh;
+  }
+
+}
+
+/*
 @media screen and ( min-width: 768px ) {
   .carousel img {
-    height: 400px;
+    height: 380px;
   }
 }
 
@@ -46,21 +140,30 @@ body { font-family: sans-serif;
 
 
 
+
+
 /* configuracion de masonry*/
+
+
+
+
+
+
+/*
 .grid {
   background: red;
-  /*max-width: 1200px;*/
+  max-width: 1200px;
   padding: 0px;
 }
 
-/* clearfix */
+
 .grid:after {
   content: '';
   display: block;
   clear: both;
 }
 
-/* ---- grid-item ---- */
+
 
 .grid-sizer,
 .grid-item {
@@ -84,3 +187,5 @@ body { font-family: sans-serif;
 .grid-item--height2 { height: 200px; }
 .grid-item--height3 { height: 260px; }
 .grid-item--height4 { height: 360px; }
+
+*/
