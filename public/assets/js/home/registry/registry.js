@@ -33,6 +33,12 @@ function failHandler(msg){
 }
 
 
-$('#logInForm').on('submit',function(ev){
-    Session.openSession(ev,'#logInForm',failHandler);
+$('#logInForm1').on('submit',function(ev){
+
+    Session.openSession(ev,'#logInForm1',failHandler);
+});
+
+$('#logInForm2').on('submit',function(ev){
+
+    Session.openSession(ev,'#logInForm2',failHandler);
 });

@@ -21,21 +21,19 @@
 
   background-color:#d0006f;
   font-family: 'Fresca', sans-serif;
-  text-shadow: rgb(240,240,240) 1px 1px 1px;
+  text-shadow: rgb(240,240,240) 2px 2px 1px;
   font-weight: bold;
-  font-size: 2.2em;
+  font-size: 2.8vw;
 }
 
 #signUpCont .city select{
   background-color: rgb(240,240,240);
-
-
 }
 
 #signUpCont .location{
 
   background-color:white;
-  font-size: 2em;
+  font-size: 2.5vw;
   cursor: pointer;
 
 }
@@ -43,19 +41,19 @@
 #signUpCont input[name='address']{
 
   background-color:white;
-  font-size: 1em;
+  font-size: 1vw;
 }
 
 #signUpCont button[type=submit]{
 
   background-color:rgb(30,30,30);
-  font-size: 2.3em;
+  font-size: 2.6vw;
   font-family: 'Fresca', sans-serif;
   text-shadow: #d0006f 1px 1px 1px;
 }
 
 #signUpCont button[type=submit] i{
-  font-size: 1.3em;
+  font-size: 4vw;
 }
 
 
@@ -70,13 +68,13 @@
   font-family: 'Fresca', sans-serif;
   text-shadow: rgb(240,240,240) 1px 1px 1px;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 3vw;
 }
 
 #signInCont input{
 
   font-family: 'Fresca', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.5vw;
 }
 
 #signInCont button{
@@ -84,18 +82,19 @@
   box-shadow: #d0006f 1px 1px 1px;
   color:#d0006f;
   font-family: 'Fresca', sans-serif;
-  font-size: 1.5em;
+  font-size: 2vw;
   text-shadow: black 1px 1px 0px;
 }
 
 #signInCont button i{
-    font-size: 2.1em;
+    font-size: 2.5vw;
 }
 
 
 #socialInCont{
   background-color: rgb(30,30,30);
   font-family: 'Dosis', sans-serif;
+  font-size: 1.4vw;
   color:rgb(240,240,240);
 }
 
@@ -103,7 +102,7 @@
 
   font-family: 'Fresca', sans-serif;
   text-shadow: #d0006f 1px 1px 0px;
-  font-size: 1.5em;
+  font-size: 1.8vw;
   color:rgb(240,240,240);
 }
 
@@ -118,7 +117,7 @@
 }
 
 #socialInCont i{
-  font-size: 2.5em;
+  font-size: 2vw;
 }
 
 
@@ -126,23 +125,157 @@
 #downBanner{
   background-color: #FFE319;
   font-family: 'Fresca', sans-serif;
-  font-size:4em;
+  font-size:5vw;
 }
 
 #downBanner .res{
   font-weight: bold;
   color:#d0006f;
-  font-size: 1.1em;
-  text-shadow: rgb(30,30,30) 1px 2px 0px;
+  font-size: 6vw;
+  text-shadow: rgb(30,30,30) 3px 3px 0px;
+
+}
+#downBanner i{
+
+  color:#d0006f;
+  font-size: 6vw;
+  text-shadow: rgb(30,30,30) 2px 2px 0px;
 
 }
 
+/* LARGE DEVICES*/
+@media screen and ( max-width: 1199px ) {
 
+
+}
+/* TABLETS*/
+@media screen and ( max-width: 991px ) {
+  #signUpCont .title{
+    font-size: 5vw;
+  }
+  #signUpCont .location{
+    font-size: 4vw;
+  }
+  #signUpCont input{
+    font-size: 2.3vw;
+  }
+  #signUpCont select{
+    font-size: 3vw;
+  }
+  #signUpCont input[name='address']{
+    font-size: 2.1vw;
+  }
+
+  #signUpCont button[type=submit]{
+    font-size: 5vw;
+  }
+  #signUpCont button[type=submit] i{
+    font-size: 6vw;
+  }
+
+
+  #signInCont .title{
+    font-size: 5vw;
+  }
+
+  #signInCont input{
+    font-size: 2.3vw;
+  }
+
+  #signInCont button{
+    font-size: 5vw;
+
+  }
+
+  #signInCont button i{
+      font-size: 6vw;
+  }
+
+
+  #socialInCont{
+    font-size: 3vw;
+
+  }
+
+  #socialInCont .title{
+    font-size: 4.3vw;
+  }
+  #socialInCont i{
+    font-size: 4vw;
+  }
+
+}
+/* CELLPHONES DEVICES*/
+@media screen and ( max-width: 600px ) {
+  #signUpCont .title{
+    font-size: 8.1vw;
+  }
+  #signUpCont .location{
+    font-size: 10vw;
+  }
+  #signUpCont input{
+    font-size: 6vw;
+  }
+  #signUpCont select{
+    font-size: 7vw;
+  }
+  #signUpCont input[name='address']{
+    font-size: 5vw;
+  }
+
+  #signUpCont button[type=submit]{
+    font-size: 9vw;
+  }
+  #signUpCont button[type=submit] i{
+    font-size: 12vw;
+  }
+
+
+  #signInCont .title{
+    font-size: 8.1vw;
+  }
+
+  #signInCont input{
+    font-size: 6vw;
+  }
+
+  #signInCont button{
+    font-size: 9vw;
+
+  }
+
+  #signInCont button i{
+      font-size: 12vw;
+  }
+
+
+  #socialInCont{
+    font-size: 5.3vw;
+
+  }
+
+  #socialInCont .title{
+    font-size: 7vw;
+  }
+  #socialInCont i{
+    font-size: 6.5vw;
+  }
+  #downBanner{
+
+    font-size:6vw;
+  }
+
+  #downBanner .res{
+
+    font-size: 8vw;
+    text-shadow: rgb(30,30,30) 1px 1px 0px;
+  }
+}
 
 
 .input-field input{
   background-color: rgb(240,240,240);
-  font-size: 1.3em;
+  font-size: 1.3vw;
   box-shadow: #d0006f 1px 1px 1px;
 }
 

@@ -9,7 +9,7 @@ var Session = {
             password:$.trim($(`${formContainer} input[name='password']`).val())
       };
 
-
+  
       Protection.ensureFill(sentData,function(){
 
         sentData = JSON.stringify(sentData);
