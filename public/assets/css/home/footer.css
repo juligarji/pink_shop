@@ -10,9 +10,20 @@ footer{
  }
 
 /* tablet */
+
+@media only screen and (max-width:1199px){
+  .page-footer{
+    font-size: 1.6vw;
+    right: 0px;
+  }/*
+  .navTitle{
+    font-size: 45px;
+  }*/
+}
+
  @media only screen and (max-width:991px){
    .page-footer{
-     font-size: 2.2vh;
+     font-size: 2.6vw;
      right: 0px;
    }/*
    .navTitle{
@@ -22,7 +33,7 @@ footer{
 /* celular*/
  @media only screen and (max-width:599px){
    .page-footer{
-     font-size: 2.5vh;
+     font-size: 4.6vw;
      right: 0px;
    }/*
    .navTitle{

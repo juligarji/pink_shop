@@ -29,27 +29,113 @@ body { font-family: sans-serif;
 /* TODO animar icocno de alerta */
 #exclamationAdd{
     font-family: 'Fresca', sans-serif;
-    font-size: 4.2vh;
+    font-size: 3vw;
     background-color: rgb(30,30,30);
     color:rgb(240,240,240);
 }
 
 #exclamationAdd .title{
     color:#FFE319;
-    font-size: 7vh;
+    font-size: 4vw;
     text-shadow: white 2px 1px 0px;
 }
 #exclamationAdd .title i{
-    font-size: 9vh;
+    font-size: 7vw;
     color:#d0006f;
     text-shadow:#FFE319  1px 1px 0px;
 }
 #exclamationAdd .content span{
     color:#d0006f;
-    font-size: 4.5vh;
+    font-size: 4vw;
     text-shadow: rgb(240,240,240) 1px 1px 0px;
 }
 
+#secondAdd{
+  background-color: #d0006f;
+  font-family: 'Dosis', sans-serif;
+  font-size: 2.5vw;
+  font-weight: bold;
+  color:rgb(240,240,240);
+  text-shadow: rgb(30,30,30) 2px 1px 0px;
+}
+
+#social i{
+  font-size: 6vw;
+  color:black;
+  text-shadow: #d0006f 1px 0px 0px;
+}
+
+#thirdAdd{
+  font-size: 8vw;
+  margin-top: 2vw;
+}
+
+#newTitle{
+  font-size: 5vw;
+  font-family: 'Fresca', sans-serif;
+  font-weight: bold;
+  color:#d0006f;
+  border-bottom: #d0006f dotted;
+  margin-bottom: 10px;
+  text-shadow: rgb(30,30,30) 3px 3px 0px;
+  padding:0px;
+}
+
+.indexProduct{
+    background-color: rgb(30,30,30);
+    box-shadow: #d0006f 6px 9px 2px;
+}
+
+
+.productInfo .title{
+font-family: 'Fresca', sans-serif;
+color:rgb(240,240,240);
+font-size: 3vw;
+text-shadow: rgb(30,30,30) 2px 2px 1px;
+box-shadow:0px 1px 1px rgb(30,30,30);
+}
+.productInfo .wholesaleInfo {
+  background-color:rgb(240,240,240);
+  color:black;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.5vw;
+}
+.productInfo .wholesaleInfo .number{
+  font-family: 'Fresca', sans-serif;
+  color: #d0006f;
+  font-size: 2.5vw;
+  text-shadow: black 2px 1px 1px;
+}
+.productInfo .detailInfo {
+  background-color:rgb(30,30,30);
+  color:rgb(240,240,240);
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.5vw;
+}
+.productInfo .detailInfo .number{
+  font-family: 'Fresca', sans-serif;
+  color: #d0006f;
+  font-size: 2.5vw;
+  text-shadow: rgb(240,240,240) 1px 1px 1px;;
+}
+.productInfo .shoppingButton{
+    font-family: 'Fresca', sans-serif;
+    color: #EEE;
+    font-size:  2.6vw;
+    text-shadow: rgb(30,30,30) 2px 2px 1px;
+}
+
+#fourthAdd{
+    background-color: #FFE319;
+    font-family: 'Fresca', sans-serif;
+    font-size: 4vw;
+}
+
+#fourthAdd span{
+    color:#d0006f;
+    font-size: 5vw;
+    text-shadow: rgb(30,30,30) 2px 1px 0px;
+}
 
 /* LARGE PAGE */
 @media screen and (max-width: 1199px){
@@ -58,43 +144,96 @@ body { font-family: sans-serif;
   }
 
   #exclamationAdd{
-      font-size: 4.2vh;
+      font-size: 2.9vw;
   }
 
   #exclamationAdd .title{
-      font-size: 7vh;
+      font-size: 4vw;
   }
   #exclamationAdd .title i{
-      font-size: 9vh;
+      font-size: 9vw;
   }
   #exclamationAdd .content span{
-      font-size: 4.5vh;
+      font-size: 4.5vw;
+  }
+  #thirdAdd{
+    font-size: 8vw;
+    margin-top: 2vw;
   }
 
-}
 
+}
+/* Tablet */
 @media screen and ( max-width: 991px ) {
 
   .carouselCont,.carousel,.carousel img {
     height: 350px;
   }
 
+  #social i{
+    font-size: 8.7vw;
+
+  }
+
   #exclamationAdd{
-      font-size: 3vh;
+      font-size: 4.5vw;
   }
 
   #exclamationAdd .title{
-      font-size: 5vh;
+      font-size: 6vw;
   }
   #exclamationAdd .title i{
-      font-size: 6.5vh;
+      font-size: 7.3vw;
   }
   #exclamationAdd .content span{
-      font-size: 4vh;
+      font-size: 5.3vw;
+  }
+  #secondAdd{
+      font-size: 3.1vw;
+  }
+  #thirdAdd{
+    font-size: 9.7vw;
+    margin-top: 2.3vw;
   }
 
-}
+  #newTitle{
+    font-size: 7vw;
+  }
 
+  .indexProduct{
+      background-color: rgb(30,30,30);
+      box-shadow: #d0006f 0px 3px 1px;
+  }
+  .productInfo .title{
+  font-size: 5vw;
+  }
+  .productInfo .wholesaleInfo {
+    font-size: 2vw;
+  }
+  .productInfo .wholesaleInfo .number{
+    font-size: 4vw;
+  }
+  .productInfo .detailInfo {
+    font-size: 2vw;
+  }
+  .productInfo .detailInfo .number{
+    font-size: 4vw;
+  }
+  .productInfo .shoppingButton{
+      font-size:  4vw;
+  }
+
+  #fourthAdd{
+      font-size: 4vw;
+  }
+
+  #fourthAdd span{
+      font-size: 5vw;
+  }
+
+
+}
+/* celular */
 @media screen and ( max-width: 600px ) {
   .carouselCont,.carousel,.carousel img {
     height: 250px;
@@ -104,17 +243,58 @@ body { font-family: sans-serif;
   }
 
   #exclamationAdd{
-      font-size: 5vh;
+      font-size: 7vw;
   }
 
   #exclamationAdd .title{
-      font-size: 6vh;
+      font-size: 10vw;
   }
   #exclamationAdd .title i{
-      font-size: 7vh;
+      font-size: 11vw;
   }
   #exclamationAdd .content span{
-      font-size: 6vh;
+      font-size: 9vw;
+  }
+  #secondAdd{
+    text-align: center;
+    font-size: 7.3vw;
+  }
+  #thirdAdd{
+    font-size: 17.5vw;
+    margin-top: 2vw;
+  }
+  #newTitle{
+    font-size: 11vw;
+    text-shadow: rgb(30,30,30) 1px 2px 0px;
+  }
+
+
+  .productInfo .title{
+  font-size: 6vw;
+  }
+  .productInfo .wholesaleInfo {
+    font-size: 4vw;
+  }
+  .productInfo .wholesaleInfo .number{
+    font-size: 8vw;
+  }
+  .productInfo .detailInfo {
+    font-size: 4vw;
+  }
+  .productInfo .detailInfo .number{
+    font-size: 8vw;
+  }
+  .productInfo .shoppingButton{
+      font-size:  5vw;
+  }
+
+  #fourthAdd{
+      font-size: 6vw;
+  }
+
+  #fourthAdd span{
+      font-size: 8.6vw;
+      text-shadow: rgb(30,30,30) 1px 1px 0px;
   }
 
 }
