@@ -1,2 +1,2 @@
 # pink_shop
-The virtual Store for frangances, clothes and much more.
+The open source platform written in Node JS to create and manage stores.
